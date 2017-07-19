@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.wxgzpt.bjpygh.mapper.DsInfoMapper">
+		<resultMap type="dsinfo" id="dsinfoMap">
+			<id column="ds_name" property="dsname" javaType="string" jdbcType="VARCHAR" />
+			<result column="ds_image" property="dsimage"/>
+			<result column="ds_intro" property="dsintro"/>
+			<result column="address" property="address"/>
+		</resultMap>
+		<insert id="insertDsInfo" parameterType="dsinfo">
+			insert into ds_info (ds_name, ds_image, ds_intro, address) 
+			values(#{dsname},#{dsimage}, #{dsintro}, #{address})
+		</insert>
+		<delete id="deleteDsInfo" parameterType="string">
+			delete from ds_info where ds_name = #{dsname}
+		</delete>
+		<select id="selectDsInfo" parameterType="string" resultMap="dsinfoMap">
+			select * from ds_info where ds_name = #{dsname}
+		</select>
+		<select id="selectDsInfoList" resultMap="dsinfoMap">
+			select * from ds_info
+		</select>
+		
+	</mapper>

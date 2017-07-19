@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+.micromessenger{
+	width: 100%;
+}
+.header{
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #111;
+	color: white;
+	font-size: 16px;
+}
+.container{
+	padding:20px 16px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box{
+	width: 100%;
+}
+.link{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+
+
+}
+
+.browser{
+	background:  url(../images/image_icon.jpg)no-repeat center top;
+	height: 100px;
+	width: 100px;
+	line-height: 140px;
+	text-align: center;
+	font-size: 10px;
+}
+.copy_link{
+	
+	height: 100px;
+	width: 100px;
+	line-height: 140px;
+	text-align: center;
+	background: url(../images/image_icon.jpg)no-repeat center top;
+}
+.hint{
+	text-align: center;
+	padding-top: 40px;
+	line-height: 24px;
+}
+.line{
+	height: 1px;
+	width: 100%;
+	background-color: #ccc;
+}
+.pay_finish{
+	text-align: center;
+	margin-top:1px;
+	height: 100%;
+	margin-top: 20px;
+	line-height: 32px;
+}
+.pay_finish_text{
+	color: #67c0ee;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.wxgzpt.bjpygh.mapper.DsPackageMapper">
+		<resultMap type="dspackage" id="dspackageMap">
+			<id column="packageid" property="packageid" javaType="int" jdbcType="NUMERIC" />
+			<result column="ds_type" property="dstype"/>
+			<result column="models" property="models"/>
+			<result column="train_time" property="traintime"/>
+			<result column="price" property="price"/>
+			<result column="ds_name" property="dsname"/>
+			<result column="description" property="description"/>
+		</resultMap>
+		<insert id="insertDsPackage" parameterType="dspackage">
+			insert into ds_package (ds_name, ds_type, models, train_time, price, description) 
+			values(#{dsname},#{dstype}, #{models}, #{traintime}, #{price}, #{description})
+		</insert>
+		<select id="selectDsPackage" parameterType="string" resultMap="dspackageMap">
+			select * from ds_package where ds_name like '%' #{dsname} '%'
+		</select>
+		<select id="selectDsPackageById" parameterType="int" resultMap="dspackageMap">
+			select * from ds_package where packageid = #{packageid} 
+		</select>
+	</mapper>

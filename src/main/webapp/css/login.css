@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* CSS Document */
+
+.binding{
+	height: 48px;
+	color: #67c0ee;
+	justify-content: center;/*用于左右居中*/
+	align-items: center;/*用于上下居中*/
+	display: -webkit-flex;
+	margin-top: 20px;
+	background-color: #FFFFFF;
+}
+.information{
+	height: auto;
+	background-color: #FFFFFF;
+	margin-top: 20px;
+}
+.phone,.code{
+	height: 48px;
+	display: flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+	background-color: #FFFFFF;
+}
+
+input{
+	height: 40px;
+	border:0px;
+	background-color: #FFFFFF;
+	flex: 1;
+	min-width: 100px;
+}
+input::-webkit-input-placeholder { 
+	color: #999; 
+	font-size: 16px;
+	font-size: 1rem;
+	-webkit-transition: color.5s; 
+} 
+input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder { 
+	color: #c2c2c2; 
+	-webkit-transition: color.5s; 
+} 
+
+.line{
+	height: 1px;
+	background-color: #eeeeee;
+	margin-left: 16px;
+	margin-right: 16px;
+
+}
+.phone_pic{
+	height:40px;
+	width: 40px;
+	float: left;
+	background: url(../images/phone_pic.png) no-repeat  left center;
+}
+.code_pic{
+	height:40px;
+	width: 40px;
+	float: left;
+	background: url(../images/verification_pic.png) no-repeat  left center;
+}
+#setcode{
+	
+	color: #FFFFFF;
+	height: 32px;
+	width: 80px;
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 32px;
+	text-align: center;
+	background-color: #67c0ee;
+	-webkit-border-radius: 5px;/* Webkit浏览器的私有属性*/
+	-moz-border-radius: 5px; /* Mozilla浏览器的私有属性*/
+	border-radius:5px;/*所有角都使用半径为20px的圆角，此属性为CSS3标准属性*/
+}
+.hint{
+	height: 48px;
+	display: flex;
+	align-items: center;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+#hinttext{
+	color: red;
+	font-size: 14px;
+}
+.lose{
+	margin-left: auto;
+	font-size: 14px;
+	font-size: 0.875rem;
+	color: red;
+}
+
+
+#btn{
+	margin:0 20px;
+	height: 48px;
+	width: 90%;
+	margin-left:5%;  
+	background-color: #67c0ee;
+	color: #FFFFFF;
+	-webkit-border-radius: 5px;/*Webkit浏览器的私有属性*/
+	-moz-border-radius: 5px;/* Mozilla浏览器的私有属性*/
+	border-radius:5px;/*所有角都使用半径为20px的圆角，此属性为CSS3标准属性*/
+} 
+
+
+

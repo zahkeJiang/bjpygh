@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.wxgzpt.bjpygh.mapper.DsOrderMapper">
+		<resultMap type="dsorder" id="dsorderMap">
+			<id column="order_id" property="orderid" javaType="int" jdbcType="NUMERIC" />
+			<result column="phone_number" property="phonenumber"/>
+			<result column="order_status" property="orderstatus"/>
+			<result column="ds_type" property="dstype"/>
+			<result column="ds_name" property="dsname" />
+			<result column="order_price" property="orderprice"/>
+			<result column="train_time" property="traintime"/>
+			<result column="models" property="models"/>
+			<result column="order_number" property="ordernumber"/>
+			<result column="address" property="address"/>
+			<result column="real_name" property="realname"/>
+			<result column="note" property="note"/>
+			<result column="user_id" property="userid"/>
+		</resultMap>
+		
+		<select id="getOrderById" parameterType="string" resultMap="dsorderMap">
+			select * from ds_order where user_id = #{userid}
+		</select>
+		
+		<insert id="insertOrder" parameterType="dsorder">
+			insert into ds_order (user_id, phone_number, order_status, ds_type, ds_name,
+			 order_price, train_time, models, order_number, address, real_name, note) 
+			values(#{userid},#{phonenumber}, #{orderstatus}, #{dstype}, #{dsname}, #{orderprice},
+			 #{traintime}, #{models}, #{ordernumber}, #{address}, #{realname}, #{note})
+		</insert>
+		
+	</mapper>

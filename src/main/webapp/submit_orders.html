@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>报名</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css"/>
+	<link href="css/submit_orders.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div class="main">
+		<div class="ds_information">
+
+			<h2 class="ds_type"></h2>
+			<div>
+				<span class="ds_name"></span>
+				<span>/</span>
+				<span class="ds_models"></span>
+				<span>/</span>
+				<span class="traintime"></span>
+			</div>
+			<div>
+				<span class="price_symbol">￥<span class="ds_price"></span></span>
+				
+			</div>
+		</div>
+		<div class="ds_apply">
+			
+			<form>
+				<div class="row">
+					真实姓名:<input type="text" placeholder="请输入您的真实姓名" name="real_name" id="real_name">
+				</div>
+				<div class="row">
+					地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:<input name="address" placeholder="请输入您的地址" rows="2"  id="address"></input>
+				</div>
+				<div class="row">
+					备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注:<input name="note" placeholder="请输入备注信息" rows="3"  id="note"></input>
+				</div>					
+			</form>
+		</div>
+		<div class="coupons">
+			<p>优惠券</p>
+			<span>1张&nbsp; &gt;</span>
+		</div>
+		<div class="footer">
+			<div class="last_price">
+				<span>实付款:￥
+					<span class="price"></span>
+				</span>			
+			</div>
+			<div class="submit">提交订单</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/submit_orders.js"></script>
+</body>
+</html>

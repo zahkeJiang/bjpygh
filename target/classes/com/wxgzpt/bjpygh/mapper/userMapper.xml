@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.wxgzpt.bjpygh.mapper.UserMapper">
+		<resultMap type="user" id="userMap">
+			<id column="user_id" property="userid" javaType="long" jdbcType="BIGINT" />
+			<result column="phone_number" property="phonenumber"/>
+			<result column="real_name" property="realname"/>
+			<result column="school" property="school"/>
+			<result column="college" property="college" />
+			<result column="openid" property="openid"/>
+			<result column="nickname" property="nickname"/>
+			<result column="sex" property="sex"/>
+			<result column="city" property="city"/>
+			<result column="country" property="country"/>
+			<result column="province" property="province"/>
+			<result column="headimageurl" property="headimageurl"/>
+			<result column="reamark" property="reamark"/>
+			<result column="address" property="address"/>
+			<result column="age" property="age"/>
+		</resultMap>
+		<select id="getPhoneNumber" parameterType="string" resultType="string">
+			select phone_number from user_info where openid = #{openid}
+		</select>
+		
+		<select id="getUserById" parameterType="string" resultMap="userMap">
+			select * from user_info where user_id = #{userid}
+		</select>
+		
+		<select id="getUserId" parameterType="string" resultType="string">
+			select user_id from user_info where openid = #{openid}
+		</select>
+		
+		<select id="getUserIdByPN" parameterType="string" resultType="string">
+			select user_id from user_info where phone_number = #{phonenumber}
+		</select>
+		
+		<update id="bondUser" parameterType="map">
+			update user_info set phone_number=#{phonenumber} where user_id=#{userid}
+		</update>
+		
+		<update id="bondRealName" parameterType="map">
+			update user_info set real_name=#{realname}, address=#{address}, reamark=#{reamark}
+			 where user_id=#{userid}
+		</update>
+		
+		<insert id="insertUser" parameterType="user">
+			insert into user_info (city, openid, country, headimageurl, nickname, province, sex) 
+			values(#{city},#{openid}, #{country}, #{headimageurl}, #{nickname}, #{province}, #{sex})
+		</insert>
+		
+	</mapper>

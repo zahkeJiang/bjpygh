@@ -1,0 +1,102 @@
+
+.information{
+	height: auto;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #DEDEDE;
+	border-top: 1px solid #DEDEDE;
+	margin-top: 20px;
+}
+.information a{
+	color: black;
+	text-decoration: none;
+}
+.line{
+	height: 1px;
+	margin-right:16px; 
+	margin-left:16px; 
+	background-color: #DEDEDE;
+}
+.icon{
+	height: 60px;
+	display: -webkit-flex;
+	align-items: center;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
+.icon img{
+	margin-left: auto;
+}
+.nickname{
+	height: 48px;
+	display: flex;
+	align-items: center;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+span{
+	margin-left: auto;
+	font-size: 0.875rem;
+	color: #8e8e8e;
+}
+.sex{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	margin-left: 16px;
+	margin-right: 16px;
+
+}
+
+.mobile{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.mobile:active{
+	color: black;
+	background-color: #eeeeee;
+	text-decoration: none;
+}
+
+.mobile_inf{
+	margin-left: auto;
+	font-size: 0.875rem;
+	color: #8e8e8e;
+}
+.orders{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.orders:active{
+	color: black;
+	background-color: #eeeeee;
+	text-decoration: none;
+}
+
+.city{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.school{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.school_inf{
+	margin-left: auto;
+	font-size: 0.875rem;
+	color: #8e8e8e;
+}

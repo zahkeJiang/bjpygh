@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>个人中心</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css"/>
+	<link href="css/user.css" rel="stylesheet" type="text/css"/>
+</head>
+
+
+
+<body onload="getuserId()">
+	<div class="information">
+		<div class="icon">
+			头像
+			<img id="icon" height="48px" width="48px">
+		</div>
+		<div class="line"></div>
+		<div class="nickname">
+			昵称
+			<span id="nickname"></span>
+		</div>
+		<div class="line"></div>
+		<div class="sex">
+			性别
+			<span id="sex"></span>
+		</div>
+		
+	</div><!--informationr结束-->
+	<div class="information">
+		<div class="mobile" onclick="change_mobile()">
+			手机号
+			<div class="mobile_inf">
+				<span id="mobile"></span>
+				<span>	&gt;</span>
+			</div>
+		</div>
+		<div class="line"></div>
+		<a href="#">
+			<div class="orders">
+				我的订单
+				<span id="orders">	&gt;</span>
+			</div>
+		</a>
+	</div><!--icon_infor结束-->
+	<div class="information">
+		<a href="#">
+			<div class="school">
+			学校
+			<div class="school_inf">
+				<span id="school"></span>
+				<span> &gt;</span>
+			</div>
+			</div>
+		</a>
+		<div class="line"></div>
+		<div class="city">
+			城市
+			<span id="city"></span>
+		</div>
+	</div><!--information结束-->
+	<script src="js/user.js"></script>
+</body>
+</html>
