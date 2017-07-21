@@ -1,18 +1,21 @@
 @charset "utf-8";
 /* CSS Document */
+.header_bg{
+	background-color: white;
+}
 .header{
 	height: 48px;
 	padding: 0 16px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: white;
-	border-bottom: 1px solid #ccc;
+	background:url(../images/bg_ccc.png);
+	background-repeat:repeat-x;		/*背景图片在水平显示*/	
+	background-position-y:bottom;　　/*背景图片在纵向的最下方显示*/
 }
 .all_orders,.orders_success,.orders_finished{
 	height: 46px;
 	line-height: 46px;
-	border-bottom: 2px solid white;
 }
 .orders_bg{
 	margin:16px;
@@ -28,8 +31,10 @@
 .dsorder_titie{
 	background-color: white;
 	display: flex;
-	height: 40px;
+	height: 36px;
 	align-items: center;
+	padding-right: 16px;
+	padding-left: 16px;
 }
 .refund{
 	margin-left: auto;
@@ -38,20 +43,24 @@
 	display: flex;
 	align-items: center;
 	height: 60px;
+	background-color: #F5F5F5;
+	padding-right: 16px;
+	padding-left: 16px;
 }
 .dsorder_information{
 	font-size: 14px;
 }
 .dsorder_footer{
-	height: 40px;
+	height: 36px;
 	text-align: right;
-	line-height: 40px;
+	line-height: 36px;
 	background-color: white;
-}
-.dsorder_footer{
-	color: #ccc;
 	font-size: 14px;
+	color: #ccc;
+	padding-right: 16px;
+	padding-left: 16px;
 }
+
 .order_price{
 	font-size: 18px;
 }
