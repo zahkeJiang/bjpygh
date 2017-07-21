@@ -8,6 +8,7 @@ import com.wxgzpt.bjpygh.entity.DsOrder;
 public interface DsOrderMapper {
 
 	public List<DsOrder> getOrderById(String userid);
+	public DsOrder getDsOrder(String userid);
 	public void insertOrder(DsOrder dsorder);
 	public void updateOrder(DsOrder dsorder);
 	public void changeStatus(Map<String, String> map);

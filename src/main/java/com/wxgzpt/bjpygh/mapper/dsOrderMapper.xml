@@ -23,6 +23,10 @@
 			select * from ds_order where user_id = #{userid}
 		</select>
 		
+		<select id="getDsOrder" parameterType="string" resultMap="dsorderMap">
+			select * from ds_order where user_id = #{userid}
+		</select>
+		
 		<select id="getStatusById" parameterType="string" resultType="string">
 			select order_status from ds_order where user_id = #{userid}
 		</select>

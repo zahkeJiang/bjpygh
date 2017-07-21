@@ -21,13 +21,17 @@ import com.alipay.api.response.AlipayTradeRefundResponse;
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
+import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class RefundServlet extends HttpServlet{
 
+	UserCouponDao userCouponDao;	
 	DsOrderDao dsOrderDao;
+	UserCoupon userCoupon;
 	DsOrder dsOrder;
 	Status status;
 	Gson gson;
@@ -78,6 +82,23 @@ public class RefundServlet extends HttpServlet{
 				String data = tmp.getString("alipay_trade_refund_response");
 				JSONObject obj = JSONObject.fromObject(data);
 				if(obj.getString("sub_code").equals("ACQ.TRADE_HAS_SUCCESS")){
+					/*改变用户优惠券状态*/
+					userCouponDao = new UserCouponDao();
+					try {
+						userCoupon = userCouponDao.selectUserCoupon(userid);
+						if(userCoupon.getCouponstatus()==2){
+							Map<String, String> map = new HashMap<String, String>();
+							map.put("couponstatus", "1");
+							map.put("userid", userid);
+							userCouponDao.updataCouponStatus(map);
+						}else{
+							status.setStatus(1);
+							status.setPrice(userCoupon.getCouponprice());
+						}
+					} catch (NullPointerException e) {
+						e.printStackTrace();
+					}
+					
 					Map<String, String> map = new HashMap<String, String>();
 					map.put("userid", userid);
 					map.put("orderstatus","4");

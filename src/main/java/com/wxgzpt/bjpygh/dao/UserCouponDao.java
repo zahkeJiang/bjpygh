@@ -30,7 +30,7 @@ public class UserCouponDao {
 	}
 	
 	//鏇存柊浼樻儬鍒哥姸鎬�
-	public void updataCouponStatus(Map<Integer, Integer> statusMap){
+	public void updataCouponStatus(Map<String, String> statusMap){
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
 			UserCouponMapper userCouponMapper = sqlSession.getMapper(UserCouponMapper.class);

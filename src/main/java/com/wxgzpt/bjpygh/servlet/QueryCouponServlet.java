@@ -38,17 +38,22 @@ public class QueryCouponServlet extends HttpServlet{
 			status = new Status();
 			gson = new Gson();
 			userCouponDao = new UserCouponDao();
-			userCoupon = userCouponDao.selectUserCoupon(userid);
-			if(userCoupon!=null&&userCoupon.getCouponstatus()!=2){
+			try {
+				userCoupon = userCouponDao.selectUserCoupon(userid);
+				if(userCoupon.getCouponstatus()!=1){
+					status.setStatus(0);
+				}else{
+					status.setStatus(1);
+					status.setPrice(userCoupon.getCouponprice());
+				}
+			} catch (NullPointerException e) {
 				status.setStatus(0);
-			}else{
-				status.setStatus(1);
-				status.setPrice(userCoupon.getCouponprice());
+			}finally{
+				op.print(gson.toJson(status));
+				op.flush();
+				op.close();
 			}
-			op.print(gson.toJson(status));
 		}
-		op.flush();
-		op.close();
 		
 	}
 	

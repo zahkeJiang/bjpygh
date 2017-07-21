@@ -89,7 +89,7 @@ public class DsPayServlet extends HttpServlet{
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
-            DsOrder dso = dsOrderDao.getOrderById(userid);
+            DsOrder dso = dsOrderDao.getDsOrder(userid);
             
             dsOrder.setUserid(Integer.parseInt(userid));
             dsOrder.setDsname(dsPackage.getDsname());

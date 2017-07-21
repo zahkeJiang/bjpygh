@@ -21,12 +21,16 @@ import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
+import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class QueryOrderServlet extends HttpServlet{
+	UserCouponDao userCouponDao;
 	DsOrderDao dsOrderDao;
+	UserCoupon userCoupon;
 	DsOrder dsOrder;
 	Status status;
 	Gson gson;
@@ -49,7 +53,7 @@ public class QueryOrderServlet extends HttpServlet{
 			dsOrderDao = new DsOrderDao();
 			status = new Status();
 			gson = new Gson();
-			dsOrder = dsOrderDao.getOrderById(userid);
+			dsOrder = dsOrderDao.getDsOrder(userid);
 			if(dsOrder==null){
 				status.setStatus(0);
 				op.print(gson.toJson(status));
@@ -89,6 +93,23 @@ public class QueryOrderServlet extends HttpServlet{
 				System.out.println(data);
 				JSONObject obj = JSONObject.fromObject(data);
 				if(obj.getString("trade_status").equals("TRADE_SUCCESS")){
+					/*改变用户优惠券状态*/
+					userCouponDao = new UserCouponDao();
+					try {
+						userCoupon = userCouponDao.selectUserCoupon(userid);
+						if(userCoupon.getCouponstatus()==1){
+							Map<String, String> map = new HashMap<String, String>();
+							map.put("couponstatus", "2");
+							map.put("userid", userid);
+							userCouponDao.updataCouponStatus(map);
+						}else{
+							status.setStatus(1);
+							status.setPrice(userCoupon.getCouponprice());
+						}
+					} catch (NullPointerException e) {
+						e.printStackTrace();
+					}
+					
 					Map<String, String> map = new HashMap<String, String>();
 					map.put("userid", userid);
 					map.put("orderstatus", "1");

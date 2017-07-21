@@ -49,6 +49,25 @@ public class DsOrderDao {
 		}
 		return dsOrder;
 	}
+	
+	//鑾峰彇璁㈠崟淇℃伅
+		public DsOrder getDsOrder(String userid){
+			DsOrder dsOrder = null;
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+				dsOrder = dsOrderMapper.getDsOrder(userid);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+			return dsOrder;
+		}
 		
 	//鎻掑叆璁㈠崟
 		public void updateOrder(DsOrder dsorder){
