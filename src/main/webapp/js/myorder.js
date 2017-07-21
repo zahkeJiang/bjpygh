@@ -8,7 +8,7 @@ function ShowMessage()
 window.onload=ShowMessage(); 
 
 $(function(){
-    var container = "<div class='orders_bg'><div><img src='../images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
+    var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
     all_orders();
 	$(".all_orders").click(function(){     
 		all_orders();
@@ -24,6 +24,8 @@ $(function(){
 
 //定义查询全部订单方法
 function all_orders(){
+    $(".orders_finished").css({"color":"black","border-bottom":"0"});
+    $(".orders_success").css({"color":"black","border-bottom":"0"});
 	$(".all_orders").css({"color":"red","border-bottom":"2px solid red"});
 	$.ajax({
 		type:"POST",
