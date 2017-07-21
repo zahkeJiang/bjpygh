@@ -33,7 +33,7 @@ function all_orders(){
         data:"userid="+userid,
         success:function(data){
         	var obj = eval('(' + data + ')'); 
-        	alert(obj.status);
+        	alert("obj.status="+obj.status);
         	if (obj.status=="1") {
                 alert(obj.status);
         		$(".container").empty();
@@ -117,6 +117,9 @@ function orders_success(){
         		alert("目前没有订单");
         	}
 
+        },
+        error:function(obj){
+            alert("error");
         }
 
 	});

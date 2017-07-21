@@ -47,11 +47,10 @@
 	text-align: right;
 	line-height: 40px;
 	background-color: white;
-}
-.dsorder_footer{
-	color: #ccc;
 	font-size: 14px;
+	color: #ccc;
 }
+
 .order_price{
 	font-size: 18px;
 }
