@@ -33,10 +33,10 @@ function all_orders(){
         dataType:"text",
         data:"userid="+userid,
         success:function(data){
+            $(".container").empty();
         	var obj = eval('(' + data + ')'); 
         	alert("obj.status="+obj.status);
         	if (obj.status=="1") {   
-        		$(".container").empty();
             	var dsorderh_tml = "";
             	var dsorder_list = obj.dsOrder;
                 // alert("dsorder_list.userid="+dsorder_list[0].userid+"dsorder_list.dstype="+dsorder_list[0].dstype+"dsorder_list.dsname="+dsorder_list[0].dsname+"dsorder_list.traintime="+dsorder_list[0].traintime+"dsorder_list.orderid="+dsorder_list[0].orderid);
@@ -78,12 +78,12 @@ function orders_success(){
         dataType:"text",
         data:"userid="+userid,
         success:function(data){
+            $(".container").empty();
         	var obj = eval('(' + data + ')');
         	if (obj.status=="1") {
             	var dsorder_list = obj.dsOrder;
                 alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
             	if (dsorder_list[0].orderstatus=="1") {  
-            		$(".container").empty();
             		var dsorderh_tml = "";
              		// $.each循环实现添加订单列表  
             		$.each(dsorder_list,function(commentIndex,comment){
@@ -126,12 +126,13 @@ function orders_finished(){
         dataType:"text",
         data:"userid="+userid,
         success:function(data){
+            $(".container").empty();
             var obj = eval('(' + data + ')');
             if (obj.status=="1") {
                 var dsorder_list = obj.dsOrder;
                 alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
                 if (dsorder_list[0].orderstatus=="3") {
-                    $(".container").empty();
+                    
                     var dsorderh_tml = "";
                     // $.each循环实现添加订单列表  
                     $.each(dsorder_list,function(commentIndex,comment){
