@@ -39,7 +39,7 @@ function all_orders(){
         		$(".container").empty();
             	var dsorderh_tml = "";
             	var dsorder_list = obj.dsOrder;
-                alert("dsorder_list.userid="+dsorder_list.userid+"dsorder_list.dstype="+dsorder_list.dstype+"dsorder_list.dsname="+dsorder_list.dsname+"dsorder_list.traintime="+dsorder_list.traintime+"dsorder_list.orderid="+dsorder_list.orderid);
+                alert("dsorder_list.userid="+dsorder_list[0].userid+"dsorder_list.dstype="+dsorder_list[0].dstype+"dsorder_list.dsname="+dsorder_list[0].dsname+"dsorder_list.traintime="+dsorder_list[0].traintime+"dsorder_list.orderid="+dsorder_list[0].orderid);
              	// $.each循环实现添加订单列表  
             	$.each(dsorder_list,function(commentIndex,comment){
                 	dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
@@ -76,9 +76,9 @@ function orders_success(){
         	alert("obj.status="+obj.status);
         	if (obj.status=="1") {
             	var dsorder_list = obj.dsOrder;
-                alert("dsorder_list.userid="+dsorder_list.userid+"dsorder_list.dstype="+dsorder_list.dstype+"dsorder_list.dsname="+dsorder_list.dsname+"dsorder_list.traintime="+dsorder_list.traintime+"dsorder_list.orderid="+dsorder_list.orderid);
-            	if (dsorder_list.orderstatus=="1") {
-                    alert("我点击了报名成功dsorder_list.orderstatus="+dsorder_list.orderstatus);
+                alert("dsorder_list.userid="+dsorder_list[0].userid+"dsorder_list.dstype="+dsorder_list[0].dstype+"dsorder_list.dsname="+dsorder_list[0].dsname+"dsorder_list.traintime="+dsorder_list[0].traintime+"dsorder_list.orderid="+dsorder_list[0].orderid);
+            	if (dsorder_list[0].orderstatus=="1") {
+                    alert("我点击了报名成功dsorder_list.orderstatus="+dsorder_list[0].orderstatus);
             		$(".container").empty();
             		var dsorderh_tml = "";
              		// $.each循环实现添加订单列表  
@@ -95,8 +95,8 @@ function orders_success(){
     		 		$(".dsorder_list").click(function(){    
             			alert("我点击了这个订单");
             		});
-            	}else if (dsorder_list.orderstatus=="3") {
-                    alert("我点击了报名已结束dsorder_list.orderstatus="+dsorder_list.orderstatus);
+            	}else if (dsorder_list[0].orderstatus=="3") {
+                    alert("我点击了报名已结束dsorder_list.orderstatus="+dsorder_list[0].orderstatus);
             		$(".container").empty();
             		var dsorderh_tml = "";
              		// $.each循环实现添加订单列表  
