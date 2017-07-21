@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+.header{
+	height: 48px;
+	padding: 0 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+}
+.orders_bg{
+	margin:16px;
+	background-color: yellow;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dsorder_list{
+	margin-bottom: 10px;
+}
+.dsorder_titie{
+	background-color: white;
+	display: flex;
+	height: 40px;
+	align-items: center;
+}
+.refund{
+	margin-left: auto;
+}
+.dsoder_container{
+	display: flex;
+	align-items: center;
+}
+.dsorder_footer{
+	height: 40px;
+	text-align: right;
+	line-height: 40px;
+}
+.dsorder_footer{
+	color: #ccc;
+	font-size: 14px;
+}
+.dsorder_footer{
+	font-size: 16px;
+}

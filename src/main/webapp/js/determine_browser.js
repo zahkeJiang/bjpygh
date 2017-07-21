@@ -3,21 +3,14 @@ var packageid = "";
 var select = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
-    var userId = thisURL.split('?')[1];
-    userid = userId.split("=")[1].split("&")[0];
-    packageid = userId.split("=")[2].split("&")[0];
-    select = userId.split("=")[3];
+    var getval  = thisURL.split('?')[1];
+    userid = getval.split("=")[1].split("&")[0];
+    packageid = getval.split("=")[2].split("&")[0];
+    select = getval.split("=")[3];
     if (isWeiXin()) {
     	alert("我是微信浏览器");
     }else{
-    	/*$(".micromessenger").css({"display":"none"});
-    	$.ajax({
-    		type:"POST",
-        	url:"dspay.action",
-        	dataType:"text",
-        	data:"userid="+userid+"&packageid="+packageid+"select="+select,
-    	});*/
-        window.location.href("dspay.action?userid="+userid+"&packageid="+packageid+"&select="+select);
+        window.location.href="dspay.action?userid="+userid+"&packageid="+packageid+"&select="+select;
     }
 } 
 window.onload=ShowMessage(); 
@@ -35,14 +28,9 @@ function isWeiXin(){
 
 $(function(){
 	$(".browser").click(function(){
-    	$.ajax({
-    		type:"POST",
-        	url:"sdp.action",
-        	dataType:"text",
-        	data:"userid="+userid+"&packageid="+packageid+"select="+select,
-    	});
+    	alert("打开浏览器");
 	})
 	$(".pay_finish_text").click(function(){
-		alert("完成付款");
+		window.location.href="ds_pay.html?userid="+userid;
 	});
 });

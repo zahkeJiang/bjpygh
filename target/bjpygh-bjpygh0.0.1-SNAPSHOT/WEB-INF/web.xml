@@ -14,6 +14,7 @@
     <url-pattern>/personal.action</url-pattern>
   </servlet-mapping>
   <servlet>
+  
     <servlet-name>SmsServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.SmsServlet</servlet-class>
   </servlet>
@@ -21,6 +22,7 @@
     <servlet-name>SmsServlet</servlet-name>
     <url-pattern>/sms.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>BondServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.BondServlet</servlet-class>
@@ -29,6 +31,7 @@
     <servlet-name>BondServlet</servlet-name>
     <url-pattern>/bond.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>SelectDsPackageServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.SelectDsPackageServlet</servlet-class>
@@ -37,6 +40,7 @@
     <servlet-name>SelectDsPackageServlet</servlet-name>
     <url-pattern>/sdp.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>SelectDsInfoServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.SelectDsInfoServlet</servlet-class>
@@ -45,6 +49,7 @@
     <servlet-name>SelectDsInfoServlet</servlet-name>
     <url-pattern>/sdi.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>CouponServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.CouponServlet</servlet-class>
@@ -53,6 +58,7 @@
     <servlet-name>CouponServlet</servlet-name>
     <url-pattern>/coupon.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>DsPayServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.DsPayServlet</servlet-class>
@@ -61,6 +67,7 @@
     <servlet-name>DsPayServlet</servlet-name>
     <url-pattern>/dspay.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>NoteServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.NoteServlet</servlet-class>
@@ -69,4 +76,42 @@
     <servlet-name>NoteServlet</servlet-name>
     <url-pattern>/note.action</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>QueryOrderServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.QueryOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QueryOrderServlet</servlet-name>
+    <url-pattern>/queryOrder.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>QueryCouponServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.QueryCouponServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QueryCouponServlet</servlet-name>
+    <url-pattern>/queryCoupon.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectOrderServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.SelectOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectOrderServlet</servlet-name>
+    <url-pattern>/selectOrder.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RefundServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.RefundServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RefundServlet</servlet-name>
+    <url-pattern>/refund.action</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

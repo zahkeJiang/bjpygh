@@ -59,22 +59,22 @@ var userid = "";
 var dsname = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
-    var userId = thisURL.split('?')[1];
+    var getval = thisURL.split('?')[1];
     var dsName = thisURL.split('&')[1];
     dsname = dsName.split("=")[1];
-    userid = userId.split("=")[1].split('&')[0];
+    userid = getval.split("=")[1].split('&')[0];
 } 
 window.onload=ShowMessage(); 
 				
 $(function(){
 	// 打开弹窗
     $(".ds_information").click(function(){
-    		$(".dsintro").fadeIn("10");
+    		$(".dsintro").fadeIn(10);
     })
     
     // 关闭弹窗
     $(".dsintro img").click(function(){
-    		$(".dsintro").fadeOut("10");
+    		$(".dsintro").fadeOut(10);
     })
 
 	$.ajax({

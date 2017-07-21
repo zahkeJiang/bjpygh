@@ -1,8 +1,8 @@
 /*获取userid*/
 var thisURL = document.URL;    
-var userId = thisURL.split('?')[1];  
-var userid = userId.split("=")[1];  
-function  getuserId(){  
+var getval = thisURL.split('?')[1];  
+var userid = getval.split("=")[1];  
+function getuserId(){  
   alert(userid); 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(){
@@ -11,9 +11,9 @@ function  getuserId(){
 		  // alert("数据接受:"+xhr.status);
 			if (xhr.status === 200) {
         /*解析json字符串*/
-			 	alert("获取信息成功，userid="+userid);
+			 	// alert("获取信息成功，userid="+userid);
 			 	var obj = eval('(' + xhr.responseText + ')');//json是以字符串传过来，需要对其进行转成对象。
-			 	alert("province="+obj.province+" "+"userid="+obj.userid+" "+"openid="+obj.openid+" "+"nickname="+obj.nickname+" "+"sex="+obj.sex+" "+"city="+obj.city+" "+"mobile="+obj.phonenumber+" "+"school="+obj.school);
+//			 	alert("province="+obj.province+" "+"userid="+obj.userid+" "+"openid="+obj.openid+" "+"nickname="+obj.nickname+" "+"sex="+obj.sex+" "+"city="+obj.city+" "+"mobile="+obj.phonenumber+" "+"school="+obj.school);
 			 	document.getElementById('icon').src=obj.headimageurl;
   			document.getElementById('nickname').innerText = obj.nickname;
   			document.getElementById('mobile').innerText = obj.phonenumber;
@@ -42,8 +42,12 @@ function  getuserId(){
 }
 /*跳转到更换手机号页面*/
 function change_mobile(){
-  alert("即将跳转到mobile页面,userid="+userid);
   var oldmobile = document.getElementById("mobile").innerText;
   location.href="mobile.html?userid="+userid+"&mobile="+oldmobile;   
-
 }
+
+$(function(){
+  $(".orders").click(function(){
+    window.location.href="myorder.html?userid="+userid;
+  });
+});

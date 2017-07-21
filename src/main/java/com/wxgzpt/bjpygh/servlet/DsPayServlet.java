@@ -1,7 +1,10 @@
 package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,7 +54,7 @@ public class DsPayServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-
+        PrintWriter out = response.getWriter();
         	String userid = request.getParameter("userid");
             String packageid = request.getParameter("packageid");
             String select = request.getParameter("select");
@@ -63,6 +66,7 @@ public class DsPayServlet extends HttpServlet{
             }else{
             	couponprice = 0;
             }
+            DsOrderDao dsOrderDao = new DsOrderDao();
             System.out.println("log:UserCouponDao");
             UserDao userDao = new UserDao();
             User user = userDao.getUserById(userid);
@@ -83,8 +87,10 @@ public class DsPayServlet extends HttpServlet{
          
             total_amount = ""+(dsPackage.getPrice()-couponprice);
             System.out.println("------_------");
-            DsOrderDao dsOrderDao = new DsOrderDao();
+            
             DsOrder dsOrder = new DsOrder();
+            DsOrder dso = dsOrderDao.getOrderById(userid);
+            
             dsOrder.setUserid(Integer.parseInt(userid));
             dsOrder.setDsname(dsPackage.getDsname());
             dsOrder.setDstype(dsPackage.getDstype());
@@ -97,9 +103,17 @@ public class DsPayServlet extends HttpServlet{
             dsOrder.setOrderstatus(0);
             dsOrder.setPhonenumber(user.getPhonenumber());
             dsOrder.setTraintime(dsPackage.getTraintime());
-            dsOrderDao.insertOrder(dsOrder);
-            System.out.println("log:DsOrderDao");
-            
+            if(dso == null){
+                dsOrderDao.insertOrder(dsOrder);
+                System.out.println("log:DsOrderDao");
+            }else if(dso.getOrderstatus() == 0||dso.getOrderstatus()==4){
+            	dsOrderDao.updateOrder(dsOrder);
+            }else{
+            	out.print("您已报名成功，若要更换套餐，请先退单。");
+            	out.flush();
+            	out.close();
+            	return;
+            }
             
             /**********************/
             // SDK 閸忣剙鍙＄拠閿嬬湴缁紮绱濋崠鍛儓閸忣剙鍙＄拠閿嬬湴閸欏倹鏆熼敍灞间簰閸欏﹤鐨濈憗鍛啊缁涙儳鎮曟稉搴ㄧ崣缁涙拝绱濆锟介崣鎴ｏ拷鍛￥闂囷拷閸忚櫕鏁炵粵鎯ф倳娑撳酣鐛欑粵锟�     

@@ -33,11 +33,11 @@ public class DsOrderDao {
 	
 	//鑾峰彇璁㈠崟淇℃伅
 	public List<DsOrder> getOrderById(String userid){
-		List<DsOrder> dsOrderlist = null;
+		List<DsOrder> dsOrder = null;
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
 			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
-			dsOrderlist = dsOrderMapper.getOrderById(userid);
+			dsOrder = dsOrderMapper.getOrderById(userid);
 			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,8 +47,40 @@ public class DsOrderDao {
 				sqlSession.close();
 			}
 		}
-		return dsOrderlist;
+		return dsOrder;
 	}
 		
+	//鎻掑叆璁㈠崟
+		public void updateOrder(DsOrder dsorder){
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+				dsOrderMapper.updateOrder(dsorder);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+		}
 	
+		//鎻掑叆璁㈠崟
+				public void changeStatus(Map<String, String> map){
+					try {
+						sqlSession = SqlSessionFactoryUtil.openSqlSession();
+						DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+						dsOrderMapper.changeStatus(map);
+						sqlSession.commit();
+					} catch (Exception e) {
+						e.printStackTrace();
+						sqlSession.rollback();
+					}finally{
+						if (sqlSession != null){
+							sqlSession.close();
+						}
+					}
+				}
 }

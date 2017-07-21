@@ -1,10 +1,9 @@
 /*获取userid*/
 		var thisURL = document.URL;    
-		var userId = thisURL.split('?')[1];  
-		var userid = userId.split("=")[1].split("&")[0];  
-		var oldmobile = userId.split("=")[2];
+		var getval = thisURL.split('?')[1];  
+		var userid = getval.split("=")[1].split("&")[0];  
+		var oldmobile = getval.split("=")[2];
 		function  getuserId(){  
-  			alert("mobile接收到的userid为"+userid); 
   			document.getElementById('oldmobile').innerText = oldmobile;
   		}
 		var newnumber = /^1[3|4|5|8]\d{9}$/;
@@ -21,7 +20,7 @@
 	 				var charIndex = Math.floor(Math.random() * 10);//向下取整0-10的随机数
 	 				code += selectChar[charIndex];
 	 			}
-	 			alert("mobile="+mobile+" "+"tpl_value="+code);
+//	 			alert("mobile="+mobile+" "+"tpl_value="+code);
 	 			//创建线程，将验证码与手机号发送后端
 	 			var xhr = new XMLHttpRequest();
 		    	xhr.onreadystatechange = function(){

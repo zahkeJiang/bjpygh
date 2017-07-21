@@ -7,7 +7,17 @@ public class Status {
 	private int status;
 	private List<DsInformation> dspInfolist;
 	private List<DsPackage> dsplist;
+	private List<DsOrder> dsOrder;
 	private int price;
+	private String out_trade_no;
+
+	public List<DsOrder> getDsOrder() {
+		return dsOrder;
+	}
+
+	public void setDsOrder(List<DsOrder> dsOrder) {
+		this.dsOrder = dsOrder;
+	}
 
 	public int getPrice() {
 		return price;
@@ -39,6 +49,14 @@ public class Status {
 
 	public void setDspInfolist(List<DsInformation> dspInfolist) {
 		this.dspInfolist = dspInfolist;
+	}
+
+	public void setOrderNumber(String ordernumber) {
+		out_trade_no = ordernumber;
+	}
+	
+	public String getOrderNumber() {
+		return out_trade_no;
 	}
 	
 }

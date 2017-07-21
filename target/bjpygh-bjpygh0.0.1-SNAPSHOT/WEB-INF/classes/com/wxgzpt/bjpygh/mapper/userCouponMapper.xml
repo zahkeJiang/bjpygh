@@ -20,7 +20,7 @@
 		<update id="updataCouponPrice" parameterType="map">
 			update user_coupon set coupon_price=#{couponprice} where user_id=#{userid}
 		</update>
-		<select id="selectUserCoupon" resultMap="userCouponMap">
+		<select id="selectUserCoupon" parameterType="string" resultMap="userCouponMap">
 			select * from user_coupon where user_id=#{userid}
 		</select>
 	</mapper>

@@ -12,7 +12,7 @@ public class UserCouponDao {
 
 	SqlSession sqlSession = null;
 	
-	//插入用户优惠券
+	//鎻掑叆鐢ㄦ埛浼樻儬鍒�
 	public void insertUserCoupon(UserCoupon userCoupon){
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
@@ -29,7 +29,7 @@ public class UserCouponDao {
 		}
 	}
 	
-	//更新优惠券状态
+	//鏇存柊浼樻儬鍒哥姸鎬�
 	public void updataCouponStatus(Map<Integer, Integer> statusMap){
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
@@ -46,7 +46,7 @@ public class UserCouponDao {
 		}
 	}
 	
-	//更新优惠券价格
+	//鏇存柊浼樻儬鍒镐环鏍�
 	public void updataCouponPrice(Map<Integer, Integer> priceMap){
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
@@ -63,13 +63,13 @@ public class UserCouponDao {
 		}
 	}
 	
-	//更新优惠券价格
+	//鏇存柊浼樻儬鍒镐环鏍�
 		public UserCoupon selectUserCoupon(String userid){
 			UserCoupon userCoupon = null;
 			try {
 				sqlSession = SqlSessionFactoryUtil.openSqlSession();
 				UserCouponMapper userCouponMapper = sqlSession.getMapper(UserCouponMapper.class);
-				userCoupon = userCouponMapper.selectUserCoupon(Integer.parseInt(userid));
+				userCoupon = userCouponMapper.selectUserCoupon(userid);
 				sqlSession.commit();
 			} catch (Exception e) {
 				e.printStackTrace();

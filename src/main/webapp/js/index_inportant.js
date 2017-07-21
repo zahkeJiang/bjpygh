@@ -2,8 +2,8 @@ var userid = "";
 function ShowMessage() 
 { 
     var thisURL = document.URL;    
-    var userId = thisURL.split('?')[1];  
-    userid = userId.split("=")[1];  
+    var getval = thisURL.split('?')[1];  
+    userid = getval.split("=")[1];  
     alert(userid);
 } 
 window.onload=ShowMessage(); 
@@ -40,7 +40,7 @@ $(function(){
             return true;   
         },
         error:function(obj){
-            alert("erroe");
+            alert("error");
         }
     });
 

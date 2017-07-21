@@ -9,14 +9,14 @@ var traintime = "";
 
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
-    var userId = thisURL.split('?')[1];
-    userid = userId.split("=")[1].split('&')[0];
-    dsname = userId.split("=")[2].split('&')[0];
-    dstype = userId.split("=")[3].split('&')[0];
-    models = userId.split("=")[4].split('&')[0];
-    price = userId.split("=")[5].split('&')[0];
-    packageid = userId.split("=")[6].split('&')[0];
-    traintime = userId.split("=")[7];
+    var getval = thisURL.split('?')[1];
+    userid = getval.split("=")[1].split('&')[0];
+    dsname = getval.split("=")[2].split('&')[0];
+    dstype = getval.split("=")[3].split('&')[0];
+    models = getval.split("=")[4].split('&')[0];
+    price = getval.split("=")[5].split('&')[0];
+    packageid = getval.split("=")[6].split('&')[0];
+    traintime = getval.split("=")[7];
 } 
 window.onload=ShowMessage(); 
 

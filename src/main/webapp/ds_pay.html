@@ -2,9 +2,65 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>支付</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>订单支付</title>
+	<link  rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/ds_pay.css"/>
 </head>
 <body>
-	
+	<div class="main">
+		<div class="pay_success">
+			<div class="header">订单支付结果</div>
+			<div class="container">
+				<div class="success">
+					<div class="pay_information">
+						<div class="pay_order">
+							<div class="order_information">
+								<div class="order">
+									<span class="order_type">
+										<span>订</span><span>单</span><span>号</span>
+									</span>
+									<span class="order_colon">:</span>
+									<span class="order_number"></span>
+								</div>
+								<div class="order">
+									<span class="order_type">
+										<span>付</span><span>款</span><span>金</span><span>额</span>
+									</span>
+									<span class="order_colon">:</span>
+									<span class="order_price">￥<span class="ds_price"></span></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="pay">
+							<img src="images/image_icon.jpg">
+							<p>支付成功</p>
+						</div>
+						<div class="view_order">查看订单	&raquo;</div>
+						<div class="line"></div>
+						<div class="hint">
+							<p>您的订单已经提交成功</p>
+							<p>24小时之内将会有工作人员与您联系，请保持电话畅通。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="pay_fail">
+			<div class="header">订单支付结果</div>
+			<div class="container">
+				<div class="fail">
+					付款失败
+				</div>
+			</div>
+		</div>
+		<div class="server_error">
+			服务器错误
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/ds_pay.js"></script>
 </body>
 </html>

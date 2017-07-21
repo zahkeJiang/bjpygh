@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/wxgzpt/bjpygh/config/AlipayConfig.java=UTF-8
 encoding//src/main/java/com/wxgzpt/bjpygh/dao/DsOrderDao.java=UTF-8
+encoding//src/main/java/com/wxgzpt/bjpygh/dao/UserCouponDao.java=UTF-8
 encoding//src/main/java/com/wxgzpt/bjpygh/db/Main.java=UTF-8
 encoding//src/main/java/com/wxgzpt/bjpygh/entity/DsOrder.java=UTF-8
 encoding//src/main/java/com/wxgzpt/bjpygh/servlet/DsPayServlet.java=UTF-8
 encoding//src/main/java/com/wxgzpt/bjpygh/utils/SqlSessionFactoryUtil.java=UTF-8
-encoding//src/main/webapp/insertDsInfo.jsp=UTF-8
+encoding/<project>=UTF-8

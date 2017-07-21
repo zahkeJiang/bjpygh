@@ -1,7 +1,7 @@
 /*获取用户userid*/
 var thisURL = document.URL;    
-var userId = thisURL.split('?')[1];  
-var userid = userId.split("=")[1];  
+var getval = thisURL.split('?')[1];  
+var userid = getval.split("=")[1];  
 function  getuserId(){  
 	alert(userid);  
 }  
@@ -51,7 +51,7 @@ function setCode(obj) {
         	var charIndex = Math.floor(Math.random() * 10);//向下取整0-10的随机数
         	code += selectChar[charIndex];
 		}
-		alert("mobile="+mobile+" "+"tpl_value="+code);
+//		alert("mobile="+mobile+" "+"tpl_value="+code);
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 		    console.log("onreadystatechange: "+xhr.readyState);
@@ -90,7 +90,7 @@ function  bt(){
 			 			if (xhr.status === 200) {
 			 				/*解析json字符串*/
 			 				var obj = eval('(' + xhr.responseText + ')');//json是以字符串传过来，需要对其进行转成对象。
-			 				alert(obj.status);
+//			 				alert(obj.status);
 			 				if (obj.status == 1) {
 			 					alert("绑定成功，即将跳转");
 			 					location.href="user.html?userid="+userid;
