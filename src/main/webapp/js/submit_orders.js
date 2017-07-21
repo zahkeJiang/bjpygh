@@ -66,7 +66,12 @@ $(function(){
         		data:"userid="+userid+"&realname="+realname+"&address="+address+"&note="+note,
         		dataType:"text",
         		success:function(data){
-					window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
+        			var obj = eval('(' + data + ')');
+        			if (obj.status=="1") {
+        				window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
+        			}else{
+        				alert("用户已报名成功，请勿重复报名。");
+        			}
         		},
        			error:function(obj){
             		alert(error);
