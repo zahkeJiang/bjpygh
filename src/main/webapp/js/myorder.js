@@ -7,8 +7,9 @@ function ShowMessage()
 } 
 window.onload=ShowMessage(); 
 
+
+var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
 $(function(){
-    var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
     all_orders();
 	$(".all_orders").click(function(){     
 		all_orders();
@@ -88,7 +89,7 @@ function orders_success(){
              		// $.each循环实现添加订单列表  
             		$.each(dsorder_list,function(commentIndex,comment){
                 		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                					+comment.dsname+"</p><p class='refund'>退款</p></div><div class='dsoder_container'><img src='"
+                					+comment.dsname+"</p><p class='refund'>取消报名</p></div><div class='dsoder_container'><img src='"
                 					+"' height='40px' width='50px'><p class='dsorder_information'>"
                 					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
                 					+comment.orderprice+"</span></span></div></div>";
@@ -99,6 +100,9 @@ function orders_success(){
     		 		$(".dsorder_list").click(function(){    
             			alert("我点击了这个订单");
             		});
+                    $(".refund").click(function(){
+                        window.location.href="ds_refund.html?userid="+userid;
+                    });
             	}else{
                     alert("当前没有相关订单");
                     $(".container").html(container);
