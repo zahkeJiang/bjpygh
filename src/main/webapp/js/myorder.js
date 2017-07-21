@@ -8,13 +8,17 @@ function ShowMessage()
 window.onload=ShowMessage(); 
 
 $(function(){
+    all_orders();
 	$(".all_orders").click(function(){
+        $(this).css({"color":"red","border-bottom":"2px solid red"});
 		all_orders();
 	});
 	$(".orders_success").click(function(){
+        $(this).css({"color":"red","border-bottom":"2px solid red"});
 		orders_success();
 	});
 	$(".orders_finished").click(function(){
+        $(this).css({"color":"red","border-bottom":"2px solid red"});
 		orders_success();
 	});
 
@@ -29,18 +33,18 @@ function all_orders(){
         data:"userid="+userid,
         success:function(data){
         	var obj = eval('(' + data + ')'); 
-        	alert(obj.stadus);
-        	alert(obj.dsOrder.userid);
+        	alert(obj.status);
         	if (obj.status=="1") {
+                alert(obj.status);
         		$(".container").empty();
             	var dsorderh_tml = "";
             	var dsorder_list = obj.dsOrder;
-            	alert(dsorder_list);
+                alert("dsorder_list.userid="+dsorder_list.userid+"dsorder_list.dstype="+dsorder_list.dstype+"dsorder_list.dsname="+dsorder_list.dsname+"dsorder_list.traintime="+dsorder_list.traintime+"dsorder_list.orderid="+dsorder_list.orderid);
              	// $.each循环实现添加订单列表  
             	$.each(dsorder_list,function(commentIndex,comment){
                 	dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
                 				+comment.dsname+"</p></div><div class='dsoder_container'><img src='"
-                				+"'><p class='dsorder_information'>"
+                				+comment.dsimage"'><p class='dsorder_information'>"
                 				+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
                 				+comment.orderprice+"</span></span></div></div>";
             	});
@@ -71,7 +75,9 @@ function orders_success(){
         	var obj = eval('(' + data + ')');
         	if (obj.status=="1") {
             	var dsorder_list = obj.dsOrder;
+                alert("dsorder_list.userid="+dsorder_list.userid+"dsorder_list.dstype="+dsorder_list.dstype+"dsorder_list.dsname="+dsorder_list.dsname+"dsorder_list.traintime="+dsorder_list.traintime+"dsorder_list.orderid="+dsorder_list.orderid);
             	if (dsorder_list.orderstatus=="1") {
+                    alert("我点击了报名成功dsorder_list.orderstatus="+dsorder_list.orderstatus);
             		$(".container").empty();
             		var dsorderh_tml = "";
              		// $.each循环实现添加订单列表  
@@ -89,6 +95,7 @@ function orders_success(){
             			alert("我点击了这个订单");
             		});
             	}else if (dsorder_list.orderstatus=="3") {
+                    alert("我点击了报名已结束dsorder_list.orderstatus="dsorder_list.orderstatus);
             		$(".container").empty();
             		var dsorderh_tml = "";
              		// $.each循环实现添加订单列表  

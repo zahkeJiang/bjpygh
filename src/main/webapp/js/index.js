@@ -69,6 +69,7 @@ function ShowMessage()
     alert(userid);
 } 
 window.onload=ShowMessage(); 
+
 $(function(){
     $.ajax({
         type:"POST",

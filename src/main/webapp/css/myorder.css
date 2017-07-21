@@ -7,6 +7,12 @@
 	justify-content: space-between;
 	align-items: center;
 	background-color: white;
+	border-bottom: 1px solid #ccc;
+}
+.all_orders,.orders_success,.orders_finished{
+	height: 46px;
+	line-height: 46px;
+	border-bottom: 2px solid white;
 }
 .orders_bg{
 	margin:16px;
@@ -16,8 +22,8 @@
 	justify-content: center;
 	align-items: center;
 }
-.dsorder_list{
-	margin-bottom: 10px;
+.container{
+	margin-top: 10px;
 }
 .dsorder_titie{
 	background-color: white;
@@ -31,16 +37,21 @@
 .dsoder_container{
 	display: flex;
 	align-items: center;
+	height: 60px;
+}
+.dsorder_information{
+	font-size: 14px;
 }
 .dsorder_footer{
 	height: 40px;
 	text-align: right;
 	line-height: 40px;
+	background-color: white;
 }
 .dsorder_footer{
 	color: #ccc;
 	font-size: 14px;
 }
-.dsorder_footer{
-	font-size: 16px;
+.order_price{
+	font-size: 18px;
 }
