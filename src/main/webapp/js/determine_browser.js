@@ -29,7 +29,7 @@ function isWeiXin(){
 $(function(){
 	$(".browser").click(function(){
     	alert("打开浏览器");
-	})
+	});
 	$(".pay_finish_text").click(function(){
 		window.location.href="ds_pay.html?userid="+userid;
 	});

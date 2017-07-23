@@ -52,7 +52,7 @@ function all_orders(){
             	$(".container").html(dsorderh_tml);
 
             	// 为订单列表设置点击事件
-    		 	$(".dsorder_list").click(function(){    
+    		 	$(".dsoder_container").click(function(){    
             		alert("我点击了这个订单");
             	});
         	}else{
@@ -89,7 +89,7 @@ function orders_success(){
              		// $.each循环实现添加订单列表  
             		$.each(dsorder_list,function(commentIndex,comment){
                 		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                					+comment.dsname+"</p><p class='refund'>取消报名</p></div><div class='dsoder_container'><img src='"
+                                    +comment.dsname+"</p><p class='refund' odnumb='"+comment.ordernumber+"' odprice='"+comment.orderprice'>取消报名</p></div><div class='dsoder_container'><img src='"
                 					+"' height='40px' width='50px'><p class='dsorder_information'>"
                 					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
                 					+comment.orderprice+"</span></span></div></div>";
@@ -97,18 +97,20 @@ function orders_success(){
             		$(".container").html(dsorderh_tml);
 
             		// 为订单列表设置点击事件
-    		 		$(".dsorder_list").click(function(){    
+    		 		$(".dsoder_container").click(function(){    
             			alert("我点击了这个订单");
             		});
                     $(".refund").click(function(){
-                        window.location.href="ds_refund.html?userid="+userid;
+                        var odnumb = $(this).attr('odnumb');//获取订单号
+                        var odprice = $(this).attr('odprice');//获取价格
+                        window.location.href="ds_refund.html?userid="+userid+"&ordernumber="+ordernumber+"&orderprice"+orderprice;
                     });
             	}else{
                     alert("当前没有相关订单");
                     $(".container").html(container);
                 }
         	}else{
-        		alert("目前没有订单");
+        		alert("当前没有相关订单");
                 $(".container").html(container);
         	}
         },
@@ -149,7 +151,7 @@ function orders_finished(){
                     $(".container").html(dsorderh_tml);
 
                     // 为订单列表设置点击事件
-                    $(".dsorder_list").click(function(){    
+                    $(".dsoder_container").click(function(){    
                         alert("我点击了这个订单");
                     });
                 }else{
