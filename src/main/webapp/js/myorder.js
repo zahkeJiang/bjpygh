@@ -51,7 +51,7 @@ function all_orders(){
             	$(".container").html(dsorderh_tml);
 
             	// 为订单列表设置点击事件
-    		 	$(".dsorder_list").click(function(){    
+    		 	$(".dsoder_container").click(function(){    
             		alert("我点击了这个订单");
             	});
         	}else{
@@ -72,6 +72,7 @@ function orders_success(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_finished").css({"color":"black","border-bottom":"0"});
     $(".orders_success").css({"color":"red","border-bottom":"2px solid red"});
+<<<<<<< HEAD
     $.post("selectOrder.action",{},function(obj){
     	$(".container").empty();
 //    	var obj = eval('(' + data + ')');
@@ -99,6 +100,46 @@ function orders_success(){
                 });
         	}else{
                 alert("当前没有相关订单");
+=======
+	$.ajax({
+		type:"POST",
+        url:"selectOrder.action",
+        dataType:"text",
+        data:"userid="+userid,
+        success:function(data){
+            $(".container").empty();
+        	var obj = eval('(' + data + ')');
+        	if (obj.status=="1") {
+            	var dsorder_list = obj.dsOrder;
+                alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
+            	if (dsorder_list[0].orderstatus=="1") {  
+            		var dsorderh_tml = "";
+             		// $.each循环实现添加订单列表  
+            		$.each(dsorder_list,function(commentIndex,comment){
+                		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
+                                    +comment.dsname+"</p><p class='refund' odnumb='"+comment.ordernumber+"' odprice='"+comment.orderprice'>取消报名</p></div><div class='dsoder_container'><img src='"
+                					+"' height='40px' width='50px'><p class='dsorder_information'>"
+                					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
+                					+comment.orderprice+"</span></span></div></div>";
+            		});
+            		$(".container").html(dsorderh_tml);
+
+            		// 为订单列表设置点击事件
+    		 		$(".dsoder_container").click(function(){    
+            			alert("我点击了这个订单");
+            		});
+                    $(".refund").click(function(){
+                        var odnumb = $(this).attr('odnumb');//获取订单号
+                        var odprice = $(this).attr('odprice');//获取价格
+                        window.location.href="ds_refund.html?userid="+userid+"&ordernumber="+ordernumber+"&orderprice"+orderprice;
+                    });
+            	}else{
+                    alert("当前没有相关订单");
+                    $(".container").html(container);
+                }
+        	}else{
+        		alert("当前没有相关订单");
+>>>>>>> 7da347d03dc11b5cf8f6b2085d2b3fe3404d267c
                 $(".container").html(container);
             }
     	}else{
@@ -151,7 +192,7 @@ function orders_finished(){
                     $(".container").html(dsorderh_tml);
 
                     // 为订单列表设置点击事件
-                    $(".dsorder_list").click(function(){    
+                    $(".dsoder_container").click(function(){    
                         alert("我点击了这个订单");
                     });
                 }else{
