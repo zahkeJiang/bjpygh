@@ -3,11 +3,13 @@ package com.wxgzpt.bjpygh.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
@@ -20,28 +22,40 @@ public class SelectOrderServlet extends HttpServlet{
 	List<DsOrder> dsOrder;
 	Status status;
 	Gson gson;
+	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doGet(request, response);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        
-		PrintWriter op = response.getWriter();
-		if(request.getParameter("userid")!=null){
-			String userid = request.getParameter("userid");
+		PrintWriter out = response.getWriter();
+		status = new Status();
+		HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
 			
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		
+			String userid = userMap.get("id");	
 			dsOrderDao = new DsOrderDao();
-			status = new Status();
 			gson = new Gson();
-			
 			dsOrder = dsOrderDao.getOrderById(userid);
+			System.out.println(dsOrder);
 			status.setStatus(0);
 			for(DsOrder dso:dsOrder){
 				status.setDsOrder(dsOrder);
@@ -50,12 +64,10 @@ public class SelectOrderServlet extends HttpServlet{
 				}
 			}
 			
-			
-			op.print(gson.toJson(status));
+			out.print(gson.toJson(status));
 			System.out.println(gson.toJson(status));
-			op.flush();
-			op.close();
-		}
+			out.flush();
+			out.close();
 	}
 	
 }

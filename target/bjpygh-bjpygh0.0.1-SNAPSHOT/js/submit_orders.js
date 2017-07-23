@@ -1,4 +1,4 @@
-var userid = "";
+//var userid = "";
 var dsname = "";
 var dstype = "";
 var models = "";
@@ -9,13 +9,12 @@ var traintime = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval = thisURL.split('?')[1];
-    userid = getval.split("=")[1].split('&')[0];
-    dsname = getval.split("=")[2].split('&')[0];
-    dstype = getval.split("=")[3].split('&')[0];
-    models = getval.split("=")[4].split('&')[0];
-    price = getval.split("=")[5].split('&')[0];
-    packageid = getval.split("=")[6].split('&')[0];
-    traintime = getval.split("=")[7];
+    dsname = getval.split("=")[1].split('&')[0];
+    dstype = getval.split("=")[2].split('&')[0];
+    models = getval.split("=")[3].split('&')[0];
+    price = getval.split("=")[4].split('&')[0];
+    packageid = getval.split("=")[5].split('&')[0];
+    traintime = getval.split("=")[6];
 } 
 window.onload=ShowMessage(); 
 
@@ -29,7 +28,6 @@ function get_coupons(){
 	$.ajax({
         type:"POST",
         url:"queryCoupon.action",
-        data:"userid="+userid,
         dataType:"text",
         success:function(data){
 			var obj = eval('(' + data + ')');
@@ -63,10 +61,15 @@ $(function(){
 			$.ajax({
         		type:"POST",
         		url:"note.action",
-        		data:"userid="+userid+"&realname="+realname+"&address="+address+"&note="+note,
+        		data:"realname="+realname+"&address="+address+"&note="+note,
         		dataType:"text",
         		success:function(data){
-					window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
+        			var obj = eval('(' + data + ')');
+        			if (obj.status=="1") {
+        				window.location.href="determine_browser.html?packageid="+packageid+"&select="+select;	
+        			}else{
+        				alert("用户已报名成功，请勿重复报名。");
+        			}
         		},
        			error:function(obj){
             		alert(error);

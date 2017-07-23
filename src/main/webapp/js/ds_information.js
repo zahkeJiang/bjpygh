@@ -55,14 +55,14 @@ $(function(){
 
 
 
-var userid = "";
+//var userid = "";
 var dsname = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval = thisURL.split('?')[1];
-    var dsName = thisURL.split('&')[1];
-    dsname = dsName.split("=")[1];
-    userid = getval.split("=")[1].split('&')[0];
+//    var dsName = thisURL.split('&')[1];
+    dsname = getval.split("=")[1];
+//    userid = getval.split("=")[1].split('&')[0];
 } 
 window.onload=ShowMessage(); 
 				
@@ -118,7 +118,7 @@ $(function(){
                 traintime = $(this).find(".traintime").html();  
                 packageid = $(this).find(".packageid").html();   
                 
-                var myurl="ds_apply.html?userid="+userid+"&dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
+                var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
                 window.location.assign(encodeURI(myurl));
             })
 

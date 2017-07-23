@@ -1,8 +1,7 @@
 /*获取userid*/
 		var thisURL = document.URL;    
-		var getval = thisURL.split('?')[1];  
-		var userid = getval.split("=")[1].split("&")[0];  
-		var oldmobile = getval.split("=")[2];
+		var getval = thisURL.split('?')[1];
+		var oldmobile = getval.split("=")[1];
 		function  getuserId(){  
   			document.getElementById('oldmobile').innerText = oldmobile;
   		}
@@ -78,7 +77,7 @@
 			 						alert(obj.status);
 			 						if (obj.status == 1) {
 			 							alert("成功更换手机号，即将跳转到user页面");
-			 							location.href="user.html?userid="+userid;
+			 							location.href="user.html";
 			 						}else{
 			 							alert("手机号已被注册");
 			 						}
@@ -87,7 +86,7 @@
 		    			}
 						xhr.open( "POST", "bond.action");
 						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-						var data="phonenumber="+mobile+"&userid="+userid;
+						var data="phonenumber="+mobile;
 						xhr.send(data);// 发送HTTP请求
 						
 					}else{

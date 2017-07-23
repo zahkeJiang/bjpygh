@@ -9,7 +9,34 @@ public class Status {
 	private List<DsPackage> dsplist;
 	private List<DsOrder> dsOrder;
 	private int price;
+	private Object data;
+	private List<Object> datas;
+	private String msg;
 	private String out_trade_no;
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public List<Object> getDatas() {
+		return datas;
+	}
+
+	public void setDatas(List<Object> datas) {
+		this.datas = datas;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 
 	public List<DsOrder> getDsOrder() {
 		return dsOrder;

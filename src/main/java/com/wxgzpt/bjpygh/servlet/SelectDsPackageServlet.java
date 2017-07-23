@@ -4,11 +4,13 @@ package com.wxgzpt.bjpygh.servlet;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.DsInfoDao;
@@ -20,7 +22,6 @@ import com.wxgzpt.bjpygh.entity.Status;
 public class SelectDsPackageServlet extends HttpServlet{
 
 	DsInformation dsInfo;
-	Status status;
 	DsInfoDao dsInfoDao;
 	DsPackageDao dsPackageDao;
 	Gson gson;
@@ -37,12 +38,25 @@ public class SelectDsPackageServlet extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
+        Status status = new Status();
+        HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		
         String dsname = request.getParameter("dsname");
         dsInfoDao = new DsInfoDao();
         dsPackageDao = new DsPackageDao();
         gson = new Gson();
         if(dsname==null){
-        	status = new Status();
+        	
         	status.setStatus(1);
         	status.setDsplist(dsPackageDao.selectDsPackage(dsname));
         	out.print(gson.toJson(status));

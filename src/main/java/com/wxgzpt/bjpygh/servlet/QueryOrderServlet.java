@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -37,8 +38,7 @@ public class QueryOrderServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(request, response);
+		this.doGet(request, response);
 	}
 	
 	@Override
@@ -46,29 +46,40 @@ public class QueryOrderServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        
-		PrintWriter op = response.getWriter();
-		if(request.getParameter("userid")!=null){
-			String userid = request.getParameter("userid");
+        status = new Status();
+		gson = new Gson();
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		
+			String userid = userMap.get("id");
 			dsOrderDao = new DsOrderDao();
-			status = new Status();
-			gson = new Gson();
+			
 			dsOrder = dsOrderDao.getDsOrder(userid);
 			if(dsOrder==null){
 				status.setStatus(0);
-				op.print(gson.toJson(status));
+				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));
-				op.flush();
-				op.close();
+				out.flush();
+				out.close();
 				return;
 			}
 			
 			if(dsOrder.getOrderstatus()==0){
 				status.setStatus(0);
-				op.print(gson.toJson(status));
+				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));
-				op.flush();
-				op.close();
+				out.flush();
+				out.close();
 				return;
 			}
 			/*判断是否为空*/
@@ -117,22 +128,20 @@ public class QueryOrderServlet extends HttpServlet{
 					status.setStatus(1);
 					status.setOrderNumber(obj.getString("out_trade_no"));
 					status.setPrice(Integer.parseInt(dsOrder.getOrderprice()));
-					op.print(gson.toJson(status));
+					out.print(gson.toJson(status));
 					System.out.println(gson.toJson(status));
 				}else{
 					status.setStatus(0);
-					op.print(gson.toJson(status));
+					out.print(gson.toJson(status));
 					System.out.println(gson.toJson(status));
 				}
 			} catch (AlipayApiException e) {
 				status.setStatus(1);
-				op.print(gson.toJson(status));
+				out.print(gson.toJson(status));
 			}finally{
-				op.flush();
-				op.close();
-			}
-		     
-		 }
+				out.flush();
+				out.close();
+			}		     
 	}
 
 }

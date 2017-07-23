@@ -4,10 +4,12 @@ package com.wxgzpt.bjpygh.servlet;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
@@ -23,17 +25,28 @@ public class CouponServlet extends BaseServlet{
 	Status status;
 	Gson gson;
 	@Override
-	void getExec(String userid, HttpServletRequest request,
+	void getExec(Map<String, String> map, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/coupon.html?userid="+userid);
+		response.sendRedirect("/user.html");
 	}
 
 	@Override
 	void postExec(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String userid = request.getParameter("userId");
+		HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		String userid = userMap.get("id");
 		userCouponDao = new UserCouponDao();
 		userCoupon = userCouponDao.selectUserCoupon(userid);
 		status = new Status();

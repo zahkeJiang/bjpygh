@@ -9,13 +9,12 @@ var traintime = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval = thisURL.split('?')[1];
-    userid = getval.split("=")[1].split('&')[0];
-    dsname = getval.split("=")[2].split('&')[0];
-    dstype = getval.split("=")[3].split('&')[0];
-    models = getval.split("=")[4].split('&')[0];
-    price = getval.split("=")[5].split('&')[0];
-    packageid = getval.split("=")[6].split('&')[0];
-    traintime = getval.split("=")[7];
+    dsname = getval.split("=")[1].split('&')[0];
+    dstype = getval.split("=")[2].split('&')[0];
+    models = getval.split("=")[3].split('&')[0];
+    price = getval.split("=")[4].split('&')[0];
+    packageid = getval.split("=")[5].split('&')[0];
+    traintime = getval.split("=")[6];
 } 
 window.onload=ShowMessage(); 
 
@@ -24,12 +23,21 @@ var address = "";
 var note = "";
 var select="0";
 
+//获取用户id
+function getId(){
+	$.post("getid.action",{},function(obj){
+		if (obj.status=="1"){
+			userid = obj.msg;
+		}else{
+			alert(msg);
+		}
+	},'json');
+}
 //获取优惠券金额
 function get_coupons(){
 	$.ajax({
         type:"POST",
         url:"queryCoupon.action",
-        data:"userid="+userid,
         dataType:"text",
         success:function(data){
 			var obj = eval('(' + data + ')');
@@ -63,7 +71,7 @@ $(function(){
 			$.ajax({
         		type:"POST",
         		url:"note.action",
-        		data:"userid="+userid+"&realname="+realname+"&address="+address+"&note="+note,
+        		data:"realname="+realname+"&address="+address+"&note="+note,
         		dataType:"text",
         		success:function(data){
         			var obj = eval('(' + data + ')');

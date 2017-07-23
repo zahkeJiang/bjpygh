@@ -55,11 +55,14 @@ public class UserDao {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			user_id = userMapper.getUserId(openid);
+			
 			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}finally{
+			System.out.println("DaoOpenid="+openid);
+			System.out.println("DaoUserid="+user_id);
 			if (sqlSession != null){
 				sqlSession.close();
 			}
@@ -96,6 +99,7 @@ public class UserDao {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}finally{
+			
 			if (sqlSession != null){
 				sqlSession.close();
 			}

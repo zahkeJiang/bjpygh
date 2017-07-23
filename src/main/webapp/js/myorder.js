@@ -1,11 +1,11 @@
-var userid = "";
-function ShowMessage() 
-{ 
-    var thisURL = document.URL;    
-    var getval = thisURL.split('?')[1];  
-    userid = getval.split("=")[1];  
-} 
-window.onload=ShowMessage(); 
+//var userid = "";
+//function ShowMessage() 
+//{ 
+//    var thisURL = document.URL;    
+//    var getval = thisURL.split('?')[1];  
+//    userid = getval.split("=")[1];  
+//} 
+//window.onload=ShowMessage(); 
 
 
 var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
@@ -32,7 +32,6 @@ function all_orders(){
 		type:"POST",
         url:"selectOrder.action",
         dataType:"text",
-        data:"userid="+userid,
         success:function(data){
             $(".container").empty();
         	var obj = eval('(' + data + ')'); 
@@ -73,50 +72,53 @@ function orders_success(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_finished").css({"color":"black","border-bottom":"0"});
     $(".orders_success").css({"color":"red","border-bottom":"2px solid red"});
-	$.ajax({
-		type:"POST",
-        url:"selectOrder.action",
-        dataType:"text",
-        data:"userid="+userid,
-        success:function(data){
-            $(".container").empty();
-        	var obj = eval('(' + data + ')');
-        	if (obj.status=="1") {
-            	var dsorder_list = obj.dsOrder;
-                alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
-            	if (dsorder_list[0].orderstatus=="1") {  
-            		var dsorderh_tml = "";
-             		// $.each循环实现添加订单列表  
-            		$.each(dsorder_list,function(commentIndex,comment){
-                		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                					+comment.dsname+"</p><p class='refund'>取消报名</p></div><div class='dsoder_container'><img src='"
-                					+"' height='40px' width='50px'><p class='dsorder_information'>"
-                					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
-                					+comment.orderprice+"</span></span></div></div>";
-            		});
-            		$(".container").html(dsorderh_tml);
+    $.post("selectOrder.action",{},function(obj){
+    	$(".container").empty();
+//    	var obj = eval('(' + data + ')');
+    	if (obj.status=="1") {
+        	var dsorder_list = obj.dsOrder;
+            alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
+        	if (dsorder_list[0].orderstatus=="1") {  
+        		var dsorderh_tml = "";
+         		// $.each循环实现添加订单列表  
+        		$.each(dsorder_list,function(commentIndex,comment){
+            		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
+            					+comment.dsname+"</p><p class='refund'>取消报名</p></div><div class='dsoder_container'><img src='"
+            					+"' height='40px' width='50px'><p class='dsorder_information'>"
+            					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
+            					+comment.orderprice+"</span></span></div></div>";
+        		});
+        		$(".container").html(dsorderh_tml);
 
-            		// 为订单列表设置点击事件
-    		 		$(".dsorder_list").click(function(){    
-            			alert("我点击了这个订单");
-            		});
-                    $(".refund").click(function(){
-                        window.location.href="ds_refund.html?userid="+userid;
-                    });
-            	}else{
-                    alert("当前没有相关订单");
-                    $(".container").html(container);
-                }
+        		// 为订单列表设置点击事件
+		 		$(".dsorder_list").click(function(){    
+        			alert("我点击了这个订单");
+        		});
+                $(".refund").click(function(){
+                    window.location.href="ds_refund.html?userid="+userid;
+                });
         	}else{
-        		alert("目前没有订单");
+                alert("当前没有相关订单");
                 $(".container").html(container);
-        	}
-        },
-        error:function(obj){
-            alert("error");
-        }
+            }
+    	}else{
+    		alert("目前没有订单");
+            $(".container").html(container);
+    	}
+    },'json');
+//	$.ajax({
+//		type:"POST",
+//        url:"selectOrder.action",
+//        dataType:"text",
+//        data:"userid="+userid,
+//        success:function(data){
+//            
+//        },
+//        error:function(obj){
+//            alert("error");
+//        }
 
-	});
+//	});
 }
 
 //定义查询已完成订单方法

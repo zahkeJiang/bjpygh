@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -48,13 +49,24 @@ public class RefundServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        
-		PrintWriter op = response.getWriter();
-		status = new Status();
+        status = new Status();
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		
 		dsOrderDao = new DsOrderDao();
 		gson =new Gson();
-		if(request.getParameter("userid")!=null){
-			String userid = request.getParameter("userid");
+		
+			String userid = userMap.get("id");
 			
 			String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
 			
@@ -108,17 +120,16 @@ public class RefundServlet extends HttpServlet{
 				}else{
 					status.setStatus(0);
 				}
-				op.print(status);
+				out.print(status);
 				 System.out.println(result);
 			} catch (AlipayApiException e) {
 				status.setStatus(0);
-				op.print(status);
+				out.print(status);
 			}finally{
-				op.flush();
-				op.close();
+				out.flush();
+				out.close();
 			}
 		   
-		  }
 	}
 		
 }

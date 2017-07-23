@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
@@ -39,8 +40,19 @@ public class NoteServlet extends HttpServlet{
         dsOrderDao = new DsOrderDao();
         status = new Status();
         gson = new Gson();
+		HttpSession session = request.getSession();
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		if(userMap == null){
+			status.setStatus(0);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
         Map<String, String> map = new HashMap<String, String>();
-        	String userid = request.getParameter("userid");
+        	String userid = userMap.get("id");
             String realname = request.getParameter("realname");
             String address = request.getParameter("address");
             String note = request.getParameter("note");
@@ -48,6 +60,7 @@ public class NoteServlet extends HttpServlet{
             if(dsOrder!=null&&dsOrder.getOrderstatus()!=0){
             	status.setStatus(0);
                 out.print(gson.toJson(status));
+                System.out.println(gson.toJson(status));
                 out.flush();
                 out.close();
                 return;
@@ -62,6 +75,7 @@ public class NoteServlet extends HttpServlet{
             
             status.setStatus(1);
             out.print(gson.toJson(status));
+            System.out.println(gson.toJson(status));
             out.flush();
             out.close();
 	}

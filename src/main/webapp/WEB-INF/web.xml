@@ -113,5 +113,14 @@
     <url-pattern>/refund.action</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>GetUserIdServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.GetUserIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserIdServlet</servlet-name>
+    <url-pattern>/getid.action</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

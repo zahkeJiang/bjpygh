@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.entity.Status;
 /**
  * 聚合验证码类
  * @author 蒋圆
@@ -68,10 +71,16 @@ public class JuheSMS {
         try {
             result =net(url, params, "GET");
             JSONObject object = JSONObject.fromObject(result);
+            Status status = new Status();
             if(object.getInt("error_code")==0){
-                out.println(object.get("result"));
+            	
+            	status.setStatus(1);
+            	status.setMsg("验证码发送成功");
+                out.println(new Gson().toJson(status));
             }else{
-            	out.println(object.get("result"));
+            	status.setStatus(2);
+            	status.setMsg((String) object.get("result"));
+            	out.println(new Gson().toJson(status));
             }
         } catch (Exception e) {
             e.printStackTrace();

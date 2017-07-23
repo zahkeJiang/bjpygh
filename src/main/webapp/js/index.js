@@ -60,15 +60,16 @@
         $(".container").append("<div class='ds_list'><img src="+" ' "+data[i].icon+" ' "+" height='80px' width='100px'><div class='information'><div class='ds_name_price'> <span class='ds_name'>"+data[i].name+"</span><span class='ds_price'>"+'3200'+"</span></div><span class='ds_address'>"+data[i].a+"</span></div></div>");//如果添加class或者id内容要加单引号例如：$("#first").append("<li class='a'>"+data[i].name+"</li>");
 }*/
 
-var userid = "";
-function ShowMessage() 
-{ 
-    var thisURL = document.URL;    
-    var userId = thisURL.split('?')[1];  
-    userid = userId.split("=")[1];  
-    alert(userid);
-} 
-window.onload=ShowMessage(); 
+//var userid = "";
+//function ShowMessage() 
+//{ 
+//    var thisURL = document.URL;    
+//    var userId = thisURL.split('?')[1];  
+////    userid = userId.split("&")[0];  
+////    var openid = userId.split("&")[1];
+//    alert(userId);
+//} 
+//window.onload=ShowMessage(); 
 
 $(function(){
     $.ajax({
@@ -96,7 +97,7 @@ $(function(){
                 //为驾校列表注册点击事件
                 $(".ds_list").click(function(){                       
                     var dsname = $(this).find(".ds_name").html();                          
-                    var myurl="ds_information.html?userid="+userid+"&dsname="+dsname;
+                    var myurl="ds_information.html?dsname="+dsname;
                     window.location.assign(encodeURI(myurl));
                 }) 
             }

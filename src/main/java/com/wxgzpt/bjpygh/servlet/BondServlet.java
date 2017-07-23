@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.UserDao;
@@ -30,8 +31,12 @@ public class BondServlet extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
+        status = new Status();
+        HttpSession session = request.getSession();
+        Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+        System.out.println(userMap);
 		UserDao userDao = new UserDao();
-		String userid = request.getParameter("userid");
+		String userid = userMap.get("id");
 		String phonenumber = request.getParameter("phonenumber");
 		String otherid = userDao.getUserIdByPN(phonenumber);
 		if(otherid != null){
@@ -43,7 +48,9 @@ public class BondServlet extends HttpServlet{
 			map.put("userid", userid);
 			map.put("phonenumber", phonenumber);
 			userDao.bondUser(map);
-			status = new Status();
+			userMap.put("phone", phonenumber);
+			session.setAttribute("user", userMap);
+			
 			status.setStatus(1);
 			gson = new Gson();
 			out.println(gson.toJson(status));

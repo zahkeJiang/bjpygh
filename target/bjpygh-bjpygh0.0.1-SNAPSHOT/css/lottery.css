@@ -1,0 +1,19 @@
+
+.dscoupon{
+	width: 250px;
+	height: 100px;
+	position: absolute;
+	left: 50%;
+	margin-left: -125px;
+	margin-top: 20px;
+}
+img{
+	float: left;
+	max-width: 100%;
+}
+span{
+	color: white;
+	left: 10px;
+	bottom: 90px;
+	position: relative;
+}

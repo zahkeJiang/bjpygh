@@ -5,6 +5,7 @@ package com.wxgzpt.bjpygh.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,10 @@ public class SelectDsInfoServlet extends BaseServlet{
 	
 	Status status;
 	@Override
-	void getExec(String userid, HttpServletRequest request,
+	void getExec(Map<String, String> map, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/index.html?userid="+userid);
+		response.sendRedirect("/index.html");
+
 	}
 
 	@Override
