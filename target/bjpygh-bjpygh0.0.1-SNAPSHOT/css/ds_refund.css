@@ -37,7 +37,6 @@ body{
 }
 .refund_reason span,.order_price span{
 	width: 80px;
-	background-color: gray;
 }
 .refund_reason select{
 	margin-left: 16px;

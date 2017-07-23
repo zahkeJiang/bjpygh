@@ -1,15 +1,16 @@
-//var userid = "";
+var userid = "";
 var packageid = "";
 var select = "";
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval  = thisURL.split('?')[1];
-    packageid = getval.split("=")[1].split("&")[0];
-    select = getval.split("=")[2];
+    userid = getval.split("=")[1].split("&")[0];
+    packageid = getval.split("=")[2].split("&")[0];
+    select = getval.split("=")[3].split("&")[0];
     if (isWeiXin()) {
     	alert("我是微信浏览器");
     }else{
-        window.location.href="dspay.action?packageid="+packageid+"&select="+select;
+        window.location.href="dspay.action?userid="+userid+"&packageid="+packageid+"&select="+select;
     }
 } 
 window.onload=ShowMessage(); 
@@ -26,7 +27,7 @@ function isWeiXin(){
 $(function(){
 	$(".browser").click(function(){
     	alert("打开浏览器");
-	})
+	});
 	$(".pay_finish_text").click(function(){
 		window.location.href="ds_pay.html";
 	});

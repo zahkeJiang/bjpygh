@@ -51,7 +51,7 @@ function all_orders(){
             	$(".container").html(dsorderh_tml);
 
             	// 为订单列表设置点击事件
-    		 	$(".dsorder_list").click(function(){    
+    		 	$(".dsoder_container").click(function(){    
             		alert("我点击了这个订单");
             	});
         	}else{
@@ -151,7 +151,7 @@ function orders_finished(){
                     $(".container").html(dsorderh_tml);
 
                     // 为订单列表设置点击事件
-                    $(".dsorder_list").click(function(){    
+                    $(".dsoder_container").click(function(){    
                         alert("我点击了这个订单");
                     });
                 }else{

@@ -1,4 +1,4 @@
-//var userid = "";
+var userid = "";
 var dsname = "";
 var dstype = "";
 var models = "";
@@ -15,14 +15,25 @@ function ShowMessage() {
     price = getval.split("=")[4].split('&')[0];
     packageid = getval.split("=")[5].split('&')[0];
     traintime = getval.split("=")[6];
+    getId();
 } 
 window.onload=ShowMessage(); 
-
 var realname="";
 var address = "";
 var note = "";
 var select="0";
 
+//获取用户id
+function getId(){
+	$.post("getid.action",{},function(obj){
+		if (obj.status=="1"){
+			userid = obj.msg;
+			alert(userid);
+		}else{
+			alert(obj.msg);
+		}
+	},'json');
+}
 //获取优惠券金额
 function get_coupons(){
 	$.ajax({
@@ -32,14 +43,17 @@ function get_coupons(){
         success:function(data){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
-				$(".coupons span").html("右可用优惠券");
+				$(".coupons span").html("有可用优惠券");
+				select ="1";
 			}else{
 				$(".coupons span").html("无可用优惠券");
+				select ="0";
 			}
         }	
     });
 }
 $(function(){
+	
 	$(".ds_type").html(dstype);
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
@@ -66,7 +80,7 @@ $(function(){
         		success:function(data){
         			var obj = eval('(' + data + ')');
         			if (obj.status=="1") {
-        				window.location.href="determine_browser.html?packageid="+packageid+"&select="+select;	
+        				window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
         			}else{
         				alert("用户已报名成功，请勿重复报名。");
         			}

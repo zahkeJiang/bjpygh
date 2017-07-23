@@ -5,8 +5,8 @@ function ShowMessage() {
     var thisURL = decodeURI(location.href);    
     var getval  = thisURL.split('?')[1];
     userid = getval.split("=")[1].split("&")[0];
-    packageid = getval.split("=")[2].split("&")[1];
-    select = getval.split("=")[3].split("&")[2];
+    packageid = getval.split("=")[2].split("&")[0];
+    select = getval.split("=")[3].split("&")[0];
     if (isWeiXin()) {
     	alert("我是微信浏览器");
     }else{

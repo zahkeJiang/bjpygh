@@ -74,7 +74,7 @@ public class QueryOrderServlet extends HttpServlet{
 				return;
 			}
 			
-			if(dsOrder.getOrderstatus()==0){
+			if(dsOrder.getOrderstatus()==1){
 				status.setStatus(0);
 				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));

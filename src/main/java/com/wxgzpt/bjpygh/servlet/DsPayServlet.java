@@ -48,7 +48,7 @@ public class DsPayServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		this.doPost(request, response);
 	}
 	
 	@Override

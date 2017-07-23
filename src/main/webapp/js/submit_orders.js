@@ -15,9 +15,9 @@ function ShowMessage() {
     price = getval.split("=")[4].split('&')[0];
     packageid = getval.split("=")[5].split('&')[0];
     traintime = getval.split("=")[6];
+    getId();
 } 
 window.onload=ShowMessage(); 
-
 var realname="";
 var address = "";
 var note = "";
@@ -28,8 +28,9 @@ function getId(){
 	$.post("getid.action",{},function(obj){
 		if (obj.status=="1"){
 			userid = obj.msg;
+			alert(userid);
 		}else{
-			alert(msg);
+			alert(obj.msg);
 		}
 	},'json');
 }
@@ -42,14 +43,17 @@ function get_coupons(){
         success:function(data){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
-				$(".coupons span").html("右可用优惠券");
+				$(".coupons span").html("有可用优惠券");
+				select ="1";
 			}else{
 				$(".coupons span").html("无可用优惠券");
+				select ="0";
 			}
         }	
     });
 }
 $(function(){
+	
 	$(".ds_type").html(dstype);
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
