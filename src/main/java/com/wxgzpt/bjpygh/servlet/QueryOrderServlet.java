@@ -75,73 +75,17 @@ public class QueryOrderServlet extends HttpServlet{
 			}
 			
 			if(dsOrder.getOrderstatus()==1){
+				status.setStatus(1);
+				status.setPrice(Integer.parseInt(dsOrder.getOrderprice()));
+				out.print(gson.toJson(status));
+				System.out.println(gson.toJson(status));
+			}else{
 				status.setStatus(0);
 				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));
-				out.flush();
-				out.close();
-				return;
-			}
-			/*判断是否为空*/
-			String out_trade_no = dsOrder.getOrdernumber();
-			/**********************/
-			 // SDK ���������࣬������������������Լ���װ��ǩ������ǩ�������������עǩ������ǩ     
-			 AlipayClient client = new DefaultAlipayClient(AlipayConfig.URL, AlipayConfig.APPID, AlipayConfig.RSA_PRIVATE_KEY, AlipayConfig.FORMAT, AlipayConfig.CHARSET, AlipayConfig.ALIPAY_PUBLIC_KEY,AlipayConfig.SIGNTYPE);
-			 AlipayTradeQueryRequest alipay_request = new AlipayTradeQueryRequest();
-			 
-			 AlipayTradeQueryModel model=new AlipayTradeQueryModel();
-		     model.setOutTradeNo(out_trade_no);
-		     model.setTradeNo("");
-		     alipay_request.setBizModel(model);
-		     
-		     AlipayTradeQueryResponse alipay_response;
-			try {
-				alipay_response = client.execute(alipay_request);
-				String result = alipay_response.getBody();
-				
-				JSONObject tmp = JSONObject.fromObject(result);
-				String data = tmp.getString("alipay_trade_query_response");
-				System.out.println(data);
-				JSONObject obj = JSONObject.fromObject(data);
-				if(obj.getString("trade_status").equals("TRADE_SUCCESS")){
-					/*改变用户优惠券状态*/
-					userCouponDao = new UserCouponDao();
-					try {
-						userCoupon = userCouponDao.selectUserCoupon(userid);
-						if(userCoupon.getCouponstatus()==1){
-							Map<String, String> map = new HashMap<String, String>();
-							map.put("couponstatus", "2");
-							map.put("userid", userid);
-							userCouponDao.updataCouponStatus(map);
-						}else{
-							status.setStatus(1);
-							status.setPrice(userCoupon.getCouponprice());
-						}
-					} catch (NullPointerException e) {
-						e.printStackTrace();
-					}
-					
-					Map<String, String> map = new HashMap<String, String>();
-					map.put("userid", userid);
-					map.put("orderstatus", "1");
-					dsOrderDao.changeStatus(map);
-					status.setStatus(1);
-					status.setOrderNumber(obj.getString("out_trade_no"));
-					status.setPrice(Integer.parseInt(dsOrder.getOrderprice()));
-					out.print(gson.toJson(status));
-					System.out.println(gson.toJson(status));
-				}else{
-					status.setStatus(0);
-					out.print(gson.toJson(status));
-					System.out.println(gson.toJson(status));
-				}
-			} catch (AlipayApiException e) {
-				status.setStatus(1);
-				out.print(gson.toJson(status));
-			}finally{
-				out.flush();
-				out.close();
-			}		     
+			}	 
+			out.flush();
+			out.close();
 	}
 
 }

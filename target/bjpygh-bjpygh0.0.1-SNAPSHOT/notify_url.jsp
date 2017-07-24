@@ -4,6 +4,7 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="com.wxgzpt.bjpygh.config.*"%>
 <%@ page import="com.alipay.api.*"%>
+<%@ page import="com.wxgzpt.bjpygh.dao.DsOrderDao"%>
 <%
 	//获取支付宝POST过来反馈信息
 	Map<String,String> params = new HashMap<String,String>();
@@ -39,7 +40,11 @@
 		if(verify_result){//验证成功
 			//////////////////////////////////////////////////////////////////////////////////////////
 			//请在这里加上商户的业务逻辑程序代码
-			
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("orderstatus", "1");
+			map.put("ordernumber",out_trade_no);
+			DsOrderDao dsOrderDao = new DsOrderDao();
+			dsOrderDao.changeStatusByNum(map);
 			//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
 			
 			if(trade_status.equals("TRADE_FINISHED")){

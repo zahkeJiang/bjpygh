@@ -1,11 +1,11 @@
-var userid = "";
+//var userid = "";
 var refund_status="";
 function ShowMessage() 
 { 
     var thisURL = document.URL;    
     var getval = thisURL.split('?')[1];  
-    userid = getval.split("=")[1].split("&")[0];  
-    refund_status = getval.split("=")[2]; 
+    refund_status = getval.split("=")[1];  
+//    refund_status = getval.split("=")[2]; 
 } 
 window.onload=ShowMessage(); 
 

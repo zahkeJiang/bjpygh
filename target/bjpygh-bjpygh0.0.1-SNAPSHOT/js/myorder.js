@@ -35,7 +35,7 @@ function all_orders(){
         success:function(data){
             $(".container").empty();
         	var obj = eval('(' + data + ')'); 
-        	alert("obj.status="+obj.status);
+//        	alert("obj.status="+obj.status);
         	if (obj.status=="1") {   
             	var dsorderh_tml = "";
             	var dsorder_list = obj.dsOrder;
@@ -77,13 +77,13 @@ function orders_success(){
 //    	var obj = eval('(' + data + ')');
     	if (obj.status=="1") {
         	var dsorder_list = obj.dsOrder;
-            alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
+//            alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
         	if (dsorder_list[0].orderstatus=="1") {  
         		var dsorderh_tml = "";
          		// $.each循环实现添加订单列表  
         		$.each(dsorder_list,function(commentIndex,comment){
             		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-            					+comment.dsname+"</p><p class='refund'>取消报名</p></div><div class='dsoder_container'><img src='"
+            					+comment.dsname+"</p><p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消报名</p></div><div class='dsoder_container'><img src='"
             					+"' height='40px' width='50px'><p class='dsorder_information'>"
             					+comment.dstype+comment.models+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='price_symbol'>￥<span class='order_price'>"
             					+comment.orderprice+"</span></span></div></div>";
@@ -95,7 +95,9 @@ function orders_success(){
         			alert("我点击了这个订单");
         		});
                 $(".refund").click(function(){
-                    window.location.href="ds_refund.html?userid="+userid;
+                	var ordernumber = $(this).attr("obnumber");
+                	var orderprice = $(this).attr("obprice");
+                    window.location.href="ds_refund.html?ordernumber="+ordernumber;
                 });
         	}else{
                 alert("当前没有相关订单");
@@ -130,13 +132,12 @@ function orders_finished(){
         type:"POST",
         url:"selectOrder.action",
         dataType:"text",
-        data:"userid="+userid,
         success:function(data){
             $(".container").empty();
             var obj = eval('(' + data + ')');
             if (obj.status=="1") {
                 var dsorder_list = obj.dsOrder;
-                alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
+//                alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
                 if (dsorder_list[0].orderstatus=="3") {
                     
                     var dsorderh_tml = "";

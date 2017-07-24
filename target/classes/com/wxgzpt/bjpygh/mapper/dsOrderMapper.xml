@@ -35,6 +35,10 @@
 			update ds_order set order_status=#{orderstatus} where user_id=#{userid}
 		</update>
 		
+		<update id="changeStatusByNum" parameterType="map">
+			update ds_order set order_status=#{orderstatus} where order_number=#{ordernumber}
+		</update>
+		
 		<insert id="insertOrder" parameterType="dsorder">
 			insert into ds_order (user_id, phone_number, order_status, ds_type, ds_name,
 			 order_price, train_time, models, order_number, address, real_name, note) 

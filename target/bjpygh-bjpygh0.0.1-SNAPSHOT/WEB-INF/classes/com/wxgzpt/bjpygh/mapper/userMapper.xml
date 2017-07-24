@@ -19,6 +19,7 @@
 			<result column="reamark" property="reamark"/>
 			<result column="address" property="address"/>
 			<result column="age" property="age"/>
+			<result column="member_points" property="memberpoints"/>
 		</resultMap>
 		<select id="getPhoneNumber" parameterType="string" resultType="string">
 			select phone_number from user_info where openid = #{openid}

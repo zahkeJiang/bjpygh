@@ -5,6 +5,7 @@ var models = "";
 var price = "";
 var packageid = "";
 var traintime = "";
+var coupons_sum = "";
 
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
@@ -28,7 +29,6 @@ function getId(){
 	$.post("getid.action",{},function(obj){
 		if (obj.status=="1"){
 			userid = obj.msg;
-			alert(userid);
 		}else{
 			alert(obj.msg);
 		}
@@ -44,10 +44,14 @@ function get_coupons(){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
 				$(".coupons span").html("有可用优惠券");
+				coupons_sum = obj.price;
+//				alert("coupons_sum="+coupons_sum)
 				select ="1";
+				$(".price").html(price-coupons_sum);
 			}else{
 				$(".coupons span").html("无可用优惠券");
 				select ="0";
+				$(".price").html(price);
 			}
         }	
     });
@@ -60,8 +64,7 @@ $(function(){
 	$(".ds_price").html(price);
 	$(".traintime").html(traintime);
 	get_coupons();
-	var coupons_sum = "";
-	$(".price").html(price-coupons_sum);
+	
 	$(".submit").click(function(){
 		//获取用户姓名、联系方式、性别、地址
 		realname = $("#real_name").val();

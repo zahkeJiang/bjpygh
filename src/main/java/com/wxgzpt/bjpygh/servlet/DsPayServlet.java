@@ -58,6 +58,13 @@ public class DsPayServlet extends HttpServlet{
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         	String userid = request.getParameter("userid");
+        	DsOrderDao dsOrderDao = new DsOrderDao();
+        	DsOrder dso = dsOrderDao.getDsOrder(userid);
+//        	if(dso.getOrderstatus()==1){
+//        		out.print("您已支付成功，勿重复支付。");
+//        		out.flush();
+//        		out.close();
+//        	}
             String packageid = request.getParameter("packageid");
             String select = request.getParameter("select");
             System.out.println("userid:"+userid+"packageid:"+packageid+"select:"+select);
@@ -68,7 +75,6 @@ public class DsPayServlet extends HttpServlet{
             }else{
             	couponprice = 0;
             }
-            DsOrderDao dsOrderDao = new DsOrderDao();
             System.out.println("log:UserCouponDao");
             UserDao userDao = new UserDao();
             User user = userDao.getUserById(userid);
@@ -91,7 +97,6 @@ public class DsPayServlet extends HttpServlet{
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
-            DsOrder dso = dsOrderDao.getDsOrder(userid);
             
             dsOrder.setUserid(Integer.parseInt(userid));
             dsOrder.setDsname(dsPackage.getDsname());

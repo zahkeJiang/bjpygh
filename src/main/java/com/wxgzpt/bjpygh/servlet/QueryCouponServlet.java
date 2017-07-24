@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,15 +13,15 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
+import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.User;
 import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class QueryCouponServlet extends HttpServlet{
 	private UserCouponDao userCouponDao;
 	private UserCoupon userCoupon;
-	Status status;
-	Gson gson;
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,8 +34,8 @@ public class QueryCouponServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        status = new Status();
-		gson = new Gson();
+        Status status = new Status();
+		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
@@ -52,16 +53,26 @@ public class QueryCouponServlet extends HttpServlet{
 			userCouponDao = new UserCouponDao();
 			try {
 				userCoupon = userCouponDao.selectUserCoupon(userid);
-				if(userCoupon.getCouponstatus()!=1){
-					status.setStatus(0);
+				UserDao userDao = new UserDao();
+				User user = userDao.getUserById(userid);
+				Date date = new Date(604800000L);
+				if(userCoupon.getCouponstatus()==1&&userCoupon!=null){
+					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()||user.getMemberpoints()>99){
+						status.setStatus(1);
+						status.setPrice(userCoupon.getCouponprice());
+					}else{
+						status.setStatus(0);
+					}	
 				}else{
-					status.setStatus(1);
-					status.setPrice(userCoupon.getCouponprice());
+					status.setStatus(0);
+					
 				}
 			} catch (NullPointerException e) {
+				e.printStackTrace();
 				status.setStatus(0);
 			}finally{
 				out.print(gson.toJson(status));
+				System.out.println(gson.toJson(status));
 				out.flush();
 				out.close();
 			}

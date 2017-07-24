@@ -9,10 +9,11 @@
 			<result column="coupon_status" property="couponstatus"/>
 			<result column="coupon_price" property="couponprice"/>
 			<result column="coupon_type" property="coupontype" />
+			<result column="coupon_time" property="coupontime" />
 		</resultMap>
 		<insert id="insertUserCoupon" parameterType="usercoupon">
-			insert into user_coupon (user_id, phone_number, coupon_status, coupon_price, coupon_type) 
-			values(#{userid}, #{phonenumber}, #{couponstatus},#{couponprice}, #{coupontype})
+			insert into user_coupon (user_id, phone_number, coupon_status, coupon_price, coupon_type, coupon_time) 
+			values(#{userid}, #{phonenumber}, #{couponstatus},#{couponprice}, #{coupontype}, #{coupontime})
 		</insert>
 		<update id="updataCouponStatus" parameterType="map">
 			update user_coupon set coupon_status=#{couponstatus} where user_id=#{userid}

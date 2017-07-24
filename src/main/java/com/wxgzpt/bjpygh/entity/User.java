@@ -22,7 +22,14 @@ public class User {
 	private String reamark;			//公众号对粉丝的备注
 	private String address;			//用户地址
 	private int age;				//用户年龄
+	private int memberpoints;		//会员积分
 	
+	public int getMemberpoints() {
+		return memberpoints;
+	}
+	public void setMemberpoints(int memberpoints) {
+		this.memberpoints = memberpoints;
+	}
 	public String getAddress() {
 		return address;
 	}

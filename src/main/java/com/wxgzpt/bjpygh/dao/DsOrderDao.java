@@ -87,19 +87,36 @@ public class DsOrderDao {
 		}
 	
 		//鎻掑叆璁㈠崟
-				public void changeStatus(Map<String, String> map){
-					try {
-						sqlSession = SqlSessionFactoryUtil.openSqlSession();
-						DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
-						dsOrderMapper.changeStatus(map);
-						sqlSession.commit();
-					} catch (Exception e) {
-						e.printStackTrace();
-						sqlSession.rollback();
-					}finally{
-						if (sqlSession != null){
-							sqlSession.close();
-						}
-					}
+		public void changeStatus(Map<String, String> map){
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+				dsOrderMapper.changeStatus(map);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
 				}
+			}
+		}
+		
+		//鎻掑叆璁㈠崟
+		public void changeStatusByNum(Map<String, String> map){
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+				dsOrderMapper.changeStatusByNum(map);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+		}
 }

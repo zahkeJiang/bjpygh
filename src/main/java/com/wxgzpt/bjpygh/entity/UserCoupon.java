@@ -1,4 +1,7 @@
 package com.wxgzpt.bjpygh.entity;
+
+import java.util.Date;
+
 /**
  * 用户优惠券信息
  * @author 蒋圆
@@ -11,6 +14,14 @@ public class UserCoupon {
 	private int couponstatus;		//优惠券使用状态
 	private int couponprice;		//优惠价格
 	private int coupontype;		//优惠类型
+	private Date coupontime;	//优惠券生成时间
+	
+	public Date getCoupontime() {
+		return coupontime;
+	}
+	public void setCoupontime(Date coupontime) {
+		this.coupontime = coupontime;
+	}
 	public long getUserid() {
 		return userid;
 	}

@@ -8,7 +8,7 @@ function ShowMessage() {
     packageid = getval.split("=")[2].split("&")[0];
     select = getval.split("=")[3].split("&")[0];
     if (isWeiXin()) {
-    	alert("我是微信浏览器");
+//    	alert("我是微信浏览器");
     }else{
         window.location.href="dspay.action?userid="+userid+"&packageid="+packageid+"&select="+select;
     }

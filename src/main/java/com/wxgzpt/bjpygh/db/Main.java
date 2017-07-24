@@ -1,9 +1,8 @@
 package com.wxgzpt.bjpygh.db;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.wxgzpt.bjpygh.dao.UserDao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main {
 	
@@ -132,8 +131,27 @@ public class Main {
 //	System.out.println(sum);
 //	int sss=10000*200;
 //	System.out.println("yunajihua:"+sss);
-		
-		
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+//		try {
+//			Date dt1 = formatter.parse("1970-01-08 08:00:00");
+//			Date dt2 = formatter.parse("2017-7-5 00:00:00");
+//			Date dt3 = formatter.parse("2017-7-12 00:00:00");
+////			Date date = new Date();
+//		    long times1 = dt1.getTime();
+//		    long times2 = dt2.getTime();
+//		    long times3 = dt3.getTime();
+//		    Date date = new Date(604800000L);
+//		    System.out.println(times1);
+//		    System.out.println(times2);
+//		    System.out.println(times3-times2);
+//		    System.out.println(date);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		 float a = 123.2334f;;
+		float  b   =  (float)(Math.round(a*100))/100;
+		System.out.println(b);
 	}
 
 }

@@ -4,6 +4,7 @@ package com.wxgzpt.bjpygh.servlet;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -27,14 +28,15 @@ public class CouponServlet extends BaseServlet{
 	@Override
 	void getExec(Map<String, String> map, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		response.sendRedirect("/user.html");
+		response.sendRedirect("/lottery.html");
 	}
 
 	@Override
 	void postExec(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		status = new Status();
+		gson = new Gson();
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 		if(userMap == null){
@@ -46,31 +48,35 @@ public class CouponServlet extends BaseServlet{
 			out.close();
 			return;
 		}
-		String userid = userMap.get("id");
-		userCouponDao = new UserCouponDao();
-		userCoupon = userCouponDao.selectUserCoupon(userid);
-		status = new Status();
-		
-		if(userCoupon == null){
-			userCoupon.setUserid(Integer.parseInt(userid));
-			userCoupon.setCouponprice(0);
-			userCoupon.setCouponstatus(0);
-			userCoupon.setCoupontype(2);
-			userCouponDao.insertUserCoupon(userCoupon);
-			status.setStatus(3);
-			out.print(gson.toJson(status));
-		}else if(userCoupon.getCouponstatus() == 0){
-			status.setStatus(3);
-			out.print(gson.toJson(status));
-		}else{
-			status.setStatus(1);
-			Lottery lottery = new Lottery();
-			status.setPrice(lottery.getPrice());
-			out.print(gson.toJson(status));
+		try {
+			String userid = userMap.get("id");
+			userCouponDao = new UserCouponDao();
+			userCoupon = new UserCoupon();
+
+			if(userCouponDao.selectUserCoupon(userid)==null){
+				Lottery lottery = new Lottery();
+				int price = lottery.getPrice();
+				status.setPrice(price);
+				userCoupon.setUserid(Long.parseLong(userid));
+				userCoupon.setCouponprice(price);
+				userCoupon.setCouponstatus(1);
+				userCoupon.setCoupontype(2);
+				userCoupon.setCoupontime(new Date());
+				userCouponDao.insertUserCoupon(userCoupon);
+				status.setStatus(1);
+				
+				out.print(gson.toJson(status));
+			}else{
+				status.setStatus(0);
+				status.setMsg("优惠券已存在");
+				out.print(gson.toJson(status));
+			}
+			out.flush();
+			out.close();
+		} catch (NullPointerException e) {
+			
 		}
 		
-		out.flush();
-		out.close();
 	}
 	
 }

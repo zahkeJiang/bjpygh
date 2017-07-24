@@ -31,13 +31,6 @@ abstract class BaseServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        /*************** test ***************/
-        Map<String, String> test = new HashMap<String,String>();
-        test.put("id", "3");
-        test.put("openid" , "o9C-m0gWfR9WOs8DIDElxSUfDIUU");
-        test.put("phone", "18813069517");
-        session.setAttribute("user", test);
-        /*************** test ***************/
         Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
         System.out.println(userMap);
         userDao = new UserDao();

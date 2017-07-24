@@ -12,4 +12,6 @@ public interface DsOrderMapper {
 	public void insertOrder(DsOrder dsorder);
 	public void updateOrder(DsOrder dsorder);
 	public void changeStatus(Map<String, String> map);
+	public void changeStatusByNum(Map<String, String> map);
+	
 }

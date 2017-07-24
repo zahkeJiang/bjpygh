@@ -34,8 +34,6 @@ public class RefundServlet extends HttpServlet{
 	DsOrderDao dsOrderDao;
 	UserCoupon userCoupon;
 	DsOrder dsOrder;
-	Status status;
-	Gson gson;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,7 +47,7 @@ public class RefundServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        status = new Status();
+        Status status = new Status();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
@@ -64,26 +62,35 @@ public class RefundServlet extends HttpServlet{
 		}
 		
 		dsOrderDao = new DsOrderDao();
-		gson =new Gson();
 		
 			String userid = userMap.get("id");
 			
-			String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+//			String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
 			
-			String refund_amount=new String(request.getParameter("WIDrefund_amount").getBytes("ISO-8859-1"),"UTF-8");
+			
 			
 			String refund_reason=new String(request.getParameter("WIDrefund_reason").getBytes("ISO-8859-1"),"UTF-8");
 			
+			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+			
+			if(dsOrder.getOrderstatus() == 3){
+				status.setStatus(0);
+				out.print(new Gson().toJson(status));
+				out.flush();
+				out.close();
+				return;
+			}
+			String refund_amount=dsOrder.getOrderprice();
 			/**********************/
 			 AlipayClient client = new DefaultAlipayClient(AlipayConfig.URL, AlipayConfig.APPID, AlipayConfig.RSA_PRIVATE_KEY, AlipayConfig.FORMAT, AlipayConfig.CHARSET, AlipayConfig.ALIPAY_PUBLIC_KEY,AlipayConfig.SIGNTYPE);
 			AlipayTradeRefundRequest alipay_request = new AlipayTradeRefundRequest();
 			
 			AlipayTradeRefundModel model=new AlipayTradeRefundModel();
-			model.setOutTradeNo(out_trade_no);
+			model.setOutTradeNo(dsOrder.getOrdernumber());
 			model.setTradeNo("");
-			model.setRefundAmount(refund_amount);
+			model.setRefundAmount(""+(float)(Math.round((Float.parseFloat(refund_amount)*0.994)*100))/100);
 			model.setRefundReason(refund_reason);
-			model.setOutRequestNo("");
+			model.setOutRequestNo("PYGH01RF001");
 			alipay_request.setBizModel(model);
 			
 			AlipayTradeRefundResponse alipay_response;
@@ -91,43 +98,45 @@ public class RefundServlet extends HttpServlet{
 				alipay_response = client.execute(alipay_request);
 				String result = alipay_response.getBody();
 				JSONObject tmp = JSONObject.fromObject(result);
+				System.out.println(result);
 				String data = tmp.getString("alipay_trade_refund_response");
 				JSONObject obj = JSONObject.fromObject(data);
-				if(obj.getString("sub_code").equals("ACQ.TRADE_HAS_SUCCESS")){
-					/*改变用户优惠券状态*/
+				if(obj.getString("code").equals("10000")){
+					if(obj.getString("fund_change").equals("Y")){
+						/*改变用户优惠券状态*/
+						status.setStatus(1);
+					out.print(new Gson().toJson(status));
 					userCouponDao = new UserCouponDao();
-					try {
 						userCoupon = userCouponDao.selectUserCoupon(userid);
-						if(userCoupon.getCouponstatus()==2){
+						if(userCoupon.getCouponstatus()==2){//判断优惠券已使用
 							Map<String, String> map = new HashMap<String, String>();
 							map.put("couponstatus", "1");
 							map.put("userid", userid);
 							userCouponDao.updataCouponStatus(map);
-						}else{
-							status.setStatus(1);
-							status.setPrice(userCoupon.getCouponprice());
 						}
-					} catch (NullPointerException e) {
-						e.printStackTrace();
+						
+						Map<String, String> map = new HashMap<String, String>();
+						map.put("userid", userid);
+						map.put("orderstatus","0");
+						dsOrderDao.changeStatus(map);
+						
+					}else{
+						status.setStatus(0);
+						out.print(new Gson().toJson(status));
 					}
-					
-					Map<String, String> map = new HashMap<String, String>();
-					map.put("userid", userid);
-					map.put("orderstatus","4");
-					dsOrderDao.changeStatus(map);
-					
-					status.setStatus(1);
 				}else{
 					status.setStatus(0);
+					out.print(new Gson().toJson(status));
 				}
-				out.print(status);
-				 System.out.println(result);
+				
 			} catch (AlipayApiException e) {
 				status.setStatus(0);
-				out.print(status);
+				out.print(new Gson().toJson(status));
 			}finally{
 				out.flush();
 				out.close();
+				
+				System.out.println(new Gson().toJson(status));
 			}
 		   
 	}
