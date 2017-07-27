@@ -1,6 +1,7 @@
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\mapper\DsInfoMapper.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\mapper\DsOrderMapper.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\UserDao.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\ScheduleServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\Global.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\QueryOrderServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\DsInformation.java
@@ -20,11 +21,14 @@ D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\DsOrderDao.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\BaseServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\db\Main.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\GetUserIdServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\WxPayServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\BondServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\utils\SqlSessionFactoryUtil.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\User.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\DsInfoDao.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\SelectOrderServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\ChangeOrderServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\ActivationServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\SmsServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\db\Lottery.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\SelectDsPackageServlet.java

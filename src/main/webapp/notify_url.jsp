@@ -5,6 +5,8 @@
 <%@ page import="com.wxgzpt.bjpygh.config.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.wxgzpt.bjpygh.dao.DsOrderDao"%>
+<%@ page import="com.wxgzpt.bjpygh.dao.UserCouponDao"%>
+<%@ page import="com.wxgzpt.bjpygh.entity.UserCoupon"%>
 <%
 	//获取支付宝POST过来反馈信息
 	Map<String,String> params = new HashMap<String,String>();
@@ -44,7 +46,10 @@
 			map.put("orderstatus", "1");
 			map.put("ordernumber",out_trade_no);
 			DsOrderDao dsOrderDao = new DsOrderDao();
+			String userid = dsOrderDao.getUserIdByOrderNum(map.get("ordernumber"));
 			dsOrderDao.changeStatusByNum(map);
+			
+			
 			//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
 			
 			if(trade_status.equals("TRADE_FINISHED")){

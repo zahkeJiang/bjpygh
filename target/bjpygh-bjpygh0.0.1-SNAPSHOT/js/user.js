@@ -19,11 +19,26 @@ function getuserId(){
 			 		document.getElementById('icon').src=obj.headimageurl;
 		  			document.getElementById('nickname').innerText = obj.nickname;
 		  			document.getElementById('mobile').innerText = obj.phonenumber;
+		  			
 		  			if (obj.sex!=null) {
-		  				document.getElementById('sex').innerText = obj.sex;
+		  				if(obj.sex=="1"){
+		  					document.getElementById('sex').innerText = "男";
+		  				}else{
+		  					document.getElementById('sex').innerText = "女";
+		  				}
 		  			}else{
 		  				document.getElementById('sex').innerText = "未设置";
 		  			}
+		  			var integral = obj.integral;
+		  			if (integral>5999) {
+		  				document.getElementById('integral').innerText = "铂金会员";
+	    			}else if (integral>1999) {
+	    				document.getElementById('integral').innerText = "黄金会员";
+	    			}else if (integral>99) {
+	    				document.getElementById('integral').innerText = "白银会员";
+	    			}else{
+	    				document.getElementById('integral').innerText = "暂无会员";
+	    			}
 		  			if (obj.school!=null) {
 		  				document.getElementById('school').innerText = obj.school;
 		  			}else{
@@ -35,7 +50,7 @@ function getuserId(){
 		  				document.getElementById('city').innerText = obj.province;
 		  			}
 			 }else{
-				 alert(obj.msg);
+				 alert(result.msg);
 			 }
 			 	
 			}
@@ -50,6 +65,11 @@ function getuserId(){
 function change_mobile(){
   var oldmobile = document.getElementById("mobile").innerText;
   location.href="mobile.html?mobile="+oldmobile;   
+}
+/*跳转到会员页面*/
+function qurey_integral(){
+  var oldmobile = document.getElementById("mobile").innerText;
+  location.href="member.html";   
 }
 
 $(function(){

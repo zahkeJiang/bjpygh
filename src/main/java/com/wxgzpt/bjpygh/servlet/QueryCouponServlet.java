@@ -19,22 +19,20 @@ import com.wxgzpt.bjpygh.entity.User;
 import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
-public class QueryCouponServlet extends HttpServlet{
+public class QueryCouponServlet extends BaseServlet{
 	private UserCouponDao userCouponDao;
 	private UserCoupon userCoupon;
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(request, response);
+	void getExec(Map<String, String> map, HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("/coupon.html");
 	}
-	
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	void postExec(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
-        Status status = new Status();
+		Status status = new Status();
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
@@ -53,19 +51,25 @@ public class QueryCouponServlet extends HttpServlet{
 			userCouponDao = new UserCouponDao();
 			try {
 				userCoupon = userCouponDao.selectUserCoupon(userid);
-				UserDao userDao = new UserDao();
-				User user = userDao.getUserById(userid);
+//				UserDao userDao = new UserDao();
+//				User user = userDao.getUserById(userid);
 				Date date = new Date(604800000L);
 				if(userCoupon.getCouponstatus()==1&&userCoupon!=null){
-					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()||user.getMemberpoints()>99){
+					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()){
 						status.setStatus(1);
 						status.setPrice(userCoupon.getCouponprice());
 					}else{
-						status.setStatus(0);
+						status.setStatus(2);
+						status.setPrice(userCoupon.getCouponprice());
 					}	
+				}else if(userCoupon.getCouponstatus()==2){
+					status.setStatus(1);
+					status.setPrice(userCoupon.getCouponprice());
+				}else if(userCoupon.getCouponstatus()==3){
+					status.setStatus(3);
+					status.setPrice(userCoupon.getCouponprice());
 				}else{
 					status.setStatus(0);
-					
 				}
 			} catch (NullPointerException e) {
 				e.printStackTrace();
@@ -76,7 +80,6 @@ public class QueryCouponServlet extends HttpServlet{
 				out.flush();
 				out.close();
 			}
-		
 	}
 	
 }

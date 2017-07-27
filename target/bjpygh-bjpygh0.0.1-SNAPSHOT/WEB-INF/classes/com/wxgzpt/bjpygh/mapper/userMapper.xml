@@ -20,6 +20,7 @@
 			<result column="address" property="address"/>
 			<result column="age" property="age"/>
 			<result column="member_points" property="memberpoints"/>
+			<result column="integral" property="integral"/>
 		</resultMap>
 		<select id="getPhoneNumber" parameterType="string" resultType="string">
 			select phone_number from user_info where openid = #{openid}
@@ -39,6 +40,10 @@
 		
 		<update id="bondUser" parameterType="map">
 			update user_info set phone_number=#{phonenumber} where user_id=#{userid}
+		</update>
+		
+		<update id="changeUserPoints" parameterType="map">
+			update user_info set member_points=#{memberpoints} where user_id=#{userid}
 		</update>
 		
 		<update id="bondRealName" parameterType="map">

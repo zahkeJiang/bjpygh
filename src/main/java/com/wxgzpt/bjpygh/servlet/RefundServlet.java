@@ -23,8 +23,10 @@ import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
+import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.User;
 import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
@@ -105,21 +107,28 @@ public class RefundServlet extends HttpServlet{
 					if(obj.getString("fund_change").equals("Y")){
 						/*改变用户优惠券状态*/
 						status.setStatus(1);
-					out.print(new Gson().toJson(status));
-					userCouponDao = new UserCouponDao();
-						userCoupon = userCouponDao.selectUserCoupon(userid);
-						if(userCoupon.getCouponstatus()==2){//判断优惠券已使用
-							Map<String, String> map = new HashMap<String, String>();
-							map.put("couponstatus", "1");
-							map.put("userid", userid);
-							userCouponDao.updataCouponStatus(map);
-						}
+					
+//					userCouponDao = new UserCouponDao();
+//						userCoupon = userCouponDao.selectUserCoupon(userid);
+//						if(userCoupon.getCouponstatus()==3){//判断优惠券已使用
+//							Map<String, String> map = new HashMap<String, String>();
+//							map.put("couponstatus", "1");
+//							map.put("userid", userid);
+//							userCouponDao.updataCouponStatus(map);
+//							
+//							UserDao userDao = new UserDao();
+//							User user = userDao.getUserById(userid);
+//							Map<String, String> pointMap = new HashMap<String, String>();
+//							map.put("userid", userid);
+//							map.put("memberpoints", user.getMemberpoints()+99+"");
+//							userDao.changeUserPoints(pointMap);
+//						}
 						
 						Map<String, String> map = new HashMap<String, String>();
 						map.put("userid", userid);
 						map.put("orderstatus","0");
 						dsOrderDao.changeStatus(map);
-						
+						out.print(new Gson().toJson(status));
 					}else{
 						status.setStatus(0);
 						out.print(new Gson().toJson(status));
@@ -135,7 +144,6 @@ public class RefundServlet extends HttpServlet{
 			}finally{
 				out.flush();
 				out.close();
-				
 				System.out.println(new Gson().toJson(status));
 			}
 		   

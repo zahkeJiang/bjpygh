@@ -66,6 +66,24 @@ span{
 	font-size: 0.875rem;
 	color: #8e8e8e;
 }
+.member{
+	height: 48px;
+	display:flex;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.member:active{
+	color: black;
+	background-color: #eeeeee;
+	text-decoration: none;
+}
+
+.member_inf{
+	margin-left: auto;
+	font-size: 0.875rem;
+	color: #8e8e8e;
+}
 .orders{
 	height: 48px;
 	display:flex;

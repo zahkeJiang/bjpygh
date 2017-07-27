@@ -33,12 +33,12 @@ public class QueryOrderServlet extends HttpServlet{
 	DsOrderDao dsOrderDao;
 	UserCoupon userCoupon;
 	DsOrder dsOrder;
-	Status status;
-	Gson gson;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.doGet(request, response);
+		// TODO Auto-generated method stub
+		super.doGet(request, response);
 	}
 	
 	@Override
@@ -46,8 +46,8 @@ public class QueryOrderServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        status = new Status();
-		gson = new Gson();
+        Status status = new Status();
+		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
@@ -87,5 +87,6 @@ public class QueryOrderServlet extends HttpServlet{
 			out.flush();
 			out.close();
 	}
+
 
 }

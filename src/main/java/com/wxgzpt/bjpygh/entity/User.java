@@ -23,7 +23,14 @@ public class User {
 	private String address;			//用户地址
 	private int age;				//用户年龄
 	private int memberpoints;		//会员积分
+	private int integral;			//累计积分
 	
+	public int getIntegral() {
+		return integral;
+	}
+	public void setIntegral(int integral) {
+		this.integral = integral;
+	}
 	public int getMemberpoints() {
 		return memberpoints;
 	}

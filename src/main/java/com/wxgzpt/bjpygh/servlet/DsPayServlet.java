@@ -3,6 +3,7 @@ package com.wxgzpt.bjpygh.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -64,6 +65,7 @@ public class DsPayServlet extends HttpServlet{
 //        		out.print("您已支付成功，勿重复支付。");
 //        		out.flush();
 //        		out.close();
+//        		return;
 //        	}
             String packageid = request.getParameter("packageid");
             String select = request.getParameter("select");
@@ -71,7 +73,20 @@ public class DsPayServlet extends HttpServlet{
             if(select.equals("1")){
             	UserCouponDao userCouponDao = new UserCouponDao();
         		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-        		couponprice = userCoupon.getCouponprice();
+        		UserDao userDao = new UserDao();
+				User user = userDao.getUserById(userid);
+        		Date date = new Date(604800000L);
+				if(userCoupon.getCouponstatus()==1&&userCoupon!=null){
+					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()){
+						couponprice = userCoupon.getCouponprice();
+					}else if(userCoupon.getCouponstatus()==2){
+						couponprice = userCoupon.getCouponprice();
+					}else{
+						couponprice = 0;
+					}
+				}else{
+					couponprice = 0;
+				}
             }else{
             	couponprice = 0;
             }

@@ -63,14 +63,14 @@
 		//请在这里加上商户的业务逻辑程序代码
 		//该页面可做页面美工编辑
 		out.clear();
-		out.println("验证成功<br />");
+		out.println("<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'/><title>支付成功</title><link href='css/main.css' rel='stylesheet' type='text/css'/><link href='css/submit_orders.css' rel='stylesheet' type='text/css'/></head><body style='background-color: #fff;'><div style='text-align: center; margin-top: 250px;'><img style='width: 40px;margin: 0;' src='images/alipay.png'><p>支付成功</p></div></body></html>");
 		//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 
 		//////////////////////////////////////////////////////////////////////////////////////////
 	}else{
 		//该页面可做页面美工编辑
 		out.clear();
-		out.println("验证失败");
+		out.println("<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'/><title>支付失败</title><link href='css/main.css' rel='stylesheet' type='text/css'/><link href='css/submit_orders.css' rel='stylesheet' type='text/css'/></head><body style='background-color: #fff;'><div style='text-align: center; margin-top: 250px;'><img style='width: 40px;margin: 0;' src='images/alipay.png'><p>支付失败</p></div></body></html>");
 	}
 %>
   </body>

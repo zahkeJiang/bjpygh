@@ -13,5 +13,6 @@ public interface DsOrderMapper {
 	public void updateOrder(DsOrder dsorder);
 	public void changeStatus(Map<String, String> map);
 	public void changeStatusByNum(Map<String, String> map);
+	public String getUserIdByOrderNum(String ordernumber);
 	
 }

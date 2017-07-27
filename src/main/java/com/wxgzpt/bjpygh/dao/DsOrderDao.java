@@ -51,6 +51,25 @@ public class DsOrderDao {
 	}
 	
 	//鑾峰彇璁㈠崟淇℃伅
+		public String getUserIdByOrderNum(String ordernumber){
+			String userid = null;
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+				userid = dsOrderMapper.getUserIdByOrderNum(ordernumber);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+			return userid;
+		}
+	
+	//鑾峰彇璁㈠崟淇℃伅
 		public DsOrder getDsOrder(String userid){
 			DsOrder dsOrder = null;
 			try {

@@ -43,15 +43,17 @@ function get_coupons(){
         success:function(data){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
-				$(".coupons span").html("有可用优惠券");
 				coupons_sum = obj.price;
+				$(".coupons span").html("有可用优惠券:"+coupons_sum+"元");
 //				alert("coupons_sum="+coupons_sum)
 				select ="1";
 				$(".price").html(price-coupons_sum);
+				$(".no_c").hide();
 			}else{
 				$(".coupons span").html("无可用优惠券");
 				select ="0";
 				$(".price").html(price);
+				$(".no_c").show();
 			}
         }	
     });

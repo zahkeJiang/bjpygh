@@ -138,7 +138,7 @@ function orders_finished(){
             if (obj.status=="1") {
                 var dsorder_list = obj.dsOrder;
 //                alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
-                if (dsorder_list[0].orderstatus=="3") {
+                if (dsorder_list[0].orderstatus=="4") {
                     
                     var dsorderh_tml = "";
                     // $.each循环实现添加订单列表  

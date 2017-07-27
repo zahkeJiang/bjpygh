@@ -12,4 +12,6 @@ public interface UserMapper {
 	public void bondUser(Map<String,String> map);
 	public void bondRealName(Map<String,String> map);
 	public User getUserById(String userid);
+	
+	public void changeUserPoints(Map<String, String> map);
 }

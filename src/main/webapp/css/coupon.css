@@ -1,0 +1,45 @@
+.coupon{
+	border-radius: 5px;
+	width: 94%;
+	height: 120px;
+	margin: 3%; 
+	background-color: #FA9D3B;
+	padding-top: 10px;
+	float: left;
+	color: white;
+}
+.price{
+	width: 60px;
+	height: 100px;
+	border-radius: 10px;
+	background-color: #D85940;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	line-height: 100px;
+	text-align: center;	
+	color: white;
+}
+.descrip{
+	margin:20px;
+	font-size: 12px;
+}
+.effective{
+	float: right;
+	margin-right: 20px;
+}
+.activation{
+	height: 30px;
+	width: 50px;
+	line-height: 30px;
+	text-align: center;
+	float: right;
+	margin-top: 10px;
+	border-radius: 5px;
+	background-color: #00c800;
+}
+.nohint{
+	width: 94%;
+	height: 100px;
+	margin: 25px;
+}
