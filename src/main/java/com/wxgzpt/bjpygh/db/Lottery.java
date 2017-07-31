@@ -6,19 +6,15 @@ public class Lottery {
 	int price = 100;;
 	public int getPrice(){
 		s = Math.random();
-		 if(s<=0.4){
-			 price = 100;//index100++;
-		 }else if(s<=0.6){
-			 price = 150;
-		 }else if(s<=0.9){
+			if(s<=0.95){
 			 price = 200;
-		 }else if(s<=0.95){
+		 }else if(s<=0.965){
 			 price = 250;
-		 }else if(s<=0.97){
+		 }else if(s<=0.975){
 			 price = 300;
-		 }else if(s<=0.98){
+		 }else if(s<=0.985){
 			 price = 350;
-		 }else if(s<=0.99){
+		 }else if(s<=0.995){
 			 price = 400;
 		 }else if(s<=0.999){
 			 price = 450;

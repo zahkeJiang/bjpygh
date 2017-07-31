@@ -47,19 +47,31 @@ public class ActivationServlet extends HttpServlet{
 			out.close();
 			return;
 		}
-			String userid = userMap.get("id");
+		String userid = userMap.get("id");
+		
+		UserDao userDao = new UserDao();
+		User user = userDao.getUserById(userid);
+		if(user.getMemberpoints()<100){
+			status.setStatus(0);
+			status.setMsg("积分不足");
+			out.print(gson.toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
+		Map<String, String> pointMap = new HashMap<String, String>();
+		pointMap.put("userid", userid);
+		pointMap.put("memberpoints", user.getMemberpoints()-100+"");
+		userDao.changeUserPoints(pointMap);
+		
 			UserCouponDao userCouponDao = new UserCouponDao();
 			UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
 			Map<String, String> statusMap = new HashMap<String, String>();
 			statusMap.put("userid",""+userCoupon.getUserid());
 			statusMap.put("couponstatus", "2");
 			userCouponDao.updataCouponStatus(statusMap);
-			UserDao userDao = new UserDao();
-			User user = userDao.getUserById(userid);
-			Map<String, String> pointMap = new HashMap<String, String>();
-			pointMap.put("userid", userid);
-			pointMap.put("memberpoints", user.getMemberpoints()-100+"");
-			userDao.changeUserPoints(pointMap);
+			
 			
 			status.setStatus(1);
 			status.setMsg("激活成功");

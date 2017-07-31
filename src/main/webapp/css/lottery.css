@@ -1,44 +1,41 @@
 
-.dscoupon{
-	width: 250px;
-	height: 200px;
-	position: absolute;
-	left: 50%;
-	margin-left: -125px;
-	margin-top: 20px;
-}
-.getCoupon{
-	background-color: #cac;
-	color: white;
-	position: absolute;
-	text-align: center;
-	width: 250px;
-	left: 50%;
-	margin-left: -125px;
-	height: 30px;
-	padding-top: 10px;
-	margin-top: 340px;
-}
 img{
-	float: left;
-	max-width: 100%;
+	width: 100%;
+	height: 100%;
 }
-span{
-	color: white;
-	left: 10px;
-	bottom: 90px;
-	position: relative;
-}
+
 .couponPrice{
-	width: 250px;
-	height: 60px;
+	border-radius: 10px;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:40px;
+	height: 120px;
+	line-height:120px;
+	text-align:center;
 	color: white;
 	font-size: 20px;
-	text-align: center;
-	padding-top: 40px;
-	position: absolute;
-	left: 50%;
-	margin-left: -125px;
-	margin-top: 220px;
-	background-color: red;
+	background:url(../images/coupon_bg.png);
+	background-size:100%;
+}
+.Price{
+	border-radius: 10px;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:40px;
+	height: 150px;
+	line-height:150px;
+	text-align:center;
+	color: white;
+	font-size: 20px;
+	background-color: #D85940;
+	background: url(../images/coupon_bg.png);
+	background-size:100%;
+}
+p{
+	font-size:13px;
+	color:grey;
+	margin-left:20px;
+	margin-right:20px;
 }
