@@ -60,9 +60,21 @@ span{
 	padding-left: 16px;
 	padding-right: 16px;
 	display: flex;
-
 	align-items: center;
 	font-size: 16px;
+}
+.row_type{
+	width: 60px;
+	display: flex;
+	justify-content: space-between;
+	text-align: justify;
+}
+.row_type span{
+	font-size: 16px;
+	color: black;
+}
+.row_colon{
+	padding:0 5px;
 }
 .row input{
 	flex: 1;
@@ -99,6 +111,11 @@ input::-webkit-input-placeholder {
 	background-color: white;
 	height: 48px;
 	align-items: center;	
+}
+.footer img{
+	width:30px;
+	height:30px;
+	margin-right:5px;
 }
 .submit{
 	width: 30%;

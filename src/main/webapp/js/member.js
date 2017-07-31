@@ -32,7 +32,7 @@ $(function(){
     			}else if (user.integral>99) {
 					$(".member_live").html("白银会员");
     			}else{
-    				$(".member_live").html("暂无会员");
+    				$(".member_live").html("普通用户");
     			}
     			$(".member_integral").html(user.memberpoints+"积分");
     		}else{
@@ -40,7 +40,7 @@ $(function(){
     		}
     	},'json');
 
-	$(".s3").click(function(){
+/*	$(".s3").click(function(){
 		if (typeof WeixinJSBridge == "undefined"){
 			if( document.addEventListener ){
 				 document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -51,5 +51,5 @@ $(function(){
 		}else{
 			onBridgeReady();
 		}
-	});
+	});*/
 });

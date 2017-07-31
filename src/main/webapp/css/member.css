@@ -1,99 +1,44 @@
 .header{
 	height: 120px;
-	width: 96%;
 	background-color: white;
-	margin: 2%;
-	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #e8e8d0;
 }
-#icon{
-	margin-top: 30px;
-	margin-left:40px;
-	float: left;
+.user_header{
+	text-align: center;
 }
-#nickname{
-	margin-left:10px;
-	margin-top: 50px;
-	float: left;
-}
-.body{
-	height: 40px;
-	width: 96%;
-	background-color: white;
-	margin: 2%;
-	border-radius: 10px;
-}
-.div3{
+.member_infor{
 	height: 60px;
-	width: 96%;
-	background-color: white;
-	margin: 2%;
-	border-radius: 10px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color:#c2c287;
 }
-.tail{
-	height: 300px;
-	width: 96%;
-	background-color: white;
-	margin: 2%;
-	border-radius: 10px;
-}
-.v_line{
-	float: left;
-	height: 36px;
-	width: 1px;
-	background-color: grey;
-	margin-top: 2px;
-	border-radius: 1px;
-}
-.h_line{
-	height: 1px;
-	margin-right:16px; 
-	margin-left:16px; 
-	background-color: #DEDEDE;
-}
-.member_live{
-	width: 49%;
-	height: 40px;
-	float: left;
-	line-height: 40px;
+.rank,.coupons,.integral{
 	text-align: center;
 }
-.member_integral{
-	width: 49%;
-	height: 40px;
-	float: left;
-	line-height: 40px;
-	text-align: center;
-}
-p{
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-}
-.s1{
-	height: 60px;
-	line-height: 60px;
-	text-align: center;
-	margin-left: 5px;
-	float: left;
-}
-.s2{
-	color: red;
-	float: right;
-	margin-right: 5px;
-	height: 60px;
-	line-height: 60px;
-	text-align: center;
-}
-.s3{
-	margin-top:15px;
-	height: 30px;
-	width: 80px;
-	border-radius: 10px;
-	background-color: #00c800;
-	float: right;
-	line-height: 30px;
-	text-align: center;
+.coupons_sum,.member_integral,.member_live{
+	font-size: 14px;
 	color: white;
-	margin-right: 5px;
+	margin-bottom: 2px;
+}
+.my_coupon,.my_rank,.integral{
+	color: black;
+}
+.exchange_title{
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #444;
+	background:url(../images/bg_line.png);
+	background-repeat:repeat-x;		/*背景图片在水平显示*/	
+	background-position-y:bottom;　　/*背景图片在纵向的最下方显示*/
+}
+
+.exchange_container{
+	height: 200px;
+	background-color: gray;
 }
