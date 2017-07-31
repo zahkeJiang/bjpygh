@@ -1,5 +1,5 @@
 $(function(){
-	$(".nohint").hide();
+	$(".nohint").show();
 	$(".header").hide();
 	$.post("schedule.action",{},function(obj){
 		if (obj.status == "1") {

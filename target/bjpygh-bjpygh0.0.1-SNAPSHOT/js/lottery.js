@@ -3,7 +3,7 @@ $(function(){
 	$(".Price").hide();
 	$(".couponPrice").hide();
 	$.post("queryCoupon.action",{},function(obj){
-    		if (obj.status == "1") {
+    		if (obj.status != "0") {
 				$(".Price").html(obj.price+"元");
 				$(".Price").show();
     		}else{
