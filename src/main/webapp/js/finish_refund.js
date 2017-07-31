@@ -12,10 +12,10 @@ window.onload=ShowMessage();
 
 $(function(){
 	if (refund_status =="1") {
-		$(".p").html("退款成功");
-		$(".img").src(images/refund_success.png);
+		var refund_success = "<p>退款成功</p><img src='images/refund_success.png>"
+		$(".refund_infor").html(refund_success);
 	}else{
-		$(".p").html("退款失败");
-		$(".img").src(images/refund_fail.png);
+		var refund_fail = "<p>退款失败</p><img src='images/refund_fail.png>"
+		$(".refund_infor").html(refund_fail);
 	}
 });

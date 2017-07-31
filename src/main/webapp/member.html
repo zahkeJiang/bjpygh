@@ -8,32 +8,39 @@
 	<link href="css/member.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	<div class="header">
-		<img id="icon" height="48px" width="48px">
-		<span id="nickname">用户12451856</span>
-	</div>
-	<div class="body">
-		<div class="member_live">
+	<div class="main">
+		<div class="header">
+			<div class="user_header">
+				<img id="icon" height="60px" width="60px">
+				<p id="nickname"></p>
+			</div>
 		</div>
-		<div class="v_line"></div>
-		<div class="member_integral">
-			0积分
+		<div class="container">
+			<div class="member_infor">
+				<div class="rank">
+					<p class='member_live'>普通用户</p>
+					<p class='my_rank'>我的会员</p>
+				</div>
+				<div class="coupons">
+					<a href="coupon.html">
+						<p class='coupons_sum'>0</p>
+						<p class='my_coupon'>我的优惠券</p>
+					</a>
+				</div>
+				<div class="integral">
+					<p class='member_integral'>0</p>
+					<p class='my_integral'>剩余积分</p>
+				</div>
+			</div>
+
+			<div class="exchange">
+				<div class="exchange_title">--✿积分兑换--</div>
+				<div class="exchange_container"></div>
+			</div>
 		</div>
-	</div>
-	<div class="tail">
-		<p>积分可以兑换或激活优惠产品<a style="font-size:10px;" href="coupon.html">去激活</a></p>
-		
-		<div class="h_line"></div>
-		<div class="div3">
-			<span class="s1">100积分</span>
-			<span class="s3">微信支付</span>
-			<span class="s2">￥10
-				<img style="margin-top:15px; width: 30px; height: 30px; float: right; margin-left:5px;" src="images/wxpay.png">
-			</span>
-		</div>
-		<div class="h_line"></div>
-	</div>
+
+
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script src="js/member.js"></script>
+	<script src="js/member.js"></script>
 </body>
 </html>
