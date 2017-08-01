@@ -4,27 +4,43 @@ function lotteryStop(index){
     switch(index){
         case 0:
             alert("恭喜获得200元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:200元");
             break;
         case 1:
-            alert("恭喜获得600元优惠券");
+            alert("恭喜获得250元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:250元");
             break;
         case 2:
-            alert("恭喜获得400元优惠券");
+            alert("恭喜获得300元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:300元");
             break;
         case 3:
-            alert("恭喜获得800元优惠券");
+            alert("恭喜获得400元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:400元");
             break;
         case 4:
-            alert("恭喜获得250元优惠券");
+            alert("恭喜获得500元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:500元");
             break;  
         case 5:
-            alert("恭喜获得500元优惠券");
+            alert("恭喜获得600元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:600元");
             break;
         case 6:
-            alert("恭喜获得300元优惠券");
+            alert("恭喜获得800元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:800元");
             break;
         case 7:
             alert("恭喜获得1000元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:1000元");
             break;
         default:
             alert("当前抽奖人数过多，请稍后尝试！");
@@ -53,27 +69,7 @@ var lottery={
     }
 };
 function roll(num){
-    $.post("queryCoupon.action",{},function(obj){
-        if (obj.status =="1") {
-            if (obj.price=200) {
-                lottery.num=0;
-            }else if (obj.price = 250) {
-                lottery.num=1;
-            }else if (obj.price = 300) {
-                lottery.num=2;
-            }else if (obj.price = 400) {
-                lottery.num=3;
-            }else if (obj.price = 500) {
-                lottery.num=4;
-            }else if (obj.price = 600) {
-                lottery.num=5;
-            }else if (obj.price = 800) {
-                lottery.num=6;
-            }else if (obj.price = 1000) {
-                lottery.num=7;
-            }
-        }
-    }，json);
+    
 
     lottery.times += 1;
     lottery.roll();
@@ -87,6 +83,7 @@ function roll(num){
         lottery.prize=0;
         lottery.times=0;
         lottery.speed=20;
+        
     }else{
         if (lottery.times==lottery.cycle) {
             lottery.speed -= 10;
@@ -108,8 +105,29 @@ function roll(num){
 }
 $(function(){
     $.post("queryCoupon.action",{},function(obj){
-        if (obj.status != "0") {
+        if (obj.status == "0") {
             $(".lottery_begin").click(function(){
+            	$.post("coupon.action",{},function(obj){
+                    if (obj.status =="1") {
+                        if (obj.price==200) {
+                            lottery.num=0;
+                        }else if (obj.price == 250) {
+                            lottery.num=1;
+                        }else if (obj.price == 300) {
+                            lottery.num=2;
+                        }else if (obj.price == 400) {
+                            lottery.num=3;
+                        }else if (obj.price == 500) {
+                            lottery.num=4;
+                        }else if (obj.price == 600) {
+                            lottery.num=5;
+                        }else if (obj.price == 800) {
+                            lottery.num=6;
+                        }else if (obj.price == 1000) {
+                            lottery.num=7;
+                        }
+                    }
+                },'json');
                 roll();
             });
         }else{

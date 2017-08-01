@@ -66,9 +66,11 @@ public class CouponServlet extends BaseServlet{
 				status.setStatus(1);
 				
 				out.print(gson.toJson(status));
+				System.out.println(gson.toJson(status));
 			}else{
 				status.setStatus(0);
 				status.setMsg("优惠券已存在");
+				System.out.println(gson.toJson(status));
 				out.print(gson.toJson(status));
 			}
 			out.flush();

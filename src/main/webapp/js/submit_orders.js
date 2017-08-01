@@ -45,7 +45,7 @@ function get_coupons(){
 			if (obj.status=="1") {
 				coupons_sum = obj.price;
 				$(".coupons span").html(coupons_sum+"元");
-				$(".coupons span").css("color":"red");
+				$(".coupons span").css({"color":"red"});
 				select ="1";
 				$(".price").html(price-coupons_sum);
 			}else{
