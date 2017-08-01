@@ -61,19 +61,22 @@ function getuserId(){
 //	var data="userid="+userid;
 	xhr.send();// 发送HTTP请求 
 }
-/*跳转到更换手机号页面*/
-function change_mobile(){
-  var oldmobile = document.getElementById("mobile").innerText;
-  location.href="mobile.html?mobile="+oldmobile;   
-}
-/*跳转到会员页面*/
-function qurey_integral(){
-  var oldmobile = document.getElementById("mobile").innerText;
-  location.href="member.html";   
-}
+
+
+
 
 $(function(){
-  $(".orders").click(function(){
-    window.location.href="myorder.html";
-  });
+	//跳转到更换手机号页面
+	$(".mobile").click(function(){
+		var oldmobile = $("mobile").val();
+  		location.href="mobile.html?mobile="+oldmobile;   
+	});
+	//跳转我的订单
+  	$(".orders").click(function(){
+    	window.location.href="myorder.html";
+  	});
+  //跳转到会员页面
+	$(".member").click(function(){
+  		location.href="member.html";  
+  	})
 });

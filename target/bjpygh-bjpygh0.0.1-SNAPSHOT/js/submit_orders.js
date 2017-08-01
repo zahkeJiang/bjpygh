@@ -22,7 +22,7 @@ window.onload=ShowMessage();
 var realname="";
 var address = "";
 var note = "";
-var select="0";
+var select="";
 
 //获取用户id
 function getId(){
@@ -44,16 +44,13 @@ function get_coupons(){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
 				coupons_sum = obj.price;
-				$(".coupons span").html("有可用优惠券:"+coupons_sum+"元");
-//				alert("coupons_sum="+coupons_sum)
+				$(".coupons span").html(coupons_sum+"元");
 				select ="1";
 				$(".price").html(price-coupons_sum);
-				$(".no_c").hide();
 			}else{
 				$(".coupons span").html("无可用优惠券");
 				select ="0";
 				$(".price").html(price);
-				$(".no_c").show();
 			}
         }	
     });

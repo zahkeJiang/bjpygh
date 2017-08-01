@@ -61,20 +61,20 @@ public class DsPayServlet extends HttpServlet{
         	String userid = request.getParameter("userid");
         	DsOrderDao dsOrderDao = new DsOrderDao();
         	DsOrder dso = dsOrderDao.getDsOrder(userid);
-//        	if(dso.getOrderstatus()==1){
-//        		out.print("您已支付成功，勿重复支付。");
-//        		out.flush();
-//        		out.close();
-//        		return;
-//        	}
+        	if(dso.getOrderstatus()==1){
+        		out.print("您已支付成功，勿重复支付。");
+        		out.flush();
+        		out.close();
+        		return;
+        	}
             String packageid = request.getParameter("packageid");
             String select = request.getParameter("select");
             System.out.println("userid:"+userid+"packageid:"+packageid+"select:"+select);
             if(select.equals("1")){
             	UserCouponDao userCouponDao = new UserCouponDao();
         		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-        		UserDao userDao = new UserDao();
-				User user = userDao.getUserById(userid);
+//        		UserDao userDao = new UserDao();
+//				User user = userDao.getUserById(userid);
         		Date date = new Date(604800000L);
 				if(userCoupon.getCouponstatus()==1&&userCoupon!=null){
 					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()){
