@@ -65,6 +65,7 @@ public class SelectDsPackageServlet extends HttpServlet{
              dsInfo.setDspList(dsPackageDao.selectDsPackage(dsname));
              out.print(gson.toJson(dsInfo));
         }
+        System.out.println(gson.toJson(dsInfo));
         out.flush();
         out.close();
 	}

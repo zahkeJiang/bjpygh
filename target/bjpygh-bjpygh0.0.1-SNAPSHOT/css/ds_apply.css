@@ -122,9 +122,13 @@ input::-webkit-input-placeholder {
 	font-size: 12px;
 }
 #submit{
+	-webkit-appearance: none; 
 	width: 80%;
 	margin-left:10%;
 	margin-top: 10px;
 	height: 36px;
 	border-radius: 5px;
+	background-color:#67c0ee;
+	color:#fff;
+	margin-bottom:15px;
 }
