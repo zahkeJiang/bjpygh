@@ -68,9 +68,8 @@ var lottery={
         this.index=index;
     }
 };
+//开始抽奖动画
 function roll(num){
-    
-
     lottery.times += 1;
     lottery.roll();
     if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
