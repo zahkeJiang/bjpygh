@@ -45,6 +45,7 @@ function get_coupons(){
 			if (obj.status=="1") {
 				coupons_sum = obj.price;
 				$(".coupons span").html(coupons_sum+"元");
+				$(".coupons span").css("color":"red");
 				select ="1";
 				$(".price").html(price-coupons_sum);
 			}else{
@@ -63,7 +64,11 @@ $(function(){
 	$(".ds_price").html(price);
 	$(".traintime").html(traintime);
 	get_coupons();
-	
+	//点击进入优惠券页面
+	$(".coupons").click(function(){
+		window.location.href="coupon.html";
+	})
+	//支付宝支付
 	$(".submit").click(function(){
 		//获取用户姓名、联系方式、性别、地址
 		realname = $("#real_name").val();

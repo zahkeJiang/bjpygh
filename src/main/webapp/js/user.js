@@ -69,7 +69,7 @@ $(function(){
 	//跳转到更换手机号页面
 	$(".mobile").click(function(){
 		var oldmobile = $("mobile").val();
-  		location.href="mobile.html?mobile="+oldmobile;   
+  		window.location.href="mobile.html?mobile="+oldmobile;   
 	});
 	//跳转我的订单
   	$(".orders").click(function(){
@@ -77,6 +77,6 @@ $(function(){
   	});
   //跳转到会员页面
 	$(".member").click(function(){
-  		location.href="member.html";  
+  		window.location.href="member.html";  
   	})
 });
