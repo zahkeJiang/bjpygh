@@ -75,6 +75,10 @@
 	margin-bottom: 5px;
 	text-align: right;
 }
+.view_order a{
+	color: #67c0ee;
+	text-align: right;
+}
 .line{
 	background-color: #eee;
 	height: 1px;

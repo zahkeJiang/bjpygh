@@ -44,12 +44,12 @@ function get_coupons(){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
 				coupons_sum = obj.price;
-				$(".coupons span").html(coupons_sum+"元");
+				$(".coupons span").html(coupons_sum+"元&nbsp;&gt;");
 				$(".coupons span").css({"color":"red"});
 				select ="1";
 				$(".price").html(price-coupons_sum);
 			}else{
-				$(".coupons span").html("无可用优惠券");
+				$(".coupons span").html("无可用优惠券&nbsp;&gt;");
 				select ="0";
 				$(".price").html(price);
 			}

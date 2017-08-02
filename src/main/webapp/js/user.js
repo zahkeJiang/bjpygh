@@ -68,7 +68,7 @@ function getuserId(){
 $(function(){
 	//跳转到更换手机号页面
 	$(".mobile").click(function(){
-		var oldmobile = $("mobile").val();
+		var oldmobile = $(".mobile").val();
   		window.location.href="mobile.html?mobile="+oldmobile;   
 	});
 	//跳转我的订单
