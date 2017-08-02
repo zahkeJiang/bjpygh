@@ -37,7 +37,7 @@ function getuserId(){
 	    			}else if (integral>99) {
 	    				document.getElementById('integral').innerText = "白银会员";
 	    			}else{
-	    				document.getElementById('integral').innerText = "暂无会员";
+	    				document.getElementById('integral').innerText = "普通用户";
 	    			}
 		  			if (obj.school!=null) {
 		  				document.getElementById('school').innerText = obj.school;
