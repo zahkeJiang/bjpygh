@@ -52,11 +52,11 @@ span{
 .ds_apply{
 	margin-top: 10px;
 	background-color: white;
-	padding-bottom: 10px;
 	line-height: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .row{
-	margin-top: 10px;
 	padding-left: 16px;
 	padding-right: 16px;
 	display: flex;

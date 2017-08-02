@@ -8,34 +8,34 @@ function lotteryStop(index){
             $("#lottery").html("我已经抽过奖了,优惠券:200元");
             break;
         case 1:
-            alert("恭喜获得600元优惠券");
+            alert("恭喜获得250元优惠券");
             $("#lottery").empty();
-            $("#lottery").html("我已经抽过奖了,优惠券:600元");
+            $("#lottery").html("我已经抽过奖了,优惠券:250元");
             break;
         case 2:
+            alert("恭喜获得300元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:300元");
+            break;
+        case 3:
             alert("恭喜获得400元优惠券");
             $("#lottery").empty();
             $("#lottery").html("我已经抽过奖了,优惠券:400元");
             break;
-        case 3:
-            alert("恭喜获得800元优惠券");
-            $("#lottery").empty();
-            $("#lottery").html("我已经抽过奖了,优惠券:800元");
-            break;
         case 4:
-            alert("恭喜获得250元优惠券");
-            $("#lottery").empty();
-            $("#lottery").html("我已经抽过奖了,优惠券:250元");
-            break;  
-        case 5:
             alert("恭喜获得500元优惠券");
             $("#lottery").empty();
             $("#lottery").html("我已经抽过奖了,优惠券:500元");
+            break;  
+        case 5:
+            alert("恭喜获得600元优惠券");
+            $("#lottery").empty();
+            $("#lottery").html("我已经抽过奖了,优惠券:600元");
             break;
         case 6:
-            alert("恭喜获得300元优惠券");
+            alert("恭喜获得800元优惠券");
             $("#lottery").empty();
-            $("#lottery").html("我已经抽过奖了,优惠券:300元");
+            $("#lottery").html("我已经抽过奖了,优惠券:800元");
             break;
         case 7:
             alert("恭喜获得1000元优惠券");
@@ -68,9 +68,8 @@ var lottery={
         this.index=index;
     }
 };
+//开始抽奖动画
 function roll(num){
-    
-
     lottery.times += 1;
     lottery.roll();
     if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
