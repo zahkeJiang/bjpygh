@@ -1,12 +1,14 @@
 .header{
 	text-align: center;
-	height: 100px;
+	height: 140px;
 	background-color: #e8e8d0;
-	padding: 20px;
+}
+.my_integral{
+	padding-top: 40px;
 }
 .recharge{
-	margin-top: 40px;
-	height: 36px;
+	margin-top: 30px;
+	height: 30px;
 	width: 20%;
 	margin-left: 40%;
 	border: 1px solid black;
