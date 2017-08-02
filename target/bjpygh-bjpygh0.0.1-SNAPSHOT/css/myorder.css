@@ -41,17 +41,21 @@
 }
 .refund{
 	margin-left: auto;
+	color: #999;
+	font-size: 14px;
 }
 .dsoder_container{
 	display: flex;
 	align-items: center;
-	height: 60px;
+	height: 80px;
 	background-color: #F5F5F5;
 	padding-right: 16px;
 	padding-left: 16px;
 }
 .dsorder_information{
 	font-size: 14px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 .dsorder_footer{
 	height: 36px;
@@ -59,11 +63,15 @@
 	line-height: 36px;
 	background-color: white;
 	font-size: 14px;
-	color: #ccc;
+	color: #555;
 	padding-right: 16px;
 	padding-left: 16px;
 }
-
+.dsorder_pay{
+	font-size: 14px;
+	color: #555;
+}
 .order_price{
 	font-size: 18px;
+	color: black;
 }
