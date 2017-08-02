@@ -11,6 +11,9 @@ p{
 	font-size:14px;
 	color:grey;
 }
+.lottery_box{
+	text-align: center;
+}
 #lottery{padding:10px;background-color: #FEA6B2;}
 #lottery table{width: 100%;}
 #lottery table img{width: 100%;}
