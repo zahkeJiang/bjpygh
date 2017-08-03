@@ -58,12 +58,7 @@ function all_orders(){
         		alert("目前没有订单");
                 $(".container").html(container);
         	}
-
-        },
-        error:function(obj){
-        	alert("error");
         }
-
 	});
 }
 
@@ -108,19 +103,6 @@ function orders_success(){
             $(".container").html(container);
     	}
     },'json');
-//	$.ajax({
-//		type:"POST",
-//        url:"selectOrder.action",
-//        dataType:"text",
-//        data:"userid="+userid,
-//        success:function(data){
-//            
-//        },
-//        error:function(obj){
-//            alert("error");
-//        }
-
-//	});
 }
 
 //定义查询已完成订单方法
@@ -163,10 +145,6 @@ function orders_finished(){
                 alert("当前没有相关订单");
                 $(".container").html(container);
             }
-        },
-        error:function(obj){
-            alert("error");
         }
-
     });
 }
