@@ -46,6 +46,10 @@
 			update user_info set member_points=#{memberpoints} where user_id=#{userid}
 		</update>
 		
+		<update id="changeUserInfo" parameterType="map">
+			update user_info set school=#{school}, nickname=#{nickname},sex=#{sex},headimageurl=#{headimageurl}, where user_id=#{userid}
+		</update>
+		
 		<update id="bondRealName" parameterType="map">
 			update user_info set real_name=#{realname}, address=#{address}, reamark=#{reamark}
 			 where user_id=#{userid}

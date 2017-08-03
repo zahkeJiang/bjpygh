@@ -67,13 +67,13 @@ $(function(){
 	//点击进入优惠券页面
 	$(".coupons").click(function(){
 		window.location.href="coupon.html";
-	})
-	//支付宝支付
+	});
+	//提交订单支付宝支付
 	$(".submit").click(function(){
 		//获取用户姓名、联系方式、性别、地址
 		realname = $("#real_name").val();
 		address = $("#address").val();
-		note = $("#note").val();
+		note = $("input[type='radio']:checked").val();
 		if ($("#real_name").val()=="") {
 			alert("请输入您的真实姓名");
 		}else if ($("#address").val() == "") {
@@ -91,9 +91,6 @@ $(function(){
         			}else{
         				alert("用户已报名成功，请勿重复报名。");
         			}
-        		},
-       			error:function(obj){
-            		alert(error);
         		}
     		});
 		}

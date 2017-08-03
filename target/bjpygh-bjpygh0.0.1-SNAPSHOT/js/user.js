@@ -125,17 +125,17 @@ $.post("personal.action",{},function(obj){
 				$('#sex').html("女");
 			}
 		}else{
-			$('#sex').html("未设置");
+			$('#sex').html("");
 		}
 		if (userobj.school!=null) {
 		  	$('#school').html(userobj.school);
 		}else{
-		  	$('#school').html("未设置");
+		  	$('#school').html("");
 		}
 		if (userobj.city!=null) {
 		  	$('#city').html(userobj.city);
 		}else{
-		  	$('#city').html("未设置");
+		  	$('#city').html("");
 		}
 		var integral = obj.integral;
 		if (integral>5999) {

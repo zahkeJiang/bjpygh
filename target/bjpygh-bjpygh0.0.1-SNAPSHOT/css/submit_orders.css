@@ -91,6 +91,25 @@ input::-webkit-input-placeholder {
 	color: #999; 
 	font-size: 14px;
 }
+.ds_training{
+	background-color: white;
+	margin-top: 10px;
+		padding:0 16px;
+}
+.ds_training_mode{
+	height: 40px;
+	display: flex;
+	align-items: center;
+	background:url(../images/bg_line.png);
+	background-repeat:repeat-x;		/* 背景图片在水平显示	 */
+	background-position-y:bottom;　　/* 背景图片在纵向的最下方显示  */
+}
+.ds_radio {
+	height: 40px;
+	line-height: 40px;
+	display: flex;
+	justify-content: space-around;
+}
 .coupons{
 	margin-top: 10px;
 	display: flex;

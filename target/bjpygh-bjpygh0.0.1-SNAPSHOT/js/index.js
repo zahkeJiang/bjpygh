@@ -100,8 +100,10 @@ $(function(){
                     var myurl="ds_information.html?dsname="+dsname;
                     window.location.assign(encodeURI(myurl));
                 }) 
+            }else if (obj.status=="-1") {
+                window.location.href="openWchat.html";
             }
-            return true;   
+            
         },
         error:function(obj){
             alert(obj);

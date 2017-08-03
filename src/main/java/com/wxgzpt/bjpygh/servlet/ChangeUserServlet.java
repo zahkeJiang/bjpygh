@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.User;
 
 @SuppressWarnings("serial")
 public class ChangeUserServlet extends HttpServlet{
@@ -46,17 +48,34 @@ public class ChangeUserServlet extends HttpServlet{
 		
 		String userid = userMap.get("id");
 		UserDao userDao = new UserDao();
-		userDao.getUserById(userid);
+		User user = userDao.getUserById(userid);
 		
-		String headimageurl = request.getParameter("headimageurl");
 		String sex = request.getParameter("sex");
 		String nickname = request.getParameter("nickname");
 		String school = request.getParameter("school");
 		String city = request.getParameter("city");
-		
-		if(headimageurl!=null){
-			
+		Map<String, String> map = new HashMap<String, String>();
+		if(sex!=null){
+			map.put("sex", sex);
+		}else{
+			map.put("sex", user.getSex()+"");
 		}
+		if(nickname!=null){
+			map.put("nickname", nickname);
+		}else{
+			map.put("nickname", user.getNickname());
+		}
+		if(school!=null){
+			map.put("school", school);
+		}else{
+			map.put("school", user.getSchool());
+		}
+		if(city!=null){
+			map.put("city", city);
+		}else{
+			map.put("city", user.getCity());
+		}	
+		
 	}
 	
 }
