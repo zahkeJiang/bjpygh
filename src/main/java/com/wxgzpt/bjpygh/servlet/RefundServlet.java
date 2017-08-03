@@ -22,20 +22,11 @@ import com.alipay.api.response.AlipayTradeRefundResponse;
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
-import com.wxgzpt.bjpygh.dao.UserCouponDao;
-import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
-import com.wxgzpt.bjpygh.entity.User;
-import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class RefundServlet extends HttpServlet{
-
-	UserCouponDao userCouponDao;	
-	DsOrderDao dsOrderDao;
-	UserCoupon userCoupon;
-	DsOrder dsOrder;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -63,7 +54,7 @@ public class RefundServlet extends HttpServlet{
 			return;
 		}
 		
-		dsOrderDao = new DsOrderDao();
+		DsOrderDao dsOrderDao = new DsOrderDao();
 		
 			String userid = userMap.get("id");
 			
@@ -105,29 +96,13 @@ public class RefundServlet extends HttpServlet{
 				JSONObject obj = JSONObject.fromObject(data);
 				if(obj.getString("code").equals("10000")){
 					if(obj.getString("fund_change").equals("Y")){
-						/*改变用户优惠券状态*/
-						status.setStatus(1);
-					
-//					userCouponDao = new UserCouponDao();
-//						userCoupon = userCouponDao.selectUserCoupon(userid);
-//						if(userCoupon.getCouponstatus()==3){//判断优惠券已使用
-//							Map<String, String> map = new HashMap<String, String>();
-//							map.put("couponstatus", "1");
-//							map.put("userid", userid);
-//							userCouponDao.updataCouponStatus(map);
-//							
-//							UserDao userDao = new UserDao();
-//							User user = userDao.getUserById(userid);
-//							Map<String, String> pointMap = new HashMap<String, String>();
-//							map.put("userid", userid);
-//							map.put("memberpoints", user.getMemberpoints()+99+"");
-//							userDao.changeUserPoints(pointMap);
-//						}
 						
+						//改变订单状态
 						Map<String, String> map = new HashMap<String, String>();
 						map.put("userid", userid);
 						map.put("orderstatus","0");
 						dsOrderDao.changeStatus(map);
+						status.setStatus(1);
 						out.print(new Gson().toJson(status));
 					}else{
 						status.setStatus(0);

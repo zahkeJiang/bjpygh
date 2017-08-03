@@ -37,7 +37,7 @@ function getuserId(){
 	    			}else if (integral>99) {
 	    				document.getElementById('integral').innerText = "白银会员";
 	    			}else{
-	    				document.getElementById('integral').innerText = "暂无会员";
+	    				document.getElementById('integral').innerText = "普通用户";
 	    			}
 		  			if (obj.school!=null) {
 		  				document.getElementById('school').innerText = obj.school;
@@ -68,7 +68,7 @@ function getuserId(){
 $(function(){
 	//跳转到更换手机号页面
 	$(".mobile").click(function(){
-		var oldmobile = $(".mobile").val();
+		var oldmobile = $("#mobile").html();
   		window.location.href="mobile.html?mobile="+oldmobile;   
 	});
 	//跳转我的订单

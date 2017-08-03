@@ -1,6 +1,6 @@
 var oldmobile = "";
 function ShowMessage() { 
-	var thisURL = decodeURI(location.href);     
+	var thisURL = document.URL;     
 	var getval = thisURL.split('?')[1];
 	oldmobile = getval.split("=")[1];
 } 
