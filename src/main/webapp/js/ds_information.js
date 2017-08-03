@@ -69,12 +69,14 @@ window.onload=ShowMessage();
 $(function(){
 	// 打开弹窗
     $(".ds_information").click(function(){
-    		$(".dsintro").fadeIn(10);
+        $(".ds_type").hide();
+    	$(".dsintro").fadeIn(10);
     })
     
     // 关闭弹窗
     $(".dsintro img").click(function(){
-    		$(".dsintro").fadeOut(10);
+    	$(".dsintro").fadeOut(10);
+         $(".ds_type").show();
     })
 
 	$.ajax({
@@ -83,7 +85,6 @@ $(function(){
         dataType:"text",
         data:"dsname="+dsname,
         success:function(data){
-        	
         	$(".container").empty();
         	var obj = eval('(' + data + ')');
             var dshtml = "";

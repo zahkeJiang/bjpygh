@@ -115,7 +115,7 @@ $.post("personal.action",{},function(obj){
 	if (obj.status=="1") {
 		var userobj = obj.data;
 		// document.getElementById('icon').src=obj.headimageurl;
-		$("#icon").attr('src',user.headimageurl);
+		$("#icon").attr('src',userobj.headimageurl);
 		$('#nickname').html(userobj.nickname);
 		$('#mobile').html(userobj.phonenumber);
 		if (userobj.sex!=null) {
@@ -125,17 +125,17 @@ $.post("personal.action",{},function(obj){
 				$('#sex').html("女");
 			}
 		}else{
-			$('#sex').html("未设置");
+			$('#sex').html("");
 		}
 		if (userobj.school!=null) {
 		  	$('#school').html(userobj.school);
 		}else{
-		  	$('#school').html("未设置");
+		  	$('#school').html("");
 		}
 		if (userobj.city!=null) {
 		  	$('#city').html(userobj.city);
 		}else{
-		  	$('#city').html("未设置");
+		  	$('#city').html("");
 		}
 		var integral = obj.integral;
 		if (integral>5999) {
