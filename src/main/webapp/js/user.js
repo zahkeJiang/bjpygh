@@ -115,7 +115,7 @@ $.post("personal.action",{},function(obj){
 	if (obj.status=="1") {
 		var userobj = obj.data;
 		// document.getElementById('icon').src=obj.headimageurl;
-		$("#icon").attr('src',user.headimageurl);
+		$("#icon").attr('src',userobj.headimageurl);
 		$('#nickname').html(userobj.nickname);
 		$('#mobile').html(userobj.phonenumber);
 		if (userobj.sex!=null) {

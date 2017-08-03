@@ -16,7 +16,7 @@ $(function(){
 	$(".save").click(function(){
 		nickname = $("#nickname").val();
 		window.location.href="user.html";
-		$.post("学校接口",{"nickname":nickname},function(obj){	
-		},'json');
+//		$.post("学校接口",{"nickname":nickname},function(obj){	
+//		},'json');
 	});
 });

@@ -33,7 +33,7 @@ public class GetUserIdServlet extends HttpServlet{
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 		Status status = new Status();
 		if(userMap == null){
-			status.setStatus(0);
+			status.setStatus(-1);
 			status.setMsg("请在微信端登录");
 			out.print(new Gson().toJson(status));
 			System.out.println(new Gson().toJson(status));
