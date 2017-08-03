@@ -25,14 +25,7 @@ $(function(){
             }else if (obj.status=="0") {
                 alert("支付失败");
             	$(".pay_fail").css({"display":"inherit"});
-            }else{
-            	alert("服务器错误，请稍后再试");
-            	$(".server_error").css({"display":"inherit"});
             }
-            // return true;   这一句不知有什么用
-        },
-        error:function(obj){
-            alert(obj);
         }
     });
     
