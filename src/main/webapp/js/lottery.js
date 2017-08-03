@@ -150,7 +150,7 @@ $(function(){
                 var coupon_pic = "<img src='images/coupon_08.png'>";
             }
             $(".lottery_box").empty();
-            $(".lottery_box").html(coupon_pic+"<p>我已经抽过奖了,优惠券:"+obj.price+"元</p><a hred='index.html'>立即使用</a>");
+            $(".lottery_box").html(coupon_pic+"<p>我已经抽过奖了,优惠券:"+obj.price+"元&nbsp;<a href='index.html'>立即使用</a></p>");
             $(".lottery_box").show();
         }
     },'json');
