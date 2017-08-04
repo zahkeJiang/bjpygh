@@ -15,7 +15,7 @@
 	position: absolute;
 	margin-top: 170px;
 	margin-left: 16px;
-	font-size: 16px;
+	font-size: 18px;
 }
 .ds_infor{
 	
@@ -35,7 +35,7 @@
 }
 .address,.abstract{
 	margin-left: 16px;
-	font-size: 12px;
+	font-size: 14px;
 }
 .dsintro{
 	position: absolute;
@@ -48,7 +48,7 @@
 	display: none;
 }
 .dsintro_name{
-	height: 150px;
+	height: 80px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -75,7 +75,6 @@
 }
 .dsp_type{
 	padding: 0 16px;
-	font-size: 14px;
 	height: 40px;
 	line-height: 40px;
 }
@@ -94,7 +93,7 @@
 }
 
 .dsp_infor span {
-	font-size: 12px;
+	font-size: 14px;
 	color: #999;
 	padding-left: 16px;
 }
@@ -103,7 +102,7 @@
 }
 .price_symbol{
 	color: #67c0ee;
-	font-size: 12px;
+	font-size: 14px;
 	padding-left: 16px;
 }
 .price{

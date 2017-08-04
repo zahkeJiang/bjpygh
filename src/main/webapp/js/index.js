@@ -12,6 +12,10 @@
 
 
 $(function(){
+    $(".address").click(function(){
+        alert("正在开拓其他城市");
+    });
+    //获取驾校列表
     $.post("sdi.action",{},function(obj){
         $(".container").empty();
         var html = "";
@@ -22,7 +26,7 @@ $(function(){
             $.each(ds_list,function(commentIndex,comment){
                 html += "<div class='ds_list'><img src="+" ' "
                     +comment.dsimage+" ' "+" height='80px' width='100px'><div class='information'><div class='ds_name_price'> <span class='ds_name'>"
-                    +comment.dsname+"</span><span class='ds_price'>"+'3200'+"</span></div><span class='ds_address'>"
+                    +comment.dsname+"</span><span class='ds_price'></span></div><span class='ds_address'>"
                     +comment.address+"</span></div></div>";
             });
             $(".container").html(html);
