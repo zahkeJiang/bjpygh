@@ -14,4 +14,5 @@ public interface UserMapper {
 	public User getUserById(String userid);
 	
 	public void changeUserPoints(Map<String, String> map);
+	public void changeUserInfo(Map<String, String> map);
 }

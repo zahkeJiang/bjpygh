@@ -76,6 +76,11 @@ public class ChangeUserServlet extends HttpServlet{
 			map.put("city", user.getCity());
 		}	
 		
+		userDao.changeUserInfo(map);
+		status.setStatus(1);
+		out.print(gson.toJson(status));
+		out.flush();
+		out.close();
 	}
 	
 }

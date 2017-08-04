@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.entity.Status;
 import com.wxgzpt.bjpygh.entity.User;
+import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class PersonalServlet extends BaseServlet{
@@ -46,6 +48,11 @@ public class PersonalServlet extends BaseServlet{
 		UserDao userDao = new UserDao();
 		String userid = userMap.get("id");
 		User user = userDao.getUserById(userid);
+		UserCouponDao userCouponDao = new UserCouponDao();
+		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
+		if(userCoupon.getCouponstatus() == 1||userCoupon.getCouponstatus() == 2){
+			status.setCount(1);
+		}
 		status.setStatus(1);
 		status.setMsg("获取成功");
 		status.setData(user);

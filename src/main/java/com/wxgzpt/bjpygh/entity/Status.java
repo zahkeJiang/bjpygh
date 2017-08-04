@@ -9,10 +9,19 @@ public class Status {
 	private List<DsPackage> dsplist;
 	private List<DsOrder> dsOrder;
 	private int price;
+	private int count;
 	private Object data;
 	private List<Object> datas;
 	private String msg;
 	private String out_trade_no;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public Object getData() {
 		return data;

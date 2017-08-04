@@ -28,7 +28,7 @@ function userload(){
             $("#icon").attr('src',user.headimageurl);
             $("#nickname").html(user.nickname);
             $("#mobile").html(user.phonenumber);
-        }else if (obj.status == "-1") {}{
+        }else if (obj.status == "-1"){
              window.location.href="openWchat.html";
         }
     },'json');
