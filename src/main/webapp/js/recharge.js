@@ -24,6 +24,7 @@ $(function(){
 function userload(){
     $.post("personal.action",{},function(obj){
         if (obj.status == "1") {
+            alert("1");
             var user = obj.data;
             $("#icon").attr('src',user.headimageurl);
             $("#nickname").html(user.nickname);
@@ -48,7 +49,7 @@ function userload(){
             onBridgeReady();
         }*/
  //微信支付
-function onBridgeReady(){
+/*function onBridgeReady(){
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', {
             "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入     
@@ -71,7 +72,7 @@ function onBridgeReady(){
             }
          }
     ); 
-}
+}*/
 
 
 
