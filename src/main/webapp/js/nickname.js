@@ -14,7 +14,7 @@ $(function(){
 	});
 
 	$(".save").click(function(){
-		nickname = $("input[name='school']").val();
+		nickname = $("input[name='nickname']").val();
 		window.location.href="user.html";
 		$.post("changeInfo.action",{"nickname":nickname},function(obj){	
 		},'json');

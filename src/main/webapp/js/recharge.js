@@ -36,7 +36,7 @@ function userload(){
 
 
 
-//付款判断
+        //付款判断
         /*if (typeof WeixinJSBridge == "undefined"){
             if( document.addEventListener ){
                  document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
