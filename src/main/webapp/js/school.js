@@ -15,7 +15,7 @@ $(function(){
 	$(".save").click(function(){
 		school = $("#school").val();
 		window.location.href="user.html";
-		$.post("学校接口",{"school":school},function(obj){	
+		$.post("changeInfo.action",{"school":school},function(obj){	
 		},'json');
 	});
 });

@@ -1,6 +1,5 @@
 $(function(){
 	if (isWeiXin()) {
-    alert("我是微信浏览器");
     }else{
         window.location.href="openWchat.html";//提示用客户端打开页面
     }

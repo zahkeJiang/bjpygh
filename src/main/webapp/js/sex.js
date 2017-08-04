@@ -17,12 +17,12 @@ $(function(){
 	}
 	$(".boy").click(function(){
 		window.location.href="user.html";
-		$.post("性别接口",{"sex":1},function(obj){
+		$.post("changeInfo.action",{"sex":1},function(obj){
 		},'json');
 	});
 	$(".girl").click(function(){
 		window.location.href="user.html";
-		$.post("性别接口",{"sex":0},function(obj){
+		$.post("changeInfo.action",{"sex":0},function(obj){
 		},'json');
 	});
 
