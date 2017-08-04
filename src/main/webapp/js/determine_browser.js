@@ -26,7 +26,7 @@ function isWeiXin(){
 
 $(function(){
 	$(".browser").click(function(){
-    	alert("打开浏览器");
+    	alert("点击右上角用浏览器打开");
 	});
 	$(".pay_finish_text").click(function(){
 		window.location.href="ds_pay.html";

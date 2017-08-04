@@ -79,7 +79,7 @@ $(function(){
 		}else if ($("#address").val() == "") {
 			alert("请输入您的地址");
 		}else {
-			$.ajax({
+			/*$.ajax({
         		type:"POST",
         		url:"note.action",
         		data:"realname="+realname+"&address="+address+"&note="+note,
@@ -92,7 +92,14 @@ $(function(){
         				alert("用户已报名成功，请勿重复报名。");
         			}
         		}
-    		});
+    		});*/
+    		$.post("note.action",{"realname":realname,"address":address,"note":note},function(obj){
+    			if (obj.status=="1") {
+        			window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
+        		}else{
+        			alert("用户已报名成功，请勿重复报名。");
+        		}
+    		},"json");
 		}
 	});
 });

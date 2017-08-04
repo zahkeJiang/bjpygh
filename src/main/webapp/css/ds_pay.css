@@ -20,7 +20,7 @@
 	height: 100%;
 	width: 100%;
 	background-color: white;
-
+	display: none;
 }
 .pay_information{
 	background-color: white;
