@@ -72,7 +72,7 @@ $(function(){
     //发送post请求，获取班型列表
     $.post("sdp.action",{"dsname":dsname},function(obj){
         $(".container").empty();
-        if (obj.status=="1") {
+//        if (obj.status=="1") {
             var dshtml = "";
             var dsp_list = obj.dspList;
             //添加驾校图片/名称/简介/地址
@@ -106,6 +106,6 @@ $(function(){
                 var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
                 window.location.assign(encodeURI(myurl));
             });
-        }
+//        }
     },'json');
 });

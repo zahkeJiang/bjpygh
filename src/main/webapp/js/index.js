@@ -54,6 +54,7 @@
 $(function(){
     $.post("sdi.action",{},function(obj){
         $(".container").empty();
+        var html = "";
         if(obj.status=="1"){
             //alert("解析成功，staus="+obj.status);
             var ds_list = obj.dspInfolist;

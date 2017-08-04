@@ -1,5 +1,4 @@
 
-//var userid = "";
 var dsname = "";
 var dstype = "";
 var models = "";

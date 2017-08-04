@@ -52,6 +52,7 @@ public class SelectDsInfoServlet extends BaseServlet{
         
 		Gson gson = new Gson();
 		out.print(gson.toJson(status));
+		System.out.println(gson.toJson(status));
 		out.flush();
 		out.close();
 	}
