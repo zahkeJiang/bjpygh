@@ -42,8 +42,8 @@ $(function(){
                 dshtml += "<div class='dsp_list'><div class='line'></div><h2 class='dstype'>"
                 +comment.dstype+"</h2><div class='dsp_infor'><span class='models'>"
                 +comment.models+"</span><span class='traintime'>"
-                +comment.traintime+"</span><span class='discription'>"
-                +comment.discription+"</span><span class='packageid'>"
+                +comment.traintime+"</span><span class='description'>"
+                +comment.description+"</span><span class='packageid'>"
                 +comment.packageid+"</span></div><div><span  class='price_symbol'>￥</span><span class='price'>"
                 +comment.price+"</span></div></div>";
             });
@@ -56,8 +56,8 @@ $(function(){
                 var price = $(this).find(".price").html(); 
                 var traintime = $(this).find(".traintime").html();  
                 var packageid = $(this).find(".packageid").html();   
-                var discription = $(this).find(".discription").html();
-                var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime+"&discription="+discription;                                      
+                var description = $(this).find(".description").html();
+                var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime+"&description="+description;                                      
                 window.location.assign(encodeURI(myurl));
             });
         // }
