@@ -15,7 +15,7 @@ $(function(){
     			}else{
     				$(".member_live").html("普通用户");
     			}
-                $(".coupons_sum").html(user.count);
+                $(".coupons_sum").html(obj.count);
     			$(".member_integral").html(user.memberpoints);
     		}else{
     			alert(error);
