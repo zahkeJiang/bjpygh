@@ -9,7 +9,7 @@
 
 $(function(){
     //发送请求判断支付完成与否
-    $.ajax({
+/*    $.ajax({
         type:"POST",
         url:"queryOrder.action",
         dataType:"text",
@@ -25,8 +25,25 @@ $(function(){
             }else if (obj.status=="0") {
                 alert("支付失败");
             	$(".pay_fail").css({"display":"inherit"});
+            }else if (obj.status=="-1"){
+                window.location.href="openWchat.html";
             }
         }
-    });
+    });*/
+    $.post("queryOrder.action",{},function(obj){
+        if(obj.status=="1"){              
+            alert("支付成功");
+            var order_number = obj.out_trade_no;
+            var ds_price = obj.price;
+            $(".order_number").html(order_number);
+            $(".ds_price").html(ds_price);
+            $(".pay_success").css({"display":"inherit"});
+        }else if (obj.status=="0") {
+            alert("支付失败");
+            $(".pay_fail").css({"display":"inherit"});
+        }else if (obj.status=="-1"){
+            window.location.href="openWchat.html";
+        }
+    },"json");
     
-})
+});
