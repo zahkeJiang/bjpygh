@@ -91,10 +91,11 @@ input::-webkit-input-placeholder {
 	color: #999; 
 	font-size: 14px;
 }
+
 .ds_training{
 	background-color: white;
 	margin-top: 10px;
-		padding:0 16px;
+	padding:0 16px;
 }
 .ds_training_mode{
 	height: 40px;
@@ -110,6 +111,9 @@ input::-webkit-input-placeholder {
 	display: flex;
 	justify-content: space-around;
 }
+.radio_training{
+	font-size: 14px;
+}
 .coupons{
 	margin-top: 10px;
 	display: flex;
@@ -118,6 +122,13 @@ input::-webkit-input-placeholder {
 	padding-right: 16px;
 	height: 48px;
 	background-color: white;
+}
+.hint{
+	font-size: 12px;
+	margin:0 16px;
+	color: red;
+	margin-bottom: 64px;
+	margin-top: 10px;
 }
 .coupons span{
 	margin-left: auto;
