@@ -55,6 +55,7 @@ public class ChangeUserServlet extends HttpServlet{
 		String school = request.getParameter("school");
 		String city = request.getParameter("city");
 		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", userid);
 		if(sex!=null){
 			map.put("sex", sex);
 		}else{

@@ -47,7 +47,7 @@
 		</update>
 		
 		<update id="changeUserInfo" parameterType="map">
-			update user_info set school=#{school}, nickname=#{nickname},sex=#{sex},headimageurl=#{headimageurl}, where user_id=#{userid}
+			update user_info set school=#{school}, nickname=#{nickname},sex=#{sex},headimageurl=#{headimageurl} where user_id=#{userid}
 		</update>
 		
 		<update id="bondRealName" parameterType="map">
