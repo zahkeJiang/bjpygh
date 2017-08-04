@@ -13,7 +13,7 @@ $(function(){
 	});
 
 	$(".save").click(function(){
-		school = $("#school").val();
+		school = $("input[name='school']").val();
 		window.location.href="user.html";
 		$.post("changeInfo.action",{"school":school},function(obj){	
 		},'json');
