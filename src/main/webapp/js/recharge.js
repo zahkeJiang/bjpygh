@@ -1,6 +1,8 @@
 
 $(function(){
+    alert("1");
     userload();
+    alert("4");
     $(".amount_type_01").click(function(){
         alert("积分充值5元");
     });
@@ -22,9 +24,10 @@ $(function(){
 });
 //获取用户信息
 function userload(){
+    alert("3");
     $.post("personal.action",{},function(obj){
+        alert(obj.status);
         if (obj.status == "1") {
-            alert("1");
             var user = obj.data;
             $("#icon").attr('src',user.headimageurl);
             $("#nickname").html(user.nickname);
