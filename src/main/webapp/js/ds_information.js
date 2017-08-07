@@ -44,7 +44,7 @@ $(function(){
                 +comment.models+"</span><span class='traintime'>"
                 +comment.traintime+"</span><span class='description'>"
                 +comment.description+"</span><span class='packageid'>"
-                +comment.packageid+"</span></div><div><span  class='price_symbol'>￥</span><span class='price'>"
+                +comment.packageid+"</span></div><div><span  class='price_symbol'>¥</span><span class='price'>"
                 +comment.price+"</span></div></div>";
             });
             $(".container").html(dshtml);
