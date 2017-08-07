@@ -93,6 +93,8 @@ input::-webkit-input-placeholder {
 }
 .tel{
 	margin-left:10px;
+	font-size: 16px;
+	color: black;
 }
 .ds_training{
 	background-color: white;
