@@ -56,6 +56,15 @@ function get_coupons(){
         }	
     });
 }
+//获取用户手机号
+function get_tel(){
+	$.post("personal.action",{},function(obj){
+		if (obj.status=="1") {
+			var user = obj.data;
+			$(".tel").html(user.phonenumber);
+		}
+	},"json");
+}
 $(function(){
 	
 	$(".ds_type").html(dstype);
@@ -63,6 +72,7 @@ $(function(){
 	$(".ds_models").html(models);
 	$(".ds_price").html(price);
 	$(".traintime").html(traintime);
+	get_tel();
 	get_coupons();
 	//点击进入优惠券页面
 	$(".coupons").click(function(){
@@ -79,20 +89,6 @@ $(function(){
 		}else if ($("#address").val() == "") {
 			alert("请输入您的地址");
 		}else {
-			/*$.ajax({
-        		type:"POST",
-        		url:"note.action",
-        		data:"realname="+realname+"&address="+address+"&note="+note,
-        		dataType:"text",
-        		success:function(data){
-        			var obj = eval('(' + data + ')');
-        			if (obj.status=="1") {
-        				window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
-        			}else{
-        				alert("用户已报名成功，请勿重复报名。");
-        			}
-        		}
-    		});*/
     		$.post("note.action",{"realname":realname,"address":address,"note":note},function(obj){
     			if (obj.status=="1") {
         			window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
