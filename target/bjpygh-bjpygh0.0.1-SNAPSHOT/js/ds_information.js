@@ -42,7 +42,8 @@ $(function(){
                 dshtml += "<div class='dsp_list'><div class='line'></div><h2 class='dstype'>"
                 +comment.dstype+"</h2><div class='dsp_infor'><span class='models'>"
                 +comment.models+"</span><span class='traintime'>"
-                +comment.traintime+"</span><span>一人一车，班车接送</span><span class='packageid'>"
+                +comment.traintime+"</span><span class='description'>"
+                +comment.description+"</span><span class='packageid'>"
                 +comment.packageid+"</span></div><div><span  class='price_symbol'>￥</span><span class='price'>"
                 +comment.price+"</span></div></div>";
             });
@@ -50,13 +51,13 @@ $(function(){
 
             // 为班型列表设置点击事件
              $(".dsp_list").click(function(){    
-                dstype = $(this).find(".dstype").html(); 
-                models = $(this).find(".models").html(); 
-                price = $(this).find(".price").html(); 
-                traintime = $(this).find(".traintime").html();  
-                packageid = $(this).find(".packageid").html();   
-                
-                var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
+                var dstype = $(this).find(".dstype").html(); 
+                var models = $(this).find(".models").html(); 
+                var price = $(this).find(".price").html(); 
+                var traintime = $(this).find(".traintime").html();  
+                var packageid = $(this).find(".packageid").html();   
+                var description = $(this).find(".description").html();
+                var myurl="ds_apply.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime+"&description="+description;                                      
                 window.location.assign(encodeURI(myurl));
             });
         // }

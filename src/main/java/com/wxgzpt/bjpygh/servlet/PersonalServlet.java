@@ -50,9 +50,16 @@ public class PersonalServlet extends BaseServlet{
 		User user = userDao.getUserById(userid);
 		UserCouponDao userCouponDao = new UserCouponDao();
 		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-		if(userCoupon.getCouponstatus() == 1||userCoupon.getCouponstatus() == 2){
-			status.setCount(1);
+		if(userCoupon !=null){
+			if(userCoupon.getCouponstatus() == 1||userCoupon.getCouponstatus() == 2){
+				status.setCount(1);
+			}else{
+				status.setCount(0);
+			}
+		}else{
+			status.setCount(0);
 		}
+		
 		status.setStatus(1);
 		status.setMsg("获取成功");
 		status.setData(user);

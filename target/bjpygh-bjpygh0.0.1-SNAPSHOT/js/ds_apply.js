@@ -5,6 +5,7 @@ var models = "";
 var price = "";
 var packageid = "";
 var traintime = "";
+var description = "";
 
 function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
@@ -14,7 +15,8 @@ function ShowMessage() {
     models = getval.split("=")[3].split('&')[0];
     price = getval.split("=")[4].split('&')[0];
     packageid = getval.split("=")[5].split('&')[0];
-    traintime = getval.split("=")[6];
+    traintime = getval.split("=")[6].split('&')[0];
+    description = getval.split("=")[7];
 } 
 window.onload=ShowMessage(); 
 
@@ -23,6 +25,7 @@ $(function(){
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
 	$(".ds_price").html(price);
+    $(".ds_details").html(description);
 	$("#submit").click(function(){
 		var myurl="submit_orders.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
         window.location.assign(encodeURI(myurl));
