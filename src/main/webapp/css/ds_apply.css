@@ -89,7 +89,7 @@ span{
 .service h2{
 	font-weight: normal;
 }
-.ds_details{
+.ds_details,.description{
 	margin-left: 16px;
 }
 
