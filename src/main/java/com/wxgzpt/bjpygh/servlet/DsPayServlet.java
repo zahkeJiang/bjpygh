@@ -29,19 +29,9 @@ import com.wxgzpt.bjpygh.entity.UserCoupon;
 public class DsPayServlet extends HttpServlet{
 	
 	
-	int couponprice = 0;
 	// 閸熷棙鍩涚拋銏犲礋閸欏嚖绱濋崯鍡樺煕缂冩垹鐝拋銏犲礋缁崵绮烘稉顓炴暜娑擄拷鐠併垹宕熼崣鍑ょ礉韫囧懎锝�
-    String out_trade_no;
     // 鐠併垹宕熼崥宥囆為敍灞界箑婵夛拷
-    String subject = "驾校报名费用";
-    // 娴犳ɑ顑欓柌鎴︻杺閿涘苯绻�婵夛拷
-    String total_amount;
-    // 閸熷棗鎼ч幓蹇氬牚閿涘苯褰茬粚锟�
-    String body = "杩欐槸涓�棣栫畝鍗曠殑灏忔儏姝�";
-    // 鐡掑懏妞傞弮鍫曟？ 閸欘垳鈹�
-    String timeout_express="2m";
-    // 闁匡拷閸烆喕楠囬崫浣虹垳 韫囧懎锝�
-    String product_code="QUICK_WAP_PAY";
+    
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -52,20 +42,25 @@ public class DsPayServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
+//        response.setContentType("text/html;charset=utf-8");
+        response.setContentType("text/html;charset=" + AlipayConfig.CHARSET);
         PrintWriter out = response.getWriter();
+        String subject = "驾校报名费用";
+        String  body = "驾校报名费用";
+        String timeout_express="2m";
+        String product_code="BJPYGH_DS_SIGNUP";
         	String userid = request.getParameter("userid");
         	DsOrderDao dsOrderDao = new DsOrderDao();
         	
             String packageid = request.getParameter("packageid");
             String select = request.getParameter("select");
             System.out.println("userid:"+userid+"packageid:"+packageid+"select:"+select);
+            int couponprice = 0;
             if(select.equals("1")){
             	UserCouponDao userCouponDao = new UserCouponDao();
         		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-//        		UserDao userDao = new UserDao();
-//				User user = userDao.getUserById(userid);
         		Date date = new Date(604800000L);
+        		
 				if(userCoupon.getCouponstatus()==1&&userCoupon!=null){
 					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()){
 						couponprice = userCoupon.getCouponprice();
@@ -96,9 +91,9 @@ public class DsPayServlet extends HttpServlet{
             int minute = c.get(Calendar.MINUTE); 
             int second = c.get(Calendar.SECOND);
             int milliseconds = c.get(Calendar.MILLISECOND);
-            out_trade_no ="PYGHDS" + year + month + date + hour + minute + second + milliseconds+userid;
+            String out_trade_no ="PYGHDS" + year + month + date + hour + minute + second + milliseconds+userid;
          
-            total_amount = ""+(dsPackage.getPrice()-couponprice);
+            String total_amount = ""+(dsPackage.getPrice()-couponprice);
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
@@ -159,13 +154,15 @@ public class DsPayServlet extends HttpServlet{
         	try {
         		// 鐠嬪啰鏁DK閻㈢喐鍨氱悰銊ュ礋
         		form = client.pageExecute(alipay_request).getBody();
-        		response.setContentType("text/html;charset=" + AlipayConfig.CHARSET); 
-        	    response.getWriter().write(form);//閻╁瓨甯寸亸鍡楃暚閺佸娈戠悰銊ュ礋html鏉堟挸鍤崚浼淬�夐棃锟� 
-        	    response.getWriter().flush();
-        	    response.getWriter().close();
+//        		response.setContentType("text/html;charset=" + AlipayConfig.CHARSET); 
+        	    out.write(form);//閻╁瓨甯寸亸鍡楃暚閺佸娈戠悰銊ュ礋html鏉堟挸鍤崚浼淬�夐棃锟� 
+        	    out.flush();
+        	    out.close();
         	} catch (AlipayApiException e) {
         		// TODO Auto-generated catch block
         		e.printStackTrace();
+        		 out.flush();
+         	    out.close();
         	}       
 	}
 }

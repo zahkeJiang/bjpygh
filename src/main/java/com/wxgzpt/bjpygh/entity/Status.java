@@ -13,7 +13,16 @@ public class Status {
 	private Object data;
 	private List<Object> datas;
 	private String msg;
+	private String imageurl;
 	private String out_trade_no;
+
+	public String getImageurl() {
+		return imageurl;
+	}
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
 
 	public int getCount() {
 		return count;

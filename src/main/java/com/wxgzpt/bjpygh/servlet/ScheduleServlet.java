@@ -47,7 +47,6 @@ public class ScheduleServlet extends BaseServlet{
 			DsOrderDao dsOrderDao = new DsOrderDao();
 			Gson gson = new Gson();
 			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
-			System.out.println(dsOrder);
 			status.setData(dsOrder);
 			status.setStatus(1);
 			out.print(gson.toJson(status));
