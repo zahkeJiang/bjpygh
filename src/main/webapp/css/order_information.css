@@ -40,7 +40,7 @@ p{
 .submit_bg{
 	flex: 1;
 	height: 1px;
-	background-color: #1afd9c;
+	background-color: #67c0ee;
 }
 .audit_bg{
 	height: 1px;
@@ -109,7 +109,7 @@ span{
 	border-radius: 5px;
 	background-color: #67c0ee;
 	height: 28px;
-	width: 64px;
+	width: 68px;
 	display: none;
 }
 .order_style1{

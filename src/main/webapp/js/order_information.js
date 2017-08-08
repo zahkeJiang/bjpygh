@@ -87,7 +87,7 @@ $(function(){
 					$.post("changeStatus.action",{},function(obj){
 						$(".chedule_content").empty();
 						$(".chedule_content").html("交易完成");
-						$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#eac100"});
+						$(".chedule_content").css({"height":"110px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#1afd9c"});
 						$(".hint").empty();
 						$(".hint").html("材料已送达，欢迎您再次使用！");
 						$(".delivery").html("已送达");
@@ -100,7 +100,7 @@ $(function(){
 			}else if (userorder.orderstatus=="4") {
 				$(".chedule_content").empty();
 				$(".chedule_content").html("交易完成");
-				$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#eac100"});
+				$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"110px","font-size":"20px","color":"white","background-color":"#1afd9c"});
 				$(".hint").empty();
 				$(".hint").html("材料已送达，欢迎您再次使用！");
 				$(".delivery").html("已送达");
