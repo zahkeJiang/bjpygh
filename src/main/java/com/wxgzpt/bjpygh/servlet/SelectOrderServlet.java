@@ -19,7 +19,6 @@ import com.wxgzpt.bjpygh.entity.Status;
 @SuppressWarnings("serial")
 public class SelectOrderServlet extends HttpServlet{
 	DsOrderDao dsOrderDao;
-	List<DsOrder> dsOrder;
 
 @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -50,8 +49,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 		String userid = userMap.get("id");	
 		dsOrderDao = new DsOrderDao();
+		
 		Gson gson = new Gson();
-		dsOrder = dsOrderDao.getOrderById(userid);
+		List<DsOrder> dsOrder = dsOrderDao.getOrderById(userid);
 		System.out.println(dsOrder);
 		status.setStatus(0);
 		for(DsOrder dso:dsOrder){
@@ -60,7 +60,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 				status.setStatus(1);
 			}
 		}
-		
 		out.print(gson.toJson(status));
 		System.out.println(gson.toJson(status));
 		out.flush();

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
+import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
+import com.wxgzpt.bjpygh.entity.UserCoupon;
 
 @SuppressWarnings("serial")
 public class ScheduleServlet extends BaseServlet{
@@ -46,9 +48,12 @@ public class ScheduleServlet extends BaseServlet{
 			String userid = userMap.get("id");	
 			DsOrderDao dsOrderDao = new DsOrderDao();
 			Gson gson = new Gson();
+			UserCouponDao userCouponDao = new UserCouponDao();
+			UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
 			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 			status.setData(dsOrder);
 			status.setStatus(1);
+			status.setPrice(userCoupon.getCouponprice());
 			out.print(gson.toJson(status));
 			System.out.println(gson.toJson(status));
 			out.flush();

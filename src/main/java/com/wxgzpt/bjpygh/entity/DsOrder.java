@@ -1,4 +1,8 @@
 package com.wxgzpt.bjpygh.entity;
+
+import java.util.Date;
+
+
 /**
  * 鐢ㄦ埛璁㈠崟淇℃伅
  * @author 钂嬪渾
@@ -19,7 +23,42 @@ public class DsOrder {
 	private String realname;		//鐢ㄦ埛鐪熷疄濮撳悕
 	private String note;			//澶囨敞
 	private int orderid;			//订单id
+	private String description;		//套餐描述
+	private Date paytime;			//付款时间
+	private Date submittime;		//提交审核材料通过时间
+	private Date signtime;		//报名完成时间
+	private Date gettime;			//得到材料时间
 	
+	public Date getSigntime() {
+		return signtime;
+	}
+	public void setSigntime(Date signtime) {
+		this.signtime = signtime;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Date getPaytime() {
+		return paytime;
+	}
+	public void setPaytime(Date paytime) {
+		this.paytime = paytime;
+	}
+	public Date getSubmittime() {
+		return submittime;
+	}
+	public void setSubmittime(Date submittime) {
+		this.submittime = submittime;
+	}
+	public Date getGettime() {
+		return gettime;
+	}
+	public void setGettime(Date gettime) {
+		this.gettime = gettime;
+	}
 	public int getOrderid() {
 		return orderid;
 	}

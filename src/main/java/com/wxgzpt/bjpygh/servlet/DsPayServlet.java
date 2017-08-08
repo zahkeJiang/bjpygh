@@ -102,6 +102,7 @@ public class DsPayServlet extends HttpServlet{
             dsOrder.setDsname(dsPackage.getDsname());
             dsOrder.setDstype(dsPackage.getDstype());
             dsOrder.setModels(dsPackage.getModels());
+            dsOrder.setDescription(dsPackage.getDescription());
             dsOrder.setAddress(user.getAddress());
             dsOrder.setNote(user.getReamark());
             dsOrder.setRealname(user.getRealname());

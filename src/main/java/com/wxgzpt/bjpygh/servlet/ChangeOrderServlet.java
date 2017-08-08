@@ -2,7 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -45,10 +45,10 @@ public class ChangeOrderServlet extends HttpServlet{
 			return;
 		}
 		String userid = userMap.get("id");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
-		map.put("orderstatus", "4");
-		dsOrderDao.changeStatus(map);
+		DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+		dsOrder.setOrderstatus(4);
+		dsOrder.setGettime(new Date());
+		dsOrderDao.updateOrder(dsOrder);
 		status.setStatus(1);
 		out.print(new Gson().toJson(status));
 		out.flush();

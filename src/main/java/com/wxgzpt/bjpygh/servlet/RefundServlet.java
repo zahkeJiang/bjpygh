@@ -2,7 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -98,12 +98,9 @@ public class RefundServlet extends HttpServlet{
 					if(obj.getString("fund_change").equals("Y")){
 						
 						//改变订单状态
-						Map<String, String> map = new HashMap<String, String>();
-						map.put("userid", userid);
-						map.put("orderstatus","0");
-						dsOrderDao.changeStatus(map);
+						dsOrder.setOrderstatus(0);
+						dsOrderDao.updateOrder(dsOrder);
 						status.setStatus(1);
-						out.print(new Gson().toJson(status));
 					}else{
 						status.setStatus(0);
 						out.print(new Gson().toJson(status));

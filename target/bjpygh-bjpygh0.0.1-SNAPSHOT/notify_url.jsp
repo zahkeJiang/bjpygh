@@ -5,6 +5,7 @@
 <%@ page import="com.wxgzpt.bjpygh.config.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.wxgzpt.bjpygh.dao.DsOrderDao"%>
+<%@ page import="com.wxgzpt.bjpygh.entity.DsOrder"%>
 <%@ page import="com.wxgzpt.bjpygh.dao.UserCouponDao"%>
 <%@ page import="com.wxgzpt.bjpygh.entity.UserCoupon"%>
 <%
@@ -63,13 +64,12 @@
 					//请务必判断请求时的total_fee、seller_id与通知时获取的total_fee、seller_id为一致的
 					//如果有做过处理，不执行商户的业务程序
 					if(request.getParameter("gmt_refund")==null){
-						Map<String, String> map = new HashMap<String, String>();
-						map.put("orderstatus", "1");
-						map.put("ordernumber",out_trade_no);
 						DsOrderDao dsOrderDao = new DsOrderDao();
-						String userid = dsOrderDao.getUserIdByOrderNum(map.get("ordernumber"));
-						dsOrderDao.changeStatusByNum(map);
-						System.out.println("!@$@#%^$%&changeStatusByNum!$@!%!#$%");
+						String userid = dsOrderDao.getUserIdByOrderNum(out_trade_no);
+						DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+						dsOrder.setOrderstatus(1);
+						dsOrder.setPaytime(new Date());
+						dsOrderDao.updateOrder(dsOrder);
 					}
 				
 			

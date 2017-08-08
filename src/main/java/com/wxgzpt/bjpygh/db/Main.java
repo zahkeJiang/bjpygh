@@ -1,7 +1,7 @@
 package com.wxgzpt.bjpygh.db;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Main {
@@ -149,9 +149,19 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		 float a = 123.2334f;;
-		float  b   =  (float)(Math.round(a*100))/100;
-		System.out.println(b);
+//		 float a = 123.2334f;;
+//		float  b   =  (float)(Math.round(a*100))/100;
+//		System.out.println(b);
+		 Calendar c = Calendar.getInstance();//閸欘垯浜掔�佃鐦℃稉顏呮闂傛潙鐓欓崡鏇犲娣囶喗鏁�
+         int year = c.get(Calendar.YEAR); 
+         int month = c.get(Calendar.MONTH); 
+         int date = c.get(Calendar.DATE); 
+         int hour = c.get(Calendar.HOUR_OF_DAY); 
+         int minute = c.get(Calendar.MINUTE); 
+         int second = c.get(Calendar.SECOND);
+         int milliseconds = c.get(Calendar.MILLISECOND);
+		Timestamp timestape = new Timestamp(year, month, date, hour, minute, second, milliseconds);
+		System.out.println(timestape);
 	}
 
 }
