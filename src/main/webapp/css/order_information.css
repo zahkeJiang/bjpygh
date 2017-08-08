@@ -98,11 +98,14 @@ span{
 .hint{
 	flex: 1;
 	height: 32px;
+	display:flex;
+	align-items: center;
 	margin-right: 16px;
 }
 .delivery{
 	color: white;
-	display: flex;align-items: center;justify-content: center;
+	text-align: center;
+	line-height: 28px;
 	border-radius: 5px;
 	background-color: #67c0ee;
 	height: 28px;
