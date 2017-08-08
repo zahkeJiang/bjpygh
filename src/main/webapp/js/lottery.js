@@ -5,42 +5,42 @@ function lotteryStop(index){
         case 0:
             alert("恭喜获得200元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_01.png'><p>我已经抽过奖了,优惠券:200元</p>");
+            $(".lottery_box").html("<img src='images/coupon_01.png'><p>我已经抽过奖了,优惠券:200元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 1:
             alert("恭喜获得250元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_02.png'><p>我已经抽过奖了,优惠券:250元</p>");
+            $(".lottery_box").html("<img src='images/coupon_02.png'><p>我已经抽过奖了,优惠券:250元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 2:
             alert("恭喜获得300元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_03.png'><p>我已经抽过奖了,优惠券:300元</p>");
+            $(".lottery_box").html("<img src='images/coupon_03.png'><p>我已经抽过奖了,优惠券:300元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 3:
             alert("恭喜获得400元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_04.png'><p>我已经抽过奖了,优惠券:400元</p>");
+            $(".lottery_box").html("<img src='images/coupon_04.png'><p>我已经抽过奖了,优惠券:400元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 4:
             alert("恭喜获得500元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_05.png'><p>我已经抽过奖了,优惠券:500元</p>");
+            $(".lottery_box").html("<img src='images/coupon_05.png'><p>我已经抽过奖了,优惠券:500元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;  
         case 5:
             alert("恭喜获得600元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_06.png'><p>我已经抽过奖了,优惠券:600元</p>");
+            $(".lottery_box").html("<img src='images/coupon_06.png'><p>我已经抽过奖了,优惠券:600元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 6:
             alert("恭喜获得800元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_07.png'><p>我已经抽过奖了,优惠券:800元</p>");
+            $(".lottery_box").html("<img src='images/coupon_07.png'><p>我已经抽过奖了,优惠券:800元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         case 7:
             alert("恭喜获得1000元优惠券");
             $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_08.png'><p>我已经抽过奖了,优惠券:1000元</p>");
+            $(".lottery_box").html("<img src='images/coupon_08.png'><p>我已经抽过奖了,优惠券:1000元&nbsp;<a href='index.html'>立即使用</a></p>");
             break;
         default:
             alert("当前抽奖人数过多，请稍后尝试！");

@@ -1,32 +1,34 @@
 
 $(function(){
-    alert("1");
     userload();
-    alert("4");
     $(".amount_type_01").click(function(){
-        alert("积分充值5元");
+        alert("充值5元");
+        recharge();
     });
     $(".amount_type_02").click(function(){
-        alert("积分充值10元");
+        alert("充值10元");
+        recharge();
     });
     $(".amount_type_03").click(function(){
-        alert("积分充值20元");
+        alert("充值20元");
+        recharge();
     });
     $(".amount_type_04").click(function(){
-        alert("积分充值50元");
+        alert("充值50元");
+        recharge();
     });
     $(".amount_type_05").click(function(){
-        alert("积分充值100元");
+        alert("充值100元");
+        recharge();
     });
     $(".amount_type_06").click(function(){
-        alert("积分充值200元");
+        alert("充值200元");
+        recharge();
     });
 });
 //获取用户信息
 function userload(){
-    alert("3");
     $.post("personal.action",{},function(obj){
-        alert(obj.status);
         if (obj.status == "1") {
             var user = obj.data;
             $("#icon").attr('src',user.headimageurl);
@@ -38,19 +40,22 @@ function userload(){
 
 
 
-        //付款判断
-        /*if (typeof WeixinJSBridge == "undefined"){
-            if( document.addEventListener ){
-                 document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-            }else if (document.attachEvent){
-                  document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-                  document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-            }
-        }else{
-            onBridgeReady();
-        }*/
+//付款判断
+function recharge(){
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady();
+    }
+}
+
  //微信支付
-/*function onBridgeReady(){
+function onBridgeReady(){
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', {
             "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入     
@@ -73,7 +78,7 @@ function userload(){
             }
          }
     ); 
-}*/
+}
 
 
 
