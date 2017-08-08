@@ -2,6 +2,9 @@
 	background-color: white;
 	margin-bottom: 10px;
 }
+.header span{
+	font-size: 16px;
+}
 h2{
 	font-size: 14px;
 	color: #999;
@@ -25,19 +28,32 @@ p{
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	background:url(../images/bg_line.png);
-	background-repeat:repeat-x;		/*背景图片在水平显示*/	
-	background-position-y:center;　　/*背景图片在纵向的最下方显示*/
 }
+
 .progress_bg_left{
 	width: 100%;
 	background-color: white;
 	height: 20px;
 }
-.progress_bg_right{
+.submit_bg{
 	width: 100%;
-	
-	height: 20px;
+	height: 1px;
+	background-color: #67c0ee;
+}
+.audit_bg{
+	height: 1px;
+	width: 100%;
+	background-color: #eee;
+}
+.finish_bg{
+	height: 1px;
+	width: 100%;
+		background-color: #eee;
+}
+.return_bg{
+	height: 1px;
+	width: 100%;
+		background-color: #eee;
 }
 .progress_pic_style img{
 	position: absolute;
@@ -48,6 +64,9 @@ p{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+.submit_order h2,.submit_order p{
+	color:#67c0ee;
 }
 .submit_order{
 	width: 100%;
