@@ -8,13 +8,16 @@ $(function(){
 			$(".address").html(userorder.address);
 			$(".ds_training_mode").html(userorder.note);
 			$(".ds_name").html(userorder.dsname);
+			alert(userorder.dstype);
+			alert(userorder.dstype+"/1");
+			alert(userorder.dstype"/");
 			$(".ds_type").html(userorder.dstype+"/"+userorder.models+"/"+traintime);
 			$(".description").html(userorder.description);
 			$(".order_number").html(userorder.ordernumber);
 			$(".order_time").html(userorder.paytime);
-			$(".ds_pay").html("¥"+orderprice+".00");
-			$(".ds_price").html("¥"+(orderprice-price)+".00");
-			$(".ds_coupon").html("¥"+price+".00");
+			$(".ds_pay").html("¥"+userorder.orderprice+".00");
+			$(".ds_price").html("¥"+(userorder.orderprice+obj.price)+".00");
+			$(".ds_coupon").html("¥"+obj.price+".00");
 
 			if (userorder.orderstatus=="1"||userorder.orderstatus=="2") {
 				var refund = "<div class='refund'>取消订单</div>";
@@ -25,6 +28,7 @@ $(function(){
 				if (userorder.orderstatus=="2") {
 					$(".submit_order p").css({"color":"#67c0ee"});
 					$(".material_audit p").css({"color":"#67c0ee"});
+					$("#cartoon2").attr('src',"images/alipay.png");
 					$(".hint").html("您的材料正在接受审核，24小时之内审核完成。");
 				}else{
 					$(".submit_order p").css({"color":"#67c0ee"});
