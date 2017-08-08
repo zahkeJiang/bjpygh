@@ -34,7 +34,16 @@ public class BondServlet extends HttpServlet{
         status = new Status();
         HttpSession session = request.getSession();
         Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
-        System.out.println(userMap);
+		System.out.println(userMap);
+		if(userMap == null){
+			status.setStatus(-1);
+			status.setMsg("请在微信端登录");
+			out.print(new Gson().toJson(status));
+			System.out.println(new Gson().toJson(status));
+			out.flush();
+			out.close();
+			return;
+		}
 		UserDao userDao = new UserDao();
 		String userid = userMap.get("id");
 		String phonenumber = request.getParameter("phonenumber");

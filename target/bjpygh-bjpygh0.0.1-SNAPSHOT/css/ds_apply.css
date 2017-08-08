@@ -89,7 +89,7 @@ span{
 .service h2{
 	font-weight: normal;
 }
-.ds_details{
+.ds_details,.description{
 	margin-left: 16px;
 }
 
@@ -114,7 +114,7 @@ span{
 	height: 24px;
 	border: 0px;
 	border-bottom: 1px solid #eee;
-		font-size: 12px;
+	font-size: 12px;
 	padding-left: 10px;
 }
 input::-webkit-input-placeholder { 
@@ -126,8 +126,9 @@ input::-webkit-input-placeholder {
 	width: 80%;
 	margin-left:10%;
 	margin-top: 10px;
-	height: 36px;
+	height: 40px;
 	border-radius: 5px;
+	border: 0;
 	background-color:#67c0ee;
 	color:#fff;
 	margin-bottom:15px;

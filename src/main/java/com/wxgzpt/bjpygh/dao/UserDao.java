@@ -159,5 +159,21 @@ public class UserDao {
 			}
 		}
 	}
+	//绑定用户，更新用户数据
+		public void changeUserInfo(Map<String,String> map){
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+				userMapper.changeUserInfo(map);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+		}
 	
 }

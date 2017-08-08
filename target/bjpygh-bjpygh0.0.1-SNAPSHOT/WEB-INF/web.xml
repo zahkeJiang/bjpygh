@@ -148,6 +148,7 @@
     <servlet-name>ScheduleServlet</servlet-name>
     <url-pattern>/schedule.action</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>ActivationServlet</servlet-name>
     <servlet-class>com.wxgzpt.bjpygh.servlet.ActivationServlet</servlet-class>
@@ -157,5 +158,21 @@
     <url-pattern>/activation.action</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ChangeUserServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.ChangeUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeUserServlet</servlet-name>
+    <url-pattern>/changeInfo.action</url-pattern>
+  </servlet-mapping>
   
+  <servlet>
+    <servlet-name>QueryPackageServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.QueryPackageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QueryPackageServlet</servlet-name>
+    <url-pattern>/queryPackage.action</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -103,7 +103,7 @@ function roll(num){
     }
 }
 $(function(){
-    $(".lottery_box").hidden();
+    $(".lottery_box").hide();
     $.post("queryCoupon.action",{},function(obj){
         if (obj.status == "0") {
             $(".lottery_box").show();

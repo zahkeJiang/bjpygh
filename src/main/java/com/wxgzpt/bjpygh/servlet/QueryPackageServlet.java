@@ -1,7 +1,5 @@
 package com.wxgzpt.bjpygh.servlet;
-/**
- * 获取所有驾校信息以及驾校套餐信息
- */
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
@@ -13,18 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsPackageDao;
-import com.wxgzpt.bjpygh.entity.DsInformation;
+import com.wxgzpt.bjpygh.entity.DsPackage;
 import com.wxgzpt.bjpygh.entity.Status;
 
 @SuppressWarnings("serial")
-public class SelectDsPackageServlet extends HttpServlet{
+public class QueryPackageServlet extends HttpServlet{
 
-	DsInformation dsInfo;
-	DsInfoDao dsInfoDao;
-	DsPackageDao dsPackageDao;
-	Gson gson;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -51,21 +44,18 @@ public class SelectDsPackageServlet extends HttpServlet{
 			return;
 		}
 		
-        String dsname = request.getParameter("dsname");
-        dsInfoDao = new DsInfoDao();
-        dsPackageDao = new DsPackageDao();
-        gson = new Gson();
-        if(dsname==null){
-        	
-        	status.setStatus(1);
-        	status.setDsplist(dsPackageDao.selectDsPackage(dsname));
-        	out.print(gson.toJson(status));
+        String packageid = request.getParameter("packageid");
+        DsPackageDao dsPackageDao = new DsPackageDao();
+        Gson gson = new Gson();
+        DsPackage dsPackage = dsPackageDao.selectDsPackageById(packageid);
+        if(dsPackage!=null){
+        	 status.setStatus(1);
+             status.setData(dsPackage);
         }else{
-        	 dsInfo = dsInfoDao.selectDsInfo(dsname);
-             dsInfo.setDspList(dsPackageDao.selectDsPackage(dsname));
-             out.print(gson.toJson(dsInfo));
+        	status.setStatus(0);
         }
-        System.out.println(gson.toJson(dsInfo));
+        out.print(gson.toJson(status));
+        System.out.println(gson.toJson(status));
         out.flush();
         out.close();
 	}

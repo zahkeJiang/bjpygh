@@ -2,7 +2,6 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,18 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONObject;
-
-import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.domain.AlipayTradeQueryModel;
-import com.alipay.api.request.AlipayTradeQueryRequest;
-import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.google.gson.Gson;
-import com.wxgzpt.bjpygh.config.AlipayConfig;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
+import com.wxgzpt.bjpygh.entity.DsInformation;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
 import com.wxgzpt.bjpygh.entity.UserCoupon;
@@ -32,7 +24,6 @@ public class QueryOrderServlet extends HttpServlet{
 	UserCouponDao userCouponDao;
 	DsOrderDao dsOrderDao;
 	UserCoupon userCoupon;
-	DsOrder dsOrder;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +43,7 @@ public class QueryOrderServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 		if(userMap == null){
-			status.setStatus(0);
+			status.setStatus(-1);
 			status.setMsg("请在微信端登录");
 			out.print(new Gson().toJson(status));
 			System.out.println(new Gson().toJson(status));
@@ -63,8 +54,10 @@ public class QueryOrderServlet extends HttpServlet{
 		
 			String userid = userMap.get("id");
 			dsOrderDao = new DsOrderDao();
+			DsInfoDao dsInfoDao = new DsInfoDao();
 			
-			dsOrder = dsOrderDao.getDsOrder(userid);
+			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+			
 			if(dsOrder==null){
 				status.setStatus(0);
 				out.print(gson.toJson(status));
@@ -73,10 +66,12 @@ public class QueryOrderServlet extends HttpServlet{
 				out.close();
 				return;
 			}
-			
+			DsInformation DsInfo = dsInfoDao.selectDsInfo(dsOrder.getDsname());
 			if(dsOrder.getOrderstatus()==1){
 				status.setStatus(1);
+				status.setImageurl(DsInfo.getDsimage());
 				status.setPrice(Integer.parseInt(dsOrder.getOrderprice()));
+				status.setOrderNumber(dsOrder.getOrdernumber());
 				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));
 			}else{

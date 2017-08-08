@@ -1,10 +1,14 @@
-/*获取userid*/
-var thisURL = document.URL;    
-var getval = thisURL.split('?')[1];
-var oldmobile = getval.split("=")[1];
-function  getuserId(){  
-  document.getElementById('oldmobile').innerText = oldmobile;
-}
-function change_mobile(){
-	location.href="change_mobile.html?oldmobile="+oldmobile;
-}
+var oldmobile = "";
+function ShowMessage() { 
+	var thisURL = document.URL;     
+	var getval = thisURL.split('?')[1];
+	oldmobile = getval.split("=")[1];
+} 
+window.onload=ShowMessage(); 
+
+$(function(){
+	$("#oldmobile").html(oldmobile);
+	$(".change_mobile").click(function(){
+		window.location.href="change_mobile.html?oldmobile="+oldmobile;
+	});
+});

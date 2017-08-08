@@ -22,15 +22,6 @@
 	background-color: white;
 	display: none;
 }
-.server_error{
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	background-color: white;
-	display: none;
-}
 .pay_information{
 	background-color: white;
 	border-radius: 5px;
@@ -73,6 +64,10 @@
 	font-size: 16px;
 	color: #67c0ee;
 	margin-bottom: 5px;
+	text-align: right;
+}
+.view_order a{
+	color: #67c0ee;
 	text-align: right;
 }
 .line{

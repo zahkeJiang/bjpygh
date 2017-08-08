@@ -44,17 +44,26 @@ function get_coupons(){
 			var obj = eval('(' + data + ')');
 			if (obj.status=="1") {
 				coupons_sum = obj.price;
-				$(".coupons span").html(coupons_sum+"元");
+				$(".coupons span").html(coupons_sum+"元&nbsp;&gt;");
 				$(".coupons span").css({"color":"red"});
 				select ="1";
 				$(".price").html(price-coupons_sum);
 			}else{
-				$(".coupons span").html("无可用优惠券");
+				$(".coupons span").html("无可用优惠券&nbsp;&gt;");
 				select ="0";
 				$(".price").html(price);
 			}
         }	
     });
+}
+//获取用户手机号
+function get_tel(){
+	$.post("personal.action",{},function(obj){
+		if (obj.status=="1") {
+			var user = obj.data;
+			$(".tel").html(user.phonenumber);
+		}
+	},"json");
 }
 $(function(){
 	
@@ -63,39 +72,30 @@ $(function(){
 	$(".ds_models").html(models);
 	$(".ds_price").html(price);
 	$(".traintime").html(traintime);
+	get_tel();
 	get_coupons();
 	//点击进入优惠券页面
 	$(".coupons").click(function(){
 		window.location.href="coupon.html";
-	})
-	//支付宝支付
+	});
+	//提交订单支付宝支付
 	$(".submit").click(function(){
 		//获取用户姓名、联系方式、性别、地址
 		realname = $("#real_name").val();
 		address = $("#address").val();
-		note = $("#note").val();
+		note = $("input[type='radio']:checked").val();
 		if ($("#real_name").val()=="") {
 			alert("请输入您的真实姓名");
 		}else if ($("#address").val() == "") {
 			alert("请输入您的地址");
 		}else {
-			$.ajax({
-        		type:"POST",
-        		url:"note.action",
-        		data:"realname="+realname+"&address="+address+"&note="+note,
-        		dataType:"text",
-        		success:function(data){
-        			var obj = eval('(' + data + ')');
-        			if (obj.status=="1") {
-        				window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
-        			}else{
-        				alert("用户已报名成功，请勿重复报名。");
-        			}
-        		},
-       			error:function(obj){
-            		alert(error);
+    		$.post("note.action",{"realname":realname,"address":address,"note":note},function(obj){
+    			if (obj.status=="1") {
+        			window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
+        		}else{
+        			alert("用户已报名成功，请勿重复报名。");
         		}
-    		});
+    		},"json");
 		}
 	});
 });

@@ -45,9 +45,8 @@ span{
 	align-items: center;
 	margin-left: 16px;
 	margin-right: 16px;
-
+	
 }
-
 .mobile{
 	height: 48px;
 	display:flex;
@@ -117,4 +116,7 @@ span{
 	margin-left: auto;
 	font-size: 0.875rem;
 	color: #8e8e8e;
+}
+.footer{
+	height: 16px;
 }

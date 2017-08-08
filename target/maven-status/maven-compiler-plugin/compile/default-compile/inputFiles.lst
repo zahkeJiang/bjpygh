@@ -15,6 +15,7 @@ D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\UserCouponDao.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\DsPayServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\mapper\DsPackageMapper.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\PersonalServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\QueryPackageServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\DsPackage.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\QueryCouponServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\DsOrderDao.java
@@ -23,6 +24,7 @@ D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\db\Main.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\GetUserIdServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\WxPayServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\BondServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\ChangeUserServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\utils\SqlSessionFactoryUtil.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\User.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\dao\DsInfoDao.java
