@@ -33,7 +33,6 @@ p{
 .progress_bg{
 	flex: 1;
 	height: 1px;
-	background-color: red;
 }
 .submit_bg{
 	flex: 1;
@@ -89,6 +88,22 @@ span{
 .hint_style{
 	padding: 8px 16px;
 	border-top: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.hint{
+	flex: 1;
+	margin-right: 16px;
+}
+.delivery{
+	color: white;
+	display: flex;align-items: center;justify-content: center;
+	border-radius: 5px;
+	background-color: #67c0ee;
+	height: 28px;
+	width: 64px;
+	display: none;
 }
 .order_style1{
 	background-color: white;
