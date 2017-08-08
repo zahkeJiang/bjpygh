@@ -1,6 +1,8 @@
 <%@page import="com.alipay.api.internal.util.AlipaySignature"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.Iterator"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="com.wxgzpt.bjpygh.config.*"%>
 <%@ page import="com.alipay.api.*"%>
@@ -8,6 +10,7 @@
 <%@ page import="com.wxgzpt.bjpygh.entity.DsOrder"%>
 <%@ page import="com.wxgzpt.bjpygh.dao.UserCouponDao"%>
 <%@ page import="com.wxgzpt.bjpygh.entity.UserCoupon"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%
 	//获取支付宝POST过来反馈信息
 	Map<String,String> params = new HashMap<String,String>();
@@ -68,7 +71,8 @@
 						String userid = dsOrderDao.getUserIdByOrderNum(out_trade_no);
 						DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 						dsOrder.setOrderstatus(1);
-						dsOrder.setPaytime(new Date());
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+						dsOrder.setPaytime(formatter.format(new Date()));
 						dsOrderDao.updateOrder(dsOrder);
 					}
 				

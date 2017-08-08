@@ -70,7 +70,7 @@ public class QueryOrderServlet extends HttpServlet{
 			if(dsOrder.getOrderstatus()==1){
 				status.setStatus(1);
 				status.setImageurl(DsInfo.getDsimage());
-				status.setPrice(Integer.parseInt(dsOrder.getOrderprice()));
+				status.setPrice(dsOrder.getOrderprice());
 				status.setOrderNumber(dsOrder.getOrdernumber());
 				out.print(gson.toJson(status));
 				System.out.println(gson.toJson(status));

@@ -8,10 +8,7 @@ $(function(){
 			$(".address").html(userorder.address);
 			$(".ds_training_mode").html(userorder.note);
 			$(".ds_name").html(userorder.dsname);
-			alert(userorder.dstype);
-			alert(userorder.dstype+"/1");
-			alert(userorder.dstype"/");
-			$(".ds_type").html(userorder.dstype+"/"+userorder.models+"/"+traintime);
+			$(".ds_type").html(userorder.dstype+"&frasl;"+userorder.models+"&frasl;"+userorder.traintime);
 			$(".description").html(userorder.description);
 			$(".order_number").html(userorder.ordernumber);
 			$(".order_time").html(userorder.paytime);

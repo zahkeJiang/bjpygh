@@ -15,7 +15,7 @@ public class DsOrder {
 	private int orderstatus;		//璁㈠崟鐘舵��
 	private String dstype;			//鐝瀷
 	private String dsname;			//椹炬牎鍚嶇О
-	private String orderprice;		//璁㈠崟浠锋牸
+	private int orderprice;		//璁㈠崟浠锋牸
 	private String traintime;		//璁粌鏃堕棿
 	private String models;			//杞﹀瀷
 	private String ordernumber;		//鍟嗘埛璁㈠崟鍙�
@@ -120,10 +120,11 @@ public class DsOrder {
 	public void setDsname(String dsname) {
 		this.dsname = dsname;
 	}
-	public String getOrderprice() {
+
+	public int getOrderprice() {
 		return orderprice;
 	}
-	public void setOrderprice(String orderprice) {
+	public void setOrderprice(int orderprice) {
 		this.orderprice = orderprice;
 	}
 	public String getTraintime() {

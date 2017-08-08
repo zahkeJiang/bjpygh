@@ -93,7 +93,7 @@ public class DsPayServlet extends HttpServlet{
             int milliseconds = c.get(Calendar.MILLISECOND);
             String out_trade_no ="PYGHDS" + year + month + date + hour + minute + second + milliseconds+userid;
          
-            String total_amount = ""+(dsPackage.getPrice()-couponprice);
+            int total_amount = dsPackage.getPrice()-couponprice;
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
@@ -140,7 +140,7 @@ public class DsPayServlet extends HttpServlet{
             AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
             model.setOutTradeNo(out_trade_no);
             model.setSubject(subject);
-            model.setTotalAmount(total_amount);
+            model.setTotalAmount(""+total_amount);
             model.setBody(body);
             model.setTimeoutExpress(timeout_express);
             model.setProductCode(product_code);
