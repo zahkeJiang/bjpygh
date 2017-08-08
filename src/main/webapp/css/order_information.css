@@ -26,7 +26,7 @@ p{
 	justify-content: space-between;
 }
 .progress_pic_style{
-	height: 60px;
+	height: 110px;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -40,7 +40,7 @@ p{
 .submit_bg{
 	flex: 1;
 	height: 1px;
-	background-color: #67c0ee;
+	background-color: #1afd9c;
 }
 .audit_bg{
 	height: 1px;
@@ -97,6 +97,7 @@ span{
 }
 .hint{
 	flex: 1;
+	height: 32px;
 	margin-right: 16px;
 }
 .delivery{
@@ -151,7 +152,7 @@ span{
 }
 .footer{
 	border-top: 1px solid #eee;
-	background-color: white;
+	/*background-color: white;*/
 	display: flex;
 	padding:10px 16px;
 	justify-content: center;

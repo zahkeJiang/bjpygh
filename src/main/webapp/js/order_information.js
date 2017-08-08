@@ -94,6 +94,7 @@ $(function(){
 						$(".delivery").css({"background-color":"#d2e9ff","display":"inline","text-align":"center","line-height":"28px"});
 					},'json');
 				});
+				$('delivery').unbind("click"); //移除点击事件
 				var result = "<div class='result'><p>您已报名完成。</p><p>欢迎您再次使用。</p><p>北京漂洋过海，一切因你而在！</p></div>";
 				$(".footer").html(result);
 			}else if (userorder.orderstatus=="4") {
