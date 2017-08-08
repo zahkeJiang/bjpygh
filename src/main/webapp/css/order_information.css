@@ -30,10 +30,10 @@ p{
 	justify-content: space-around;
 }
 
-.progress_bg_left{
+.progress_bg{
 	width: 100%;
-	background-color: white;
-	height: 20px;
+	height: 1px;
+	background-color: red;
 }
 .submit_bg{
 	width: 100%;
@@ -55,9 +55,7 @@ p{
 	width: 100%;
 		background-color: #eee;
 }
-.progress_pic_style img{
-	position: absolute;
-}
+
 .orderprogress{
 	padding: 0 16px;
 	padding-bottom: 10px;
@@ -131,11 +129,13 @@ span{
 }
 .ds_pay{
 	color: red;
+	font-size: 16px;
 }
 .footer{
+	border-top: 1px solid #eee;
 	background-color: white;
 	display: flex;
-		padding:10px 16px;
+	padding:10px 16px;
 	justify-content: center;
 	align-items: center;
 }
