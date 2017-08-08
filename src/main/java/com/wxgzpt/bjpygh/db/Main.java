@@ -1,8 +1,8 @@
 package com.wxgzpt.bjpygh.db;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Main {
 	

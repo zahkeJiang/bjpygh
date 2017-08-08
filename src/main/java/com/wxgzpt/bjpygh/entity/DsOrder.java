@@ -24,40 +24,41 @@ public class DsOrder {
 	private String note;			//澶囨敞
 	private int orderid;			//订单id
 	private String description;		//套餐描述
-	private Date paytime;			//付款时间
-	private Date submittime;		//提交审核材料通过时间
-	private Date signtime;		//报名完成时间
-	private Date gettime;			//得到材料时间
+	private String paytime;			//付款时间
+	private String submittime;		//提交审核材料通过时间
+	private String signtime;		//报名完成时间
+	private String gettime;			//得到材料时间
 	
-	public Date getSigntime() {
+	
+	public String getPaytime() {
+		return paytime;
+	}
+	public void setPaytime(String paytime) {
+		this.paytime = paytime;
+	}
+	public String getSubmittime() {
+		return submittime;
+	}
+	public void setSubmittime(String submittime) {
+		this.submittime = submittime;
+	}
+	public String getSigntime() {
 		return signtime;
 	}
-	public void setSigntime(Date signtime) {
+	public void setSigntime(String signtime) {
 		this.signtime = signtime;
+	}
+	public String getGettime() {
+		return gettime;
+	}
+	public void setGettime(String gettime) {
+		this.gettime = gettime;
 	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public Date getPaytime() {
-		return paytime;
-	}
-	public void setPaytime(Date paytime) {
-		this.paytime = paytime;
-	}
-	public Date getSubmittime() {
-		return submittime;
-	}
-	public void setSubmittime(Date submittime) {
-		this.submittime = submittime;
-	}
-	public Date getGettime() {
-		return gettime;
-	}
-	public void setGettime(Date gettime) {
-		this.gettime = gettime;
 	}
 	public int getOrderid() {
 		return orderid;

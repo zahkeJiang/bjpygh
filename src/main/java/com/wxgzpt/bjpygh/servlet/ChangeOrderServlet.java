@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -47,7 +48,8 @@ public class ChangeOrderServlet extends HttpServlet{
 		String userid = userMap.get("id");
 		DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 		dsOrder.setOrderstatus(4);
-		dsOrder.setGettime(new Date());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		dsOrder.setGettime(formatter.format(new Date()));
 		dsOrderDao.updateOrder(dsOrder);
 		status.setStatus(1);
 		out.print(new Gson().toJson(status));

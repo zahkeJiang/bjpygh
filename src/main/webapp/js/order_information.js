@@ -2,7 +2,7 @@
 $(function(){
 	$.post("schedule.action",{},function(obj){
 		if (obj.status=="1") {
-			var userorder = obj.dsOrder;
+			var userorder = obj.data;
 			$(".realname").html(userorder.realname);
 			$(".tel").html(userorder.phonenumber);
 			$(".address").html(userorder.address);

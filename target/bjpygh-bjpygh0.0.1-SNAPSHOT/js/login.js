@@ -51,33 +51,7 @@ function setCode(obj) {
         	var charIndex = Math.floor(Math.random() * 10);//向下取整0-10的随机数
         	code += selectChar[charIndex];
 		}
-//		alert("mobile="+mobile+" "+"tpl_value="+code);
-		/*var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function(){
-		    console.log("onreadystatechange: "+xhr.readyState);
-			if(xhr.readyState === 4){
-			 	// alert("数据接受:"+xhr.status);
-			 	if (xhr.status === 200) {
-			 		var result = xhr.responseText;
-			 		if (result!=null) {
-			 			result = JSON.parse(result);
-			 			if(result.status == 1){
-			 				alert("验证码发送成功");
-				 			settime(obj);
-			 			}else{
-			 				alert(result.msg);
-			 			}
-			 			
-			 		}else{
-			 			alert("请输入正确的手机号码!");
-			 		}
-			 	}
-			}
-		}
-		xhr.open( "POST", "sms.action");
-		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		var data="mobile="+mobile+"&tpl_id=37597"+"&tpl_value="+code;
-		xhr.send(data);// 发送HTTP请求*/
+		
 		$.post("sms.action",{"mobile":mobile,"tpl_id":37597,"tpl_value":code},function(obj){
 			if (obj.status=="1") {
 				alert("验证码发送成功");
@@ -97,28 +71,7 @@ function  bt(){
 	if (newnumber.test(number)) {
 		if (mobile!="" && mobile==number) {
 			if (code == newcode) {
-				/*var xhr = new XMLHttpRequest();
-		    	xhr.onreadystatechange = function(){
-		    		console.log("onreadystatechange: "+xhr.readyState);
-			 		if(xhr.readyState === 4){
-			 			// alert("数据接受:"+xhr.status);
-			 			if (xhr.status === 200) {
-			 				//解析json字符串
-			 				var obj = eval('(' + xhr.responseText + ')');//json是以字符串传过来，需要对其进行转成对象。
-//			 				alert(obj.status);
-			 				if (obj.status == 1) {
-			 					alert("绑定成功，即将跳转");
-			 					location.href="user.html";
-			 				}else{
-			 					alert("手机号已被注册");
-			 				}
-			 			}
-			 		}
-		    	}
-				xhr.open( "POST", "bond.action");
-				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				var data="phonenumber="+mobile;
-				xhr.send(data);// 发送HTTP请求*/
+				
 				$.post("bond.action",{"phonenumber":mobile},function(obj){
 					if (obj.status == 1) {
 			 			alert("绑定成功，即将跳转");

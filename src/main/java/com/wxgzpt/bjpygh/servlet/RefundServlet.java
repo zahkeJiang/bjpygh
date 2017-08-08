@@ -101,6 +101,7 @@ public class RefundServlet extends HttpServlet{
 						dsOrder.setOrderstatus(0);
 						dsOrderDao.updateOrder(dsOrder);
 						status.setStatus(1);
+						out.print(new Gson().toJson(status));
 					}else{
 						status.setStatus(0);
 						out.print(new Gson().toJson(status));

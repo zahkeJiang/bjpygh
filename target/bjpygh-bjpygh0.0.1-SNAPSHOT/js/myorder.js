@@ -39,8 +39,8 @@ function all_orders(){
             $.each(dsorder_list,function(commentIndex,comment){
                 dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p></div><div class='dsoder_container'><img src='"
-                                +"' height='48px' width='64px'><p class='dsorder_information'>"
-                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='order_price'>¥"
+                                +comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
             });
             $(".container").html(dsorderh_tml);
@@ -66,14 +66,14 @@ function orders_success(){
     	if (obj.status=="1") {
         	var dsorder_list = obj.dsOrder;
 //            alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
-        	if (dsorder_list[0].orderstatus=="1") {  
+        	if (dsorder_list[0].orderstatus=="1"||dsorder_list[0].orderstatus=="2") {  
         		var dsorderh_tml = "";
          		// $.each循环实现添加订单列表  
         		$.each(dsorder_list,function(commentIndex,comment){
             		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
             					+comment.dsname+"</p><p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消报名</p></div><div class='dsoder_container'><img src='"
-            					+"' height='48px' width='64px'><p class='dsorder_information'>"
-            					+comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='order_price'>¥"
+            					+comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+            					+comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
             					+comment.orderprice+"</span></div></div>";
         		});
         		$(".container").html(dsorderh_tml);
@@ -106,14 +106,14 @@ function orders_finished(){
         $(".container").empty();
         if (obj.status=="1") {
             var dsorder_list = obj.dsOrder;
-            if (dsorder_list[0].orderstatus=="4") {
+            if (dsorder_list[0].orderstatus=="4"||dsorder_list[0].orderstatus=="4") {
                 var dsorderh_tml = "";
                 // $.each循环实现添加订单列表  
                 $.each(dsorder_list,function(commentIndex,comment){
                     dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
                                     +comment.dsname+"</p><p class='orders_finish'>已完成</p></div><div class='dsoder_container'><img src='"
-                                    +"' height='48px' width='64px'><p class='dsorder_information'>"
-                                    +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款</span><span class='order_price'>¥"
+                                    +comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                    +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                     +comment.orderprice+"</span></div></div>";
                 });
                 $(".container").html(dsorderh_tml);
