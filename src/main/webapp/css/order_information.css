@@ -31,29 +31,29 @@ p{
 }
 
 .progress_bg{
-	width: 100%;
+	flex: 1;
 	height: 1px;
 	background-color: red;
 }
 .submit_bg{
-	width: 100%;
+	flex: 1;
 	height: 1px;
 	background-color: #67c0ee;
 }
 .audit_bg{
 	height: 1px;
-	width: 100%;
+	flex: 1;
 	background-color: #eee;
 }
 .finish_bg{
 	height: 1px;
-	width: 100%;
+	flex: 1;
 		background-color: #eee;
 }
 .return_bg{
 	height: 1px;
-	width: 100%;
-		background-color: #eee;
+	flex: 1;
+	background-color: #eee;
 }
 
 .orderprogress{
