@@ -1,4 +1,4 @@
-
+var orderschedule = '<div class="progress_pic"><div class="progress_pic_style"><div class="progress_bg"></div><img id="cartoon1" src="images/alipay.png" height="30px" width="30px"><div class="submit_bg"></div></div><div class="progress_pic_style"><div class="audit_bg"></div><img id="cartoon2" src="images/close.png" height="30px" width="30px"><div class="audit_bg"></div></div><div class="progress_pic_style"><div class="finish_bg"></div><img id="cartoon3" src="images/close.png" height="30px" width="30px"><div class="finish_bg"></div></div><div class="progress_pic_style"><div class="return_bg"></div><img id="cartoon4" src="images/close.png" height="30px" width="30px"><div class="progress_bg"></div></div></div><div class="orderprogress"><div class="submit_order"><div class="progress_style"><h2 >提交报名</h2><p class="submit_data">&nbsp;</p><p class="submit_time">&nbsp;</p></div></div><div class="material_audit"><div class="progress_style"><h2>材料审核</h2><p class="audit_data">&nbsp;</p><p class="audit_time">&nbsp;</p></div></div><div class="finish_order"><div class="progress_style"><h2>完成报名</h2><p class="finish_data">&nbsp;</p><p class="finish_time">&nbsp;</p></div></div><div class="material_return"><div class="progress_style"><h2>材料返还</h2><p class="return_data">&nbsp;</p><p class="return_time">&nbsp;</p></div></div></div>';
 $(function(){
 	$.post("schedule.action",{},function(obj){
 		if (obj.status=="1") {
@@ -17,9 +17,7 @@ $(function(){
 			$(".ds_coupon").html("¥&nbsp;"+obj.price+".00");
 			
 			if (userorder.orderstatus=="1"||userorder.orderstatus=="2") {
-				
-
-
+				$(".shedule").html(orderschedule);
 				var refund = "<div class='refund'>取消订单</div>";
 				$(".footer").html(refund);
 				$(".refund").click(function(){
@@ -53,6 +51,7 @@ $(function(){
 					$(".hint").html("您的订单已经提交成功。请准备好所需材料，24小时之内将会有工作人员与您联系上门提取，请保持电话畅通。");
 				}
 			}else if (userorder.orderstatus=="3") {
+				$(".shedule").html(orderschedule);
 				var submitTime = userorder.paytime;
 				var submit_data = submitTime.split(' ')[0];
 				var submit_time = submitTime.split(" ")[1];
@@ -88,7 +87,7 @@ $(function(){
 					$.post("changeStatus.action",{},function(obj){
 						$(".chedule_content").empty();
 						$(".chedule_content").html("交易完成");
-						$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#fff4c1"});
+						$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#eac100"});
 						$(".hint").empty();
 						$(".hint").html("材料已送达，欢迎您再次使用！");
 						$(".delivery").html("已送达");
@@ -100,7 +99,7 @@ $(function(){
 			}else if (userorder.orderstatus=="4") {
 				$(".chedule_content").empty();
 				$(".chedule_content").html("交易完成");
-				$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#fff4c1"});
+				$(".chedule_content").css({"height":"60px","padding":"0 16px","line-height":"60px","font-size":"20px","color":"white","background-color":"#eac100"});
 				$(".hint").empty();
 				$(".hint").html("材料已送达，欢迎您再次使用！");
 				$(".delivery").html("已送达");
