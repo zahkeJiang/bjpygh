@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
+import com.wxgzpt.bjpygh.entity.DsInformation;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.Status;
 
@@ -54,10 +56,15 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		List<DsOrder> dsOrder = dsOrderDao.getOrderById(userid);
 		System.out.println(dsOrder);
 		status.setStatus(0);
+		DsInfoDao dsInfoDao = new DsInfoDao();
+		
 		for(DsOrder dso:dsOrder){
 			status.setDsOrder(dsOrder);
+			
 			if(dso.getOrderstatus() != 0){
+				DsInformation DsInfo = dsInfoDao.selectDsInfo(dso.getDsname());
 				status.setStatus(1);
+				status.setImageurl(DsInfo.getDsimage());
 			}
 		}
 		out.print(gson.toJson(status));

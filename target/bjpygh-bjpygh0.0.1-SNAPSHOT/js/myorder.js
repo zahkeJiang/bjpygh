@@ -39,7 +39,7 @@ function all_orders(){
             $.each(dsorder_list,function(commentIndex,comment){
                 dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p></div><div class='dsoder_container'><img src='"
-                                +comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                +obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
             });
@@ -72,7 +72,7 @@ function orders_success(){
         		$.each(dsorder_list,function(commentIndex,comment){
             		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
             					+comment.dsname+"</p><p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消报名</p></div><div class='dsoder_container'><img src='"
-            					+comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+            					+obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
             					+comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
             					+comment.orderprice+"</span></div></div>";
         		});
@@ -112,7 +112,7 @@ function orders_finished(){
                 $.each(dsorder_list,function(commentIndex,comment){
                     dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
                                     +comment.dsname+"</p><p class='orders_finish'>已完成</p></div><div class='dsoder_container'><img src='"
-                                    +comment.images+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                    +obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                     +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                     +comment.orderprice+"</span></div></div>";
                 });
