@@ -25,23 +25,23 @@ ophone.onblur=function(){
 }
 /*发送验证码*/
 var countdown = 60;
-function settime(sms) { 
+function settime(obj) { 
     if (countdown == 0) { 
-    	sms.removeAttribute("disabled");    
-    	sms.value="免费获取验证码"; 
+    	obj.removeAttribute("disabled");    
+    	obj.value="免费获取验证码"; 
         countdown = 60; 
        	return;
     } else { 
-    	sms.setAttribute("disabled", true); 
-    	sms.value="重新发送(" + countdown + ")"; 
+    	obj.setAttribute("disabled", true); 
+    	obj.value="重新发送(" + countdown + ")"; 
         countdown--; 
    	} 
     setTimeout(function() { 
-    settime(sms) }
+    settime(obj) }
     ,1000) 
 }
 /*发送验证码*/
-function setCode(sms) { 				
+function setCode(obj) { 				
 	if (newnumber.test(number)) {
 		code = "";
     	mobile =document.getElementById("tel").value;//获取发送验证码时所输入的电话好号码
@@ -52,12 +52,11 @@ function setCode(sms) {
         	code += selectChar[charIndex];
 		}
 		
-		$.post("sms.action",{"mobile":mobile,"tpl_id":37597,"tpl_value":code},function(obj){
-			if (obj.status=="1") {
-				alert("验证码发送成功");
-				settime(sms);
+		$.post("sms.action",{"mobile":mobile,"tpl_id":37597,"tpl_value":code},function(object){
+			if (object.status=="1") {
+				settime(obj);
 			}else{
-			 	alert(obj.msg);
+			 	alert(object.msg);
 			}
 		},"json");
 	}else{

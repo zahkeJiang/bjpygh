@@ -24,12 +24,12 @@ import com.wxgzpt.bjpygh.entity.User;
 abstract class BaseServlet extends HttpServlet {
 
 	UserDao userDao;
-	@SuppressWarnings("null")
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
+		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
         System.out.println(userMap);
         userDao = new UserDao();
         Map<String, String> map = new HashMap<String, String>();
@@ -66,6 +66,7 @@ abstract class BaseServlet extends HttpServlet {
 		if(phonenumber != null){	//判断用户是否绑定
 			this.getExec(map,request, response);
 		}else{
+			
 			response.sendRedirect("/login.html");
 		}
         
