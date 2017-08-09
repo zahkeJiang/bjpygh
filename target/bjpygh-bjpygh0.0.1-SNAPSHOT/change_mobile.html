@@ -9,7 +9,7 @@
 </head>
 
 
-<body onload="getuserId()">
+<body>
 	<div class="information">
 		<div class="oldmobile">
 			原号码
@@ -27,14 +27,14 @@
 			<div class="code">
 				验证码
 				<input type="number" maxlength="4" placeholder="请输入验证码" name="getcode" id="getcode" />
-				<input type="button" id="setcode" value="发送验证码" onclick="setCode()">
+				<input type="button" id="setcode" value="发送验证码">
 			</div>
 		</div>	
-			<input  type="button" value="提交" id="btn" onclick="bt()" /> 
+			<input  type="button" value="提交" id="btn"/> 
 	</form>
 
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/isWeiXin.js"></script>
+	<!-- <script type="text/javascript" src="js/isWeiXin.js"></script> -->
 	<script type="text/javascript" src="js/change_mobile.js"></script>
 
 </body>

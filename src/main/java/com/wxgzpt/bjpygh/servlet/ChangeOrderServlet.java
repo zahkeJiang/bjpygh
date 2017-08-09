@@ -48,7 +48,7 @@ public class ChangeOrderServlet extends HttpServlet{
 		String userid = userMap.get("id");
 		DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 		dsOrder.setOrderstatus(4);
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		dsOrder.setGettime(formatter.format(new Date()));
 		dsOrderDao.updateOrder(dsOrder);
 		status.setStatus(1);

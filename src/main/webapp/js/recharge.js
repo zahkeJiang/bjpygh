@@ -76,7 +76,7 @@ function onBridgeReady(){
                  alert("支付失败："+res.err_msg);
             }
             }
-         }
+         
     ); 
 }
 

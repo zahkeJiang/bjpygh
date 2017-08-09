@@ -47,7 +47,7 @@ function all_orders(){
 
             // 为订单列表设置点击事件
              $(".dsoder_container").click(function(){    
-                alert("我点击了这个订单");
+                window.location.href="order_information.html";
             });
         }else{
             $(".container").html(container);
@@ -80,7 +80,7 @@ function orders_success(){
 
         		// 为订单列表设置点击事件
 		 		$(".dsoder_container").click(function(){    
-        			alert("我点击了这个订单");
+        			 window.location.href="order_information.html";
         		});
                 $(".refund").click(function(){
                 	var ordernumber = $(this).attr("obnumber");
@@ -120,7 +120,7 @@ function orders_finished(){
 
                 // 为订单列表设置点击事件
                 $(".dsoder_container").click(function(){    
-                    alert("我点击了这个订单");
+                     window.location.href="order_information.html";
                 });
             }else{
                 $(".container").html(container);

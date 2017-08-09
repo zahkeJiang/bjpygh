@@ -71,7 +71,7 @@
 						String userid = dsOrderDao.getUserIdByOrderNum(out_trade_no);
 						DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 						dsOrder.setOrderstatus(1);
-						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 						dsOrder.setPaytime(formatter.format(new Date()));
 						dsOrderDao.updateOrder(dsOrder);
 					}

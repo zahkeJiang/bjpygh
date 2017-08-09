@@ -73,7 +73,7 @@ public class RefundServlet extends HttpServlet{
 				out.close();
 				return;
 			}
-			String refund_amount=dsOrder.getOrderprice();
+			String refund_amount=""+dsOrder.getOrderprice();
 			/**********************/
 			 AlipayClient client = new DefaultAlipayClient(AlipayConfig.URL, AlipayConfig.APPID, AlipayConfig.RSA_PRIVATE_KEY, AlipayConfig.FORMAT, AlipayConfig.CHARSET, AlipayConfig.ALIPAY_PUBLIC_KEY,AlipayConfig.SIGNTYPE);
 			AlipayTradeRefundRequest alipay_request = new AlipayTradeRefundRequest();
