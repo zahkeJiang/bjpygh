@@ -66,7 +66,7 @@ abstract class BaseServlet extends HttpServlet {
 		if(phonenumber != null){	//判断用户是否绑定
 			this.getExec(map,request, response);
 		}else{
-			response.sendRedirect("login.html");
+			response.sendRedirect("/login.html");
 		}
         
       	
