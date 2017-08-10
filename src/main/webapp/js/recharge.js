@@ -42,8 +42,13 @@ function userload(){
 //付款
 function recharge(){
     $.post("wxpay.action",{"total_fee":total_fee},function(obj){
-        var payurl = obj.data;
-        determine();
+        if (obj.status=="1") {
+             var payurl = obj.data;
+             determine();
+        }else{
+            alert("系统繁忙，请稍后再试。");
+        }
+       
     });
 }
 //付款判断
