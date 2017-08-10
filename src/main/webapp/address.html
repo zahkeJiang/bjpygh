@@ -3,53 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>个人中心</title>
+    <title>地理位置</title>
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
     <!-- <link href="css/change_mobile.css" rel="stylesheet" type="text/css"/> -->
 </head>
  
 <body>  
-    
+    <div class="demo">我是地理位置</div>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+<!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script>   -->
+<script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>  
+
 <script>  
 $(function(){
-    alert("即将获取地理经纬度");
     getLocation();
 });
 function getLocation()  {  
     if (navigator.geolocation)  {  
-        navigator.geolocation.getCurrentPosition(showPosition,showError{
-            // 指示浏览器获取高精度的位置，默认为false
-            enableHighAccuracy: true,
-            // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
-            timeout: 5000,
-            // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
-            maximumAge: 3000
-        });  
-    }else{x.innerHTML="Geolocation is not supported by this browser.";}  
+        navigator.geolocation.getCurrentPosition(showPosition,showError);  
+    }else{
+        alert("浏览器不支持定位");
+    }  
 }  
   
   function showPosition(position)
 {
-    alert("纬度: " + position.coords.latitude + "经度: " + position.coords.longitude);    
+            //返回用户位置
+            //经度
+            var longitude =position.coords.longitude;
+            //纬度
+            var latitude = position.coords.latitude;
+            alert('经度'+longitude+'，纬度'+latitude);
+
+            //根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
+            var map = new BMap.Map("allmap");
+            var point = new BMap.Point(longitude,latitude);
+            var gc = new BMap.Geocoder();
+            gc.getLocation(point, function(rs){
+                var addComp = rs.addressComponents;
+                alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+            });   
+
 }
   
-function showError(error)  
-  {  
-  switch(error.code)   
-    {  
+function showError(error){  
+  switch(error.code){  
     case error.PERMISSION_DENIED:  //Permission denied - 用户不允许地理定位
-      x.innerHTML="User denied the request for Geolocation."  
+       alert("定位失败,用户拒绝请求地理定位"); 
       break;  
     case error.POSITION_UNAVAILABLE:  //Position unavailable - 无法获取当前位置
-      x.innerHTML="Location information is unavailable."  
+      alert("定位失败,位置信息是不可用"); 
       break;  
     case error.TIMEOUT:  //Timeout - 操作超时
-      x.innerHTML="The request to get user location timed out."  
+     alert("定位失败,请求获取用户位置超时"); 
       break;  
     case error.UNKNOWN_ERROR:  
-      x.innerHTML="An unknown error occurred."  
+      alert("定位失败,定位系统失效"); 
       break;  
     }  
   }  

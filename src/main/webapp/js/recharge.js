@@ -43,16 +43,15 @@ function userload(){
 function recharge(){
     $.post("wxpay.action",{"total_fee":total_fee},function(obj){
         if (obj.status=="1") {
-             var payurl = obj.data;
-             determine();
+             determine(obj);
         }else{
             alert("系统繁忙，请稍后再试。");
         }
        
-    });
+    },"json");
 }
 //付款判断
-function determine(){
+function determine(obj){
     if (typeof WeixinJSBridge == "undefined"){
         if( document.addEventListener ){
             document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -61,12 +60,13 @@ function determine(){
             document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
         }
     }else{
-        onBridgeReady();
+        onBridgeReady(obj);
     }
 }
 
  //微信支付
-function onBridgeReady(){
+function onBridgeReady(obj){
+    var payurl = obj.data;
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', {
             "appId":payurl.appid,     //公众号名称，由商户传入     
@@ -74,7 +74,7 @@ function onBridgeReady(){
             "nonceStr":payurl.nonce_str, //随机串     
             "package":"prepay_id="+payurl.prepay_id,     
             "signType":"MD5",         //微信签名方式：     
-            "paySign":payurl.sign //微信签名 
+            "paySign":payurl.paySign //微信签名 
         },
         function(res){     
             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
@@ -86,7 +86,7 @@ function onBridgeReady(){
             else{
                 alert("支付失败："+res.err_msg);
             }
-            }
+        }
          
     ); 
 }
