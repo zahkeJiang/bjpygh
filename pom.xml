@@ -81,6 +81,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <artifactId>wxpay-sdk</artifactId>
     <version>0.0.3</version>
 </dependency>
+	<dependency>
+		<groupId>org.webjars.bower</groupId>
+		<artifactId>md5</artifactId>
+		<version>0.3.0</version>
+	</dependency>
   </dependencies>
   
   <repositories>

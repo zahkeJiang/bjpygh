@@ -67,7 +67,7 @@ abstract class BaseServlet extends HttpServlet {
 			this.getExec(map,request, response);
 		}else{
 			
-			response.sendRedirect("/login.html");
+			response.sendRedirect("/login.html");      
 		}
         
       	

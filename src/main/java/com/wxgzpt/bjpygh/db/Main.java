@@ -152,16 +152,30 @@ public class Main {
 //		 float a = 123.2334f;;
 //		float  b   =  (float)(Math.round(a*100))/100;
 //		System.out.println(b);
-		 Calendar c = Calendar.getInstance();//閸欘垯浜掔�佃鐦℃稉顏呮闂傛潙鐓欓崡鏇犲娣囶喗鏁�
-         int year = c.get(Calendar.YEAR); 
-         int month = c.get(Calendar.MONTH); 
-         int date = c.get(Calendar.DATE); 
-         int hour = c.get(Calendar.HOUR_OF_DAY); 
-         int minute = c.get(Calendar.MINUTE); 
-         int second = c.get(Calendar.SECOND);
-         int milliseconds = c.get(Calendar.MILLISECOND);
-		Timestamp timestape = new Timestamp(year, month, date, hour, minute, second, milliseconds);
-		System.out.println(timestape);
+//		 Calendar c = Calendar.getInstance();//閸欘垯浜掔�佃鐦℃稉顏呮闂傛潙鐓欓崡鏇犲娣囶喗鏁�
+//         int year = c.get(Calendar.YEAR); 
+//         int month = c.get(Calendar.MONTH); 
+//         int date = c.get(Calendar.DATE); 
+//         int hour = c.get(Calendar.HOUR_OF_DAY); 
+//         int minute = c.get(Calendar.MINUTE); 
+//         int second = c.get(Calendar.SECOND);
+//         int milliseconds = c.get(Calendar.MILLISECOND);
+//		Timestamp timestape = new Timestamp(year, month, date, hour, minute, second, milliseconds);
+//		System.out.println(timestape);
+		
+		System.out.println(getRandomString(20));
+	
 	}
 
+	//获取指定位数的随机字符串(包含小写字母、大写字母、数字,0<length)
+	public static String getRandomString(int length) {
+	    //随机字符串的随机字符库
+	    String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	    StringBuffer sb = new StringBuffer();
+	    int len = KeyString.length();
+	    for (int i = 0; i < length; i++) {
+	       sb.append(KeyString.charAt((int) Math.round(Math.random() * (len - 1))));
+	    }
+	    return sb.toString();
+	}
 }

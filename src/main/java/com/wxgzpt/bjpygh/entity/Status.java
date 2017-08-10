@@ -15,6 +15,15 @@ public class Status {
 	private String msg;
 	private String imageurl;
 	private String out_trade_no;
+	private String timeStamp;
+	
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
 	public String getImageurl() {
 		return imageurl;
@@ -103,5 +112,6 @@ public class Status {
 	public String getOrderNumber() {
 		return out_trade_no;
 	}
+
 	
 }
