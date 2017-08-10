@@ -3,55 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>地理位置</title>
+    <title>地区</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
     <link href="css/address.css" rel="stylesheet" type="text/css"/>
 </head>
  
 <body>  
     <div class="main">
-        <div class="container">
+        <div class="content">
             <div class="location">
-                <p>定位地址</p>
+                <div class="instr">定位地址</div>
                 <div class="getlocation"></div>
             </div>
             <div class="allmap">
-                <p>全部</p>
+                <div class="instr">全部</div>
                 <div class="allcity">
                     <ul>
-                        <li>安徽<span>已选地区</span></li>
-                        <li>澳门<span>已选地区</span></li>
-                        <li>北京<span>已选地区</span></li>
-                        <li>重庆<span>已选地区</span></li>
-                        <li>福建<span>已选地区</span></li>
-                        <li>广东<span>已选地区</span></li>
-                        <li>甘肃<span>已选地区</span></li>
-                        <li>广西<span>已选地区</span></li>
-                        <li>贵州<span>已选地区</span></li>
-                        <li>河北<span>已选地区</span></li>
-                        <li>湖北<span>已选地区</span></li>
-                        <li>黑龙江<span>已选地区</span></li>
-                        <li>海南<span>已选地区</span></li>
-                        <li>湖南<span>已选地区</span></li>
-                        <li>吉林<span>已选地区</span></li>
-                        <li>江苏<span>已选地区</span></li>
-                        <li>江西<span>已选地区</span></li>
-                        <li>辽宁<span>已选地区</span></li>
-                        <li>内蒙古<span>已选地区</span></li>
-                        <li>宁夏<span>已选地区</span></li>
-                        <li>青海<span>已选地区</span></li>
-                        <li>四川<span>已选地区</span></li>
-                        <li>山东<span>已选地区</span></li>
-                        <li>上海<span>已选地区</span></li>
-                        <li>陕西<span>已选地区</span></li>
-                        <li>山西<span>已选地区</span></li>
-                        <li>天津<span>已选地区</span></li>
-                        <li>台湾<span>已选地区</span></li>
-                        <li>西藏<span>已选地区</span></li>
-                        <li>香港<span>已选地区</span></li>
-                        <li>新疆<span>已选地区</span></li>
-                        <li>云南<span>已选地区</span></li>
-                        <li>浙江<span>已选地区</span></li>
+                        <li>
+                            <span city="安徽">安徽</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="澳门">澳门</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="北京">北京</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="重庆">重庆</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="福建">福建</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="广东">广东</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="甘肃">甘肃</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="广西">广西</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="贵州">贵州</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="河北">河北</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="湖北">湖北</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="黑龙江">黑龙江</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="海南">海南</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="河南">河南</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="湖南">湖南</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="吉林">吉林</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="江苏">江苏</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="辽宁">辽宁</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="内蒙古">内蒙古</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="宁夏">宁夏</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="青海">青海</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="四川">四川</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="山东">山东</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="上海">上海</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="陕西">陕西</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="山西">山西</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="天津">天津</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="台湾">台湾</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="西藏">西藏</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="香港">香港</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="新疆">新疆</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="云南">云南</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span city="浙江">浙江</span>
+                            <span class="center">
+                                <span class="region">已选地区</span>
+                                <span class="glyphicon glyphicon-menu-right"></span>
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -62,6 +261,7 @@
 
 <!-- <script type="text/javascript" src="js/isWeiXin.js"></script> -->
 <script type="text/javascript" src="js/address.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>  
 </body>  
 </html>  

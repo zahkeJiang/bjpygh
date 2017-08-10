@@ -1,10 +1,12 @@
+
 .getlocation{
 	background-color: white;
 	height: 40px;
 	padding: 0 16px;
-	line-height: 40px;
+	display: flex;
+	align-items: center;
 }
-p{
+.instr{
 	font-size: 14px;
 	color: #999;
 	padding:20px 16px 5px 16px;
@@ -15,14 +17,22 @@ p{
 	margin-bottom: 20px;
 }
 .allcity ul li{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	height: 40px;
 	border-bottom: 1px solid #efefef;
 	line-height: 40px;
-	list-style-type:none
+	list-style-type:none;
 }
-span{
-	float: right;
-	font-size:14px;
+.glyphicon{
+	color: #999;
+}
+.region{
 	color: #999;
 	display: none;
+}
+.center{
+	display: flex;
+	align-items: center;
 }

@@ -1,5 +1,9 @@
 $(function(){
     getLocation();
+    $(".allcity li").click(function(){
+      var city =  $(this).children().attr("city");
+      alert(city);
+    })
 });
 function getLocation()  {  
     if (navigator.geolocation)  {  //浏览器支持geolocation
@@ -16,14 +20,14 @@ function getLocation()  {
    var longitude =position.coords.longitude;
   //纬度
   var latitude = position.coords.latitude;
-  alert('经度'+longitude+'，纬度'+latitude);
+  // alert('经度'+longitude+'，纬度'+latitude);
   //根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
-  var map = new BMap.Map("allmap");
+  var map = new BMap.Map("allmap");// 创建地图实例
   var point = new BMap.Point(longitude,latitude);
   var gc = new BMap.Geocoder();
   gc.getLocation(point, function(rs){
-    var addComp = rs.addressComponents;
-    var location = "<img src='images/address.png' width='20px' height='20px'>"+"&nbsp;"+addComp.country+"&nbsp;"+addComp.province + "&nbsp;" + addComp.city+"&nbsp;"+addComp.district;
+    var addComp = rs.addressComponents;//地址服务类
+    var location = "<img src='images/address.png' width='20px' height='20px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province + "&nbsp;" + addComp.city;
     $(".getlocation").html(location);
   });   
 
