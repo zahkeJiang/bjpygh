@@ -31,7 +31,7 @@ $(function(){
 	  	//跳转到更换学校页面
 	$(".city").click(function(){
 		var city = $("#city").html();
-		alert("正在建设中city:"+city);
+		window.location.href="address.html";   
 	});
   	 //跳转到性别页面
 	$(".sex").click(function(){
