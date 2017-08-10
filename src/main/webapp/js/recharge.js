@@ -2,27 +2,27 @@ var total_fee = "";
 $(function(){
     userload();
     $(".amount_type_01").click(function(){
-        total_fee = 0.01;
+        total_fee = 1;
         recharge();
     });
     $(".amount_type_02").click(function(){
-        total_fee = 0.02;
+        total_fee = 2;
         recharge();
     });
     $(".amount_type_03").click(function(){
-        total_fee = 0.03;
+        total_fee = 3;
         recharge();
     });
     $(".amount_type_04").click(function(){
-        total_fee = 0.04;
+        total_fee = 4;
         recharge();
     });
     $(".amount_type_05").click(function(){
-        total_fee = 0.05;
+        total_fee = 5;
         recharge();
     });
     $(".amount_type_06").click(function(){
-        total_fee = 0.06;
+        total_fee = 6;
         recharge();
     });
 });
@@ -42,8 +42,13 @@ function userload(){
 //付款
 function recharge(){
     $.post("wxpay.action",{"total_fee":total_fee},function(obj){
-        var payurl = obj.data;
-        determine();
+        if (obj.status=="1") {
+             var payurl = obj.data;
+             determine();
+        }else{
+            alert("系统繁忙，请稍后再试。");
+        }
+       
     });
 }
 //付款判断
