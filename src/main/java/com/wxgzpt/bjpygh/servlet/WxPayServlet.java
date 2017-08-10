@@ -99,9 +99,19 @@ public class WxPayServlet extends HttpServlet{
 
         try {
             Map<String, String> resp = wxpay.unifiedOrder(data);
-            status.setStatus(1);
-            status.setTimeStamp(""+new Date().getTime());
-            status.setData(resp);
+            if(resp.get("return_code").equals("SUCCESS")){
+            	status.setStatus(1);
+            	String timeStamp = ""+(new Date().getTime())/1000;
+                status.setTimeStamp(timeStamp);
+                String prepay_id = "prepay_id="+resp.get("prepay_id");
+                String sA="appId="+appid+"&nonceStr="+getRandomString(32)+"&package="+prepay_id+"&timeStamp="+timeStamp+"&signType=MD5";
+                String sSignTemp=sA+"&key="+key; //注：key为商户平台设置的密钥key
+                String paySign=MD5.string2MD5(sSignTemp); //注：MD5签名方式
+                
+                status.setPaySign(paySign);
+                status.setData(resp);
+            }
+            
             System.out.println(new Gson().toJson(status));
             out.print(new Gson().toJson(status));
             out.flush();

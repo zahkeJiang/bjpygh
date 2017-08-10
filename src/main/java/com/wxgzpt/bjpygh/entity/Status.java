@@ -16,7 +16,17 @@ public class Status {
 	private String imageurl;
 	private String out_trade_no;
 	private String timeStamp;
+	private String paySign;
 	
+	
+	public String getPaySign() {
+		return paySign;
+	}
+
+	public void setPaySign(String paySign) {
+		this.paySign = paySign;
+	}
+
 	public String getTimeStamp() {
 		return timeStamp;
 	}
