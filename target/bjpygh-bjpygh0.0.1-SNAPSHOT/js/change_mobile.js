@@ -14,16 +14,13 @@ var mobile = "";
 var code = "";
 $(function(){
 	$("#oldmobile").html(oldmobile);
-	$("#setcode").click(function(){
-		setCode();
-	});
 	$("#btn").click(function(){
 		bt();
 	});
 });
 
 /*发送验证码*/
-function setCode() { 
+function setCode(obj) { 
 
 	mobile =$("#tel").val();//获取发送验证码时所输入的电话好号码	
 	if (newnumber.test(mobile)) {
@@ -35,14 +32,14 @@ function setCode() {
         	var charIndex = Math.floor(Math.random() * 10);//向下取整0-10的随机数
         	code += selectChar[charIndex];
 		}
-		var obj =1;
-		settime(obj);
-		$.post("sms.action",{"mobile":mobile,"tpl_id":37597,"tpl_value":code},function(obj){
-			if (obj.status=="1") {
+		
+		
+		$.post("sms.action",{"mobile":mobile,"tpl_id":37597,"tpl_value":code},function(object){
+			if (object.status=="1") {
 				alert("验证码发送成功");
 				settime(obj);
 			}else{
-			 	alert(obj.msg);
+			 	alert(object.msg);
 			}
 		},"json");
 	}else{
