@@ -86,6 +86,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<artifactId>md5</artifactId>
 		<version>0.3.0</version>
 	</dependency>
+	<dependency>
+		<groupId>org.dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>2.0.0</version>
+	</dependency>
   </dependencies>
   
   <repositories>

@@ -43,7 +43,6 @@ function userload(){
 function recharge(){
     $.post("wxpay.action",{"total_fee":total_fee},function(obj){
         if (obj.status=="1") {
-             
              determine(obj);
         }else{
             alert("系统繁忙，请稍后再试。");
@@ -67,7 +66,7 @@ function determine(obj){
 
  //微信支付
 function onBridgeReady(obj){
-	var payurl = obj.data;
+    var payurl = obj.data;
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', {
             "appId":payurl.appid,     //公众号名称，由商户传入     
@@ -87,7 +86,7 @@ function onBridgeReady(obj){
             else{
                 alert("支付失败："+res.err_msg);
             }
-            }
+        }
          
     ); 
 }

@@ -104,10 +104,9 @@ public class WxPayServlet extends HttpServlet{
             	String timeStamp = ""+(new Date().getTime())/1000;
                 status.setTimeStamp(timeStamp);
                 String prepay_id = "prepay_id="+resp.get("prepay_id");
-                String sA="appId="+appid+"&nonceStr="+getRandomString(32)+"&package="+prepay_id+"&timeStamp="+timeStamp+"&signType=MD5";
+                String sA="appId="+appid+"&nonceStr="+resp.get("nonce_str")+"&package="+prepay_id+"&signType=MD5"+"&timeStamp="+timeStamp;
                 String sSignTemp=sA+"&key="+key; //注：key为商户平台设置的密钥key
                 String paySign=MD5.string2MD5(sSignTemp); //注：MD5签名方式
-                
                 status.setPaySign(paySign);
                 status.setData(resp);
             }
@@ -131,6 +130,6 @@ public class WxPayServlet extends HttpServlet{
 		       sb.append(KeyString.charAt((int) Math.round(Math.random() * (len - 1))));
 		    }
 		    return sb.toString();
-		}
-	
+		} 
+		
 }
