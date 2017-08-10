@@ -8,9 +8,9 @@ public class Lottery {
 		s = Math.random();
 			if(s<=0.95){
 			 price = 200;
-		 }else if(s<=0.965){
+		 }else if(s<=0.98){
 			 price = 300;
-		 }else if(s<=0.975){
+		 }else if(s<=0.99){
 			 price = 400;
 		 }else if(s<=0.995){
 			 price = 500;

@@ -10,7 +10,13 @@ public class Main {
 		XMLToMap x= new XMLToMap();
 		Map<String, String> map = x.getXML(text);
 		System.out.println(map);
-		
+		int sum = 0;
+		Lottery l = new Lottery();
+		for(int i=0;i<10000;i++){
+			int price = l.getPrice();
+			sum+=price;
+		}
+		System.out.println("10000个="+sum);
 	} 
 	
 }

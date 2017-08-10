@@ -2,7 +2,6 @@ package com.wxgzpt.bjpygh.servlet;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,13 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.db.XMLToMap;
-import com.wxgzpt.bjpygh.entity.Status;
-import com.wxgzpt.bjpygh.entity.User;
 
 @SuppressWarnings("serial")
 public class NotifyServlet extends HttpServlet{
@@ -33,21 +28,6 @@ public class NotifyServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-        Status status = new Status();
-		HttpSession session = request.getSession();
-        Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
-		if(userMap == null){
-			status.setStatus(-1);
-			status.setMsg("请在微信端登录");
-			out.print(new Gson().toJson(status));
-			System.out.println(new Gson().toJson(status));
-			out.flush();
-			out.close();
-			return;
-		}
-		
-		String userid = userMap.get("id");
 		
         String inputLine;
         String notityXml = "";
@@ -62,8 +42,10 @@ public class NotifyServlet extends HttpServlet{
         }
         XMLToMap x= new XMLToMap();
 		Map<String, String> map = x.getXML(notityXml);
+		System.out.println(map);
 		if(map.get("result_code").equals("SUCCESS")){
 			UserDao userDao = new UserDao();
+			String userid = userDao.getUserIdByOpenid(map.get("openid"));
 			String total_fee = map.get("total_fee");
 			Map<String, String> uMap = new HashMap<String, String>();
 			uMap.put("userid", userid);
@@ -96,9 +78,9 @@ public class NotifyServlet extends HttpServlet{
 					
 				break;
 			}
+		}else{
+			System.out.println("result_code:fail");
 		}
-        out.flush();
-        out.close();
 	}
 	
 }
