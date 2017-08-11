@@ -1,15 +1,23 @@
 $(function(){
-    getLocation();
+
+    getLocation();//获取当前的经纬度对应的国家，省份以及城市
     $(".allcity li").click(function(){
-      var city =  $(this).children().attr("city");
-      alert(city);
-    })
+      var province =  $(this).children().attr("province");
+      var num =  $(this).children().attr("city");
+      var provinceurl="citylist.html?province="+province+"&num="+num;   
+      window.location.assign(encodeURI(provinceurl));
+    });
 });
+
+
+
+
+//判断浏览器是否支持定位
 function getLocation()  {  
     if (navigator.geolocation)  {  //浏览器支持geolocation
         navigator.geolocation.getCurrentPosition(showPosition,showError);  
     }else{
-        alert("浏览器不支持定位");
+        alert("未知错误");
     }  
 }  
   
@@ -36,16 +44,16 @@ function getLocation()  {
 function showError(error){  
   switch(error.code){  
     case error.PERMISSION_DENIED:  //Permission denied - 用户不允许地理定位
-       alert("定位失败,用户拒绝请求地理定位"); 
+       alert("您未授权地理定位"); 
       break;  
     case error.POSITION_UNAVAILABLE:  //Position unavailable - 无法获取当前位置
-      alert("定位失败,位置信息是不可用"); 
+      alert("当前位置信息不可用"); 
       break;  
     case error.TIMEOUT:  //Timeout - 操作超时
-     alert("定位失败,请求获取用户位置超时"); 
+     alert("请求超时"); 
       break;  
     case error.UNKNOWN_ERROR:  
-      alert("定位失败,定位系统失效"); 
+      alert("未知错误"); 
       break;  
     }  
   }  

@@ -20,7 +20,6 @@ $(function(){
         $(".container").empty();
         var html = "";
         if(obj.status=="1"){
-            //alert("解析成功，staus="+obj.status);
             var ds_list = obj.dspInfolist;
             // $.each循环实现添加  
             $.each(ds_list,function(commentIndex,comment){
