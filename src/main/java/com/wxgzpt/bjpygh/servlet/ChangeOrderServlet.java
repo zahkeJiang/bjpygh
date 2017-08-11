@@ -45,8 +45,9 @@ public class ChangeOrderServlet extends HttpServlet{
 			out.close();
 			return;
 		}
-		String userid = userMap.get("id");
-		DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+		String out_trade_no = new String(request.getParameter("ordernumber").getBytes("ISO-8859-1"),"UTF-8");
+//		String userid = userMap.get("id");
+		DsOrder dsOrder = dsOrderDao.getDsOrderByNumber(out_trade_no);
 		dsOrder.setOrderstatus(4);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		dsOrder.setGettime(formatter.format(new Date()));

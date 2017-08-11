@@ -9,8 +9,10 @@ public interface DsOrderMapper {
 
 	public List<DsOrder> getOrderById(String userid);
 	public DsOrder getDsOrder(String userid);
+	public DsOrder getDsOrderByNumber(String ordernumber);
 	public void insertOrder(DsOrder dsorder);
 	public void updateOrder(DsOrder dsorder);
+	public void updateOrderByStatus(DsOrder dsorder);
 	public void changeStatus(Map<String, String> map);
 	public void changeStatusByNum(Map<String, String> map);
 	public String getUserIdByOrderNum(String ordernumber);

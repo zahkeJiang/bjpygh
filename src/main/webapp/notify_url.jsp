@@ -68,8 +68,7 @@
 					//如果有做过处理，不执行商户的业务程序
 					if(request.getParameter("gmt_refund")==null){
 						DsOrderDao dsOrderDao = new DsOrderDao();
-						String userid = dsOrderDao.getUserIdByOrderNum(out_trade_no);
-						DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+						DsOrder dsOrder = dsOrderDao.getDsOrderByNumber(out_trade_no);
 						dsOrder.setOrderstatus(1);
 						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 						dsOrder.setPaytime(formatter.format(new Date()));

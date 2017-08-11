@@ -54,6 +54,7 @@ public class ChangeUserServlet extends HttpServlet{
 		String nickname = request.getParameter("nickname");
 		String school = request.getParameter("school");
 		String city = request.getParameter("city");
+		String province = request.getParameter("province");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		if(sex!=null){
@@ -75,6 +76,11 @@ public class ChangeUserServlet extends HttpServlet{
 			map.put("city", city);
 		}else{
 			map.put("city", user.getCity());
+		}
+		if(city!=null){
+			map.put("province", city);
+		}else{
+			map.put("province", user.getProvince());
 		}	
 		
 		userDao.changeUserInfo(map);

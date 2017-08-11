@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -56,15 +57,15 @@ public class RefundServlet extends HttpServlet{
 		
 		DsOrderDao dsOrderDao = new DsOrderDao();
 		
-			String userid = userMap.get("id");
+//			String userid = userMap.get("id");
 			
-//			String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+			String out_trade_no = new String(request.getParameter("ordernumber").getBytes("ISO-8859-1"),"UTF-8");
 			
 			
 			
 			String refund_reason=new String(request.getParameter("WIDrefund_reason").getBytes("ISO-8859-1"),"UTF-8");
 			
-			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+			DsOrder dsOrder = dsOrderDao.getDsOrderByNumber(out_trade_no);
 			
 			if(dsOrder.getOrderstatus() == 3){
 				status.setStatus(0);
@@ -79,7 +80,7 @@ public class RefundServlet extends HttpServlet{
 			AlipayTradeRefundRequest alipay_request = new AlipayTradeRefundRequest();
 			
 			AlipayTradeRefundModel model=new AlipayTradeRefundModel();
-			model.setOutTradeNo(dsOrder.getOrdernumber());
+			model.setOutTradeNo(out_trade_no);
 			model.setTradeNo("");
 			model.setRefundAmount(""+(float)(Math.round((Float.parseFloat(refund_amount)*0.994)*100))/100);
 			model.setRefundReason(refund_reason);
@@ -98,7 +99,9 @@ public class RefundServlet extends HttpServlet{
 					if(obj.getString("fund_change").equals("Y")){
 						
 						//改变订单状态
-						dsOrder.setOrderstatus(0);
+						dsOrder.setOrderstatus(5);
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						dsOrder.setRefundtime(formatter.format(new Date()));
 						dsOrderDao.updateOrder(dsOrder);
 						status.setStatus(1);
 						out.print(new Gson().toJson(status));
