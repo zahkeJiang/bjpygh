@@ -60,8 +60,8 @@
 		</update>
 		
 		<insert id="insertUser" parameterType="user">
-			insert into user_info (city, openid, country, headimageurl, nickname, province, sex) 
-			values(#{city},#{openid}, #{country}, #{headimageurl}, #{nickname}, #{province}, #{sex})
+			insert into user_info (city, openid, country, headimageurl, nickname, province, sex, imageurl) 
+			values(#{city},#{openid}, #{country}, #{headimageurl}, #{nickname}, #{province}, #{sex}, #{imageurl})
 		</insert>
 		
 	</mapper>

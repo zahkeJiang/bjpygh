@@ -47,7 +47,7 @@
 		</update>
 		
 		<update id="changeUserPoints" parameterType="map">
-			update user_info set member_points=#{memberpoints} where user_id=#{userid}
+			update user_info set member_points=#{memberpoints}, integral=#{integral} where user_id=#{userid}
 		</update>
 		
 		<update id="changeUserInfo" parameterType="map">
