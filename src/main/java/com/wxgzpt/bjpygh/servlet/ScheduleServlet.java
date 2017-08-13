@@ -23,7 +23,7 @@ public class ScheduleServlet extends BaseServlet{
 	@Override
 	void getExec(Map<String, String> map, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/schedule.html");
+		response.sendRedirect("/myorder.html");
 	}
 
 	@Override

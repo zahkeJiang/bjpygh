@@ -57,9 +57,9 @@
 		
 		<insert id="insertOrder" parameterType="dsorder">
 			insert into ds_order (user_id, phone_number, order_status, ds_type, ds_name,
-			 order_price, train_time, models, order_number, address, real_name, note, description) 
+			 order_price, train_time, models, order_number, address, real_name, note, description, imageurl) 
 			values(#{userid},#{phonenumber}, #{orderstatus}, #{dstype}, #{dsname}, #{orderprice},
-			 #{traintime}, #{models}, #{ordernumber}, #{address}, #{realname}, #{note}, #{description})
+			 #{traintime}, #{models}, #{ordernumber}, #{address}, #{realname}, #{note}, #{description}, #{imageurl})
 		</insert>
 		<update id="updateOrder" parameterType="dsorder">
 			update ds_order set phone_number=#{phonenumber},order_status=#{orderstatus},
