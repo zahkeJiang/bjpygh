@@ -64,7 +64,7 @@ function all_orders(){
                 window.location.href="order_information.html?ordernumber="+allordernumber1;
             });
             $(".refund").click(function(){
-                var allordernumber2 = $(this).parents().attr("obnumber");
+                var allordernumber2 = $(this).parents().parents().attr("obnumber");
                 window.location.href="ds_refund.html?ordernumber="+allordernumber2;
             });
         }else{
