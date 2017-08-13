@@ -108,6 +108,26 @@ public class UserDao {
 	}
 	
 	//通过手机号获取用户信息
+		public User getUserByOpenid(String openid){
+			User user = null;
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+				user = userMapper.getUserByOpenid(openid);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+			return user;
+		}
+	
+	//通过手机号获取用户信息
 	public String getUserIdByPN(String phonenumber){
 		String userid = null;
 		try {

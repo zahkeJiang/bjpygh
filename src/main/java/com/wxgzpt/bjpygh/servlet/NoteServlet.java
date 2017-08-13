@@ -57,7 +57,7 @@ public class NoteServlet extends HttpServlet{
             String address = request.getParameter("address");
             String note = request.getParameter("note");
             dsOrder = dsOrderDao.getDsOrder(userid);
-            if(dsOrder!=null&&dsOrder.getOrderstatus()!=0){
+            if(dsOrder!=null&&dsOrder.getOrderstatus()!=0&&dsOrder.getOrderstatus()!=5){
             	status.setStatus(0);
                 out.print(gson.toJson(status));
                 System.out.println(gson.toJson(status));

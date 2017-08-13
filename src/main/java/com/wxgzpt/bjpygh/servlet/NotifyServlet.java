@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.db.XMLToMap;
+import com.wxgzpt.bjpygh.entity.User;
 
 @SuppressWarnings("serial")
 public class NotifyServlet extends HttpServlet{
@@ -45,33 +46,39 @@ public class NotifyServlet extends HttpServlet{
 		System.out.println(map);
 		if(map.get("result_code").equals("SUCCESS")){
 			UserDao userDao = new UserDao();
-			String userid = userDao.getUserIdByOpenid(map.get("openid"));
+			User user = userDao.getUserByOpenid(map.get("openid"));
 			String total_fee = map.get("total_fee");
 			Map<String, String> uMap = new HashMap<String, String>();
-			uMap.put("userid", userid);
+			uMap.put("userid", ""+user.getUserid());
 			switch(total_fee){
 			case "1":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+5)+"");
+				uMap.put("integral", (user.getIntegral()+5)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			case "2":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+10)+"");
+				uMap.put("integral", (user.getIntegral()+10)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			case "3":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+15)+"");
+				uMap.put("integral", (user.getIntegral()+15)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			case "4":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+20)+"");
+				uMap.put("integral", (user.getIntegral()+20)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			case "5":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+50)+"");
+				uMap.put("integral", (user.getIntegral()+50)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			case "6":
-				uMap.put("memberpoints", "100");
+				uMap.put("memberpoints", (user.getMemberpoints()+100)+"");
+				uMap.put("integral", (user.getIntegral()+100)+"");
 				userDao.changeUserPoints(uMap);
 				break;
 			default:

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
@@ -46,11 +47,12 @@ public class ScheduleServlet extends BaseServlet{
 		}
 		
 			String userid = userMap.get("id");	
+			String ordernumber = request.getParameter("ordernumber");
 			DsOrderDao dsOrderDao = new DsOrderDao();
+			DsOrder dsOrder = dsOrderDao.getDsOrderByNumber(ordernumber);
 			Gson gson = new Gson();
 			UserCouponDao userCouponDao = new UserCouponDao();
 			UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 			status.setData(dsOrder);
 			status.setStatus(1);
 			status.setPrice(userCoupon.getCouponprice());

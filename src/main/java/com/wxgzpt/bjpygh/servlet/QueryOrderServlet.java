@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -56,7 +57,7 @@ public class QueryOrderServlet extends HttpServlet{
 			dsOrderDao = new DsOrderDao();
 			DsInfoDao dsInfoDao = new DsInfoDao();
 			
-			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
+			List<DsOrder> dsOrder = dsOrderDao.getOrderById(userid);
 			
 			if(dsOrder==null){
 				status.setStatus(0);
@@ -66,19 +67,25 @@ public class QueryOrderServlet extends HttpServlet{
 				out.close();
 				return;
 			}
-			DsInformation DsInfo = dsInfoDao.selectDsInfo(dsOrder.getDsname());
-			if(dsOrder.getOrderstatus()==1){
-				status.setStatus(1);
-				status.setImageurl(DsInfo.getDsimage());
-				status.setPrice(dsOrder.getOrderprice());
-				status.setOrderNumber(dsOrder.getOrdernumber());
-				out.print(gson.toJson(status));
-				System.out.println(gson.toJson(status));
-			}else{
-				status.setStatus(0);
-				out.print(gson.toJson(status));
-				System.out.println(gson.toJson(status));
-			}	 
+			for (DsOrder dso:dsOrder){
+				DsInformation DsInfo = dsInfoDao.selectDsInfo(dso.getDsname());
+				if(dso.getOrderstatus()==1){
+					status.setStatus(1);
+					status.setImageurl(DsInfo.getDsimage());
+					status.setPrice(dso.getOrderprice());
+					status.setOrderNumber(dso.getOrdernumber());
+					out.print(gson.toJson(status));
+					System.out.println(gson.toJson(status));
+					out.flush();
+					out.close();
+					return;
+				}else{
+					status.setStatus(0);
+					out.print(gson.toJson(status));
+					System.out.println(gson.toJson(status));
+				}	 
+			}
+			
 			out.flush();
 			out.close();
 	}

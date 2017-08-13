@@ -29,7 +29,14 @@ public class DsOrder {
 	private String signtime;		//报名完成时间
 	private String gettime;			//得到材料时间
 	private String refundtime;			//退款时间
+	private String imageurl;			//退款时间
 	
+	public String getImageurl() {
+		return imageurl;
+	}
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
 	public String getRefundtime() {
 		return refundtime;
 	}

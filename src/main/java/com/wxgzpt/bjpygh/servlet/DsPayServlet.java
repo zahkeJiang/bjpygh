@@ -17,10 +17,12 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.DsPackageDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.dao.UserDao;
+import com.wxgzpt.bjpygh.entity.DsInformation;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.DsPackage;
 import com.wxgzpt.bjpygh.entity.User;
@@ -98,7 +100,8 @@ public class DsPayServlet extends HttpServlet{
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
-            
+            DsInfoDao dsInfoDao = new DsInfoDao();
+            DsInformation DsInfo = dsInfoDao.selectDsInfo(dsPackage.getDsname());
             dsOrder.setUserid(Integer.parseInt(userid));
             dsOrder.setDsname(dsPackage.getDsname());
             dsOrder.setDstype(dsPackage.getDstype());
@@ -112,6 +115,7 @@ public class DsPayServlet extends HttpServlet{
             dsOrder.setOrderstatus(0);
             dsOrder.setPhonenumber(user.getPhonenumber());
             dsOrder.setTraintime(dsPackage.getTraintime());
+            dsOrder.setImageurl(DsInfo.getDsimage());
             List<DsOrder> dso = dsOrderDao.getOrderById(userid);
         	DsOrder newOrder = null; 
             if(dso == null){
@@ -119,7 +123,7 @@ public class DsPayServlet extends HttpServlet{
                 System.out.println("log:DsOrderDao");
             }else{
             	for(DsOrder dsor:dso){
-            		if(dsor.getOrderstatus()!=0||dsor.getOrderstatus()!=5){
+            		if(dsor.getOrderstatus()!=0&&dsor.getOrderstatus()!=5){
             			out.print("您已支付成功，勿重复支付。");
                 		out.flush();
                 		out.close();

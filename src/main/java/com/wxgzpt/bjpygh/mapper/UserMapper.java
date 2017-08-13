@@ -15,4 +15,6 @@ public interface UserMapper {
 	
 	public void changeUserPoints(Map<String, String> map);
 	public void changeUserInfo(Map<String, String> map);
+	
+	public User getUserByOpenid(String openid);
 }

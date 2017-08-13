@@ -23,6 +23,7 @@
 			<result column="sign_time" property="signtime"/>
 			<result column="get_time" property="gettime"/>
 			<result column="refund_time" property="refundtime"/>
+			<result column="imageurl" property="imageurl"/>
 		</resultMap>
 		
 		<select id="getOrderById" parameterType="string" resultMap="dsorderMap">
@@ -65,14 +66,14 @@
 			ds_type=#{dstype},ds_name=#{dsname},order_price=#{orderprice},train_time=#{traintime},
 			models=#{models},user_id=#{userid},address=#{address},real_name=#{realname},
 			note=#{note}, description=#{description}, pay_time=#{paytime}, submit_time=#{submittime},
-			sign_time=#{signtime}, get_time=#{gettime}, refund_time=#{refundtime} where order_number=#{ordernumber}
+			sign_time=#{signtime}, get_time=#{gettime}, refund_time=#{refundtime}, imageurl=#{imageurl} where order_number=#{ordernumber}
 		</update>
 		
-		<update id="updateOrder" parameterType="dsorder">
+		<update id="updateOrderByStatus" parameterType="dsorder">
 			update ds_order set phone_number=#{phonenumber},order_number=#{ordernumber},
 			ds_type=#{dstype},ds_name=#{dsname},order_price=#{orderprice},train_time=#{traintime},
 			models=#{models},user_id=#{userid},address=#{address},real_name=#{realname},
 			note=#{note}, description=#{description}, pay_time=#{paytime}, submit_time=#{submittime},
-			sign_time=#{signtime}, get_time=#{gettime}, refund_time=#{refundtime} where order_status=#{orderstatus} 
+			sign_time=#{signtime}, get_time=#{gettime}, refund_time=#{refundtime}, imageurl=#{imageurl} where order_status=#{orderstatus} 
 		</update>
 	</mapper>
