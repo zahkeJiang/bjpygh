@@ -42,7 +42,7 @@ function all_orders(){
             // $.each循环实现添加订单列表  
             $.each(dsorder_list,function(commentIndex,comment){
                 if (comment.orderstatus=="1"||comment.orderstatus=="2") {//用户已付款，审核过程
-                    var result = "<p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消订单</p>";
+                    var result = "<p class='refund'>取消订单</p>";
                 }else if (comment.orderstatus=="3") {//用户报名完成
                     var result = "<p class='result'>材料正在返还</p>";
                 }else if (comment.orderstatus=="4") {//用户成功接收返还材料
@@ -50,8 +50,8 @@ function all_orders(){
                 }else if (comment.orderstatus=="5") {//用户取消订单
                     var result = "<p class='result'>已取消</p>";
                 }
-                dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
+                dsorderh_tml += "<div class='dsorder_list' obnumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
+                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container' ><img src='"
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
@@ -59,13 +59,13 @@ function all_orders(){
             $(".container").html(dsorderh_tml);
 
             // 为订单列表设置点击事件
-            $(".dsoder_container").click(function(){  
-                window.location.href="order_information.html?ordernumber="+ordernumber;
+            $(".dsoder_container").click(function(){
+                var allordernumber1 = $(this).parents().attr("obnumber");  
+                window.location.href="order_information.html?ordernumber="+allordernumber1;
             });
             $(".refund").click(function(){
-                    var ordernumber = $(this).attr("obnumber");
-                    var orderprice = $(this).attr("obprice");
-                    window.location.href="ds_refund.html?ordernumber="+ordernumber;
+                var allordernumber2 = $(this).parents().attr("obnumber");
+                window.location.href="ds_refund.html?ordernumber="+allordernumber2;
             });
         }else{
             $(".container").html(container);
@@ -88,8 +88,8 @@ function orders_success(){
             // $.each循环实现添加订单列表  
             $.each(dsorder_list,function(commentIndex,comment){
                 if (comment.orderstatus=="1"||comment.orderstatus=="2") {
-                    var result = "<p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消订单</p>";
-                    dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
+                    var result = "<p class='refund'>取消订单</p>";
+                    dsorderh_tml += "<div class='dsorder_list'  obnumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
@@ -97,15 +97,15 @@ function orders_success(){
                 }
             });
             $(".container").html(dsorderh_tml);
-
+            
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                window.location.href="order_information.html?ordernumber="+ordernumber;
+                var seccessdernumber1 = $(this).parents().attr("obnumber");
+                window.location.href="order_information.html?ordernumber="+seccessdernumber1;
             });
             $(".refund").click(function(){
-                    var ordernumber = $(this).attr("obnumber");
-                    var orderprice = $(this).attr("obprice");
-                    window.location.href="ds_refund.html?ordernumber="+ordernumber;
+                var seccessdernumber2 = $(this).parents().attr("obnumber");
+                window.location.href="ds_refund.html?ordernumber="+seccessdernumber2;
             });
         }else{
             $(".container").html(container);
@@ -140,7 +140,8 @@ function orders_finished(){
 
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                window.location.href="order_information.html?ordernumber="+ordernumber;
+                var finishordernumber = $(this).parents().attr("obnumber");
+                window.location.href="order_information.html?ordernumber="+finishordernumber;
             });
         }else{
             $(".container").html(container);
@@ -178,7 +179,8 @@ function orders_cencer(){
 
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                window.location.href="order_information.html?ordernumber="+ordernumber;
+                var cencerordernumber = $(this).parents().attr("obnumber");
+                window.location.href="order_information.html?ordernumber="+cencerordernumber;
             });
         }else{
             $(".container").html(container);
