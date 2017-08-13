@@ -129,7 +129,7 @@ function orders_finished(){
             $.each(dsorder_list,function(commentIndex,comment){
                 if (comment.orderstatus=="4") {//用户订单完成以及材料返还成功
                     var result = "<p class='result'>已完成</p>";
-                    dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
+                    dsorderh_tml += "<div class='dsorder_list' obnumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
@@ -168,7 +168,7 @@ function orders_cencer(){
             $.each(dsorder_list,function(commentIndex,comment){
                 if (comment.orderstatus=="5") {//用户取消订单
                     var result = "<p class='result'>已取消</p>";
-                    dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
+                    dsorderh_tml += "<div class='dsorder_list' obnumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
