@@ -37,6 +37,7 @@ public class ScheduleServlet extends BaseServlet{
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 
 		if(userMap == null){
+			
 			status.setStatus(-1);
 			status.setMsg("请在微信端登录");
 			out.print(new Gson().toJson(status));
