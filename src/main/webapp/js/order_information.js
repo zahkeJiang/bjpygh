@@ -9,7 +9,7 @@ window.onload=ShowMessage();
 
 var orderschedule = '<div class="progress_pic"><div class="progress_pic_style"><div class="progress_bg"></div><img id="cartoon1" src="images/alipay.png" height="30px" width="30px"><div class="submit_bg"></div></div><div class="progress_pic_style"><div class="audit_bg"></div><img id="cartoon2" src="images/close.png" height="30px" width="30px"><div class="audit_bg"></div></div><div class="progress_pic_style"><div class="finish_bg"></div><img id="cartoon3" src="images/close.png" height="30px" width="30px"><div class="finish_bg"></div></div><div class="progress_pic_style"><div class="return_bg"></div><img id="cartoon4" src="images/close.png" height="30px" width="30px"><div class="progress_bg"></div></div></div><div class="orderprogress"><div class="submit_order"><div class="progress_style"><h2 >报名订单</h2><p class="submit_data">&nbsp;</p><p class="submit_time">&nbsp;</p></div></div><div class="material_audit"><div class="progress_style"><h2>材料审核</h2><p class="audit_data">&nbsp;</p><p class="audit_time">&nbsp;</p></div></div><div class="finish_order"><div class="progress_style"><h2>完成报名</h2><p class="finish_data">&nbsp;</p><p class="finish_time">&nbsp;</p></div></div><div class="material_return"><div class="progress_style"><h2>材料返还</h2><p class="return_data">&nbsp;</p><p class="return_time">&nbsp;</p></div></div></div>';
 $(function(){
-	$.post("schedule.action",{"ordernumb":ordernumb},function(obj){
+	$.post("schedule.action",{"ordernumber":ordernumb},function(obj){
 		if (obj.status=="1") {
 			var userorder = obj.data;
 			$(".realname").html(userorder.realname);
@@ -112,6 +112,16 @@ $(function(){
 				$(".chedule_content").css({"height":"110px","padding":"0 16px","line-height":"110px","font-size":"20px","color":"white","background-color":"#01b468"});
 				$(".hint").empty();
 				$(".hint").html("材料已送达，欢迎您再次使用！");
+				$(".delivery").html("已送达");
+				$(".delivery").css({"background-color":"#d2e9ff","display":"inline","text-align":"center","line-height":"28px"});
+				var result = "<div class='result'><p>您已报名完成。</p><p>欢迎您再次使用。</p><p>北京漂洋过海，一切因你而在！</p></div>";
+				$(".footer").html(result);
+			}else if (userorder.orderstatus=="5") {
+				$(".chedule_content").empty();
+				$(".chedule_content").html("已取消");
+				$(".chedule_content").css({"height":"110px","padding":"0 16px","line-height":"110px","font-size":"20px","color":"white","background-color":"#01b468"});
+				$(".hint").empty();
+				$(".hint").html("北京漂洋过海，欢迎您再次使用！");
 				$(".delivery").html("已送达");
 				$(".delivery").css({"background-color":"#d2e9ff","display":"inline","text-align":"center","line-height":"28px"});
 				var result = "<div class='result'><p>您已报名完成。</p><p>欢迎您再次使用。</p><p>北京漂洋过海，一切因你而在！</p></div>";

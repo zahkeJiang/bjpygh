@@ -73,7 +73,6 @@ function  bt(){
 				
 				$.post("bond.action",{"phonenumber":mobile},function(obj){
 					if (obj.status == 1) {
-			 			alert("绑定成功，即将跳转");
 			 			location.href="user.html";
 			 		}else{
 			 			alert("手机号已被注册");
