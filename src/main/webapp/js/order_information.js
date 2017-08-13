@@ -122,8 +122,6 @@ $(function(){
 				$(".chedule_content").css({"height":"110px","padding":"0 16px","line-height":"110px","font-size":"20px","color":"white","background-color":"#01b468"});
 				$(".hint").empty();
 				$(".hint").html("北京漂洋过海，欢迎您再次使用！");
-				$(".delivery").html("已送达");
-				$(".delivery").css({"background-color":"#d2e9ff","display":"inline","text-align":"center","line-height":"28px"});
 				var result = "<div class='result'><p>您已报名完成。</p><p>欢迎您再次使用。</p><p>北京漂洋过海，一切因你而在！</p></div>";
 				$(".footer").html(result);
 			}
