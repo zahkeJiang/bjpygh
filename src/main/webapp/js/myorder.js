@@ -60,12 +60,12 @@ function all_orders(){
 
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){
-                var allordernumber1 = $(this).parents().attr("onumber");  
-                window.location.href="order_information.html?ordernumber="+allordernumber1;
+                var ordernumber= $(this).parents().attr("onumber");  
+                window.location.href="order_information.html?ordernumber="+ordernumber;
             });
             $(".refund").click(function(){
-                var allordernumber2 = $(this).attr("odnumber");
-                window.location.href="ds_refund.html?ordernumber="+allordernumber2;
+                var ordernumber = $(this).attr("odnumber");
+                window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
             $(".container").html(container);
@@ -100,12 +100,12 @@ function orders_success(){
             
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                var seccessdernumber1 = $(this).parents().attr("onumber");
-                window.location.href="order_information.html?ordernumber="+seccessdernumber1;
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
             });
             $(".refund").click(function(){
-                var seccessdernumber2 = $(this).attr("odnumber");
-                window.location.href="ds_refund.html?ordernumber="+seccessdernumber2;
+                var ordernumber = $(this).attr("odnumber");
+                window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
             $(".container").html(container);
@@ -140,8 +140,8 @@ function orders_finished(){
 
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                var finishordernumber = $(this).parents().attr("onumber");
-                window.location.href="order_information.html?ordernumber="+finishordernumber;
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
             $(".container").html(container);
@@ -179,8 +179,8 @@ function orders_cencer(){
 
             // 为订单列表设置点击事件
             $(".dsoder_container").click(function(){  
-                var cencerordernumber = $(this).parents().attr("onumber");
-                window.location.href="order_information.html?ordernumber="+cencerordernumber;
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
             $(".container").html(container);
