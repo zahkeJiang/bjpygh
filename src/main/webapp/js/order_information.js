@@ -1,6 +1,15 @@
+var ordernumb = "";
+function ShowMessage() 
+{ 
+   var thisURL = document.URL;    
+   var getval = thisURL.split('?')[1];  
+   ordernumb = getval.split("=")[1];  
+} 
+window.onload=ShowMessage(); 
+
 var orderschedule = '<div class="progress_pic"><div class="progress_pic_style"><div class="progress_bg"></div><img id="cartoon1" src="images/alipay.png" height="30px" width="30px"><div class="submit_bg"></div></div><div class="progress_pic_style"><div class="audit_bg"></div><img id="cartoon2" src="images/close.png" height="30px" width="30px"><div class="audit_bg"></div></div><div class="progress_pic_style"><div class="finish_bg"></div><img id="cartoon3" src="images/close.png" height="30px" width="30px"><div class="finish_bg"></div></div><div class="progress_pic_style"><div class="return_bg"></div><img id="cartoon4" src="images/close.png" height="30px" width="30px"><div class="progress_bg"></div></div></div><div class="orderprogress"><div class="submit_order"><div class="progress_style"><h2 >报名订单</h2><p class="submit_data">&nbsp;</p><p class="submit_time">&nbsp;</p></div></div><div class="material_audit"><div class="progress_style"><h2>材料审核</h2><p class="audit_data">&nbsp;</p><p class="audit_time">&nbsp;</p></div></div><div class="finish_order"><div class="progress_style"><h2>完成报名</h2><p class="finish_data">&nbsp;</p><p class="finish_time">&nbsp;</p></div></div><div class="material_return"><div class="progress_style"><h2>材料返还</h2><p class="return_data">&nbsp;</p><p class="return_time">&nbsp;</p></div></div></div>';
 $(function(){
-	$.post("schedule.action",{},function(obj){
+	$.post("schedule.action",{"ordernumb":ordernumb},function(obj){
 		if (obj.status=="1") {
 			var userorder = obj.data;
 			$(".realname").html(userorder.realname);
