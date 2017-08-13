@@ -142,7 +142,7 @@ input::-webkit-input-placeholder {
 }
 .footer{
 	bottom: 0;
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	display: flex;
 	background-color: white;

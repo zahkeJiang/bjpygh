@@ -7,8 +7,7 @@
 //} 
 //window.onload=ShowMessage(); 
 
-
-var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
+var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>";
 $(function(){
     all_orders();
 	$(".all_orders").click(function(){     
@@ -68,6 +67,7 @@ function all_orders(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -108,6 +108,7 @@ function orders_success(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -144,6 +145,7 @@ function orders_finished(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -183,6 +185,7 @@ function orders_cencer(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
