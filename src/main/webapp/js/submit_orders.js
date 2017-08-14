@@ -93,7 +93,7 @@ $(function(){
     			if (obj.status=="1") {
         			window.location.href="determine_browser.html?userid="+userid+"&packageid="+packageid+"&select="+select;	
         		}else{
-        			alert("用户已报名成功，请勿重复报名。");
+        			alert("您已报名成功，请勿重复报名。");
         		}
     		},"json");
 		}

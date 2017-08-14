@@ -67,7 +67,6 @@ function all_orders(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
-            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -94,6 +93,8 @@ function orders_success(){
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
+                }else{
+                     dsorderh_tml = container;
                 }
             });
             $(".container").html(dsorderh_tml);
@@ -108,7 +109,6 @@ function orders_success(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
-            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -135,6 +135,8 @@ function orders_finished(){
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
+                }else{
+                    dsorderh_tml = container;
                 }
             });
             $(".container").html(dsorderh_tml);
@@ -145,7 +147,6 @@ function orders_finished(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
-            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -185,7 +186,6 @@ function orders_cencer(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
-            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");

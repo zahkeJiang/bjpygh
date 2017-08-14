@@ -129,6 +129,8 @@ $(function(){
                         }
                     }
                 },'json');
+                // $('.lottery_begin').prop("disabled",true);
+                // $('.lottery_begin').unbind("click");
                 roll();
             });
         }else{
