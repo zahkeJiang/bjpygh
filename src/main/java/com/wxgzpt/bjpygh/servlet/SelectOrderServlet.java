@@ -2,6 +2,7 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,17 +57,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		List<DsOrder> dsOrder = dsOrderDao.getOrderById(userid);
 		System.out.println(dsOrder);
 		status.setStatus(0);
-		DsInfoDao dsInfoDao = new DsInfoDao();
-		
+		List<DsOrder> mDsOrder = new ArrayList<DsOrder>();
 		for(DsOrder dso:dsOrder){
-			status.setDsOrder(dsOrder);
-			
 			if(dso.getOrderstatus() != 0){
-				DsInformation DsInfo = dsInfoDao.selectDsInfo(dso.getDsname());
 				status.setStatus(1);
-				status.setImageurl(DsInfo.getDsimage());
+				mDsOrder.add(dso);
 			}
 		}
+		status.setDsOrder(mDsOrder);
 		out.print(gson.toJson(status));
 		System.out.println(gson.toJson(status));
 		out.flush();

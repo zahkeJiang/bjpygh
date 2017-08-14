@@ -175,4 +175,13 @@
     <servlet-name>QueryPackageServlet</servlet-name>
     <url-pattern>/queryPackage.action</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NotifyServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.NotifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotifyServlet</servlet-name>
+    <url-pattern>/notify.action</url-pattern>
+  </servlet-mapping>
 </web-app>

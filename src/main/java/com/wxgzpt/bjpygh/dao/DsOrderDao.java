@@ -88,6 +88,25 @@ public class DsOrderDao {
 			return dsOrder;
 		}
 		
+		//鑾峰彇璁㈠崟淇℃伅
+				public DsOrder getDsOrderByNumber(String ordernumber){
+					DsOrder dsOrder = null;
+					try {
+						sqlSession = SqlSessionFactoryUtil.openSqlSession();
+						DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+						dsOrder = dsOrderMapper.getDsOrderByNumber(ordernumber);
+						sqlSession.commit();
+					} catch (Exception e) {
+						e.printStackTrace();
+						sqlSession.rollback();
+					}finally{
+						if (sqlSession != null){
+							sqlSession.close();
+						}
+					}
+					return dsOrder;
+				}
+		
 	//鎻掑叆璁㈠崟
 		public void updateOrder(DsOrder dsorder){
 			try {
@@ -104,6 +123,23 @@ public class DsOrderDao {
 				}
 			}
 		}
+		
+		//鎻掑叆璁㈠崟
+				public void updateOrderByStatus(DsOrder dsorder){
+					try {
+						sqlSession = SqlSessionFactoryUtil.openSqlSession();
+						DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+						dsOrderMapper.updateOrderByStatus(dsorder);
+						sqlSession.commit();
+					} catch (Exception e) {
+						e.printStackTrace();
+						sqlSession.rollback();
+					}finally{
+						if (sqlSession != null){
+							sqlSession.close();
+						}
+					}
+				}
 	
 		//鎻掑叆璁㈠崟
 		public void changeStatus(Map<String, String> map){

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +17,12 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.wxgzpt.bjpygh.config.AlipayConfig;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.DsPackageDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.dao.UserDao;
+import com.wxgzpt.bjpygh.entity.DsInformation;
 import com.wxgzpt.bjpygh.entity.DsOrder;
 import com.wxgzpt.bjpygh.entity.DsPackage;
 import com.wxgzpt.bjpygh.entity.User;
@@ -97,7 +100,8 @@ public class DsPayServlet extends HttpServlet{
             System.out.println("------_------");
             
             DsOrder dsOrder = new DsOrder();
-            
+            DsInfoDao dsInfoDao = new DsInfoDao();
+            DsInformation DsInfo = dsInfoDao.selectDsInfo(dsPackage.getDsname());
             dsOrder.setUserid(Integer.parseInt(userid));
             dsOrder.setDsname(dsPackage.getDsname());
             dsOrder.setDstype(dsPackage.getDstype());
@@ -111,23 +115,28 @@ public class DsPayServlet extends HttpServlet{
             dsOrder.setOrderstatus(0);
             dsOrder.setPhonenumber(user.getPhonenumber());
             dsOrder.setTraintime(dsPackage.getTraintime());
-            DsOrder dso = dsOrderDao.getDsOrder(userid);
-        	
+            dsOrder.setImageurl(DsInfo.getDsimage());
+            List<DsOrder> dso = dsOrderDao.getOrderById(userid);
+        	DsOrder newOrder = null; 
             if(dso == null){
                 dsOrderDao.insertOrder(dsOrder);
                 System.out.println("log:DsOrderDao");
-            }else if(dso.getOrderstatus()==1){
-            	out.print("您已支付成功，勿重复支付。");
-        		out.flush();
-        		out.close();
-        		return;
-            }else if(dso.getOrderstatus() == 0||dso.getOrderstatus()==4){
-            	dsOrderDao.updateOrder(dsOrder);
             }else{
-            	out.print("您已报名成功，若要更换套餐，请先退单。");
-            	out.flush();
-            	out.close();
-            	return;
+            	for(DsOrder dsor:dso){
+            		if(dsor.getOrderstatus()!=0&&dsor.getOrderstatus()!=5){
+            			out.print("您已支付成功，勿重复支付。");
+                		out.flush();
+                		out.close();
+                		return;
+            		}else if(dsor.getOrderstatus()==0){
+            			newOrder = dsor;
+            		}
+            	}
+            	if(newOrder!=null){
+            		dsOrderDao.updateOrderByStatus(dsOrder);
+            	}else{
+            		dsOrderDao.insertOrder(dsOrder);
+            	}
             }
             
             /**********************/

@@ -15,6 +15,25 @@ public class Status {
 	private String msg;
 	private String imageurl;
 	private String out_trade_no;
+	private String timeStamp;
+	private String paySign;
+	
+	
+	public String getPaySign() {
+		return paySign;
+	}
+
+	public void setPaySign(String paySign) {
+		this.paySign = paySign;
+	}
+
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
 	public String getImageurl() {
 		return imageurl;
@@ -103,5 +122,6 @@ public class Status {
 	public String getOrderNumber() {
 		return out_trade_no;
 	}
+
 	
 }

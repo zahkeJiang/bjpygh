@@ -34,6 +34,7 @@ abstract class BaseServlet extends HttpServlet {
         userDao = new UserDao();
         Map<String, String> map = new HashMap<String, String>();
         if(userMap == null){
+        	
         	userMap = new HashMap<String, String>();
             map = getMap(request);
             String openid =map.get("openid");
@@ -47,7 +48,6 @@ abstract class BaseServlet extends HttpServlet {
     				User user = getUser(getUserInfo(openid, access_token));
     				userDao.InsertUserFromWx(user);
     				userId = userDao.getUserIdByOpenid(openid);
-    				
     			}
             	
             	userMap.put("id",userId);
@@ -66,8 +66,7 @@ abstract class BaseServlet extends HttpServlet {
 		if(phonenumber != null){	//判断用户是否绑定
 			this.getExec(map,request, response);
 		}else{
-			
-			response.sendRedirect("/login.html");
+			response.sendRedirect("/login.html");      
 		}
         
       	

@@ -13,7 +13,7 @@
 	background-repeat:repeat-x;		/*背景图片在水平显示*/	
 	background-position-y:bottom;　　/*背景图片在纵向的最下方显示*/
 }
-.all_orders,.orders_success,.orders_finished{
+.all_orders,.orders_success,.orders_finished,.orders_cencer{
 	height: 46px;
 	line-height: 46px;
 }
@@ -30,6 +30,9 @@
 .container{
 	margin-top: 10px;
 }
+.dsorder_list{
+	margin-top: 10px;
+}
 .dsorder_titie{
 	background-color: white;
 	display: flex;
@@ -38,7 +41,7 @@
 	padding-right: 16px;
 	padding-left: 16px;
 }
-.refund{
+.refund,.result{
 	margin-left: auto;
 	color: #999;
 	font-size: 14px;

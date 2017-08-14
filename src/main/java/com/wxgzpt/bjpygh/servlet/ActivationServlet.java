@@ -63,6 +63,7 @@ public class ActivationServlet extends HttpServlet{
 		Map<String, String> pointMap = new HashMap<String, String>();
 		pointMap.put("userid", userid);
 		pointMap.put("memberpoints", user.getMemberpoints()-100+"");
+		pointMap.put("integral", user.getIntegral()+"");
 		userDao.changeUserPoints(pointMap);
 		
 			UserCouponDao userCouponDao = new UserCouponDao();

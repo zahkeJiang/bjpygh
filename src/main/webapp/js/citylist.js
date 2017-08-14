@@ -59,8 +59,11 @@ $(function(){
 	$(".container ul").html(html);
 	$(".container li").click(function(){
         var newcity = $(this).html();//获取当前点击的city
-        window.location.href = "user.html?";
-        $.post("changeInfo.action",{"province":province,"city":city},function(obj){	
+        $.post("changeInfo.action",{"province":province,"city":newcity},function(obj){
+        	if(obj.status=="1"){
+        		window.location.href = "user.html?";
+        	}
+        	
 		},'json');
     });
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.DsInfoDao;
 import com.wxgzpt.bjpygh.dao.DsOrderDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.entity.DsOrder;
@@ -22,7 +23,7 @@ public class ScheduleServlet extends BaseServlet{
 	@Override
 	void getExec(Map<String, String> map, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/schedule.html");
+		response.sendRedirect("/myorder.html");
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class ScheduleServlet extends BaseServlet{
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 
 		if(userMap == null){
+			
 			status.setStatus(-1);
 			status.setMsg("请在微信端登录");
 			out.print(new Gson().toJson(status));
@@ -46,11 +48,12 @@ public class ScheduleServlet extends BaseServlet{
 		}
 		
 			String userid = userMap.get("id");	
+			String ordernumber = request.getParameter("ordernumber");
 			DsOrderDao dsOrderDao = new DsOrderDao();
+			DsOrder dsOrder = dsOrderDao.getDsOrderByNumber(ordernumber);
 			Gson gson = new Gson();
 			UserCouponDao userCouponDao = new UserCouponDao();
 			UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-			DsOrder dsOrder = dsOrderDao.getDsOrder(userid);
 			status.setData(dsOrder);
 			status.setStatus(1);
 			status.setPrice(userCoupon.getCouponprice());

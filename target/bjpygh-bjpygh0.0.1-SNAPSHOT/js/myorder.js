@@ -7,8 +7,7 @@
 //} 
 //window.onload=ShowMessage(); 
 
-
-var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>"
+var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>";
 $(function(){
     all_orders();
 	$(".all_orders").click(function(){     
@@ -20,6 +19,9 @@ $(function(){
 	$(".orders_finished").click(function(){
 		orders_finished();
 	});
+    $(".orders_cencer").click(function(){
+        orders_cencer();
+    });
 
 });
 
@@ -27,6 +29,7 @@ $(function(){
 function all_orders(){
     $(".orders_finished").css({"color":"black","border-bottom":"0"});
     $(".orders_success").css({"color":"black","border-bottom":"0"});
+    $(".orders_cencer").css({"color":"black","border-bottom":"0"});
 	$(".all_orders").css({"color":"red","border-bottom":"2px solid red"});
 
     $.post("selectOrder.action",{},function(obj){
@@ -37,19 +40,34 @@ function all_orders(){
             // alert("dsorder_list.userid="+dsorder_list[0].userid+"dsorder_list.dstype="+dsorder_list[0].dstype+"dsorder_list.dsname="+dsorder_list[0].dsname+"dsorder_list.traintime="+dsorder_list[0].traintime+"dsorder_list.orderid="+dsorder_list[0].orderid);
             // $.each循环实现添加订单列表  
             $.each(dsorder_list,function(commentIndex,comment){
-                dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                                +comment.dsname+"</p></div><div class='dsoder_container'><img src='"
-                                +obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
+                if (comment.orderstatus=="1"||comment.orderstatus=="2") {//用户已付款，审核过程
+                    var result = "<p class='refund' odnumber='"+comment.ordernumber+"'>取消订单</p>";
+                }else if (comment.orderstatus=="3") {//用户报名完成
+                    var result = "<p class='result'>材料正在返还</p>";
+                }else if (comment.orderstatus=="4") {//用户成功接收返还材料
+                    var result = "<p class='result'>已完成</p>";
+                }else if (comment.orderstatus=="5") {//用户取消订单
+                    var result = "<p class='result'>已取消</p>";
+                }
+                dsorderh_tml += "<div class='dsorder_list' onumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
+                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container' ><img src='"
+                                +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
             });
             $(".container").html(dsorderh_tml);
 
             // 为订单列表设置点击事件
-             $(".dsoder_container").click(function(){    
-                window.location.href="order_information.html";
+            $(".dsoder_container").click(function(){
+                var ordernumber= $(this).parents().attr("onumber");  
+                window.location.href="order_information.html?ordernumber="+ordernumber;
+            });
+            $(".refund").click(function(){
+                var ordernumber = $(this).attr("odnumber");
+                window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
     },"json");
@@ -59,74 +77,116 @@ function all_orders(){
 function orders_success(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_finished").css({"color":"black","border-bottom":"0"});
+    $(".orders_cencer").css({"color":"black","border-bottom":"0"});
     $(".orders_success").css({"color":"red","border-bottom":"2px solid red"});
-    $.post("selectOrder.action",{},function(obj){
-    	$(".container").empty();
-//    	var obj = eval('(' + data + ')');
-    	if (obj.status=="1") {
-        	var dsorder_list = obj.dsOrder;
-//            alert("dsorder_list[0].orderstatus="+dsorder_list[0].orderstatus);
-        	if (dsorder_list[0].orderstatus=="1"||dsorder_list[0].orderstatus=="2") {  
-        		var dsorderh_tml = "";
-         		// $.each循环实现添加订单列表  
-        		$.each(dsorder_list,function(commentIndex,comment){
-            		dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-            					+comment.dsname+"</p><p class='refund' obnumber='"+comment.ordernumber+"' obprice='"+comment.orderprice+"'>取消报名</p></div><div class='dsoder_container'><img src='"
-            					+obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
-            					+comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
-            					+comment.orderprice+"</span></div></div>";
-        		});
-        		$(".container").html(dsorderh_tml);
 
-        		// 为订单列表设置点击事件
-		 		$(".dsoder_container").click(function(){    
-        			 window.location.href="order_information.html";
-        		});
-                $(".refund").click(function(){
-                	var ordernumber = $(this).attr("obnumber");
-                	var orderprice = $(this).attr("obprice");
-                    window.location.href="ds_refund.html?ordernumber="+ordernumber;
-                });
-        	}else{
-                $(".container").html(container);
-            }
-    	}else{
+    $.post("selectOrder.action",{},function(obj){
+        $(".container").empty();
+        if (obj.status=="1") {   
+            var dsorderh_tml = "";
+            var dsorder_list = obj.dsOrder;
+            // $.each循环实现添加订单列表  
+            $.each(dsorder_list,function(commentIndex,comment){
+                if (comment.orderstatus=="1"||comment.orderstatus=="2") {
+                    var result = "<p class='refund' odnumber='"+comment.ordernumber+"'>取消订单</p>";
+                    dsorderh_tml += "<div class='dsorder_list'  onumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
+                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
+                                +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
+                                +comment.orderprice+"</span></div></div>";
+                }
+            });
+            $(".container").html(dsorderh_tml);
+            
+            // 为订单列表设置点击事件
+            $(".dsoder_container").click(function(){  
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
+            });
+            $(".refund").click(function(){
+                var ordernumber = $(this).attr("odnumber");
+                window.location.href="ds_refund.html?ordernumber="+ordernumber;
+            });
+        }else{
+            alert("当前没有订单");
             $(".container").html(container);
-    	}
-    },'json');
+        }
+    },"json");
 }
 
 //定义查询已完成订单方法
 function orders_finished(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_success").css({"color":"black","border-bottom":"0"});
+    $(".orders_cencer").css({"color":"black","border-bottom":"0"});
     $(".orders_finished").css({"color":"red","border-bottom":"2px solid red"});
 
     $.post("selectOrder.action",{},function(obj){
         $(".container").empty();
-        if (obj.status=="1") {
+        if (obj.status=="1") {   
+            var dsorderh_tml = "";
             var dsorder_list = obj.dsOrder;
-            if (dsorder_list[0].orderstatus=="4"||dsorder_list[0].orderstatus=="4") {
-                var dsorderh_tml = "";
-                // $.each循环实现添加订单列表  
-                $.each(dsorder_list,function(commentIndex,comment){
-                    dsorderh_tml += "<div class='dsorder_list'><div class='dsorder_titie'><p class='ds_name'>"
-                                    +comment.dsname+"</p><p class='orders_finish'>已完成</p></div><div class='dsoder_container'><img src='"
-                                    +obj.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
-                                    +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
-                                    +comment.orderprice+"</span></div></div>";
-                });
-                $(".container").html(dsorderh_tml);
+            // $.each循环实现添加订单列表  
+            $.each(dsorder_list,function(commentIndex,comment){
+                if (comment.orderstatus=="4") {//用户订单完成以及材料返还成功
+                    var result = "<p class='result'>已完成</p>";
+                    dsorderh_tml += "<div class='dsorder_list' onumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
+                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
+                                +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
+                                +comment.orderprice+"</span></div></div>";
+                }
+            });
+            $(".container").html(dsorderh_tml);
 
-                // 为订单列表设置点击事件
-                $(".dsoder_container").click(function(){    
-                     window.location.href="order_information.html";
-                });
-            }else{
-                $(".container").html(container);
-            }
+            // 为订单列表设置点击事件
+            $(".dsoder_container").click(function(){  
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
+            });
         }else{
+            alert("当前没有订单");
             $(".container").html(container);
         }
-    },'json');
+    },"json");
+}
+
+
+
+//定义查询已取消订单方法
+function orders_cencer(){
+
+    $(".orders_finished").css({"color":"black","border-bottom":"0"});
+    $(".orders_success").css({"color":"black","border-bottom":"0"});
+    $(".all_orders").css({"color":"black","border-bottom":"0"});
+    $(".orders_cencer").css({"color":"red","border-bottom":"2px solid red"});
+
+    $.post("selectOrder.action",{},function(obj){
+        $(".container").empty();
+        if (obj.status=="1") {   
+            var dsorderh_tml = "";
+            var dsorder_list = obj.dsOrder;
+            // $.each循环实现添加订单列表  
+            $.each(dsorder_list,function(commentIndex,comment){
+                if (comment.orderstatus=="5") {//用户取消订单
+                    var result = "<p class='result'>已取消</p>";
+                    dsorderh_tml += "<div class='dsorder_list' onumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
+                                +comment.dsname+"</p>"+result+"</div><div class='dsoder_container'><img src='"
+                                +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
+                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
+                                +comment.orderprice+"</span></div></div>";
+                }
+            });
+            $(".container").html(dsorderh_tml);
+
+            // 为订单列表设置点击事件
+            $(".dsoder_container").click(function(){  
+                var ordernumber = $(this).parents().attr("onumber");
+                window.location.href="order_information.html?ordernumber="+ordernumber;
+            });
+        }else{
+            alert("当前没有订单");
+            $(".container").html(container);
+        }
+    },"json");
 }

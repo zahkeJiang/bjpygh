@@ -54,10 +54,12 @@ public class ChangeUserServlet extends HttpServlet{
 		String nickname = request.getParameter("nickname");
 		String school = request.getParameter("school");
 		String city = request.getParameter("city");
+		String province = request.getParameter("province");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		if(sex!=null){
 			map.put("sex", sex);
+			System.out.println("sex:"+sex);
 		}else{
 			map.put("sex", user.getSex()+"");
 		}
@@ -65,16 +67,25 @@ public class ChangeUserServlet extends HttpServlet{
 			map.put("nickname", nickname);
 		}else{
 			map.put("nickname", user.getNickname());
+			System.out.println("nickname:"+nickname);
 		}
 		if(school!=null){
 			map.put("school", school);
 		}else{
 			map.put("school", user.getSchool());
+			System.out.println("school:"+school);
 		}
 		if(city!=null){
 			map.put("city", city);
 		}else{
 			map.put("city", user.getCity());
+			System.out.println("city:"+city);
+		}
+		if(province!=null){
+			map.put("province", province);
+		}else{
+			map.put("province", user.getProvince());
+			System.out.println("province:"+province);
 		}	
 		
 		userDao.changeUserInfo(map);
