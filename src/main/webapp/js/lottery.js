@@ -145,8 +145,8 @@ $(function(){
                         $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
                         roll();//开始执行动画
                     }else{
-                        // $(this).hin("disabled",true);
-                        $(this).unbind("click");
+                        $(this).hin("disabled",true);//抽奖按钮设为不可用状态
+                        // $(this).unbind("click");
                     }
                 },'json');
             });
@@ -169,7 +169,8 @@ $(function(){
 function change_lottery_begin(){
     $(".lottery_begin p").empty();
     $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
-    $(".lottery_begin").css({"font-size":"18px","background-color":"#606060","color":"#555"});
+    $(".lottery_begin p").css({"color":"white"});
+    $(".lottery_begin").css({"font-size":"18px","background-color":"#999"});
     $(".lottery_begin").prop("disabled",true);
     
 }
