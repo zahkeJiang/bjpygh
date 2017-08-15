@@ -78,7 +78,7 @@ body{
 .coupon{
 	z-index: 1000;
 	position: absolute;
-	top: 30%;
+	top: 25%;
 	left: 0;
 	display: none;
 	width: 80%;
@@ -91,7 +91,7 @@ body{
 
 }
 .use{
-	margin:0px 30% 10px 30%;
+	margin:10px 30% 10px 30%;
 	color: #00579f;
 	width: 30%;
 	margin-left:35%;
@@ -124,6 +124,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+		font-weight:bold;
 }
 .footer{
 	margin:0 16px 10px 16px;
