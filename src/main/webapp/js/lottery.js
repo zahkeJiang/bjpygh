@@ -144,11 +144,12 @@ $(function(){
                         }
                     }
                 },'json');
-               $(".lottery_begin").prop("disabled",true);//抽奖按钮设为不可点击状态
+               $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
                 roll();
             });
         }else{
             change_lottery_begin();//改变抽奖按钮，并显示优惠信息
+            $(".footer").html("<p>您已抽过奖了,<a href='index.html'>立即使用</a></p>");
         }
     },'json');
 
