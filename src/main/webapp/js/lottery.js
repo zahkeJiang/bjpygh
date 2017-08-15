@@ -119,7 +119,6 @@ function roll(num){
     }
 }
 $(function(){
-        roll();
     $.post("queryCoupon.action",{},function(obj){
         if (obj.status == "0") {
             //点击抽奖按钮，开始抽奖

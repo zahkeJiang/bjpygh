@@ -3,44 +3,60 @@ function lotteryStop(index){
     //index就是lottery.num
     switch(index){
         case 0:
-            alert("恭喜获得200元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_01.png'><p>我已经抽过奖了,优惠券:200元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+            change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").show();
             break;
         case 1:
-            alert("恭喜获得250元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_02.png'><p>我已经抽过奖了,优惠券:250元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_03.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         case 2:
-            alert("恭喜获得300元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_03.png'><p>我已经抽过奖了,优惠券:300元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_05.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         case 3:
-            alert("恭喜获得400元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_04.png'><p>我已经抽过奖了,优惠券:400元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_08.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         case 4:
-            alert("恭喜获得500元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_05.png'><p>我已经抽过奖了,优惠券:500元&nbsp;<a href='index.html'>立即使用</a></p>");
+           var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;  
         case 5:
-            alert("恭喜获得600元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_06.png'><p>我已经抽过奖了,优惠券:600元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_10.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         case 6:
-            alert("恭喜获得800元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_07.png'><p>我已经抽过奖了,优惠券:800元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         case 7:
-            alert("恭喜获得1000元优惠券");
-            $(".lottery_box").empty();
-            $(".lottery_box").html("<img src='images/coupon_08.png'><p>我已经抽过奖了,优惠券:1000元&nbsp;<a href='index.html'>立即使用</a></p>");
+            var couponhtml = '<img src="images/ds_coupon_06.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+            change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").fadeIn("slow");
             break;
         default:
             alert("当前抽奖人数过多，请稍后尝试！");
@@ -103,58 +119,52 @@ function roll(num){
     }
 }
 $(function(){
-    $(".lottery_box").hide();
     $.post("queryCoupon.action",{},function(obj){
         if (obj.status == "0") {
-            $(".lottery_box").show();
+            //点击抽奖按钮，开始抽奖
             $(".lottery_begin").click(function(){
             	$.post("coupon.action",{},function(obj){
                     if (obj.status =="1") {
-                        if (obj.price==200) {
+                        if (obj.price==0) {
                             lottery.num=0;
-                        }else if (obj.price == 250) {
+                        }else if (obj.price == 1) {
                             lottery.num=1;
-                        }else if (obj.price == 300) {
+                        }else if (obj.price == 2) {
                             lottery.num=2;
-                        }else if (obj.price == 400) {
+                        }else if (obj.price == 3) {
                             lottery.num=3;
-                        }else if (obj.price == 500) {
+                        }else if (obj.price == 4) {
                             lottery.num=4;
-                        }else if (obj.price == 600) {
+                        }else if (obj.price == 5) {
                             lottery.num=5;
-                        }else if (obj.price == 800) {
+                        }else if (obj.price == 6) {
                             lottery.num=6;
-                        }else if (obj.price == 1000) {
+                        }else if (obj.price == 7) {
                             lottery.num=7;
                         }
                     }
                 },'json');
-                // $('.lottery_begin').prop("disabled",true);
-                // $('.lottery_begin').unbind("click");
+               $(".lottery_begin").prop("disabled",true);//抽奖按钮设为不可点击状态
                 roll();
             });
         }else{
-            if (obj.price=="200") {
-                var coupon_pic = "<img src='images/coupon_01.png'>";
-            }else if (obj.price=="200") {
-                var coupon_pic = "<img src='images/coupon_02.png'>";
-            }else if (obj.price=="250") {
-                var coupon_pic = "<img src='images/coupon_03.png'>";
-            }else if (obj.price=="300") {
-                var coupon_pic = "<img src='images/coupon_04.png'>";
-            }else if (obj.price=="400") {
-                var coupon_pic = "<img src='images/coupon_05.png'>";
-            }else if (obj.price=="500") {
-                var coupon_pic = "<img src='images/coupon_06.png'>";
-            }else if (obj.price=="600") {
-                var coupon_pic = "<img src='images/coupon_07.png'>";
-            }else if (obj.price=="1000") {
-                var coupon_pic = "<img src='images/coupon_08.png'>";
-            }
-            $(".lottery_box").empty();
-            $(".lottery_box").html(coupon_pic+"<p>我已经抽过奖了,优惠券:"+obj.price+"元&nbsp;<a href='index.html'>立即使用</a></p>");
-            $(".lottery_box").show();
+            change_lottery_begin();//改变抽奖按钮，并显示优惠信息
         }
     },'json');
-    
+
+    //关闭弹窗
+    $("#closeBtn").click(function(){
+        $(".coupon").fadeOut("fast");
+        $(".layer").fadeOut("fast");
+    });
+
 });
+
+//开始抽奖按钮改变样式
+function change_lottery_begin(){
+    $(".lottery_begin p").empty();
+    $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
+    $(".lottery_begin").css({"font-size":"18px","background-color":"#f0f0f0","color":"#555"});
+    $(".lottery_begin").prop("disabled",true);
+    $(".footer").html("<p>您已抽过奖了,优惠金额:"+obj.price+"元&nbsp;<a href='index.html'>立即使用</a></p>");
+}
