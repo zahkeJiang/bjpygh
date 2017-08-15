@@ -31,7 +31,7 @@ body{
 .container{
 	display: flex;
 	justify-content: center;
-	padding: 20px 16px 10px 16px;
+	padding: 10px 16px 10px 16px;
 }
 
 #lottery{padding:10px;background-color: #0073d4;
