@@ -31,7 +31,7 @@ body{
 .container{
 	display: flex;
 	justify-content: center;
-	padding: 20px 16px 10px 16px;
+	padding: 10px 16px 10px 16px;
 }
 
 #lottery{padding:10px;background-color: #0073d4;
@@ -78,7 +78,7 @@ body{
 .coupon{
 	z-index: 1000;
 	position: absolute;
-	top: 30%;
+	top: 25%;
 	left: 0;
 	display: none;
 	width: 80%;
@@ -91,7 +91,7 @@ body{
 
 }
 .use{
-	margin:0px 30% 10px 30%;
+	margin:10px 30% 10px 30%;
 	color: #00579f;
 	width: 30%;
 	margin-left:35%;
@@ -116,11 +116,15 @@ body{
 #closeBtn{
 	position: absolute;
 	right: 0;
-	top:0 ;
-	margin-right: 10px;
-	font-size: 24px;
+	top: 0;
+	font-size: 30px;
 	color: white;
-	height: 20px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+		font-weight:bold;
 }
 .footer{
 	margin:0 16px 10px 16px;

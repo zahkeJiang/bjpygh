@@ -75,17 +75,16 @@ public class QueryOrderServlet extends HttpServlet{
 					status.setPrice(dso.getOrderprice());
 					status.setOrderNumber(dso.getOrdernumber());
 					out.print(gson.toJson(status));
-					System.out.println(gson.toJson(status));
+					System.out.println("queryorder:"+gson.toJson(status));
 					out.flush();
 					out.close();
 					return;
 				}else{
 					status.setStatus(0);
-					out.print(gson.toJson(status));
-					System.out.println(gson.toJson(status));
 				}	 
 			}
-			
+			out.print(gson.toJson(status));
+			System.out.println("queryorder:"+gson.toJson(status));
 			out.flush();
 			out.close();
 	}

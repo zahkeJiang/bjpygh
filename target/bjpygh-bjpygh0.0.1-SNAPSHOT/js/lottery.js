@@ -142,13 +142,17 @@ $(function(){
                         }else if (obj.price == 7) {
                             lottery.num=7;
                         }
+                        $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
+                        roll();//开始执行动画
+                    }else{
+                        $(this).hin("disabled",true);//抽奖按钮设为不可用状态
+                        // $(this).unbind("click");
                     }
                 },'json');
-               $(".lottery_begin").prop("disabled",true);//抽奖按钮设为不可点击状态
-                roll();
             });
         }else{
             change_lottery_begin();//改变抽奖按钮，并显示优惠信息
+            $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
         }
     },'json');
 
@@ -156,6 +160,7 @@ $(function(){
     $("#closeBtn").click(function(){
         $(".coupon").fadeOut("fast");
         $(".layer").fadeOut("fast");
+        $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
     });
 
 });
@@ -164,7 +169,8 @@ $(function(){
 function change_lottery_begin(){
     $(".lottery_begin p").empty();
     $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
-    $(".lottery_begin").css({"font-size":"18px","background-color":"#f0f0f0","color":"#555"});
+    $(".lottery_begin p").css({"color":"white"});
+    $(".lottery_begin").css({"font-size":"18px","background-color":"#999"});
     $(".lottery_begin").prop("disabled",true);
-    $(".footer").html("<p>您已抽过奖了,优惠金额:"+obj.price+"元&nbsp;<a href='index.html'>立即使用</a></p>");
+    
 }
