@@ -16,12 +16,10 @@ $(function(){
             var ds_price = obj.price;
             $(".order_number").html(order_number);
             $(".ds_price").html(ds_price);
-            $(".pay_success").css({"display":"inherit"});
+            $(".pay_success").show();
         }else if (obj.status=="0") {
             alert("支付失败");
-            $(".pay_fail").css({"display":"inherit"});
-        }else if (obj.status=="-1"){
-            window.location.href="openWchat.html";
+            $(".pay_fail").show();
         }
     },"json");
     
