@@ -144,6 +144,8 @@ $(function(){
                         }
                         $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
                         roll();//开始执行动画
+                    }else{
+                        $(this).prop("disabled",true);
                     }
                 },'json');
             });
