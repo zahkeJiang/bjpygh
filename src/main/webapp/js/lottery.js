@@ -119,7 +119,6 @@ function roll(num){
     }
 }
 $(function(){
-        roll();
     $.post("queryCoupon.action",{},function(obj){
         if (obj.status == "0") {
             //点击抽奖按钮，开始抽奖
@@ -165,7 +164,7 @@ $(function(){
 function change_lottery_begin(){
     $(".lottery_begin p").empty();
     $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
-    $(".lottery_begin").css({"font-size":"18px","background-color":"#f0f0f0","color":"#555"});
+    $(".lottery_begin p").css({"font-size":"18px","background-color":"#f0f0f0","color":"#555"});
     $(".lottery_begin").prop("disabled",true);
     $(".footer").html("<p>您已抽过奖了,优惠金额:"+obj.price+"元&nbsp;<a href='index.html'>立即使用</a></p>");
 }
