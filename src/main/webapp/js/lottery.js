@@ -145,13 +145,14 @@ $(function(){
                         $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
                         roll();//开始执行动画
                     }else{
-                        $(this).prop("disabled",true);
+                        // $(this).hin("disabled",true);
+                        $(this).unbind("click");
                     }
                 },'json');
             });
         }else{
             change_lottery_begin();//改变抽奖按钮，并显示优惠信息
-            $(".footer").html("<p>您已抽过奖了,<a href='index.html'>立即使用</a></p>");
+            $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
         }
     },'json');
 
@@ -159,7 +160,7 @@ $(function(){
     $("#closeBtn").click(function(){
         $(".coupon").fadeOut("fast");
         $(".layer").fadeOut("fast");
-        $(".footer").html("<p>您已抽过奖了,<a href='index.html'>立即使用</a></p>");
+        $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
     });
 
 });
@@ -168,7 +169,7 @@ $(function(){
 function change_lottery_begin(){
     $(".lottery_begin p").empty();
     $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
-    $(".lottery_begin").css({"font-size":"18px","background-color":"gray","color":"#555"});
+    $(".lottery_begin").css({"font-size":"18px","background-color":"#606060","color":"#555"});
     $(".lottery_begin").prop("disabled",true);
     
 }
