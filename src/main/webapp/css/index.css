@@ -29,7 +29,6 @@
 } */
 
 .city{
-
 	position:absolute;
 	left:0;
 	top:0px;
@@ -41,10 +40,11 @@
 }
 .ds_list{
 	display: flex;
-	width: 90%;
-	margin:10px 5%;
+	margin:10px 0;
+	padding: 0 16px;
 	background-color: white;
 	height: 80px;
+	align-items: center;
 }
 
 .ds_name_price{
@@ -56,13 +56,13 @@
 }
 .ds_name{
 	color: black;
-	font-size: 20px;
+	font-size: 18px;
 }
 .ds_price{
 	margin-left: auto;
 }
 .ds_address{
-	
+	color: #999;
 	padding-left: 10px;
 	
 }

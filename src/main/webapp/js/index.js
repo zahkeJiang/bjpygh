@@ -24,7 +24,7 @@ $(function(){
             // $.each循环实现添加  
             $.each(ds_list,function(commentIndex,comment){
                 html += "<div class='ds_list'><img src="+" ' "
-                    +comment.dsimage+" ' "+" height='80px' width='100px'><div class='information'><div class='ds_name_price'> <span class='ds_name'>"
+                    +comment.dsimage+" ' "+" height='60px' width='80px'><div class='information'><div class='ds_name_price'> <span class='ds_name'>"
                     +comment.dsname+"</span><span class='ds_price'></span></div><span class='ds_address'>"
                     +comment.address+"</span></div></div>";
             });
