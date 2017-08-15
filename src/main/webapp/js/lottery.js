@@ -142,10 +142,10 @@ $(function(){
                         }else if (obj.price == 7) {
                             lottery.num=7;
                         }
+                        $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
+                        roll();//开始执行动画
                     }
                 },'json');
-               $(this).prop("disabled",true);//抽奖按钮设为不可点击状态
-                roll();
             });
         }else{
             change_lottery_begin();//改变抽奖按钮，并显示优惠信息
