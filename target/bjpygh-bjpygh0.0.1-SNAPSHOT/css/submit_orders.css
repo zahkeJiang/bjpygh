@@ -53,42 +53,49 @@ span{
 	margin-top: 10px;
 	background-color: white;
 	line-height: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+}
+.ds_apply_title{
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #999;
+	margin: 0 16px;
+	border-bottom: 1px solid #efefef;
 }
 .row{
-	padding-left: 16px;
-	padding-right: 16px;
+	margin-left: 16px;
+	margin-right: 16px;
 	display: flex;
 	align-items: center;
 	font-size: 16px;
+	height: 40px;
+	border-bottom: 1px solid #efefef;
 }
 .row_type{
-	width: 60px;
+	width: 64px;
 	display: flex;
 	justify-content: space-between;
 	text-align: justify;
+
 }
 .row_type span{
 	font-size: 16px;
 	color: black;
 }
 .row_colon{
-	padding:0 5px;
+	padding:0 2px;
 }
 .row input{
 	flex: 1;
 	min-width: 100px;
-	margin-left: 10px;
 	height: 24px;
 	border: 0px;
 	border-radius: 0;
-	border: 1px solid #eee;
-	font-size: 14px;
+	font-size: 16px;
 	padding-left: 10px;
 	display: flex;
 	align-items: center;
-	height: 24px;
+	height: 36px;
 }
 input::-webkit-input-placeholder { 
 	color: #999; 
@@ -107,6 +114,8 @@ input::-webkit-input-placeholder {
 .ds_training_mode{
 	height: 40px;
 	display: flex;
+	font-size: 14px;
+	color: #999;
 	align-items: center;
 	background:url(../images/bg_line.png);
 	background-repeat:repeat-x;		/* 背景图片在水平显示	 */
@@ -119,8 +128,11 @@ input::-webkit-input-placeholder {
 	justify-content: space-around;
 }
 .radio_training{
-	font-size: 14px;
+	font-size: 16px;
 }
+/*input[type="radio"] {
+  display: none;
+}*/
 .coupons{
 	margin-top: 10px;
 	display: flex;
@@ -142,7 +154,7 @@ input::-webkit-input-placeholder {
 }
 .footer{
 	bottom: 0;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	display: flex;
 	background-color: white;

@@ -5,6 +5,7 @@ package com.wxgzpt.bjpygh.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -55,8 +56,10 @@ public class CouponServlet extends BaseServlet{
 
 			if(userCouponDao.selectUserCoupon(userid)==null){
 				Lottery lottery = new Lottery();
-				int price = lottery.getPrice();
-				status.setPrice(price);
+				Map<String, Integer> map = lottery.getPrice();
+				int price = map.get("price");
+				int num = map.get("num");
+				status.setPrice(num);
 				userCoupon.setUserid(Long.parseLong(userid));
 				userCoupon.setCouponprice(price);
 				userCoupon.setCouponstatus(1);
