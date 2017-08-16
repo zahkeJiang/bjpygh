@@ -66,14 +66,20 @@ function get_tel(){
 	},"json");
 }
 $(function(){
-	
+	//为radio法培方式设置点击样式
+	$("input[type='radio']").click(function() {
+    	$(this).siblings(".user-defined").children("span").addClass("active");
+    	$(this).parents("div").siblings("div").find("span").removeClass("active");
+	});
+
 	$(".ds_type").html(dstype);
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
 	$(".ds_price").html(price);
 	$(".traintime").html(traintime);
-	get_tel();
-	get_coupons();
+
+	get_tel();//获取用户手机号
+	get_coupons();//获取优惠券金额
 	//点击进入优惠券页面
 	$(".coupons").click(function(){
 		window.location.href="coupon.html";
@@ -84,10 +90,12 @@ $(function(){
 		realname = $("#real_name").val();
 		address = $("#address").val();
 		note = $("input[type='radio']:checked").val();
-		if ($("#real_name").val()=="") {
+		if (realname=="") {
 			alert("请输入您的真实姓名");
-		}else if ($("#address").val() == "") {
+		}else if (address == "") {
 			alert("请输入您的地址");
+		}else if (note == "") {
+			alert("请选择您的法培方式");
 		}else {
     		$.post("note.action",{"realname":realname,"address":address,"note":note},function(obj){
     			if (obj.status=="1") {
