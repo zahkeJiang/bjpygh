@@ -7,7 +7,7 @@ var packageid = "";
 var traintime = "";
 var coupons_sum = "";
 
-function ShowMessage() { 
+/*function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval = thisURL.split('?')[1];
     dsname = getval.split("=")[1].split('&')[0];
@@ -18,7 +18,7 @@ function ShowMessage() {
     traintime = getval.split("=")[6];
     getId();
 } 
-window.onload=ShowMessage(); 
+window.onload=ShowMessage(); */
 var realname="";
 var address = "";
 var note = "";
@@ -71,7 +71,7 @@ $(function(){
     	$(this).siblings(".user-defined").children("span").addClass("active");
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
-
+	
 	$(".ds_type").html(dstype);
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
@@ -94,7 +94,7 @@ $(function(){
 			alert("请输入您的真实姓名");
 		}else if (address == "") {
 			alert("请输入您的地址");
-		}else if (note == "") {
+		}else if (note == null) {
 			alert("请选择您的法培方式");
 		}else {
     		$.post("note.action",{"realname":realname,"address":address,"note":note},function(obj){

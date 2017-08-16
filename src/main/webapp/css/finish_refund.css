@@ -4,7 +4,7 @@
 	text-align: center;
 	margin-top: 100px;
 }
-.refund_infor img{
-	height: 100px;
-	width: 100px;
+.refund_infor p{
+	margin-top: 10px;
+	font-size: 18px;
 }
