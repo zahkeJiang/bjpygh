@@ -55,6 +55,7 @@ function all_orders(){
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
             });
+            $(".container").empty();
             $(".container").html(dsorderh_tml);
 
             // 为订单列表设置点击事件
@@ -72,7 +73,7 @@ function all_orders(){
     },"json");
 }
 
-//定义查询成功报名订单方法
+//定义查询已付款订单方法
 function orders_success(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_finished").css({"color":"black","border-bottom":"0"});
@@ -97,6 +98,7 @@ function orders_success(){
                      dsorderh_tml = container;
                 }
             });
+            $(".container").empty();
             $(".container").html(dsorderh_tml);
             
             // 为订单列表设置点击事件
@@ -139,6 +141,7 @@ function orders_finished(){
                     dsorderh_tml = container;
                 }
             });
+            $(".container").empty();
             $(".container").html(dsorderh_tml);
 
             // 为订单列表设置点击事件
@@ -178,6 +181,7 @@ function orders_cencer(){
                                 +comment.orderprice+"</span></div></div>";
                 }
             });
+            $(".container").empty();
             $(".container").html(dsorderh_tml);
 
             // 为订单列表设置点击事件
