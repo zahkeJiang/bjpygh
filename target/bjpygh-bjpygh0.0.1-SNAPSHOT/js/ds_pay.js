@@ -16,8 +16,11 @@ $(function(){
             $(".order_number").html(order_number);
             $(".ds_price").html(ds_price);
             $(".pay_success").show();
+            $(".view_order").click(function(){
+                window.location.href="order_information.html?ordernumber="+order_number;
+            });
         }else if (obj.status=="0") {
             $(".pay_fail").show();
         }
-    },'json');
+    },"json");
 });
