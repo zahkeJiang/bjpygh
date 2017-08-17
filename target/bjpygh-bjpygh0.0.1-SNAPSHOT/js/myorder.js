@@ -33,7 +33,6 @@ function all_orders(){
 	$(".all_orders").css({"color":"red","border-bottom":"2px solid red"});
 
     $.post("selectOrder.action",{},function(obj){
-        $(".container").empty();
         if (obj.status=="1") {   
             var dsorderh_tml = "";
             var dsorder_list = obj.dsOrder;
@@ -68,6 +67,7 @@ function all_orders(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
+            $(".container").empty();
             $(".container").html(container);
         }
     },"json");
@@ -81,7 +81,6 @@ function orders_success(){
     $(".orders_success").css({"color":"red","border-bottom":"2px solid red"});
 
     $.post("selectOrder.action",{},function(obj){
-        $(".container").empty();
         if (obj.status=="1") {   
             var dsorderh_tml = "";
             var dsorder_list = obj.dsOrder;
@@ -111,6 +110,7 @@ function orders_success(){
                 window.location.href="ds_refund.html?ordernumber="+ordernumber;
             });
         }else{
+            $(".container").empty();
             $(".container").html(container);
         }
     },"json");
@@ -124,7 +124,7 @@ function orders_finished(){
     $(".orders_finished").css({"color":"red","border-bottom":"2px solid red"});
 
     $.post("selectOrder.action",{},function(obj){
-        $(".container").empty();
+        
         if (obj.status=="1") {   
             var dsorderh_tml = "";
             var dsorder_list = obj.dsOrder;
@@ -150,6 +150,7 @@ function orders_finished(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
+            $(".container").empty();
             $(".container").html(container);
         }
     },"json");
@@ -165,8 +166,7 @@ function orders_cencer(){
     $(".all_orders").css({"color":"black","border-bottom":"0"});
     $(".orders_cencer").css({"color":"red","border-bottom":"2px solid red"});
 
-    $.post("selectOrder.action",{},function(obj){
-        $(".container").empty();
+    $.post("selectOrder.action",{},function(obj){ 
         if (obj.status=="1") {   
             var dsorderh_tml = "";
             var dsorder_list = obj.dsOrder;
@@ -190,6 +190,7 @@ function orders_cencer(){
                 window.location.href="order_information.html?ordernumber="+ordernumber;
             });
         }else{
+            $(".container").empty();
             $(".container").html(container);
         }
     },"json");
