@@ -7,7 +7,7 @@ var packageid = "";
 var traintime = "";
 var coupons_sum = "";
 
-/*function ShowMessage() { 
+function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval = thisURL.split('?')[1];
     dsname = getval.split("=")[1].split('&')[0];
@@ -18,7 +18,7 @@ var coupons_sum = "";
     traintime = getval.split("=")[6];
     getId();
 } 
-window.onload=ShowMessage(); */
+window.onload=ShowMessage(); 
 var realname="";
 var address = "";
 var note = "";

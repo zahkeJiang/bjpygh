@@ -1,7 +1,7 @@
 var userid = "";
 var packageid = "";
 var select = "";
-/*function ShowMessage() { 
+function ShowMessage() { 
     var thisURL = decodeURI(location.href);    
     var getval  = thisURL.split('?')[1];
     userid = getval.split("=")[1].split("&")[0];
@@ -14,7 +14,7 @@ var select = "";
     }
 } 
 window.onload=ShowMessage(); 
-*/
+
 function isWeiXin(){
     var ua = window.navigator.userAgent.toLowerCase();
     if(ua.match(/MicroMessenger/i) == 'micromessenger'){

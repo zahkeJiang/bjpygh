@@ -93,10 +93,12 @@ function orders_success(){
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
-                }else{
-                     dsorderh_tml = container;
                 }
             });
+            //遍历之后判断订单列表是否依旧为空，如果是空，显示其他内容
+            if (dsorderh_tml=="") {
+                dsorderh_tml=container;
+            }
             $(".container").empty();
             $(".container").html(dsorderh_tml);
             
@@ -137,10 +139,12 @@ function orders_finished(){
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
                                 +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
                                 +comment.orderprice+"</span></div></div>";
-                }else{
-                    dsorderh_tml = container;
                 }
             });
+            //遍历之后判断订单列表是否依旧为空，如果是空，显示其他内容
+            if (dsorderh_tml=="") {
+                dsorderh_tml=container;
+            }
             $(".container").empty();
             $(".container").html(dsorderh_tml);
 
@@ -181,6 +185,11 @@ function orders_cencer(){
                                 +comment.orderprice+"</span></div></div>";
                 }
             });
+            //遍历之后判断订单列表是否依旧为空，如果是空，显示其他内容
+            if (dsorderh_tml=="") {
+                dsorderh_tml=container;
+            }
+
             $(".container").empty();
             $(".container").html(dsorderh_tml);
 
