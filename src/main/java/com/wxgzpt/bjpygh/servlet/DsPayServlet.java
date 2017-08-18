@@ -124,7 +124,7 @@ public class DsPayServlet extends HttpServlet{
             }else{
             	for(DsOrder dsor:dso){
             		if(dsor.getOrderstatus()!=0&&dsor.getOrderstatus()!=5){
-            			out.print("您已支付成功，勿重复支付。");
+            			out.print("<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'/><title>支付失败</title><link href='css/main.css' rel='stylesheet' type='text/css'/><link href='css/submit_orders.css' rel='stylesheet' type='text/css'/></head><body style='background-color: #fff;'><div style='text-align: center; margin-top: 250px;'><img style='width: 40px;margin: 0;' src='images/alipay.png'><p>您已成功支付，请勿重复支付</p></div></body></html>");
                 		out.flush();
                 		out.close();
                 		return;

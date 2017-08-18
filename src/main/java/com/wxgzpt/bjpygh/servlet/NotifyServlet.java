@@ -88,6 +88,7 @@ public class NotifyServlet extends HttpServlet{
 		}else{
 			System.out.println("result_code:fail");
 		}
+		response.getWriter().print("<xml>  <return_code><![CDATA[SUCCESS]]></return_code>  <return_msg><![CDATA[OK]]></return_msg></xml>");
 	}
 	
 }
