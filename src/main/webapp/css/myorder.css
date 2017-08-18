@@ -19,13 +19,12 @@
 }
 .orders_bg{
 	margin:16px;
-	height: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .bg_hint{
-	text-align: center;
+	margin-top: 100px;
 }
 .container{
 	margin-top: 10px;

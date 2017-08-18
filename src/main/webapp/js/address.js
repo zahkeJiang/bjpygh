@@ -35,7 +35,12 @@ function getLocation()  {
   var gc = new BMap.Geocoder();
   gc.getLocation(point, function(rs){
     var addComp = rs.addressComponents;//地址服务类
-    var location = "<img src='images/address.png' width='20px' height='20px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province + "&nbsp;" + addComp.city;
+    var location="";
+    if (addComp.province==addComp.city) {
+      location = "<img src='images/address.png'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province;
+    }else{
+      location = "<img src='images/address.png'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province + "&nbsp;" + addComp.city;
+    }
     $(".getlocation").html(location);
   });   
 

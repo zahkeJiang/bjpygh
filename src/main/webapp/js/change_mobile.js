@@ -39,7 +39,7 @@ function setCode(obj) {
 				alert("验证码发送成功");
 				settime(obj);
 			}else{
-			 	alert(object.msg);
+			 	alert("系统繁忙，请稍后再试！");
 			}
 		},"json");
 	}else{
@@ -72,17 +72,16 @@ function  bt(){
 			if (code == newcode) {
 				$.post("bond.action",{"phonenumber":mobile},function(obj){
 					if (obj.status == 1) {
-			 				alert("成功更换手机号，即将跳转到user页面");
 			 				location.href="user.html";
 			 			}else{
 			 				alert("手机号已被注册");
 			 			}
 				},"json");
 			}else{
-				alert("验证码输入错误1");
+				alert("验证码输入错误");
 			}
 		}else{
-			alert("验证码输入错误2");
+			alert("验证码输入错误");
 		}
 	}else{
 		alert("请输入正确的手机号码！");
