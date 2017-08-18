@@ -56,13 +56,8 @@ public class NotifyServlet extends HttpServlet{
 			
 			//插入充值记录
 			IntegralRecord record = new IntegralRecord();
-			record.setValue(Integer.parseInt(total_fee)/100);
-			record.setNote("微信支付充值");
-			record.setUserid(user.getUserid());
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			record.setTime(formatter.format(new Date()));
-			RecordDao recordDao = new RecordDao();
-			recordDao.insertRecord(record);
+			
+			
 			
 			uMap.put("userid", ""+user.getUserid());
 			switch(total_fee){
@@ -70,36 +65,50 @@ public class NotifyServlet extends HttpServlet{
 				uMap.put("memberpoints", (user.getMemberpoints()+5)+"");
 				uMap.put("integral", (user.getIntegral()+5)+"");
 				userDao.changeUserPoints(uMap);
+				record.setValue("+5");
 				break;
 			case "2":
 				uMap.put("memberpoints", (user.getMemberpoints()+10)+"");
 				uMap.put("integral", (user.getIntegral()+10)+"");
 				userDao.changeUserPoints(uMap);
+				record.setValue("+10");
 				break;
 			case "3":
-				uMap.put("memberpoints", (user.getMemberpoints()+15)+"");
-				uMap.put("integral", (user.getIntegral()+15)+"");
-				userDao.changeUserPoints(uMap);
-				break;
-			case "4":
 				uMap.put("memberpoints", (user.getMemberpoints()+20)+"");
 				uMap.put("integral", (user.getIntegral()+20)+"");
 				userDao.changeUserPoints(uMap);
+				record.setValue("+20");
 				break;
-			case "5":
+			case "4":
 				uMap.put("memberpoints", (user.getMemberpoints()+50)+"");
 				uMap.put("integral", (user.getIntegral()+50)+"");
 				userDao.changeUserPoints(uMap);
+				record.setValue("+50");
 				break;
-			case "6":
+			case "5":
 				uMap.put("memberpoints", (user.getMemberpoints()+100)+"");
 				uMap.put("integral", (user.getIntegral()+100)+"");
 				userDao.changeUserPoints(uMap);
+				record.setValue("+100");
+				break;
+			case "6":
+				uMap.put("memberpoints", (user.getMemberpoints()+200)+"");
+				uMap.put("integral", (user.getIntegral()+200)+"");
+				userDao.changeUserPoints(uMap);
+				record.setValue("+200");
 				break;
 			default:
 					
 				break;
 			}
+			
+			record.setNote("微信支付充值");
+			record.setUserid(user.getUserid());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			record.setTime(formatter.format(new Date()));
+			RecordDao recordDao = new RecordDao();
+			recordDao.insertRecord(record);
+			
 		}else{
 			System.out.println("result_code:fail");
 		}

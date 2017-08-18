@@ -7,7 +7,7 @@ $(function(){
             var record_list = data.data;
             // $.each循环实现添加订单列表  
             $.each(record_list,function(commentIndex,comment){
-                record += '<div class="list">div class="integral_record_list"><span class="integral_record_type">'+comment.note+'</span><span class="integral_record_count">'+comment.value+'</span><p class="integral_record_time">'+comment.time+'</p></div></div>';
+                record += '<div class="list"><div class="integral_record_list"><span class="integral_record_type">'+comment.note+'</span><span class="integral_record_count">'+comment.value+'</span><p class="integral_record_time">'+comment.time+'</p></div></div>';
             });
             $('.integral_record_container').empty();
    			$('.integral_record_container').html(record);

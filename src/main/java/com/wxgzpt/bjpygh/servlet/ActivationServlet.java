@@ -72,7 +72,7 @@ public class ActivationServlet extends HttpServlet{
 		
 		//插入消费记录
 		IntegralRecord record = new IntegralRecord();
-		record.setValue(15);
+		record.setValue("-15");
 		record.setNote("驾校优惠券激活");
 		record.setUserid(user.getUserid());
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

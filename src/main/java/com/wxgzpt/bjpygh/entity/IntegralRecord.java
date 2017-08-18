@@ -7,10 +7,16 @@ public class IntegralRecord {
 
 	private int recordid;  //唯一标识
 	private long userid;	//用户id
-	private int value;		//积分值
+	private String value;		//积分值
 	private String time;		//时间记录
 	private String note;	//积分说明
 	
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
 	public String getTime() {
 		return time;
 	}
@@ -28,12 +34,6 @@ public class IntegralRecord {
 	}
 	public void setUserid(long userid) {
 		this.userid = userid;
-	}
-	public int getValue() {
-		return value;
-	}
-	public void setValue(int value) {
-		this.value = value;
 	}
 	public String getNote() {
 		return note;
