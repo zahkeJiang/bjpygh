@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.wxgzpt.bjpygh.mapper.RecordMapper">
+		<resultMap type="record" id="recordMap">
+			<id column="record_id" property="recordid" javaType="int" jdbcType="NUMERIC" />
+			<result column="user_id" property="userid"/>
+			<result column="value" property="value"/>
+			<result column="time" property="time"/>
+			<result column="note" property="note"/>
+		</resultMap>
+		
+		<select id="getRecordById" parameterType="string" resultMap="recordMap">
+			select * from integral_record where user_id = #{userid}
+		</select>
+		
+		<insert id="insertRecord" parameterType="record">
+			insert into integral_record (user_id, value, time, note)
+			values(#{userid},#{value}, #{time}, #{note})
+		</insert>
+		
+	</mapper>

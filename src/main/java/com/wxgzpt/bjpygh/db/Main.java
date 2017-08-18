@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.wxgzpt.bjpygh.dao.RecordDao;
+import com.wxgzpt.bjpygh.entity.IntegralRecord;
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -19,15 +22,17 @@ public class Main {
 //			sum+=price;
 //		}
 //		System.out.println("10000个="+sum);
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date;
-		try {
-			date = format.parse("2017-08-13 13:12:39");
-			System.out.println(date.getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+//		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		Date date;
+//		try {
+//			date = format.parse("2017-08-13 13:12:39");
+//			System.out.println(date.getTime());
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		
 	} 
 	

@@ -184,4 +184,13 @@
     <servlet-name>NotifyServlet</servlet-name>
     <url-pattern>/notify.action</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectRecordServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.SelectRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectRecordServlet</servlet-name>
+    <url-pattern>/selectRecord.action</url-pattern>
+  </servlet-mapping>
 </web-app>

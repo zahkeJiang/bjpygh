@@ -9,6 +9,7 @@
 			<typeAlias alias="dsorder" type="com.wxgzpt.bjpygh.entity.DsOrder"/>
 			<typeAlias alias="dsinfo" type="com.wxgzpt.bjpygh.entity.DsInformation"/>
 			<typeAlias alias="dspackage" type="com.wxgzpt.bjpygh.entity.DsPackage"/>
+			<typeAlias alias="record" type="com.wxgzpt.bjpygh.entity.IntegralRecord"/>
 		</typeAliases>
 		<environments default="development">
 			<environment id="development">
@@ -29,6 +30,7 @@
 			<mapper resource="com/wxgzpt/bjpygh/mapper/dsPackageMapper.xml"/>
 			<mapper resource="com/wxgzpt/bjpygh/mapper/userCouponMapper.xml"/>
 			<mapper resource="com/wxgzpt/bjpygh/mapper/dsOrderMapper.xml"/>
+			<mapper resource="com/wxgzpt/bjpygh/mapper/recordMapper.xml"/>
 		</mappers>
 		
 </configuration>

@@ -2,6 +2,8 @@ package com.wxgzpt.bjpygh.servlet;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wxgzpt.bjpygh.dao.RecordDao;
 import com.wxgzpt.bjpygh.dao.UserDao;
 import com.wxgzpt.bjpygh.db.XMLToMap;
+import com.wxgzpt.bjpygh.entity.IntegralRecord;
 import com.wxgzpt.bjpygh.entity.User;
 
 @SuppressWarnings("serial")
@@ -45,10 +49,21 @@ public class NotifyServlet extends HttpServlet{
 		Map<String, String> map = x.getXML(notityXml);
 		System.out.println(map);
 		if(map.get("result_code").equals("SUCCESS")){
+			String total_fee = map.get("total_fee");
 			UserDao userDao = new UserDao();
 			User user = userDao.getUserByOpenid(map.get("openid"));
-			String total_fee = map.get("total_fee");
 			Map<String, String> uMap = new HashMap<String, String>();
+			
+			//插入充值记录
+			IntegralRecord record = new IntegralRecord();
+			record.setValue(Integer.parseInt(total_fee)/100);
+			record.setNote("微信支付充值");
+			record.setUserid(user.getUserid());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			record.setTime(formatter.format(new Date()));
+			RecordDao recordDao = new RecordDao();
+			recordDao.insertRecord(record);
+			
 			uMap.put("userid", ""+user.getUserid());
 			switch(total_fee){
 			case "1":

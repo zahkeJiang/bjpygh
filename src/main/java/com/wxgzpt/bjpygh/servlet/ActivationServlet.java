@@ -2,6 +2,8 @@ package com.wxgzpt.bjpygh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.RecordDao;
 import com.wxgzpt.bjpygh.dao.UserCouponDao;
 import com.wxgzpt.bjpygh.dao.UserDao;
+import com.wxgzpt.bjpygh.entity.IntegralRecord;
 import com.wxgzpt.bjpygh.entity.Status;
 import com.wxgzpt.bjpygh.entity.User;
 import com.wxgzpt.bjpygh.entity.UserCoupon;
@@ -51,7 +55,7 @@ public class ActivationServlet extends HttpServlet{
 		
 		UserDao userDao = new UserDao();
 		User user = userDao.getUserById(userid);
-		if(user.getMemberpoints()<100){
+		if(user.getMemberpoints()<15){
 			status.setStatus(0);
 			status.setMsg("积分不足");
 			out.print(gson.toJson(status));
@@ -62,24 +66,33 @@ public class ActivationServlet extends HttpServlet{
 		}
 		Map<String, String> pointMap = new HashMap<String, String>();
 		pointMap.put("userid", userid);
-		pointMap.put("memberpoints", user.getMemberpoints()-100+"");
+		pointMap.put("memberpoints", user.getMemberpoints()-15+"");
 		pointMap.put("integral", user.getIntegral()+"");
 		userDao.changeUserPoints(pointMap);
 		
-			UserCouponDao userCouponDao = new UserCouponDao();
-			UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
-			Map<String, String> statusMap = new HashMap<String, String>();
-			statusMap.put("userid",""+userCoupon.getUserid());
-			statusMap.put("couponstatus", "2");
-			userCouponDao.updataCouponStatus(statusMap);
+		//插入消费记录
+		IntegralRecord record = new IntegralRecord();
+		record.setValue(15);
+		record.setNote("驾校优惠券激活");
+		record.setUserid(user.getUserid());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		record.setTime(formatter.format(new Date()));
+		RecordDao recordDao = new RecordDao();
+		recordDao.insertRecord(record);
+		
+		UserCouponDao userCouponDao = new UserCouponDao();
+		UserCoupon userCoupon = userCouponDao.selectUserCoupon(userid);
+		Map<String, String> statusMap = new HashMap<String, String>();
+		statusMap.put("userid",""+userCoupon.getUserid());
+		statusMap.put("couponstatus", "2");
+		userCouponDao.updataCouponStatus(statusMap);
 			
-			
-			status.setStatus(1);
-			status.setMsg("激活成功");
-			out.print(gson.toJson(status));
-			System.out.println(gson.toJson(status));
-			out.flush();
-			out.close();
+		status.setStatus(1);
+		status.setMsg("激活成功");
+		out.print(gson.toJson(status));
+		System.out.println(gson.toJson(status));
+		out.flush();
+		out.close();
 	}
 	
 }
