@@ -62,10 +62,9 @@
 }
 .dsintro img{
 	position: absolute;
-	width: 50px;
 	bottom: 20px;
 	left: 50%;
-	margin-left:-25px;
+	margin-left:-20px;
 
 }
 .ds_type{
@@ -102,8 +101,9 @@
 }
 .price_symbol{
 	color: #67c0ee;
-	font-size: 14px;
+	font-size: 12px;
 	padding-left: 16px;
+	padding-right: 2px;
 }
 .price{
 	color: #67c0ee;

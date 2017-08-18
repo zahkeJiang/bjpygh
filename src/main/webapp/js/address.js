@@ -37,9 +37,9 @@ function getLocation()  {
     var addComp = rs.addressComponents;//地址服务类
     var location="";
     if (addComp.province==addComp.city) {
-      location = "<img src='images/address.png' height='16px' width='16px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province;
+      location = "<img src='images/address.png' height='18px' width='18px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province;
     }else{
-      location = "<img src='images/address.png' height='16px' width='16px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province + "&nbsp;" + addComp.city;
+      location = "<img src='images/address.png' height='18px' width='18px'>"+"&nbsp;"+"&nbsp;中国&nbsp;"+addComp.province + "&nbsp;" + addComp.city;
     }
     $(".getlocation").html(location);
   });   

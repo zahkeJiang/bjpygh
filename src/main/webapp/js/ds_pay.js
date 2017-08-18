@@ -14,7 +14,7 @@ $(function(){
             var order_number = obj.out_trade_no;
             var ds_price = obj.price;
             $(".order_number").html(order_number);
-            $(".ds_price").html(ds_price);
+            $(".ds_price").html(ds_price+".00");
             $(".pay_success").show();
             $(".view_order").click(function(){
                 window.location.href="order_information.html?ordernumber="+order_number;

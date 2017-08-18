@@ -51,8 +51,8 @@ function all_orders(){
                 dsorderh_tml += "<div class='dsorder_list' onumber='"+comment.ordernumber+"'><div class='dsorder_titie'><p class='ds_name'>"
                                 +comment.dsname+"</p>"+result+"</div><div class='dsoder_container' ><img src='"
                                 +comment.imageurl+"' height='48px' width='64px'><p class='dsorder_information'>"
-                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：</span><span class='order_price'>¥"
-                                +comment.orderprice+"</span></div></div>";
+                                +comment.dstype+"&nbsp;/&nbsp;"+comment.models+"&nbsp;/&nbsp;"+comment.traintime+"</p></div><div class='dsorder_footer'><span class='dsorder_pay'>实付款：¥</span><span class='order_price'>"
+                                +comment.orderprice+".00</span></div></div>";
             });
             $(".container").empty();
             $(".container").html(dsorderh_tml);
