@@ -26,6 +26,9 @@
 .bg_hint{
 	margin-top: 100px;
 }
+.bg_hint p{
+	margin-top: 10px;
+}
 .container{
 	margin-top: 10px;
 	margin-bottom: 10px;

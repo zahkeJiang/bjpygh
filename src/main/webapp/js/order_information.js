@@ -7,7 +7,7 @@ function ShowMessage()
 } 
 window.onload=ShowMessage(); 
 
-var orderschedule = '<div class="progress_pic"><div class="progress_pic_style"><div class="progress_bg"></div><img id="cartoon1" src="images/finish.png" height="30px" width="30px"><div class="submit_bg"></div></div><div class="progress_pic_style"><div class="audit_bg"></div><img id="cartoon2" src="images/waite.png"><div class="audit_bg"></div></div><div class="progress_pic_style"><div class="finish_bg"></div><img id="cartoon3" src="images/waite.png"><div class="finish_bg"></div></div><div class="progress_pic_style"><div class="return_bg"></div><img id="cartoon4" src="images/waite.png"><div class="progress_bg"></div></div></div><div class="orderprogress"><div class="submit_order"><div class="progress_style"><h2 >报名订单</h2><p class="submit_data">&nbsp;</p><p class="submit_time">&nbsp;</p></div></div><div class="material_audit"><div class="progress_style"><h2>材料审核</h2><p class="audit_data">&nbsp;</p><p class="audit_time">&nbsp;</p></div></div><div class="finish_order"><div class="progress_style"><h2>完成报名</h2><p class="finish_data">&nbsp;</p><p class="finish_time">&nbsp;</p></div></div><div class="material_return"><div class="progress_style"><h2>材料返还</h2><p class="return_data">&nbsp;</p><p class="return_time">&nbsp;</p></div></div></div>';
+var orderschedule = '<div class="progress_pic"><div class="progress_pic_style"><div class="progress_bg"></div><img id="cartoon1" src="images/finish.png" height="30px" width="30px"><div class="submit_bg"></div></div><div class="progress_pic_style"><div class="audit_bg"></div><img id="cartoon2" src="images/waite.png" height="16px" width="16px"><div class="audit_bg"></div></div><div class="progress_pic_style"><div class="finish_bg"></div><img id="cartoon3" src="images/waite.png" height="16px" width="16px"><div class="finish_bg"></div></div><div class="progress_pic_style"><div class="return_bg"></div><img id="cartoon4" src="images/waite.png" height="16px" width="16px"><div class="progress_bg"></div></div></div><div class="orderprogress"><div class="submit_order"><div class="progress_style"><h2 >报名订单</h2><p class="submit_data">&nbsp;</p><p class="submit_time">&nbsp;</p></div></div><div class="material_audit"><div class="progress_style"><h2>材料审核</h2><p class="audit_data">&nbsp;</p><p class="audit_time">&nbsp;</p></div></div><div class="finish_order"><div class="progress_style"><h2>完成报名</h2><p class="finish_data">&nbsp;</p><p class="finish_time">&nbsp;</p></div></div><div class="material_return"><div class="progress_style"><h2>材料返还</h2><p class="return_data">&nbsp;</p><p class="return_time">&nbsp;</p></div></div></div>';
 $(function(){
 	$.post("schedule.action",{"ordernumber":ordernumb},function(obj){
 		if (obj.status=="1") {
@@ -47,7 +47,8 @@ $(function(){
 
 					$(".material_audit p").css({"color":"#67c0ee"});
 					$(".material_audit h2").css({"color":"#67c0ee"});
-					$("#cartoon2").attr('src',"images/alipay.png");
+					$("#cartoon2").attr('src',"images/finish.png");
+					$("#cartoon2").css({"height":"30px","width":"30px"});
 					$(".audit_bg").css({"background-color":"#67c0ee"});
 					$(".hint").html("您的材料正在接受审核，24小时之内审核完成。");
 				}else{
@@ -81,12 +82,13 @@ $(function(){
 
 				$(".material_audit p").css({"color":"#67c0ee"});
 				$(".material_audit h2").css({"color":"#67c0ee"});
-				$("#cartoon2").attr('src',"images/alipay.png");
+				$("#cartoon2").attr('src',"images/finish.png");
 				$(".audit_bg").css({"background-color":"#67c0ee"});
 
 				$(".finish_order p").css({"color":"#67c0ee"});
 				$(".finish_order h2").css({"color":"#67c0ee"});
-				$("#cartoon3").attr('src',"images/alipay.png");
+				$("#cartoon3").attr('src',"images/finish.png");
+				$("#cartoon3").css({"height":"30px","width":"30px"});
 				$(".finish_bg").css({"background-color":"#67c0ee"});
 				$(".hint").html("您已完成报名，材料正在返还的路上，请注意查收。");
 
