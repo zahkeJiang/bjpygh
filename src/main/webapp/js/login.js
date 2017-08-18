@@ -56,7 +56,7 @@ function setCode(obj) {
 			if (object.status=="1") {
 				settime(obj);
 			}else{
-			 	alert(object.msg);
+			 	alert("系统繁忙，请稍后再试！");
 			}
 		},"json");
 	}else{

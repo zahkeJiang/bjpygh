@@ -7,7 +7,7 @@
 //} 
 //window.onload=ShowMessage(); 
 
-var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/image_icon.jpg'><p>您当前没有相关订单</p></div></div>";
+var container = "<div class='orders_bg'><div class='bg_hint'><img src='images/no_content.png' height='100px'><p>您当前没有相关订单</p></div></div>";
 $(function(){
     all_orders();
 	$(".all_orders").click(function(){     

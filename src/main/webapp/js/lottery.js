@@ -14,49 +14,49 @@ function lotteryStop(index){
             $(".coupon_price").html(couponhtml);
              change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;
         case 2:
+            var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
+            $(".coupon_price").html(couponhtml);
+             change_lottery_begin();//抽奖按钮改变样式，不能再点击
+            $(".layer").fadeIn("slow");
+            $(".coupon").show();
+            break;
+        case 3:
             var couponhtml = '<img src="images/ds_coupon_05.png" width="84%">';
             $(".coupon_price").html(couponhtml);
              change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
-            break;
-        case 3:
-            var couponhtml = '<img src="images/ds_coupon_08.png" width="84%">';
-            $(".coupon_price").html(couponhtml);
-             change_lottery_begin();//抽奖按钮改变样式，不能再点击
-            $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;
         case 4:
            var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
             $(".coupon_price").html(couponhtml);
              change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;  
         case 5:
             var couponhtml = '<img src="images/ds_coupon_10.png" width="84%">';
             $(".coupon_price").html(couponhtml);
              change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;
         case 6:
             var couponhtml = '<img src="images/ds_coupon_02.png" width="84%">';
             $(".coupon_price").html(couponhtml);
              change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;
         case 7:
             var couponhtml = '<img src="images/ds_coupon_06.png" width="84%">';
             $(".coupon_price").html(couponhtml);
             change_lottery_begin();//抽奖按钮改变样式，不能再点击
             $(".layer").fadeIn("slow");
-            $(".coupon").fadeIn("slow");
+            $(".coupon").show();
             break;
         default:
             alert("当前抽奖人数过多，请稍后尝试！");
@@ -152,7 +152,7 @@ $(function(){
             });
         }else{
             change_lottery_begin();//改变抽奖按钮，并显示优惠信息
-            $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
+            // $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
         }
     },'json');
 
@@ -160,7 +160,7 @@ $(function(){
     $("#closeBtn").click(function(){
         $(".coupon").fadeOut("fast");
         $(".layer").fadeOut("fast");
-        $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
+        // $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
     });
 
 });

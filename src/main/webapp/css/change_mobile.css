@@ -28,14 +28,17 @@
 	align-items: center;
 }
 
-input{
+input[type="tel"],input[type="number"]{
 	height: 40px;
-	border:0px solid #808080;
+	border:0px;
 	background-color: #FFFFFF;
 	flex: 1;
 	font-size: 0.875rem;
 	margin-left:16px;
 	min-width: 100px;
+}
+input[type="number"]{
+	margin-right: 10px;
 }
 input::-webkit-input-placeholder { 
 	color: #999; 
@@ -52,7 +55,7 @@ input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder {
 }
 
 #setcode{
-	
+	border:0px;
 	color: #FFFFFF;
 	height: 32px;
 	width: 80px;
@@ -68,6 +71,7 @@ input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder {
 }
 
 #btn{
+	border:0px;
 	margin-top: 20px;
 	height: 48px;
 	width: 90%;
