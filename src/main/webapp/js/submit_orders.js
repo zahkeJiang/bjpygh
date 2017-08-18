@@ -47,11 +47,11 @@ function get_coupons(){
 				$(".coupons span").html(coupons_sum+"元&nbsp;&gt;");
 				$(".coupons span").css({"color":"red"});
 				select ="1";
-				$(".price").html(price-coupons_sum);
+				$(".price").html((price-coupons_sum)+".00");
 			}else{
 				$(".coupons span").html("无可用优惠券&nbsp;&gt;");
 				select ="0";
-				$(".price").html(price);
+				$(".price").html(price+".00");
 			}
         }	
     });
@@ -71,11 +71,9 @@ $(function(){
     	$(this).siblings(".user-defined").children("span").addClass("active");
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
-	
-	$(".ds_type").html(dstype);
-	$(".ds_name").html(dsname);
-	$(".ds_models").html(models);
-	$(".ds_price").html(price);
+
+	$(".ds_information span").html(dstype+"&frasl;"+dsname+"&frasl;"+models);
+	$(".ds_price").html(price+".00");
 	$(".traintime").html(traintime);
 
 	get_tel();//获取用户手机号
