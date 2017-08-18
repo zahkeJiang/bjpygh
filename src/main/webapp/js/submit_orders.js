@@ -71,10 +71,9 @@ $(function(){
     	$(this).siblings(".user-defined").children("span").addClass("active");
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
-
-	$(".ds_information span").html(dstype+"&frasl;"+dsname+"&frasl;"+models);
+	$(".dstype").html(dstype);
+	$(".dstype_information_content").html(dsname+"&frasl;"+models+"&frasl;"+traintime);
 	$(".ds_price").html(price+".00");
-	$(".traintime").html(traintime);
 
 	get_tel();//获取用户手机号
 	get_coupons();//获取优惠券金额
