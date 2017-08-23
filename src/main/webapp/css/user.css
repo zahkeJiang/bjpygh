@@ -122,8 +122,9 @@ span{
 	align-items: center;
 	justify-content: center;
 	padding:20px;
-	color: #999;
+	color: #8e8e8e;
+	font-size: 14px;
 }
 .footer a{
-	color: red;
+	color: #8e8e8e;
 }
