@@ -24,7 +24,7 @@ $(function(){
 	$(".ds_type").html(dstype);
 	$(".ds_name").html(dsname);
 	$(".ds_models").html(models);
-	$(".ds_price").html(price);
+	$(".ds_price").html(price+".00");
     $(".description").html(description);
 	$("#submit").click(function(){
 		var myurl="submit_orders.html?dsname="+dsname+"&dstype="+dstype+"&models="+models+"&price="+price+"&packageid="+packageid+"&traintime="+traintime;                                      
