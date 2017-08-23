@@ -51,25 +51,34 @@ public class CouponServlet extends BaseServlet{
 		}
 		try {
 			String userid = userMap.get("id");
+			String isActive = userMap.get("active");
 			userCouponDao = new UserCouponDao();
 			userCoupon = new UserCoupon();
 
 			if(userCouponDao.selectUserCoupon(userid)==null){
-				Lottery lottery = new Lottery();
-				Map<String, Integer> map = lottery.getPrice();
-				int price = map.get("price");
-				int num = map.get("num");
-				status.setPrice(num);
-				userCoupon.setUserid(Long.parseLong(userid));
-				userCoupon.setCouponprice(price);
-				userCoupon.setCouponstatus(1);
-				userCoupon.setCoupontype(2);
-				userCoupon.setCoupontime(new Date());
-				userCouponDao.insertUserCoupon(userCoupon);
-				status.setStatus(1);
+				if(isActive!=null&&isActive.equals("true")){
+					Lottery lottery = new Lottery();
+					Map<String, Integer> map = lottery.getPrice();
+					int price = map.get("price");
+					int num = map.get("num");
+					status.setPrice(num);
+					userCoupon.setUserid(Long.parseLong(userid));
+					userCoupon.setCouponprice(price);
+					userCoupon.setCouponstatus(1);
+					userCoupon.setCoupontype(2);
+					userCoupon.setCoupontime(new Date());
+					userCouponDao.insertUserCoupon(userCoupon);
+					status.setStatus(1);
+					
+					out.print(gson.toJson(status));
+					System.out.println(gson.toJson(status));
+				}else{
+					status.setStatus(2);
+					status.setMsg("请先激活");
+					System.out.println(gson.toJson(status));
+					out.print(gson.toJson(status));
+				}
 				
-				out.print(gson.toJson(status));
-				System.out.println(gson.toJson(status));
 			}else{
 				status.setStatus(0);
 				status.setMsg("优惠券已存在");

@@ -11,6 +11,7 @@ D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\config\MyConfig.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\entity\IntegralRecord.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\mapper\DsPackageMapper.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\QueryPackageServlet.java
+D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\ActCodeServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\BaseServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\GetUserIdServlet.java
 D:\java\bjpygh\src\main\java\com\wxgzpt\bjpygh\servlet\WxPayServlet.java
