@@ -84,7 +84,7 @@ body{
 	width: 80%;
 	margin-left: 10%;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 15px;
 }
 .coupon_price img{
 	margin:10px 8%;
@@ -136,4 +136,60 @@ body{
 .footer p a{
 	color: #67c0ee;
 	font-size: 14px;
+}
+
+.coupon_code{
+	z-index: 1000;
+	position: absolute;
+	top: 25%;
+	left: 0;
+	display: none;
+	width: 80%;
+	margin-left: 10%;
+	background-color: white;
+	border-radius: 15px;
+}
+.coupon_code_hint{
+	width: 80%;
+	margin-left: 10%;
+	font-size: 14px;
+	color: #999;
+
+}
+.blank{
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+input[name="ds_coupon_code"]{
+	height: 36px;
+	padding: 0 10px;
+	border:1px solid #999;
+	width: 60%;
+}
+.btn_submit{
+	margin:0px 30% 10px 30%;
+	color: #00579f;
+	width: 30%;
+	margin-left:35%;
+	text-align: center;
+	line-height: 36px;
+	height: 36px;
+	border-radius: 10px;
+	border:1px solid #00579f;
+}
+#closeBtn_code{
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 30px;
+	color: white;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight:bold;
 }
