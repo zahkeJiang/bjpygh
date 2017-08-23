@@ -3,11 +3,22 @@
 
 .ds_information{
 	background-color: white;
-	padding: 10px 16px ;
+	padding: 0 16px ;
+	height: 120px;
 	line-height: 24px;
 }
-span{
-	color: #585858;
+.dstype_information{
+	height: 40px;
+	font-size: 14px;
+	color: #999;
+	line-height: 40px;
+	border-bottom: 1px solid #efefef;
+}
+.ds_type{
+	margin-top: 4px;
+}
+span,.dstype_information_content{
+	color: #999;
 	font-size: 14px;
 }
 .ds_information h2{
@@ -21,6 +32,7 @@ span{
 .ds_price{
 	color: red;
 	font-size: 16px;
+	padding-left: 2px;
 }
 
 .price{

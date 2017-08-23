@@ -1,11 +1,7 @@
 package com.wxgzpt.bjpygh.db;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.wxgzpt.bjpygh.dao.RecordDao;
-import com.wxgzpt.bjpygh.entity.IntegralRecord;
+import com.google.gson.Gson;
+import com.wxgzpt.bjpygh.dao.DsOrderDao;
 
 public class Main {
 	
@@ -33,6 +29,8 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
+		DsOrderDao dsOrderDao = new DsOrderDao();
+		System.out.println(new Gson().toJson(dsOrderDao.getDsOrder("28")));
 		
 	} 
 	

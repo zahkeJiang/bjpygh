@@ -93,8 +93,7 @@ public class DsPayServlet extends HttpServlet{
             int hour = c.get(Calendar.HOUR_OF_DAY); 
             int minute = c.get(Calendar.MINUTE); 
             int second = c.get(Calendar.SECOND);
-            int milliseconds = c.get(Calendar.MILLISECOND);
-            String out_trade_no ="PYGHDS" + year + month + date + hour + minute + second + milliseconds+userid;
+            String out_trade_no ="DSPYGH" + year + month + date + hour + minute + second + userid;
          
             int total_amount = dsPackage.getPrice()-couponprice;
             System.out.println("------_------");
@@ -112,6 +111,7 @@ public class DsPayServlet extends HttpServlet{
             dsOrder.setRealname(user.getRealname());
             dsOrder.setOrdernumber(out_trade_no);
             dsOrder.setOrderprice(total_amount);
+            dsOrder.setOriginalprice(dsPackage.getPrice());
             dsOrder.setOrderstatus(0);
             dsOrder.setPhonenumber(user.getPhonenumber());
             dsOrder.setTraintime(dsPackage.getTraintime());

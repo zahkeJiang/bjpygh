@@ -43,7 +43,7 @@ $(function(){
                 +comment.dstype+"</h2><div class='dsp_infor'><span class='models'>"
                 +comment.models+"</span><span class='traintime'>"
                 +comment.traintime+"</span><span class='description'>"
-                +comment.description+"</span><span class='packageid'>"
+                +comment.description.split('，')[0]+"</span><span class='packageid'>"
                 +comment.packageid+"</span></div><div><span  class='price_symbol'>¥</span><span class='price'>"
                 +comment.price+".00</span></div></div>";
             });

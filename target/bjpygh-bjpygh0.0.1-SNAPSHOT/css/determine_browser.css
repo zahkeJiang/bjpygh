@@ -16,7 +16,13 @@
 	position:relative;
 	margin: 10px 16px;
 }
-
+.confirm img{
+	position: absolute;
+	top: 50%;
+	margin-top: -60px;
+	left: 50%;
+	margin-left: -50px;
+}
 .hint{
 	width: 100%;
 	line-height: 24px;

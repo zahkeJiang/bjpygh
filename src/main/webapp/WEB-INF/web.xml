@@ -193,4 +193,13 @@
     <servlet-name>SelectRecordServlet</servlet-name>
     <url-pattern>/selectRecord.action</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ActCodeServlet</servlet-name>
+    <servlet-class>com.wxgzpt.bjpygh.servlet.ActCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActCodeServlet</servlet-name>
+    <url-pattern>/actcode.action</url-pattern>
+  </servlet-mapping>
 </web-app>

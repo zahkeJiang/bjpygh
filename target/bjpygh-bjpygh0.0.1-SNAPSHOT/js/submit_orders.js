@@ -47,11 +47,11 @@ function get_coupons(){
 				$(".coupons span").html(coupons_sum+"元&nbsp;&gt;");
 				$(".coupons span").css({"color":"red"});
 				select ="1";
-				$(".price").html(price-coupons_sum);
+				$(".price").html((price-coupons_sum)+".00");
 			}else{
 				$(".coupons span").html("无可用优惠券&nbsp;&gt;");
 				select ="0";
-				$(".price").html(price);
+				$(".price").html(price+".00");
 			}
         }	
     });
@@ -71,12 +71,9 @@ $(function(){
     	$(this).siblings(".user-defined").children("span").addClass("active");
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
-	
-	$(".ds_type").html(dstype);
-	$(".ds_name").html(dsname);
-	$(".ds_models").html(models);
-	$(".ds_price").html(price);
-	$(".traintime").html(traintime);
+	$(".dstype").html(dstype);
+	$(".dstype_information_content").html(dsname+"&frasl;"+models+"&frasl;"+traintime);
+	$(".ds_price").html(price+".00");
 
 	get_tel();//获取用户手机号
 	get_coupons();//获取优惠券金额

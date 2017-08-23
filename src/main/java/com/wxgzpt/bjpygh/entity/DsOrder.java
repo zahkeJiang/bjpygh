@@ -30,7 +30,14 @@ public class DsOrder {
 	private String gettime;			//得到材料时间
 	private String refundtime;			//退款时间
 	private String imageurl;			//退款时间
+	private int originalprice;			//退款时间
 	
+	public int getOriginalprice() {
+		return originalprice;
+	}
+	public void setOriginalprice(int originalprice) {
+		this.originalprice = originalprice;
+	}
 	public String getImageurl() {
 		return imageurl;
 	}
