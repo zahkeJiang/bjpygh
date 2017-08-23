@@ -124,7 +124,10 @@ $(function(){
             //点击抽奖按钮，开始抽奖
             $(".lottery_begin").click(function(){
             	$.post("coupon.action",{},function(obj){
-                    if (obj.status =="1") {
+                    if (obj.status =="2") {
+                        $(".layer").fadeIn("slow");
+                        $(".coupon_code").show();
+                    }else if (obj.status =="1") {
                         if (obj.price==0) {
                             lottery.num=0;
                         }else if (obj.price == 1) {
@@ -162,6 +165,14 @@ $(function(){
         $(".layer").fadeOut("fast");
         // $(".footer").html("<p>您已抽过奖了，<a href='index.html'>立即使用</a></p>");
     });
+    //关闭弹窗
+    $("#closeBtn_code").click(function(){
+        $(".coupon_code").fadeOut("fast");
+        $(".layer").fadeOut("fast");
+        
+    });
+    
+
 
 });
 
@@ -171,6 +182,5 @@ function change_lottery_begin(){
     $(".lottery_begin p").html("已&nbsp;抽&nbsp;奖");
     $(".lottery_begin p").css({"color":"white"});
     $(".lottery_begin").css({"font-size":"18px","background-color":"#999"});
-    $(".lottery_begin").prop("disabled",true);
-    
+    $(".lottery_begin").prop("disabled",true); 
 }
