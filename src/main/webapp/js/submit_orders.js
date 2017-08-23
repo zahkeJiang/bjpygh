@@ -71,7 +71,7 @@ $(function(){
     	$(this).siblings(".user-defined").children("span").addClass("active");
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
-	$(".dstype").html(dstype);
+	$(".ds_type").html(dstype);
 	$(".dstype_information_content").html(dsname+"&frasl;"+models+"&frasl;"+traintime);
 	$(".ds_price").html(price+".00");
 

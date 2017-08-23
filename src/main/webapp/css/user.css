@@ -83,7 +83,7 @@ span{
 	font-size: 0.875rem;
 	color: #8e8e8e;
 }
-.orders{
+.orders,.service{
 	height: 48px;
 	display:flex;
 	align-items: center;
@@ -118,5 +118,12 @@ span{
 	color: #8e8e8e;
 }
 .footer{
-	height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:20px;
+	color: #999;
+}
+.footer a{
+	color: red;
 }
