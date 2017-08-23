@@ -2,27 +2,27 @@ var total_fee = "";
 $(function(){
     userload();
     $(".amount_type_01").click(function(){
-        total_fee = 500;
+        total_fee = 1;
         recharge();
     });
     $(".amount_type_02").click(function(){
-        total_fee = 1000;
+        total_fee = 2;
         recharge();
     });
     $(".amount_type_03").click(function(){
-        total_fee = 1980;
+        total_fee = 3;
         recharge();
     });
     $(".amount_type_04").click(function(){
-        total_fee = 4900;
+        total_fee = 4;
         recharge();
     });
     $(".amount_type_05").click(function(){
-        total_fee = 9750;
+        total_fee = 5;
         recharge();
     });
     $(".amount_type_06").click(function(){
-        total_fee = 19500;
+        total_fee = 6;
         recharge();
     });
 });
@@ -80,11 +80,8 @@ function onBridgeReady(obj){
             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                 alert("充值成功");
             }// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。              
-            else if(res.err_msg == "get_brand_wcpay_request:cancer"){
-                alert("用户取消支付"+res.err_msg);
-            }
             else{
-                alert("系统繁忙，请稍后再试。");
+                alert("未支付");
             }
         }
          
