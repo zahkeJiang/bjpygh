@@ -10,7 +10,7 @@ $(function(){
     				$(".member_live").html("铂金会员");
     			}else if (user.integral>1999) {
 					$(".member_live").html("黄金会员");
-    			}else if (user.integral>99) {
+    			}else if (user.integral>14) {
 					$(".member_live").html("白银会员");
     			}else{
     				$(".member_live").html("普通用户");

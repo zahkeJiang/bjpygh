@@ -53,7 +53,7 @@ public class QueryCouponServlet extends BaseServlet{
 				userCoupon = userCouponDao.selectUserCoupon(userid);
 //				UserDao userDao = new UserDao();
 //				User user = userDao.getUserById(userid);
-				Date date = new Date(604800000L);
+				Date date = new Date(2419200000L);
 				if(userCoupon!=null&&userCoupon.getCouponstatus()==1){
 					if((new Date()).getTime()-userCoupon.getCoupontime().getTime()<date.getTime()){
 						status.setStatus(1);

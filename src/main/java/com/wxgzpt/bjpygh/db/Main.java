@@ -1,7 +1,8 @@
 package com.wxgzpt.bjpygh.db;
 
-import com.google.gson.Gson;
-import com.wxgzpt.bjpygh.dao.DsOrderDao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main {
 	
@@ -28,9 +29,16 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
 		
-		DsOrderDao dsOrderDao = new DsOrderDao();
-		System.out.println(new Gson().toJson(dsOrderDao.getDsOrder("28")));
+		try {
+			Date date1 = sdf.parse("1995-02-01");
+			Date date2= sdf.parse("1995-03-01");
+			System.out.println(date2.getTime()-date1.getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	} 
 	
