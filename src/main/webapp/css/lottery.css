@@ -2,9 +2,6 @@ body{
 	background: url(../images/coupon_background.png) no-repeat;
 	background-size: 100%;
 }
-.main{
-	position: relative;
-}
 .title{
 	margin-top: 10px;
 	height: 40px;
@@ -114,7 +111,7 @@ body{
 	filter:alpha(opacity=0.5);
 	z-index:999;
 	background:#333;
-	display: none;
+	/*display: none;*/
 }
 #closeBtn{
 	position: absolute;
