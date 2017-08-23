@@ -172,7 +172,7 @@ $(function(){
         
     });
     //抽奖码输入后，点击验证
-    $("。btn_submit").click(function(){
+    $(".btn_submit").click(function(){
         var ds_coupon_code = $("input[name='ds_coupon_code']").val();
         $.post("actcode.action",{},function(obj){
             if (obj.status=="1") {

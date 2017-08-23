@@ -34,7 +34,7 @@ public class ActCodeServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		Map<String, String> userMap = (Map<String, String>) session.getAttribute("user");
 		String ActCode = request.getParameter("code");
-		if(ActCode.equals("PYGH521")){
+		if(ActCode!=null&&ActCode.equals("PYGH521")){
 			userMap.put("active", "true");
 			session.removeAttribute("user");
 			session.setAttribute("user", userMap );
