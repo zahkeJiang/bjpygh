@@ -171,7 +171,20 @@ $(function(){
         $(".layer").fadeOut("fast");
         
     });
-    
+    //抽奖码输入后，点击验证
+    $("。btn_submit").click(function(){
+        var ds_coupon_code = $("input[name='ds_coupon_code']").val();
+        $.post("actcode.action",{},function(obj){
+            if (obj.status=="1") {
+                $(".blank").empty();
+                $(".blank").html("<div class='blank_hint'><p>领取成功</p><p>您已获得一次免费抽奖机会</p></div>");
+                $(".btn_submit").prop("disabled",true);
+            }else{
+                alert("抽奖码错误，请重新输入");
+            }
+        },"json");
+        
+    });
 
 
 });
