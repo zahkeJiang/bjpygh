@@ -72,7 +72,7 @@ $(function(){
     	$(this).parents("div").siblings("div").find("span").removeClass("active");
 	});
 	$(".ds_type").html(dstype);
-	$(".dstype_information_content").html(dsname+"&frasl;"+models+"&frasl;"+traintime);
+	$(".dstype_information_content").html(dsname+"&nbsp;&frasl;&nbsp;"+models+"&nbsp;&frasl;&nbsp;"+traintime);
 	$(".ds_price").html(price+".00");
 
 	get_tel();//获取用户手机号

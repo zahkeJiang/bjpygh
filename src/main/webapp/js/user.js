@@ -82,7 +82,7 @@ $.post("personal.action",{},function(obj){
 		  	$('#integral').html("铂金会员");
 	    }else if (integral>1999) {
 	    	$('#integral').html("黄金会员");
-	    }else if (integral>99) {
+	    }else if (integral>14) {
 	    	$('#integral').html("白银会员");
 	    }else{
 	    	$('#integral').html("普通用户");

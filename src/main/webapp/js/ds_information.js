@@ -45,7 +45,7 @@ $(function(){
                 +comment.traintime+"</span><span class='description'>"
                 +comment.description+"</span><span class='packageid'>"
                 +comment.packageid+"</span></div><div><span  class='price_symbol'>¥</span><span class='price'>"
-                +comment.price+"</span><span>.00</span></div></div>";
+                +comment.price+"</span><span class='pointzero'>.00</span></div></div>";
             });
             $(".container").html(dshtml);
 
@@ -53,7 +53,7 @@ $(function(){
              $(".dsp_list").click(function(){    
                 var dstype = $(this).find(".dstype").html(); 
                 var models = $(this).find(".models").html(); 
-                // var price = $(this).find(".price").html(); 
+                var price = $(this).find(".price").html(); 
                 var traintime = $(this).find(".traintime").html();  
                 var packageid = $(this).find(".packageid").html();   
                 var description = $(this).find(".description").html();
