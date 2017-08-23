@@ -1,6 +1,6 @@
 $(function(){
 
-    getLocation();//获取当前的经纬度对应的国家，省份以及城市
+    // getLocation();//获取当前的经纬度对应的国家，省份以及城市
     $(".allcity li").click(function(){
       var province =  $(this).children().attr("province");
       var num =  $(this).children().attr("city");
