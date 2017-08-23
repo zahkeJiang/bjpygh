@@ -6,9 +6,9 @@ $(function(){
     			var user = obj.data;
     			$("#icon").attr('src',user.headimageurl);
     			$("#nickname").html(user.nickname);
-    			if (user.integral>5999) {
+    			if (user.integral>4999) {
     				$(".member_live").html("铂金会员");
-    			}else if (user.integral>1999) {
+    			}else if (user.integral>499) {
 					$(".member_live").html("黄金会员");
     			}else if (user.integral>14) {
 					$(".member_live").html("白银会员");

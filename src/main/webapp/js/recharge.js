@@ -2,27 +2,27 @@ var total_fee = "";
 $(function(){
     userload();
     $(".amount_type_01").click(function(){
-        total_fee = 1;
+        total_fee = 500;
         recharge();
     });
     $(".amount_type_02").click(function(){
-        total_fee = 2;
+        total_fee = 1000;
         recharge();
     });
     $(".amount_type_03").click(function(){
-        total_fee = 3;
+        total_fee = 1980;
         recharge();
     });
     $(".amount_type_04").click(function(){
-        total_fee = 4;
+        total_fee = 4900;
         recharge();
     });
     $(".amount_type_05").click(function(){
-        total_fee = 5;
+        total_fee = 9750;
         recharge();
     });
     $(".amount_type_06").click(function(){
-        total_fee = 6;
+        total_fee = 19500;
         recharge();
     });
 });

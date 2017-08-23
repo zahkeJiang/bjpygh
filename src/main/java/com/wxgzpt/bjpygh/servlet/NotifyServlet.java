@@ -61,37 +61,37 @@ public class NotifyServlet extends HttpServlet{
 			
 			uMap.put("userid", ""+user.getUserid());
 			switch(total_fee){
-			case "1":
+			case "500":
 				uMap.put("memberpoints", (user.getMemberpoints()+5)+"");
 				uMap.put("integral", (user.getIntegral()+5)+"");
 				userDao.changeUserPoints(uMap);
 				record.setValue("+5");
 				break;
-			case "2":
+			case "1000":
 				uMap.put("memberpoints", (user.getMemberpoints()+10)+"");
 				uMap.put("integral", (user.getIntegral()+10)+"");
 				userDao.changeUserPoints(uMap);
 				record.setValue("+10");
 				break;
-			case "3":
+			case "1980":
 				uMap.put("memberpoints", (user.getMemberpoints()+20)+"");
 				uMap.put("integral", (user.getIntegral()+20)+"");
 				userDao.changeUserPoints(uMap);
 				record.setValue("+20");
 				break;
-			case "4":
+			case "4900":
 				uMap.put("memberpoints", (user.getMemberpoints()+50)+"");
 				uMap.put("integral", (user.getIntegral()+50)+"");
 				userDao.changeUserPoints(uMap);
 				record.setValue("+50");
 				break;
-			case "5":
+			case "9750":
 				uMap.put("memberpoints", (user.getMemberpoints()+100)+"");
 				uMap.put("integral", (user.getIntegral()+100)+"");
 				userDao.changeUserPoints(uMap);
 				record.setValue("+100");
 				break;
-			case "6":
+			case "19500":
 				uMap.put("memberpoints", (user.getMemberpoints()+200)+"");
 				uMap.put("integral", (user.getIntegral()+200)+"");
 				userDao.changeUserPoints(uMap);

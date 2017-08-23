@@ -77,10 +77,10 @@ $.post("personal.action",{},function(obj){
 		}else{
 		  	$('#city').html("");
 		}
-		var integral = obj.integral;
-		if (integral>5999) {
+		var integral = userobj.integral;
+		if (integral>4999) {
 		  	$('#integral').html("铂金会员");
-	    }else if (integral>1999) {
+	    }else if (integral>499) {
 	    	$('#integral').html("黄金会员");
 	    }else if (integral>14) {
 	    	$('#integral').html("白银会员");
