@@ -47,7 +47,8 @@
   padding-left: 20px;
   font-size: 14px;
   color: #555;
-  background:url(../images/phone_pic.png)no-repeat center left;
+  background:url(../images/star.png)no-repeat center left;
+  background-size:10px;
 }
 .use_coupon{
   margin-top:40px;
