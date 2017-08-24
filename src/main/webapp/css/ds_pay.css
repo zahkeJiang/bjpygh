@@ -11,7 +11,7 @@
 	padding:0 16px;
 }
 .pay_success{
-	/*display: none;*/
+	display: none;
 }
 .pay_fail{
 	position: absolute;
