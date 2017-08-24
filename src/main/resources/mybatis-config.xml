@@ -25,12 +25,12 @@
 			</environment>
 		</environments>
 		<mappers>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/userMapper.xml"/>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/dsInfoMapper.xml"/>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/dsPackageMapper.xml"/>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/userCouponMapper.xml"/>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/dsOrderMapper.xml"/>
-			<mapper resource="com/wxgzpt/bjpygh/mapper/recordMapper.xml"/>
+			<mapper resource="userMapper.xml"/>
+			<mapper resource="dsInfoMapper.xml"/>
+			<mapper resource="dsPackageMapper.xml"/>
+			<mapper resource="userCouponMapper.xml"/>
+			<mapper resource="dsOrderMapper.xml"/>
+			<mapper resource="recordMapper.xml"/>
 		</mappers>
 		
 </configuration>

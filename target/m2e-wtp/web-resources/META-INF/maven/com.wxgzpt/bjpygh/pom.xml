@@ -5,7 +5,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.wxgzpt</groupId>
   <artifactId>bjpygh</artifactId>
-  <version>bjpygh0.0.1-SNAPSHOT</version>
+  <version>bjpygh</version>
   <packaging>war</packaging>
   
   <dependencies>
