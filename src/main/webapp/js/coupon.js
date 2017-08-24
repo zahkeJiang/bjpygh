@@ -5,15 +5,15 @@ $(function(){
 			$(".container").html(coupon_hint);
 		}else{
 			if (obj.price=="200") {
-				var coupon_pic = "<img src='images/coupon_02.png'>";
+				var coupon_pic = "<img src='images/ds_coupon_02.png'>";
 			}else if (obj.price=="300") {
-				var coupon_pic = "<img src='images/coupon_03.png'>";
+				var coupon_pic = "<img src='images/ds_coupon_03.png'>";
 			}else if (obj.price=="500") {
-				var coupon_pic = "<img src='images/coupon_05.png'>";
+				var coupon_pic = "<img src='images/ds_coupon_05.png'>";
 			}else if (obj.price=="600") {
-				var coupon_pic = "<img src='images/coupon_06.png'>";
+				var coupon_pic = "<img src='images/ds_coupon_06.png'>";
 			}else if (obj.price=="1000") {
-				var coupon_pic = "<img src='images/coupon_10.png'>";
+				var coupon_pic = "<img src='images/ds_coupon_10.png'>";
 			}
 			var coupon = "<div class='coupon'>"+coupon_pic+"<div class='coupon_hint_text'><h2>优惠提示:</h2><p>30天有效期，从领取日开始计时</p><p>过期可使用会员积分激活继续使用</p></div><div class='use_coupon'></div></div>"
 			$(".container").html(coupon);
