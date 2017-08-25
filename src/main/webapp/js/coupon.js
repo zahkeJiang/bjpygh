@@ -1,4 +1,8 @@
 $(function(){
+	renovation();
+});
+
+function renovation(){
 	$.post("queryCoupon.action",{},function(obj){
 		if (obj.status=="0") {
 			var coupon_hint = "<div class='coupons_hint_box'><div class='coupon_hint'><div class='nohint'><p class='nohint_no'>没有券</p><p class='nohint_look'>去优惠活动里进行看看吧</p><a href='lottery.html'>去看看</a></div></div></div>"
@@ -30,14 +34,11 @@ $(function(){
 						$.post("activation.action",{},function(obj){
 							if (obj.status == "1") {
 								alert("激活成功");
-								$(".use_coupon").empty().html("立即使用");
-								$(".use_coupon").click(function(){
-    								window.location.href="index.html";
-    							});
+								renovation();
 							}else{
 								alert("激活失败,可前往“你-会员”中查看您的会员积分。");
 							}
-						});
+						},"json");
 					}
     				
 				});	
@@ -46,7 +47,9 @@ $(function(){
     		}
 		}
     },'json');	
-});
+
+}
+
 
 /*
 //付款
