@@ -23,15 +23,23 @@ $(function(){
     				window.location.href="index.html";
     			});
     		}else if (obj.status == "2") {
-    			$(".use_coupon").html("立即激活并使用");
+    			$(".use_coupon").html("已过期，立即激活");
     			$(".use_coupon").click(function(){
-    				$.post("activation.action",{},function(obj){
-						if (obj.status == "1") {
-							alert("激活成功");
-						}else{
-							alert("激活失败");
-						}
-					});
+    				var confirmtext = confirm("即将扣除您的会员积分(15积分)，是否确认激活？"); 
+					if(confirmtext==true){
+						$.post("activation.action",{},function(obj){
+							if (obj.status == "1") {
+								alert("激活成功");
+								$(".use_coupon").empty().html("立即使用");
+								$(".use_coupon").click(function(){
+    								window.location.href="index.html";
+    							});
+							}else{
+								alert("激活失败,可前往“你-会员”中查看您的会员积分。");
+							}
+						});
+					}
+    				
 				});	
     		}else if (obj.status == "3") {
     			$(".use_coupon").html("已使用");
@@ -40,3 +48,54 @@ $(function(){
     },'json');	
 });
 
+/*
+//付款
+function recharge(){
+    $.post("wxpay.action",{"total_fee":"15"},function(obj){
+        if (obj.status=="1") {
+             determine(obj);
+        }else{
+            alert("系统繁忙，请稍后再试。");
+        }
+       
+    },"json");
+}
+//付款判断
+function determine(obj){
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady(obj);
+    }
+}
+
+ //微信支付
+function onBridgeReady(obj){
+    var payurl = obj.data;
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest', {
+            "appId":payurl.appid,     //公众号名称，由商户传入     
+            "timeStamp":obj.timeStamp,         //时间戳，自1970年以来的秒数     
+            "nonceStr":payurl.nonce_str, //随机串     
+            "package":"prepay_id="+payurl.prepay_id,     
+            "signType":"MD5",         //微信签名方式：     
+            "paySign":obj.paySign //微信签名 
+        },
+        function(res){     
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                alert("充值成功");
+            }// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。              
+            else{
+                alert("未支付");
+            }
+        }
+         
+    ); 
+}
+
+*/
